@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Papierpfad Atelier</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="brand">Papierpfad Atelier</p>
+        <p class="subtle">Geschenkboxen fuer Lesen und Schreiben</p>
+      </div>
+      <button id="cartButton" class="icon-button" aria-label="Warenkorb oeffnen">
+        <span>Warenkorb</span>
+        <strong id="cartCount">0</strong>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h1>Kuratierte Geschenkboxen, fertig zum Verschenken.</h1>
+          <p>
+            Ein kleiner Beispielshop fuer den IDP-Demonstrator: Produkte waehlen,
+            Bestellung ausloesen und den Folgeprozess automatisch vorbereiten.
+          </p>
+        </div>
+      </section>
+
+      <section aria-labelledby="productsTitle">
+        <div class="section-heading">
+          <h2 id="productsTitle">Produkte</h2>
+        </div>
+        <div id="productGrid" class="product-grid"></div>
+      </section>
+    </main>
+
+    <aside id="cartPanel" class="cart-panel" aria-hidden="true">
+      <div class="panel-header">
+        <h2>Warenkorb</h2>
+        <button id="closeCartButton" class="icon-button">Schliessen</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-summary">
+        <div><span>Zwischensumme</span><strong id="subtotal">0,00 EUR</strong></div>
+        <div><span>Versand</span><strong id="shipping">4,90 EUR</strong></div>
+        <div class="total"><span>Gesamt brutto</span><strong id="total">0,00 EUR</strong></div>
+      </div>
+      <button id="checkoutButton" class="primary-button">Zur Kasse</button>
+    </aside>
+
+    <dialog id="checkoutDialog">
+      <form id="checkoutForm" method="dialog">
+        <div class="dialog-header">
+          <h2>Checkout</h2>
+          <button type="button" id="closeCheckoutButton" class="icon-button">Schliessen</button>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            Vorname
+            <input required name="firstName" />
+          </label>
+          <label>
+            Nachname
+            <input required name="lastName" />
+          </label>
+          <label class="span-2">
+            E-Mail
+            <input required type="email" name="email" />
+          </label>
+          <label class="span-2">
+            Strasse und Hausnummer
+            <input required name="street" />
+          </label>
+          <label>
+            PLZ
+            <input required name="postalCode" />
+          </label>
+          <label>
+            Ort
+            <input required name="city" />
+          </label>
+        </div>
+
+        <div class="review-box">
+          <h3>Bestelluebersicht</h3>
+          <div id="checkoutSummary"></div>
+        </div>
+
+        <button class="primary-button" type="submit">Kauf abschliessen</button>
+      </form>
+    </dialog>
+
+    <dialog id="successDialog">
+      <div class="success-state">
+        <h2>Bestellung angelegt</h2>
+        <p id="successText"></p>
+        <div class="success-actions">
+          <a class="secondary-button" href="./review.html">Zur Rechnungspruefung</a>
+          <button id="closeSuccessButton" class="primary-button">Weiter einkaufen</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
