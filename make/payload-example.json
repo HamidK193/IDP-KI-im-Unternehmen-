@@ -1,0 +1,30 @@
+{
+  "order": {
+    "order_number": "PP-2026-0001",
+    "status": "paid",
+    "subtotal_cents": 2490,
+    "shipping_cents": 490,
+    "vat_cents": 566,
+    "total_cents": 3546
+  },
+  "customer": {
+    "first_name": "Mara",
+    "last_name": "Lehmann",
+    "email": "mara.lehmann@example.de"
+  },
+  "billing_address": {
+    "line1": "Musterstrasse 12",
+    "postal_code": "75172",
+    "city": "Pforzheim",
+    "country_code": "DE"
+  },
+  "items": [
+    {
+      "sku": "PP-BOX-01",
+      "name": "Lesestunde Klassik",
+      "quantity": 1,
+      "unit_net_price_cents": 2490,
+      "line_total_cents": 2490
+    }
+  ]
+}
