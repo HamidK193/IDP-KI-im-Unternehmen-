@@ -2,23 +2,26 @@
 
 ## Aktueller Stand
 
-Der erste Funktionskern ist fertig:
+Der Shop-Prototyp wurde zu einem modernen Luxury-Streetwear-Shop für das fiktive Unternehmen **Kara** umgebaut.
 
-- Produktliste
+- moderne Startseite mit Editorial-Hero
+- Collection-, Kategorie-, Lookbook- und Atelier-Bereiche
+- erweitertes Sortiment für Kleidung und Accessoires
+- Kategorie-Filter
 - Warenkorb
-- Checkout
+- Checkout mit Kundendaten
 - lokale Speicherung von Kunden, Bestellungen und Rechnungen
-- einfache Rechnungspruefung mit Freigabe oder Ablehnung
+- einfache Rechnungsprüfung mit Freigabe oder Zurückweisung
 
 ## Seiten
 
-- `index.html` - Shop und Checkout
-- `review.html` - einfache Pruefoberflaeche fuer Rechnungsentwuerfe
+- `index.html` - Shop, Warenkorb und Checkout
+- `review.html` - Prüfoberfläche für Rechnungsentwürfe
 
-## Naechste technische Schritte
+## Nächste technische Schritte
 
 1. lokale Speicherung durch Supabase ersetzen
-2. Bestell- und Rechnungstabellen an das geplante Schema anbinden
-3. Make-Szenario zwischen `paid` und `needs_review` einhaengen
-4. Word- oder PDF-Vorlage fuer echte Rechnungsdatei anbinden
-5. spaeter UI und Markenauftritt weiter ausarbeiten
+2. Produkte aus Supabase laden
+3. Bestellungen in Supabase schreiben
+4. Make-Szenario zwischen bezahlter Bestellung und Rechnungsprüfung einhängen
+5. echte Rechnungsvorlage als Word- oder PDF-Datei anbinden

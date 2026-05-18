@@ -1,5 +1,7 @@
+const storagePrefix = "kara";
+
 function money(value) {
-  return `${value.toFixed(2).replace(".", ",")} EUR`;
+  return `€ ${value.toFixed(2).replace(".", ",")}`;
 }
 
 function loadCollection(key) {
@@ -13,30 +15,44 @@ function saveCollection(key, value) {
 const reviewList = document.querySelector("#reviewList");
 const invoicePanel = document.querySelector("#invoicePanel");
 
-function getJoinedInvoices() {
-  const invoices = loadCollection("papierpfad_invoices");
-  const orders = loadCollection("papierpfad_orders");
-  const customers = loadCollection("papierpfad_customers");
+function statusLabel(status) {
+  const labels = {
+    needs_review: "wartet auf Prüfung",
+    approved: "freigegeben",
+    rejected: "zurückgewiesen",
+  };
+  return labels[status] || status;
+}
 
-  return invoices.map((invoice) => {
-    const order = orders.find((entry) => entry.id === invoice.orderId);
-    const customer = customers.find((entry) => entry.id === invoice.customerId);
-    return { invoice, order, customer };
-  });
+function getJoinedInvoices() {
+  const invoices = loadCollection(`${storagePrefix}_invoices`);
+  const orders = loadCollection(`${storagePrefix}_orders`);
+  const customers = loadCollection(`${storagePrefix}_customers`);
+
+  return invoices
+    .map((invoice) => {
+      const order = orders.find((entry) => entry.id === invoice.orderId);
+      const customer = customers.find((entry) => entry.id === invoice.customerId);
+      return order && customer ? { invoice, order, customer } : null;
+    })
+    .filter(Boolean);
 }
 
 function renderList(selectedInvoiceNumber) {
   const rows = getJoinedInvoices();
   reviewList.innerHTML =
     rows.length === 0
-      ? "<p>Noch keine Rechnungen vorhanden.</p>"
+      ? `<div class="empty-cart">
+          <p>Noch keine Rechnungen vorhanden.</p>
+          <span>Lege im Shop zuerst eine Bestellung an.</span>
+        </div>`
       : rows
           .map(
             ({ invoice, order, customer }) => `
               <button class="review-card ${invoice.invoiceNumber === selectedInvoiceNumber ? "active" : ""}" data-invoice="${invoice.invoiceNumber}">
                 <strong>${invoice.invoiceNumber}</strong>
                 <p>${customer.firstName} ${customer.lastName}</p>
-                <p>${money(order.totalGross)} | ${invoice.status}</p>
+                <p>${money(order.totalGross)} · ${statusLabel(invoice.status)}</p>
               </button>
             `,
           )
@@ -53,13 +69,14 @@ function renderInvoice(invoiceNumber) {
     <div class="invoice-grid">
       <div class="invoice-header">
         <div>
+          <p class="section-label">Kara</p>
           <h2>Rechnung ${invoice.invoiceNumber}</h2>
           <p>${order.orderNumber}</p>
         </div>
-        <span class="status-pill">${invoice.status}</span>
+        <span class="status-pill">${statusLabel(invoice.status)}</span>
       </div>
 
-      <div>
+      <div class="customer-block">
         <strong>${customer.firstName} ${customer.lastName}</strong>
         <p>${customer.address.street}<br />${customer.address.postalCode} ${customer.address.city}<br />${customer.email}</p>
       </div>
@@ -69,8 +86,8 @@ function renderInvoice(invoiceNumber) {
           <tr>
             <th>Produkt</th>
             <th>Menge</th>
-            <th>Einzelpreis netto</th>
-            <th>Summe netto</th>
+            <th>Einzelpreis</th>
+            <th>Summe</th>
           </tr>
         </thead>
         <tbody>
@@ -90,15 +107,15 @@ function renderInvoice(invoiceNumber) {
       </table>
 
       <div class="invoice-total">
-        <div><span>Zwischensumme netto</span><strong>${money(order.subtotalNet)}</strong></div>
-        <div><span>Versand netto</span><strong>${money(order.shippingNet)}</strong></div>
+        <div><span>Zwischensumme</span><strong>${money(order.subtotalNet)}</strong></div>
+        <div><span>Versand</span><strong>${money(order.shippingNet)}</strong></div>
         <div><span>Umsatzsteuer</span><strong>${money(order.vat)}</strong></div>
-        <div><span>Gesamt brutto</span><strong>${money(order.totalGross)}</strong></div>
+        <div><span>Gesamt</span><strong>${money(order.totalGross)}</strong></div>
       </div>
 
       <div class="approval-actions">
         <button class="primary-button" data-approve="${invoice.invoiceNumber}">Freigeben</button>
-        <button class="secondary-button" data-reject="${invoice.invoiceNumber}">Zurueckweisen</button>
+        <button class="secondary-button ghost" data-reject="${invoice.invoiceNumber}">Zurückweisen</button>
       </div>
     </div>
   `;
@@ -115,10 +132,11 @@ document.addEventListener("click", (event) => {
   }
 
   if (approveNumber || rejectNumber) {
-    const invoices = loadCollection("papierpfad_invoices");
+    const invoices = loadCollection(`${storagePrefix}_invoices`);
     const target = invoices.find((entry) => entry.invoiceNumber === (approveNumber || rejectNumber));
+    if (!target) return;
     target.status = approveNumber ? "approved" : "rejected";
-    saveCollection("papierpfad_invoices", invoices);
+    saveCollection(`${storagePrefix}_invoices`, invoices);
     renderList(target.invoiceNumber);
     renderInvoice(target.invoiceNumber);
   }
