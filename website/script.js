@@ -254,7 +254,15 @@ document.querySelectorAll(".auth-tab").forEach((btn) => {
   });
 });
 
-accountButton.addEventListener("click", () => authDialog.showModal());
+accountButton.addEventListener("click", () => {
+  loginForm.hidden = false;
+  registerForm.hidden = true;
+  document.querySelectorAll(".auth-tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === "login"));
+  document.querySelector("#authDialogTitle").textContent = "Anmelden";
+  loginError.hidden = true;
+  registerError.hidden = true;
+  authDialog.showModal();
+});
 closeAuthButton.addEventListener("click", () => authDialog.close());
 
 accountMenuButton.addEventListener("click", async () => {
