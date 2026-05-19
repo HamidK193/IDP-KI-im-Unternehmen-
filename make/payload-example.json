@@ -1,18 +1,23 @@
 {
   "order": {
-    "order_number": "PP-2026-0001",
+    "id": "uuid-beispiel-order-id",
+    "order_number": "KA-2026-0001",
     "status": "paid",
-    "subtotal_cents": 2490,
-    "shipping_cents": 490,
-    "vat_cents": 566,
-    "total_cents": 3546
+    "subtotal_cents": 28990,
+    "shipping_cents": 690,
+    "vat_cents": 5637,
+    "total_cents": 35317,
+    "paid_at": "2026-05-19T12:00:00Z",
+    "created_at": "2026-05-19T11:58:00Z"
   },
   "customer": {
+    "id": "uuid-beispiel-customer-id",
     "first_name": "Mara",
     "last_name": "Lehmann",
     "email": "mara.lehmann@example.de"
   },
   "billing_address": {
+    "id": "uuid-beispiel-address-id",
     "line1": "Musterstrasse 12",
     "postal_code": "75172",
     "city": "Pforzheim",
@@ -20,11 +25,11 @@
   },
   "items": [
     {
-      "sku": "PP-BOX-01",
-      "name": "Lesestunde Klassik",
+      "product_name": "Double Face Coat Onyx",
+      "sku": "KA-COT-01",
       "quantity": 1,
-      "unit_net_price_cents": 2490,
-      "line_total_cents": 2490
+      "unit_net_price_cents": 28990,
+      "line_total_cents": 28990
     }
   ]
 }

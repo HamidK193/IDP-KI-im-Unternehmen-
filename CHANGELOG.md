@@ -2,6 +2,35 @@
 
 Alle wichtigen Aenderungen am Projekt werden hier kurz protokolliert.
 
+## 2026-05-19 (Session 2)
+
+- Make-Szenario von "IDP 1" zu "Kara – Bestellbestätigung & Rechnungserstellung"
+  umbenannt und vollständig auf Kara-Branding aktualisiert.
+- E-Mail-Template im Make-Szenario: "Papierpfad Atelier" → "KARA Studio",
+  minimalistisches schwarzes Design passend zum Shop.
+- Rechnungsnummer-Prefix im Szenario von INV- auf RE- korrigiert
+  (passend zu kara_invoices RE-2026-... Format).
+- `make/payload-example.json` auf Kara-Daten aktualisiert
+  (order_number KA-2026-..., Kara-Produkte, neue Preise).
+- `docs/use-case.md` von Papierpfad auf Kara umgeschrieben.
+- `supabase/migration_make_integration.sql` neu angelegt:
+  - pg_net Extension aktivieren
+  - RLS-Policies fuer Website (anon): INSERT customers, addresses, orders,
+    order_items; SELECT products, invoices
+  - RLS-Policies fuer Make (anon): INSERT invoices, UPDATE orders status
+  - Trigger-Funktion `notify_make_order_paid` + Trigger auf orders-Tabelle
+    (feuert bei status = 'paid', sendet JSON-Payload an Make-Webhook)
+
+## 2026-05-19 (Session 1)
+
+- Make-Webhook "Papierpfad - Neue Bestellung (paid)" erstellt:
+  URL: https://hook.eu1.make.com/vm3pwrsejd6kr5guweytn17da2h237v7
+- Make-Szenario "IDP 1" angelegt mit 4 Modulen:
+  1. Custom Webhook (Trigger)
+  2. HTTP POST → Supabase invoices
+  3. HTTP PATCH → Supabase orders status
+  4. Gmail → Bestellbestätigungs-E-Mail
+
 ## 2026-05-19
 
 - Kaeuferfluss vereinfacht:
@@ -19,30 +48,9 @@ Alle wichtigen Aenderungen am Projekt werden hier kurz protokolliert.
     `website/styles.css`
 - Website-Prototyp wurde fachlich und visuell von `Papierpfad Atelier` zu
   `Kara`, einem fiktiven Luxury-Streetwear-Shop, umgebaut.
-- Produktkatalog wurde stark erweitert:
-  - Kategorien wie Outerwear, Knitwear, Tailoring, Essentials, Denim, Shirts
-    und Accessories
-  - Kategorie-Filter in der Shop-Oberflaeche
-  - externe Produktbilder mit Fallback-Logik
-- Checkout und Warenkorb wurden ueberarbeitet:
-  - Storage-Prefix von `papierpfad` auf `kara`
-  - Versandkosten von `4,90 EUR` auf `6,90 EUR`
-  - neue Bestellnummern im Format `KA-2026-...`
-  - Rechnungsnummern im Format `RE-2026-...`
-- Rechnungspruefung wurde an den neuen Kara-Kontext angepasst:
-  - Statuslabels fuer `needs_review`, `approved` und `rejected`
-  - robustere Verknuepfung von Rechnung, Bestellung und Kunde
-- Dokumentationsstruktur nach dem Vorbild von `HamidK193/Wifi2` angelegt:
-  - `AGENTS.md`
-  - `memory.md`
-  - `CHANGELOG.md`
-  - `docs/handover_next_chat.md`
-  - `docs/praesentation_demo_20min.md`
+- Produktkatalog wurde stark erweitert.
+- Dokumentationsstruktur nach dem Vorbild von `HamidK193/Wifi2` angelegt.
 
 ## 2026-05-18
 
 - Erstes Repository-Setup gelesen und eingeordnet.
-- Dokumentation fuer Architektur, Datenmodell, Make-Szenario,
-  Rechnungsfelder, Repository-Uebersicht und Use-Case war bereits vorhanden.
-- Urspruenglicher Prototyp war ein kleiner Shop fuer `Papierpfad Atelier` mit
-  Warenkorb, Checkout, lokaler Speicherung und Rechnungspruefung.

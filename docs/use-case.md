@@ -1,25 +1,32 @@
-# Neuer End-to-End-Use-Case
+# End-to-End-Use-Case
 
 ## Grundidee
 
-Ein kleiner spezialisierter Online-Shop verkauft kuratierte Geschenkboxen fuer Lesen und Schreiben. Nach einem Kauf auf der Website soll der Prozess so weit automatisiert ablaufen, dass:
+Ein kleiner spezialisierter Online-Shop verkauft kuratierte Luxury-Streetwear.
+Nach einem Kauf auf der Website soll der Prozess so weit automatisiert ablaufen,
+dass:
 
-1. der Kunde mit seinen relevanten Daten einmal sauber in Supabase gespeichert wird,
+1. der Kunde mit seinen relevanten Daten einmal sauber in Supabase gespeichert
+   wird,
 2. die Bestellung mit Positionen, Preisen und Status nachvollziehbar vorliegt,
-3. automatisch ein Rechnungsentwurf aus einer Vorlage erzeugt wird,
-4. automatisch eine Bestell- und Rechnungs-E-Mail an den Kunden versendet wird,
-5. der Versandstatus nachvollziehbar im System vorliegt.
+3. automatisch ein Rechnungsentwurf erzeugt wird,
+4. eine Bestellbestätigungs-E-Mail direkt an den Kunden versendet wird,
+5. eine verantwortliche Person Rechnung freigeben und versenden kann.
 
 ## Fiktives Unternehmen
 
 ### Name
 
-**Papierpfad Atelier**
+**Kara**
 
 ### Geschaeftsidee
 
-Papierpfad Atelier ist ein kleiner Online-Shop fuer hochwertige, kuratierte Geschenkboxen rund um Lesen, Schreiben und Papierwaren.
+Kara ist ein moderner Online-Shop fuer hochwertige, kuratierte
+Luxury-Streetwear-Kollektionen. Das Sortiment umfasst Outerwear, Knitwear,
+Tailoring, Essentials, Denim, Shirts und Accessories.
 
 ## Zielprozess
 
-`Website-Kauf -> Supabase -> Make -> Word/PDF-Rechnung -> E-Mail-Versand -> Kunde`
+```
+Website-Kauf -> Supabase -> Make -> Rechnung (needs_review) -> E-Mail an Kunden
+```
