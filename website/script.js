@@ -67,9 +67,17 @@ const subtotalEl         = document.querySelector("#subtotal");
 const shippingEl         = document.querySelector("#shipping");
 const totalEl            = document.querySelector("#total");
 const checkoutButton     = document.querySelector("#checkoutButton");
+const homeView           = document.querySelector("#home");
+const accountPage        = document.querySelector("#accountPage");
+const accountPageStatus  = document.querySelector("#accountPageStatus");
+const accountAuthPanel   = document.querySelector("#accountAuthPanel");
+const accountProfilePanel= document.querySelector("#accountProfilePanel");
+const accountBackHomeButton = document.querySelector("#accountBackHomeButton");
+const accountPageLoginButton = document.querySelector("#accountPageLoginButton");
+const accountPageRegisterButton = document.querySelector("#accountPageRegisterButton");
 const checkoutPage       = document.querySelector("#checkoutPage");
+const checkoutAccountHeadline = document.querySelector("#checkoutAccountHeadline");
 const checkoutAccountStatus = document.querySelector("#checkoutAccountStatus");
-const checkoutAccountDetails = document.querySelector("#checkoutAccountDetails");
 const checkoutSummary    = document.querySelector("#checkoutSummary");
 const confirmCheckoutButton = document.querySelector("#confirmCheckoutButton");
 const backToCartButton   = document.querySelector("#backToCartButton");
@@ -80,7 +88,6 @@ const closeSuccessButton = document.querySelector("#closeSuccessButton");
 const accountButton      = document.querySelector("#accountButton");
 const accountMenu        = document.querySelector("#accountMenu");
 const accountMenuButton  = document.querySelector("#accountMenuButton");
-const accountDropdown    = document.querySelector("#accountDropdown");
 const logoutButton       = document.querySelector("#logoutButton");
 const userLabel          = document.querySelector("#userLabel");
 const authDialog         = document.querySelector("#authDialog");
@@ -96,6 +103,7 @@ let currentProfile = {
   customer: null,
   address: null,
 };
+let pendingCheckoutAfterAuth = false;
 
 // ─── Hilfsfunktionen ─────────────────────────────────────────
 function money(value) {
@@ -133,15 +141,43 @@ function updateAuthUI(user) {
   if (user) {
     accountButton.hidden = true;
     accountMenu.hidden   = false;
-    userLabel.textContent = user.email;
+    userLabel.textContent = "Account";
     loadAccountProfile(user);
   } else {
     accountButton.hidden = false;
     accountMenu.hidden   = true;
-    accountDropdown.hidden = true;
-    accountMenuButton?.setAttribute("aria-expanded", "false");
     currentProfile = { customer: null, address: null };
   }
+  renderAccountPage(user);
+}
+
+function showView(view) {
+  homeView.hidden = view !== "home";
+  accountPage.hidden = view !== "account";
+  checkoutPage.hidden = view !== "checkout";
+  document.body.classList.toggle("standalone-mode", view !== "home");
+  if (view === "home") window.scrollTo({ top: 0, behavior: "smooth" });
+  if (view === "account") accountPage.scrollIntoView({ block: "start" });
+  if (view === "checkout") checkoutPage.scrollIntoView({ block: "start" });
+}
+
+function renderAccountPage(user = null) {
+  const isLoggedIn = Boolean(user || currentProfile.customer);
+  accountAuthPanel.hidden = isLoggedIn;
+  accountProfilePanel.hidden = !isLoggedIn;
+  accountPageStatus.textContent = isLoggedIn
+    ? "Du bist angemeldet. Hier kannst du deine gespeicherten Daten fuer kommende Bestellungen bearbeiten."
+    : "Melde dich an oder erstelle ein Konto. Danach werden deine Daten fuer die Kasse automatisch verwendet.";
+}
+
+function openAuthDialog(tab = "login") {
+  loginForm.hidden = tab !== "login";
+  registerForm.hidden = tab !== "register";
+  document.querySelectorAll(".auth-tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === tab));
+  document.querySelector("#authDialogTitle").textContent = tab === "login" ? "Anmelden" : "Registrieren";
+  loginError.hidden = true;
+  registerError.hidden = true;
+  authDialog.showModal();
 }
 
 function fillProfileForm(user, customer = null, address = null) {
@@ -151,18 +187,6 @@ function fillProfileForm(user, customer = null, address = null) {
   profileForm.street.value     = address?.line1 || "";
   profileForm.postalCode.value = address?.postal_code || "";
   profileForm.city.value       = address?.city || "";
-}
-
-function fillCheckoutFromProfile() {
-  const { customer, address } = currentProfile;
-  return {
-    firstName: customer?.first_name || "",
-    lastName: customer?.last_name || "",
-    email: customer?.email || "",
-    street: address?.line1 || "",
-    postalCode: address?.postal_code || "",
-    city: address?.city || "",
-  };
 }
 
 function showProfileMessage(text, isError = false) {
@@ -181,18 +205,18 @@ async function loadAccountProfile(user) {
     if (customer) {
       const addrs = await sbFetch("GET", `addresses?customer_id=eq.${customer.id}&is_billing=eq.true&order=created_at.desc&limit=1&select=*`);
       address = addrs?.[0] || null;
-      userLabel.textContent = customer.first_name
-        ? `${customer.first_name} ${customer.last_name || ""}`.trim()
-        : customer.email;
+      userLabel.textContent = "Account";
     } else {
-      userLabel.textContent = user.email;
+      userLabel.textContent = "Account";
     }
 
     currentProfile = { customer, address };
     fillProfileForm(user, customer, address);
+    renderAccountPage(user);
   } catch (err) {
     console.warn("Profil konnte nicht geladen werden:", err);
     fillProfileForm(user);
+    renderAccountPage(user);
   }
 }
 
@@ -238,7 +262,7 @@ async function saveProfile(formData) {
   }
 
   currentProfile = { customer, address };
-  userLabel.textContent = `${customer.first_name || ""} ${customer.last_name || ""}`.trim() || customer.email || user.email;
+  userLabel.textContent = "Account";
   fillProfileForm(user, customer, address);
 }
 
@@ -258,40 +282,22 @@ document.querySelectorAll(".auth-tab").forEach((btn) => {
 });
 
 accountButton.addEventListener("click", () => {
-  loginForm.hidden = false;
-  registerForm.hidden = true;
-  document.querySelectorAll(".auth-tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === "login"));
-  document.querySelector("#authDialogTitle").textContent = "Anmelden";
-  loginError.hidden = true;
-  registerError.hidden = true;
-  authDialog.showModal();
+  showView("account");
 });
 closeAuthButton.addEventListener("click", () => authDialog.close());
+accountPageLoginButton.addEventListener("click", () => openAuthDialog("login"));
+accountPageRegisterButton.addEventListener("click", () => openAuthDialog("register"));
 
 accountMenuButton.addEventListener("click", async () => {
-  const isOpen = !accountDropdown.hidden;
-  accountDropdown.hidden = isOpen;
-  accountMenuButton.setAttribute("aria-expanded", String(!isOpen));
-  profileMessage.hidden = true;
-  if (!isOpen) {
-    const { data: { user } } = await sb.auth.getUser();
-    if (user) await loadAccountProfile(user);
-  }
-});
-
-document.addEventListener("click", (event) => {
-  if (accountMenu.hidden || accountDropdown.hidden) return;
-  if (!accountMenu.contains(event.target)) {
-    accountDropdown.hidden = true;
-    accountMenuButton.setAttribute("aria-expanded", "false");
-  }
+  const { data: { user } } = await sb.auth.getUser();
+  if (user) await loadAccountProfile(user);
+  showView("account");
 });
 
 logoutButton.addEventListener("click", async () => {
   await sb.auth.signOut();
   updateAuthUI(null);
-  accountDropdown.hidden = true;
-  accountMenuButton.setAttribute("aria-expanded", "false");
+  pendingCheckoutAfterAuth = false;
   checkoutPage.hidden = true;
 });
 
@@ -313,6 +319,13 @@ loginForm.addEventListener("submit", async (e) => {
   await loadAccountProfile(data.user);
   authDialog.close();
   loginForm.reset();
+  if (pendingCheckoutAfterAuth) {
+    pendingCheckoutAfterAuth = false;
+    cartPanel.classList.remove("open");
+    cartPanel.setAttribute("aria-hidden", "true");
+    showView("checkout");
+    renderCheckoutPage();
+  }
 });
 
 // Registrieren
@@ -353,6 +366,13 @@ registerForm.addEventListener("submit", async (e) => {
   await loadAccountProfile(data.user);
   authDialog.close();
   registerForm.reset();
+  if (pendingCheckoutAfterAuth) {
+    pendingCheckoutAfterAuth = false;
+    cartPanel.classList.remove("open");
+    cartPanel.setAttribute("aria-hidden", "true");
+    showView("checkout");
+    renderCheckoutPage();
+  }
 });
 
 profileForm.addEventListener("submit", async (e) => {
@@ -488,23 +508,17 @@ function renderCheckoutSummary() {
 function renderCheckoutAccount() {
   const { customer, address } = currentProfile;
   if (!customer) {
-    checkoutAccountStatus.textContent = "Du bist angemeldet, aber es sind noch keine vollstaendigen Kundendaten gespeichert.";
-    checkoutAccountDetails.innerHTML = "<p>Bitte oeffne oben dein Account-Menue und speichere deine persoenlichen Daten.</p>";
+    checkoutAccountHeadline.textContent = "Account aktiv";
+    checkoutAccountStatus.textContent = "Bitte speichere einmal deine Daten im Account. Danach wird die Bestellung ohne erneute Eingabe erstellt.";
     confirmCheckoutButton.disabled = true;
     return;
   }
 
   const missing = !customer.first_name || !customer.last_name || !customer.email || !address?.line1 || !address?.postal_code || !address?.city;
+  checkoutAccountHeadline.textContent = "Angemeldet";
   checkoutAccountStatus.textContent = missing
-    ? "Dein Account ist erkannt. Bitte vervollstaendige deine persoenlichen Daten vor dem Kauf."
-    : "Du bist angemeldet. Deine gespeicherten Accountdaten werden automatisch fuer diese Bestellung uebernommen.";
-  checkoutAccountDetails.innerHTML = `
-    <dl>
-      <div><dt>Name</dt><dd>${customer.first_name || ""} ${customer.last_name || ""}</dd></div>
-      <div><dt>E-Mail</dt><dd>${customer.email || ""}</dd></div>
-      <div><dt>Adresse</dt><dd>${address?.line1 || ""}<br>${address?.postal_code || ""} ${address?.city || ""}</dd></div>
-    </dl>
-  `;
+    ? "Account erkannt. Vervollstaendige deine Daten im Account, dann uebernimmt die Kasse alles automatisch."
+    : "Account erkannt. Liefer- und Rechnungsdaten werden automatisch verwendet, ohne sie hier erneut anzuzeigen.";
   confirmCheckoutButton.disabled = missing || cartLines().length === 0;
 }
 
@@ -517,20 +531,19 @@ async function openCheckout() {
   if (cartLines().length === 0) return;
   const { data: { user } } = await sb.auth.getUser();
   if (!user) {
-    loginForm.hidden = false;
-    registerForm.hidden = true;
-    document.querySelectorAll(".auth-tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === "login"));
-    document.querySelector("#authDialogTitle").textContent = "Anmelden";
-    authDialog.showModal();
+    pendingCheckoutAfterAuth = true;
+    cartPanel.classList.remove("open");
+    cartPanel.setAttribute("aria-hidden", "true");
+    showView("account");
+    openAuthDialog("login");
     return;
   }
 
   await prefillCheckout();
   cartPanel.classList.remove("open");
   cartPanel.setAttribute("aria-hidden", "true");
-  checkoutPage.hidden = false;
+  showView("checkout");
   renderCheckoutPage();
-  checkoutPage.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 async function completeOrder() {
@@ -539,6 +552,7 @@ async function completeOrder() {
   const { customer, address } = currentProfile;
   if (!customer || !address) {
     alert("Bitte speichere zuerst deine persoenlichen Daten im Account.");
+    showView("account");
     return;
   }
   const email = customer.email;
@@ -591,7 +605,7 @@ async function completeOrder() {
     renderCart();
     cartPanel.classList.remove("open");
     cartPanel.setAttribute("aria-hidden", "true");
-    checkoutPage.hidden = true;
+    showView("home");
 
     successText.textContent = `Bestellung ${orderNumber} angelegt. Bestellbestätigung mit Rechnung ${invoiceNumber} wurde an ${email} versendet.`;
     successDialog.showModal();
@@ -626,21 +640,21 @@ closeCartButton.addEventListener("click", () => {
 });
 checkoutButton.addEventListener("click", openCheckout);
 closeSuccessButton.addEventListener("click", () => successDialog.close());
+accountBackHomeButton.addEventListener("click", () => showView("home"));
 confirmCheckoutButton.addEventListener("click", completeOrder);
 backToCartButton.addEventListener("click", () => {
-  checkoutPage.hidden = true;
+  showView("home");
   cartPanel.classList.add("open");
   cartPanel.setAttribute("aria-hidden", "false");
 });
 editAccountFromCheckout.addEventListener("click", async () => {
   const { data: { user } } = await sb.auth.getUser();
   if (user) await loadAccountProfile(user);
-  accountDropdown.hidden = false;
-  accountMenuButton.setAttribute("aria-expanded", "true");
-  accountMenu.scrollIntoView({ behavior: "smooth", block: "center" });
+  showView("account");
 });
 
 // ─── Init ─────────────────────────────────────────────────────
 renderFilters();
 renderProducts();
 renderCart();
+showView("home");

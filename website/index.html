@@ -33,47 +33,10 @@
         <a href="#productsTitle">Search</a>
         <button id="accountButton" class="nav-text-button" aria-label="Account">Account</button>
         <div id="accountMenu" class="account-menu" hidden>
-          <button id="accountMenuButton" class="nav-text-button account-menu-button" type="button" aria-expanded="false">
+          <button id="accountMenuButton" class="nav-text-button account-menu-button" type="button">
             <span id="userLabel" class="user-label"></span>
             <span aria-hidden="true">▾</span>
           </button>
-          <div id="accountDropdown" class="account-dropdown" hidden>
-            <div class="account-dropdown-header">
-              <p class="section-label">Account</p>
-              <strong id="accountDropdownTitle">Persoenliche Daten</strong>
-            </div>
-            <form id="profileForm" class="profile-form">
-              <label>
-                Vorname
-                <input required name="firstName" autocomplete="given-name" />
-              </label>
-              <label>
-                Nachname
-                <input required name="lastName" autocomplete="family-name" />
-              </label>
-              <label>
-                E-Mail
-                <input required type="email" name="email" autocomplete="email" />
-              </label>
-              <label>
-                Strasse und Hausnummer
-                <input required name="street" autocomplete="street-address" />
-              </label>
-              <div class="profile-row">
-                <label>
-                  PLZ
-                  <input required name="postalCode" autocomplete="postal-code" />
-                </label>
-                <label>
-                  Ort
-                  <input required name="city" autocomplete="address-level2" />
-                </label>
-              </div>
-              <p id="profileMessage" class="profile-message" hidden></p>
-              <button class="primary-button compact-button" type="submit">Daten speichern</button>
-            </form>
-            <button id="logoutButton" class="secondary-button account-logout-button" type="button">Abmelden</button>
-          </div>
         </div>
         <a href="#atelier">Loyalty</a>
         <button id="cartButton" class="cart-button" aria-label="Warenkorb öffnen">
@@ -82,7 +45,7 @@
       </nav>
     </header>
 
-    <main id="home">
+    <main id="home" class="home-view">
       <section class="hero">
         <div class="hero-media" aria-label="Luxuriöse Streetwear Editorial Aufnahme"></div>
         <div class="hero-copy">
@@ -161,30 +124,97 @@
             <span>Kostenloser Rückversand</span>
             <span>Versand in 48 Stunden</span>
             <span>Automatische Bestellmail</span>
-            <span>Konto & gespeicherte Daten</span>
+            <span>Sicherer Checkout</span>
           </div>
         </div>
       </section>
 
-      <section id="checkoutPage" class="checkout-page" aria-labelledby="checkoutPageTitle" hidden>
-        <div class="checkout-shell">
-          <div class="checkout-account-panel">
-            <p class="section-label">Kasse</p>
-            <h2 id="checkoutPageTitle">Bestellung pruefen</h2>
-            <p id="checkoutAccountStatus" class="checkout-account-status"></p>
-            <div id="checkoutAccountDetails" class="checkout-account-details"></div>
-            <button id="editAccountFromCheckout" class="secondary-button ghost" type="button">Persoenliche Daten bearbeiten</button>
-          </div>
+    </main>
 
-          <div class="checkout-order-panel">
-            <div class="checkout-order-header">
-              <p class="section-label">Warenkorb</p>
-              <button id="backToCartButton" class="secondary-button ghost" type="button">Zurueck zum Warenkorb</button>
+    <main id="accountPage" class="standalone-page account-page-view" hidden>
+      <header class="checkout-topbar">
+        <a class="checkout-logo" href="./index.html" aria-label="Kara Startseite">Kara</a>
+        <button id="accountBackHomeButton" class="nav-text-button" type="button">Zum Shop</button>
+      </header>
+      <section class="account-page-shell">
+        <div class="account-page-copy">
+          <p class="section-label">Account</p>
+          <h1>Meine Daten</h1>
+          <p id="accountPageStatus">Melde dich an, um deine Daten fuer den naechsten Einkauf zu speichern.</p>
+        </div>
+        <div class="account-page-panel">
+          <div id="accountAuthPanel">
+            <div class="account-auth-actions">
+              <button id="accountPageLoginButton" class="primary-button" type="button">Anmelden</button>
+              <button id="accountPageRegisterButton" class="secondary-button" type="button">Registrieren</button>
             </div>
-            <div id="checkoutSummary"></div>
-            <button id="confirmCheckoutButton" class="primary-button" type="button">Kauf abschliessen</button>
+          </div>
+          <div id="accountProfilePanel" hidden>
+            <form id="profileForm" class="profile-form">
+              <label>
+                Vorname
+                <input required name="firstName" autocomplete="given-name" />
+              </label>
+              <label>
+                Nachname
+                <input required name="lastName" autocomplete="family-name" />
+              </label>
+              <label>
+                E-Mail
+                <input required type="email" name="email" autocomplete="email" />
+              </label>
+              <label>
+                Strasse und Hausnummer
+                <input required name="street" autocomplete="street-address" />
+              </label>
+              <div class="profile-row">
+                <label>
+                  PLZ
+                  <input required name="postalCode" autocomplete="postal-code" />
+                </label>
+                <label>
+                  Ort
+                  <input required name="city" autocomplete="address-level2" />
+                </label>
+              </div>
+              <p id="profileMessage" class="profile-message" hidden></p>
+              <button class="primary-button compact-button" type="submit">Daten speichern</button>
+            </form>
+            <button id="logoutButton" class="secondary-button account-logout-button" type="button">Abmelden</button>
           </div>
         </div>
+      </section>
+    </main>
+
+    <main id="checkoutPage" class="checkout-standalone-page" hidden>
+      <header class="checkout-topbar">
+        <a class="checkout-logo" href="./index.html" aria-label="Kara Startseite">Kara</a>
+        <button id="backToCartButton" class="checkout-cart-icon" type="button" aria-label="Warenkorb">Bag</button>
+      </header>
+      <section class="checkout-layout" aria-labelledby="checkoutPageTitle">
+        <div class="checkout-main-panel">
+          <p class="section-label">Secure Checkout</p>
+          <h1 id="checkoutPageTitle">Checkout</h1>
+          <div class="checkout-signed-in">
+            <div>
+              <strong id="checkoutAccountHeadline">Angemeldet</strong>
+              <p id="checkoutAccountStatus"></p>
+            </div>
+            <button id="editAccountFromCheckout" class="nav-text-button" type="button">Account bearbeiten</button>
+          </div>
+          <div class="checkout-method-box">
+            <span>Versand</span>
+            <strong>Standardversand 48 Stunden</strong>
+          </div>
+          <div class="checkout-method-box">
+            <span>Zahlung</span>
+            <strong>Demo-Zahlung bestaetigt</strong>
+          </div>
+          <button id="confirmCheckoutButton" class="primary-button checkout-pay-button" type="button">Kauf abschliessen</button>
+        </div>
+        <aside class="checkout-summary-panel">
+          <div id="checkoutSummary"></div>
+        </aside>
       </section>
     </main>
 
@@ -205,7 +235,6 @@
       <button id="checkoutButton" class="primary-button">Zur Kasse</button>
     </aside>
 
-    <!-- Auth Modal -->
     <dialog id="authDialog">
       <div class="dialog-header">
         <div>
@@ -220,7 +249,6 @@
         <button class="auth-tab" data-tab="register">Registrieren</button>
       </div>
 
-      <!-- Login -->
       <form id="loginForm" class="auth-form">
         <div class="form-grid">
           <label class="span-2">
@@ -236,7 +264,6 @@
         <button class="primary-button" type="submit">Anmelden</button>
       </form>
 
-      <!-- Register -->
       <form id="registerForm" class="auth-form" hidden>
         <div class="form-grid">
           <label>

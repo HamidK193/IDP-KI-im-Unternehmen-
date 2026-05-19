@@ -18,12 +18,14 @@ die Bestellung verwendet werden.
    - PLZ
    - Ort
 3. Beim Klick auf `Zur Kasse` wird kein Formular-Modal geoeffnet.
-4. Der Kunde wird auf einen eigenen Kassenbereich der Seite gefuehrt.
+4. Der Kunde wird auf eine eigene Kassenansicht gefuehrt. Die Homepage ist
+   dabei nicht sichtbar und die Kasse haengt nicht als Abschnitt unten an der
+   Startseite.
 5. Dort werden angezeigt:
    - Hinweis, dass der Kunde angemeldet ist
-   - die automatisch uebernommenen Accountdaten
    - der Inhalt des Warenkorbs
    - Summen fuer Versand, Umsatzsteuer und Gesamtbetrag
+   - ein einzelner Button `Kauf abschliessen`
 6. Der Kunde muss nur noch `Kauf abschliessen` klicken.
 7. Danach startet der bestehende Prozess:
    - Bestellung wird in Supabase gespeichert
@@ -33,13 +35,25 @@ die Bestellung verwendet werden.
 
 ## Bearbeitung der Daten
 
-Die Daten sollen nicht im Checkout neu eingegeben werden. Wenn Daten fehlen
-oder falsch sind, kann der Kunde ueber das Account-Dropdown `Persoenliche
-Daten` oeffnen, bearbeiten und speichern. Danach aktualisiert sich die Kasse.
+Die Daten sollen nicht im Checkout neu eingegeben und dort auch nicht komplett
+angezeigt werden. Der Checkout zeigt nur, dass ein Account erkannt wurde und
+dass gespeicherte Daten automatisch verwendet werden. Wenn Daten fehlen oder
+falsch sind, wechselt der Kunde in die eigene Account-Ansicht, bearbeitet die
+Daten dort und kehrt danach zur Kasse zurueck.
+
+## Seitenlogik
+
+- `Home`: Shop, Produkte, Warenkorb und Markeninhalt.
+- `Account`: eigener Tab/eigene Ansicht fuer Login, Registrierung und
+  persoenliche Daten.
+- `Checkout`: eigene Kassenansicht im Stil eines reduzierten Fashion-Checkouts
+  mit Warenkorb rechts und Abschlussbutton links.
 
 ## Nicht gewuenscht
 
 - Kein Checkout-Formular mit Vorname, Nachname, E-Mail und Adresse fuer bereits
   eingeloggte Kunden.
 - Keine doppelte Dateneingabe nach Login.
+- Keine Anzeige aller persoenlichen Accountdaten direkt im Checkout.
+- Kein Accountformular als sichtbarer Abschnitt auf der Homepage.
 - Kein Rechnungsfreigabeprozess fuer den Kaeufer.
