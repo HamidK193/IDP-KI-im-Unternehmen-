@@ -1,11 +1,10 @@
 -- ============================================================
 -- Migration: Make-Integration & RLS-Policies
 -- Projekt: Kara – IDP-Demonstrator
--- Ausfuehren in: Supabase Dashboard → SQL Editor
 -- Idempotent: kann mehrfach ausgefuehrt werden
 -- ============================================================
 
--- 1. pg_net aktivieren (HTTP-Aufrufe aus Postgres heraus)
+-- 1. pg_net aktivieren
 CREATE EXTENSION IF NOT EXISTS pg_net WITH SCHEMA extensions;
 
 -- ============================================================
@@ -18,24 +17,16 @@ DROP POLICY IF EXISTS "anon_insert_orders"      ON public.orders;
 DROP POLICY IF EXISTS "anon_insert_order_items" ON public.order_items;
 DROP POLICY IF EXISTS "anon_read_products"      ON public.products;
 DROP POLICY IF EXISTS "anon_read_invoices"      ON public.invoices;
+DROP POLICY IF EXISTS "anon_read_orders"        ON public.orders;
 
-CREATE POLICY "anon_insert_customers"
-  ON public.customers FOR INSERT TO anon WITH CHECK (true);
-
-CREATE POLICY "anon_insert_addresses"
-  ON public.addresses FOR INSERT TO anon WITH CHECK (true);
-
-CREATE POLICY "anon_insert_orders"
-  ON public.orders FOR INSERT TO anon WITH CHECK (true);
-
-CREATE POLICY "anon_insert_order_items"
-  ON public.order_items FOR INSERT TO anon WITH CHECK (true);
-
-CREATE POLICY "anon_read_products"
-  ON public.products FOR SELECT TO anon USING (active = true);
-
-CREATE POLICY "anon_read_invoices"
-  ON public.invoices FOR SELECT TO anon USING (true);
+CREATE POLICY "anon_insert_customers"   ON public.customers   FOR INSERT TO anon WITH CHECK (true);
+CREATE POLICY "anon_insert_addresses"   ON public.addresses   FOR INSERT TO anon WITH CHECK (true);
+CREATE POLICY "anon_insert_orders"      ON public.orders      FOR INSERT TO anon WITH CHECK (true);
+CREATE POLICY "anon_insert_order_items" ON public.order_items FOR INSERT TO anon WITH CHECK (true);
+CREATE POLICY "anon_read_products"      ON public.products    FOR SELECT TO anon USING (active = true);
+CREATE POLICY "anon_read_invoices"      ON public.invoices    FOR SELECT TO anon USING (true);
+-- Bestellzaehler fuer Bestellnummer-Generierung
+CREATE POLICY "anon_read_orders"        ON public.orders      FOR SELECT TO anon USING (true);
 
 -- ============================================================
 -- 3. RLS-Policies: Make (anon-Key) darf schreiben
@@ -54,6 +45,9 @@ CREATE POLICY "make_update_order_status"
 
 -- ============================================================
 -- 4. Trigger-Funktion: Supabase → Make-Webhook
+-- Webhook-URL: https://hook.eu1.make.com/vm3pwrsejd6kr5guweytn17da2h237v7
+-- API-Key Header: x-make-apikey: kara-webhook-2026-secure
+-- (Key muss auch im Make-Webhook unter API Key Authentication eingetragen sein)
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION public.notify_make_order_paid()
@@ -97,7 +91,7 @@ BEGIN
     PERFORM net.http_post(
       url     := 'https://hook.eu1.make.com/vm3pwrsejd6kr5guweytn17da2h237v7',
       body    := v_payload::text,
-      headers := '{"Content-Type": "application/json"}'::jsonb
+      headers := '{"Content-Type": "application/json", "x-make-apikey": "kara-webhook-2026-secure"}'::jsonb
     );
 
   END IF;
@@ -105,7 +99,6 @@ BEGIN
 END;
 $$;
 
--- 5. Trigger anlegen
 DROP TRIGGER IF EXISTS trg_order_paid_notify_make ON public.orders;
 CREATE TRIGGER trg_order_paid_notify_make
   AFTER INSERT OR UPDATE OF status

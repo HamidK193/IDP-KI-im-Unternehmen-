@@ -1,3 +1,29 @@
+// --- Supabase ---
+const SUPABASE_URL = "https://eqysqzuoeceqdevzlozh.supabase.co";
+const SUPABASE_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVxeXNxenVvZWNlcWRldnpsb3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5NDMzNjUsImV4cCI6MjA5NDUxOTM2NX0.beXhi9xak--i914WPXlVpu3spujxjEyH5SrYFIxKqBM";
+
+async function sbFetch(method, path, body = null) {
+  const opts = {
+    method,
+    headers: {
+      apikey: SUPABASE_KEY,
+      Authorization: `Bearer ${SUPABASE_KEY}`,
+      "Content-Type": "application/json",
+      Prefer: "return=representation",
+    },
+  };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, opts);
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Supabase ${method} ${path}: ${err}`);
+  }
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
+}
+
+// --- Produkte ---
 const products = [
   {
     sku: "KA-COT-01",
@@ -6,8 +32,7 @@ const products = [
     description: "Langer Wollmantel mit breiter Schulter, verdeckter Knopfleiste und schwerem Fall.",
     netPrice: 289.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/20406876/pexels-photo-20406876.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/20406876/pexels-photo-20406876.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     sku: "KA-BMB-02",
@@ -16,8 +41,7 @@ const products = [
     description: "Kurzer Bomber mit glatter Oberfläche, kompaktem Bund und edlem Hardware-Finish.",
     netPrice: 349.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/6939119/pexels-photo-6939119.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/6939119/pexels-photo-6939119.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     sku: "KA-KNT-03",
@@ -26,8 +50,7 @@ const products = [
     description: "Weicher Merino-Strick mit entspannter Silhouette und cleanem Rundhalsausschnitt.",
     netPrice: 139.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/20520671/pexels-photo-20520671.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/20520671/pexels-photo-20520671.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     sku: "KA-KNT-04",
@@ -36,8 +59,7 @@ const products = [
     description: "Gerippter Cardigan in dunklem Braun mit tiefem Ausschnitt und schweren Knöpfen.",
     netPrice: 159.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/18794485/pexels-photo-18794485.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/18794485/pexels-photo-18794485.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     sku: "KA-TRS-05",
@@ -46,8 +68,7 @@ const products = [
     description: "Weite Anzughose mit Bundfalte, fließendem Bein und modernem Cropped-Fit.",
     netPrice: 129.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/20818929/pexels-photo-20818929.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/20818929/pexels-photo-20818929.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     sku: "KA-BLZ-06",
@@ -56,8 +77,7 @@ const products = [
     description: "Unstrukturierter Blazer mit langen Revers und einer Silhouette wie aus dem Editorial.",
     netPrice: 219.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/13219629/pexels-photo-13219629.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/13219629/pexels-photo-13219629.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     sku: "KA-HDY-07",
@@ -66,8 +86,7 @@ const products = [
     description: "Luxuriöser Heavyweight-Hoodie ohne Print, innen weich und außen trocken im Griff.",
     netPrice: 119.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/3061826/pexels-photo-3061826.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/3061826/pexels-photo-3061826.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     sku: "KA-TEE-08",
@@ -76,8 +95,7 @@ const products = [
     description: "Cleanes Premium-Shirt mit leichtem Glanz, festerem Kragen und geradem Saum.",
     netPrice: 69.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/30561922/pexels-photo-30561922.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/30561922/pexels-photo-30561922.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     sku: "KA-DNM-09",
@@ -86,8 +104,7 @@ const products = [
     description: "Dunkler Raw Denim mit weitem Bein, tiefer Leibhöhe und minimalem Branding.",
     netPrice: 149.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/8505247/pexels-photo-8505247.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/8505247/pexels-photo-8505247.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     sku: "KA-SHR-10",
@@ -96,8 +113,7 @@ const products = [
     description: "Fließendes Hemd mit camp collar, matter Seidenoptik und entspannter Länge.",
     netPrice: 129.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/19179149/pexels-photo-19179149.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/19179149/pexels-photo-19179149.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     sku: "KA-BAG-11",
@@ -106,8 +122,7 @@ const products = [
     description: "Architektonische Tote Bag mit cleanem Volumen und genügend Platz für den Alltag.",
     netPrice: 119.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/20406852/pexels-photo-20406852.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/20406852/pexels-photo-20406852.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     sku: "KA-CAP-12",
@@ -116,8 +131,7 @@ const products = [
     description: "Flache Wool Cap mit tonal gesticktem Kara-Zeichen und verstellbarem Lederriemen.",
     netPrice: 59.9,
     vatRate: 0.19,
-    image:
-      "https://images.pexels.com/photos/10050979/pexels-photo-10050979.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "https://images.pexels.com/photos/10050979/pexels-photo-10050979.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
 ];
 
@@ -179,25 +193,22 @@ function productFallback(event) {
 }
 
 function renderFilters() {
-  const categories = ["Alle", ...new Set(products.map((product) => product.category))];
+  const categories = ["Alle", ...new Set(products.map((p) => p.category))];
   categoryFilters.innerHTML = categories
     .map(
-      (category) => `
-        <button class="filter-button ${state.category === category ? "active" : ""}" data-category="${category}">
-          ${category}
-        </button>
-      `,
+      (category) =>
+        `<button class="filter-button ${state.category === category ? "active" : ""}" data-category="${category}">${category}</button>`,
     )
     .join("");
 }
 
 function renderProducts() {
-  const visibleProducts =
+  const visible =
     state.category === "Alle"
       ? products
-      : products.filter((product) => product.category === state.category);
+      : products.filter((p) => p.category === state.category);
 
-  productGrid.innerHTML = visibleProducts
+  productGrid.innerHTML = visible
     .map(
       (product) => `
         <article class="product-card">
@@ -216,8 +227,7 @@ function renderProducts() {
               <button class="primary-button compact-button" data-add="${product.sku}">Hinzufügen</button>
             </div>
           </div>
-        </article>
-      `,
+        </article>`,
     )
     .join("");
 }
@@ -227,10 +237,7 @@ function renderCart() {
   cartCount.textContent = lines.reduce((sum, item) => sum + item.quantity, 0);
   cartItems.innerHTML =
     lines.length === 0
-      ? `<div class="empty-cart">
-          <p>Dein Warenkorb ist leer.</p>
-          <span>Wähle ein Piece aus der aktuellen Kollektion.</span>
-        </div>`
+      ? `<div class="empty-cart"><p>Dein Warenkorb ist leer.</p><span>Wähle ein Piece aus der aktuellen Kollektion.</span></div>`
       : lines
           .map(
             (item) => `
@@ -245,8 +252,7 @@ function renderCart() {
                   <span>${item.quantity}</span>
                   <button data-inc="${item.sku}" aria-label="${item.name} hinzufügen">+</button>
                 </div>
-              </div>
-            `,
+              </div>`,
           )
           .join("");
 
@@ -282,7 +288,8 @@ function openCheckout() {
   checkoutSummary.innerHTML = `
     ${lines
       .map(
-        (item) => `<div class="summary-line"><span>${item.quantity} × ${item.name}</span><strong>${money(item.netPrice * item.quantity)}</strong></div>`,
+        (item) =>
+          `<div class="summary-line"><span>${item.quantity} × ${item.name}</span><strong>${money(item.netPrice * item.quantity)}</strong></div>`,
       )
       .join("")}
     <div class="summary-line"><span>Versand</span><strong>${money(summary.shipping)}</strong></div>
@@ -292,94 +299,98 @@ function openCheckout() {
   checkoutDialog.showModal();
 }
 
-function nextSequence(key) {
-  const current = Number(localStorage.getItem(key) || "0") + 1;
-  localStorage.setItem(key, String(current));
-  return String(current).padStart(4, "0");
-}
-
-function loadCollection(key) {
-  return JSON.parse(localStorage.getItem(key) || "[]");
-}
-
-function saveCollection(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
-}
-
-function completeOrder(formData) {
+// --- Checkout: schreibt direkt nach Supabase ---
+async function completeOrder(formData) {
   const lines = cartLines();
   const summary = totals();
-  const customerId = `CUST-${nextSequence(`${storagePrefix}_customer_seq`)}`;
-  const orderId = `ORD-2026-${nextSequence(`${storagePrefix}_order_seq`)}`;
-  const orderNumber = `KA-2026-${nextSequence(`${storagePrefix}_order_number_seq`)}`;
-  const invoiceNumber = `RE-2026-${nextSequence(`${storagePrefix}_invoice_seq`)}`;
+  const email = formData.get("email");
 
-  const customers = loadCollection(`${storagePrefix}_customers`);
-  customers.push({
-    id: customerId,
-    firstName: formData.get("firstName"),
-    lastName: formData.get("lastName"),
-    email: formData.get("email"),
-    address: {
-      street: formData.get("street"),
-      postalCode: formData.get("postalCode"),
+  const submitBtn = checkoutForm.querySelector("button[type='submit']");
+  submitBtn.textContent = "Wird verarbeitet…";
+  submitBtn.disabled = true;
+
+  try {
+    // 1. Kunde: vorhandenen wiederverwenden oder neu anlegen
+    let customerId;
+    const existing = await sbFetch("GET", `customers?email=eq.${encodeURIComponent(email)}&select=id`);
+    if (existing && existing.length > 0) {
+      customerId = existing[0].id;
+    } else {
+      const [customer] = await sbFetch("POST", "customers", {
+        email,
+        first_name: formData.get("firstName"),
+        last_name: formData.get("lastName"),
+      });
+      customerId = customer.id;
+    }
+
+    // 2. Adresse anlegen
+    const [address] = await sbFetch("POST", "addresses", {
+      customer_id: customerId,
+      line1: formData.get("street"),
+      postal_code: formData.get("postalCode"),
       city: formData.get("city"),
-      countryCode: "DE",
-    },
-  });
+      country_code: "DE",
+      is_billing: true,
+      is_shipping: true,
+    });
 
-  const orders = loadCollection(`${storagePrefix}_orders`);
-  orders.push({
-    id: orderId,
-    orderNumber,
-    customerId,
-    status: "paid",
-    lines,
-    subtotalNet: summary.subtotal,
-    shippingNet: summary.shipping,
-    vat: summary.vat,
-    totalGross: summary.total,
-    createdAt: new Date().toISOString(),
-  });
+    // 3. Bestellnummer generieren (Anzahl vorhandener Bestellungen + 1)
+    const allOrders = await sbFetch("GET", "orders?select=id");
+    const seq = String((allOrders?.length ?? 0) + 1).padStart(4, "0");
+    const orderNumber = `KA-2026-${seq}`;
+    const invoiceNumber = `RE-2026-${seq}`;
 
-  const invoices = loadCollection(`${storagePrefix}_invoices`);
-  invoices.push({
-    invoiceNumber,
-    orderId,
-    orderNumber,
-    customerId,
-    status: "sent",
-    createdAt: new Date().toISOString(),
-    sentAt: new Date().toISOString(),
-  });
+    // 4. Bestellung anlegen – status = 'paid' loest den Trigger → Make aus
+    const [order] = await sbFetch("POST", "orders", {
+      order_number: orderNumber,
+      customer_id: customerId,
+      billing_address_id: address.id,
+      shipping_address_id: address.id,
+      status: "paid",
+      subtotal_cents: Math.round(summary.subtotal * 100),
+      shipping_cents: Math.round(summary.shipping * 100),
+      vat_cents: Math.round(summary.vat * 100),
+      total_cents: Math.round(summary.total * 100),
+      paid_at: new Date().toISOString(),
+    });
 
-  const emails = loadCollection(`${storagePrefix}_emails`);
-  emails.push({
-    id: `MAIL-2026-${nextSequence(`${storagePrefix}_email_seq`)}`,
-    orderId,
-    orderNumber,
-    invoiceNumber,
-    to: formData.get("email"),
-    subject: `Deine Kara Bestellung ${orderNumber}`,
-    status: "sent",
-    sentAt: new Date().toISOString(),
-  });
+    // 5. Bestellpositionen anlegen (Produkt-ID per SKU aus Supabase)
+    const skus = lines.map((l) => l.sku);
+    const dbProducts = await sbFetch("GET", `products?sku=in.(${skus.join(",")})&select=id,sku`);
+    const skuToId = Object.fromEntries((dbProducts || []).map((p) => [p.sku, p.id]));
 
-  saveCollection(`${storagePrefix}_customers`, customers);
-  saveCollection(`${storagePrefix}_orders`, orders);
-  saveCollection(`${storagePrefix}_invoices`, invoices);
-  saveCollection(`${storagePrefix}_emails`, emails);
+    for (const line of lines) {
+      const productId = skuToId[line.sku];
+      if (!productId) continue;
+      await sbFetch("POST", "order_items", {
+        order_id: order.id,
+        product_id: productId,
+        quantity: line.quantity,
+        unit_net_price_cents: Math.round(line.netPrice * 100),
+        line_total_cents: Math.round(line.netPrice * line.quantity * 100),
+      });
+    }
 
-  state.cart = [];
-  saveCart();
-  renderCart();
-  cartPanel.classList.remove("open");
-  cartPanel.setAttribute("aria-hidden", "true");
+    // 6. Warenkorb leeren & Erfolg anzeigen
+    state.cart = [];
+    saveCart();
+    renderCart();
+    cartPanel.classList.remove("open");
+    cartPanel.setAttribute("aria-hidden", "true");
 
-  successText.textContent = `Bestellung ${orderNumber} wurde angelegt. Die Bestellbestätigung mit Rechnung ${invoiceNumber} wurde an ${formData.get("email")} versendet.`;
-  successDialog.showModal();
+    successText.textContent = `Bestellung ${orderNumber} wurde angelegt. Die Bestellbestätigung mit Rechnung ${invoiceNumber} wurde an ${email} versendet.`;
+    successDialog.showModal();
+  } catch (err) {
+    console.error("Checkout-Fehler:", err);
+    alert("Fehler beim Speichern der Bestellung. Bitte versuche es erneut.\n\n" + err.message);
+  } finally {
+    submitBtn.textContent = "Kauf abschliessen";
+    submitBtn.disabled = false;
+  }
 }
 
+// --- Event-Listener ---
 document.addEventListener("click", (event) => {
   const addSku = event.target.dataset.add;
   const incSku = event.target.dataset.inc;
