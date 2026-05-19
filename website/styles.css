@@ -1173,3 +1173,56 @@ dialog::backdrop {
     flex-direction: column;
   }
 }
+
+/* ── Auth ────────────────────────────────────────────── */
+.nav-text-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink, #0a0a0a);
+  padding: 0;
+  letter-spacing: 0.04em;
+}
+.nav-text-button:hover { opacity: 0.6; }
+
+.user-label {
+  font-size: 13px;
+  color: var(--muted, #666);
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--line, #e5e5e5);
+  margin-bottom: 20px;
+}
+.auth-tab {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  color: var(--muted, #666);
+  transition: color 120ms, border-color 120ms;
+}
+.auth-tab.active {
+  color: var(--ink, #0a0a0a);
+  border-bottom-color: var(--ink, #0a0a0a);
+  font-weight: 500;
+}
+.auth-form { display: grid; gap: 16px; padding: 4px 0; }
+.auth-error {
+  color: #c0392b;
+  font-size: 13px;
+  background: #fdf0ef;
+  padding: 8px 12px;
+  border-radius: 6px;
+}

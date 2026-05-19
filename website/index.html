@@ -31,9 +31,10 @@
       </nav>
       <nav class="nav-links utility-nav" aria-label="Shop Navigation">
         <a href="#productsTitle">Search</a>
-        <a href="#checkoutDialog">Account</a>
+        <button id="accountButton" class="nav-text-button" aria-label="Account">Account</button>
+        <span id="userLabel" class="user-label" hidden></span>
+        <button id="logoutButton" class="nav-text-button" hidden>Abmelden</button>
         <a href="#atelier">Loyalty</a>
-        <a href="#lookbook">Wishlist (0)</a>
         <button id="cartButton" class="cart-button" aria-label="Warenkorb öffnen">
           Cart (<strong id="cartCount">0</strong>)
         </button>
@@ -70,15 +71,9 @@
       </section>
 
       <section class="category-showcase" aria-label="Shop Kategorien">
-        <a href="#productsTitle" class="category-tile tile-large">
-          <span>Outerwear</span>
-        </a>
-        <a href="#productsTitle" class="category-tile tile-knit">
-          <span>Knitwear</span>
-        </a>
-        <a href="#productsTitle" class="category-tile tile-tailoring">
-          <span>Tailoring</span>
-        </a>
+        <a href="#productsTitle" class="category-tile tile-large"><span>Outerwear</span></a>
+        <a href="#productsTitle" class="category-tile tile-knit"><span>Knitwear</span></a>
+        <a href="#productsTitle" class="category-tile tile-tailoring"><span>Tailoring</span></a>
       </section>
 
       <section class="shop-section" aria-labelledby="productsTitle">
@@ -125,7 +120,7 @@
             <span>Kostenloser Rückversand</span>
             <span>Versand in 48 Stunden</span>
             <span>Automatische Bestellmail</span>
-            <span>Lokaler Demo-Checkout</span>
+            <span>Konto & gespeicherte Daten</span>
           </div>
         </div>
       </section>
@@ -148,6 +143,75 @@
       <button id="checkoutButton" class="primary-button">Zur Kasse</button>
     </aside>
 
+    <!-- Auth Modal -->
+    <dialog id="authDialog">
+      <div class="dialog-header">
+        <div>
+          <p class="section-label">Kara Account</p>
+          <h2 id="authDialogTitle">Anmelden</h2>
+        </div>
+        <button type="button" id="closeAuthButton" class="icon-button" aria-label="Schließen">×</button>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Anmelden</button>
+        <button class="auth-tab" data-tab="register">Registrieren</button>
+      </div>
+
+      <!-- Login -->
+      <form id="loginForm" class="auth-form">
+        <div class="form-grid">
+          <label class="span-2">
+            E-Mail
+            <input required type="email" name="email" autocomplete="email" />
+          </label>
+          <label class="span-2">
+            Passwort
+            <input required type="password" name="password" autocomplete="current-password" />
+          </label>
+        </div>
+        <p id="loginError" class="auth-error" hidden></p>
+        <button class="primary-button" type="submit">Anmelden</button>
+      </form>
+
+      <!-- Register -->
+      <form id="registerForm" class="auth-form" hidden>
+        <div class="form-grid">
+          <label>
+            Vorname
+            <input required name="firstName" autocomplete="given-name" />
+          </label>
+          <label>
+            Nachname
+            <input required name="lastName" autocomplete="family-name" />
+          </label>
+          <label class="span-2">
+            E-Mail
+            <input required type="email" name="email" autocomplete="email" />
+          </label>
+          <label class="span-2">
+            Passwort <small>(min. 6 Zeichen)</small>
+            <input required type="password" name="password" minlength="6" autocomplete="new-password" />
+          </label>
+          <label class="span-2">
+            Straße und Hausnummer
+            <input required name="street" autocomplete="street-address" />
+          </label>
+          <label>
+            PLZ
+            <input required name="postalCode" autocomplete="postal-code" />
+          </label>
+          <label>
+            Ort
+            <input required name="city" autocomplete="address-level2" />
+          </label>
+        </div>
+        <p id="registerError" class="auth-error" hidden></p>
+        <button class="primary-button" type="submit">Konto erstellen</button>
+      </form>
+    </dialog>
+
+    <!-- Checkout -->
     <dialog id="checkoutDialog">
       <form id="checkoutForm" method="dialog">
         <div class="dialog-header">
@@ -169,7 +233,7 @@
           </label>
           <label class="span-2">
             E-Mail
-            <input required name="email" autocomplete="email" />
+            <input required name="email" type="email" autocomplete="email" />
           </label>
           <label class="span-2">
             Straße und Hausnummer
@@ -218,6 +282,7 @@
       <p>Fiktiver Luxury-Streetwear-Shop für den IDP-Demonstrator.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
