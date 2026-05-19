@@ -33,6 +33,11 @@ Alle wichtigen Aenderungen am Projekt werden hier kurz protokolliert.
 
 ## 2026-05-19
 
+- Checkout auf Accountdaten-Flow umgebaut:
+  - `Zur Kasse` fuehrt angemeldete Kunden in einen eigenen Kassenbereich
+  - gespeicherte Accountdaten werden sichtbar uebernommen
+  - altes Checkout-Dateneingabeformular entfernt
+  - Soll-Verhalten in `docs/checkout-account-flow.md` dokumentiert
 - Account-Dropdown fuer angemeldete Kunden ergaenzt:
   - persoenliche Daten lassen sich nach Login anzeigen und bearbeiten
   - gespeicherte Daten werden fuer den Checkout wiederverwendet

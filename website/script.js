@@ -67,10 +67,13 @@ const subtotalEl         = document.querySelector("#subtotal");
 const shippingEl         = document.querySelector("#shipping");
 const totalEl            = document.querySelector("#total");
 const checkoutButton     = document.querySelector("#checkoutButton");
-const checkoutDialog     = document.querySelector("#checkoutDialog");
-const closeCheckoutButton= document.querySelector("#closeCheckoutButton");
-const checkoutForm       = document.querySelector("#checkoutForm");
+const checkoutPage       = document.querySelector("#checkoutPage");
+const checkoutAccountStatus = document.querySelector("#checkoutAccountStatus");
+const checkoutAccountDetails = document.querySelector("#checkoutAccountDetails");
 const checkoutSummary    = document.querySelector("#checkoutSummary");
+const confirmCheckoutButton = document.querySelector("#confirmCheckoutButton");
+const backToCartButton   = document.querySelector("#backToCartButton");
+const editAccountFromCheckout = document.querySelector("#editAccountFromCheckout");
 const successDialog      = document.querySelector("#successDialog");
 const successText        = document.querySelector("#successText");
 const closeSuccessButton = document.querySelector("#closeSuccessButton");
@@ -152,13 +155,14 @@ function fillProfileForm(user, customer = null, address = null) {
 
 function fillCheckoutFromProfile() {
   const { customer, address } = currentProfile;
-  if (!customer) return;
-  checkoutForm.firstName.value  = customer.first_name || "";
-  checkoutForm.lastName.value   = customer.last_name || "";
-  checkoutForm.email.value      = customer.email || "";
-  checkoutForm.street.value     = address?.line1 || "";
-  checkoutForm.postalCode.value = address?.postal_code || "";
-  checkoutForm.city.value       = address?.city || "";
+  return {
+    firstName: customer?.first_name || "",
+    lastName: customer?.last_name || "",
+    email: customer?.email || "",
+    street: address?.line1 || "",
+    postalCode: address?.postal_code || "",
+    city: address?.city || "",
+  };
 }
 
 function showProfileMessage(text, isError = false) {
@@ -196,7 +200,6 @@ async function prefillCheckout() {
   const { data: { user } } = await sb.auth.getUser();
   if (!user) return;
   if (!currentProfile.customer) await loadAccountProfile(user);
-  fillCheckoutFromProfile();
 }
 
 async function saveProfile(formData) {
@@ -289,7 +292,7 @@ logoutButton.addEventListener("click", async () => {
   updateAuthUI(null);
   accountDropdown.hidden = true;
   accountMenuButton.setAttribute("aria-expanded", "false");
-  checkoutForm.reset();
+  checkoutPage.hidden = true;
 });
 
 // Login
@@ -361,7 +364,7 @@ profileForm.addEventListener("submit", async (e) => {
 
   try {
     await saveProfile(new FormData(profileForm));
-    fillCheckoutFromProfile();
+    if (!checkoutPage.hidden) renderCheckoutPage();
     showProfileMessage("Deine Daten wurden gespeichert.");
   } catch (err) {
     showProfileMessage("Speichern fehlgeschlagen: " + err.message, true);
@@ -447,6 +450,7 @@ function renderCart() {
   shippingEl.textContent = money(summary.shipping);
   totalEl.textContent    = money(summary.total);
   checkoutButton.disabled = lines.length === 0;
+  if (checkoutPage && !checkoutPage.hidden) renderCheckoutPage();
 }
 
 function addToCart(sku) {
@@ -468,7 +472,7 @@ function changeQuantity(sku, delta) {
   renderCart();
 }
 
-function openCheckout() {
+function renderCheckoutSummary() {
   const lines   = cartLines();
   const summary = totals();
   checkoutSummary.innerHTML = `
@@ -477,49 +481,74 @@ function openCheckout() {
     <div class="summary-line"><span>Umsatzsteuer</span><strong>${money(summary.vat)}</strong></div>
     <div class="summary-line total-line"><span>Gesamt</span><strong>${money(summary.total)}</strong></div>
   `;
-  prefillCheckout();
-  checkoutDialog.showModal();
+  return { lines, summary };
 }
 
 // ─── Checkout → Supabase ──────────────────────────────────────
-async function completeOrder(formData) {
+function renderCheckoutAccount() {
+  const { customer, address } = currentProfile;
+  if (!customer) {
+    checkoutAccountStatus.textContent = "Du bist angemeldet, aber es sind noch keine vollstaendigen Kundendaten gespeichert.";
+    checkoutAccountDetails.innerHTML = "<p>Bitte oeffne oben dein Account-Menue und speichere deine persoenlichen Daten.</p>";
+    confirmCheckoutButton.disabled = true;
+    return;
+  }
+
+  const missing = !customer.first_name || !customer.last_name || !customer.email || !address?.line1 || !address?.postal_code || !address?.city;
+  checkoutAccountStatus.textContent = missing
+    ? "Dein Account ist erkannt. Bitte vervollstaendige deine persoenlichen Daten vor dem Kauf."
+    : "Du bist angemeldet. Deine gespeicherten Accountdaten werden automatisch fuer diese Bestellung uebernommen.";
+  checkoutAccountDetails.innerHTML = `
+    <dl>
+      <div><dt>Name</dt><dd>${customer.first_name || ""} ${customer.last_name || ""}</dd></div>
+      <div><dt>E-Mail</dt><dd>${customer.email || ""}</dd></div>
+      <div><dt>Adresse</dt><dd>${address?.line1 || ""}<br>${address?.postal_code || ""} ${address?.city || ""}</dd></div>
+    </dl>
+  `;
+  confirmCheckoutButton.disabled = missing || cartLines().length === 0;
+}
+
+function renderCheckoutPage() {
+  renderCheckoutSummary();
+  renderCheckoutAccount();
+}
+
+async function openCheckout() {
+  if (cartLines().length === 0) return;
+  const { data: { user } } = await sb.auth.getUser();
+  if (!user) {
+    loginForm.hidden = false;
+    registerForm.hidden = true;
+    document.querySelectorAll(".auth-tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === "login"));
+    document.querySelector("#authDialogTitle").textContent = "Anmelden";
+    authDialog.showModal();
+    return;
+  }
+
+  await prefillCheckout();
+  cartPanel.classList.remove("open");
+  cartPanel.setAttribute("aria-hidden", "true");
+  checkoutPage.hidden = false;
+  renderCheckoutPage();
+  checkoutPage.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+async function completeOrder() {
   const lines   = cartLines();
   const summary = totals();
-  const email   = formData.get("email");
+  const { customer, address } = currentProfile;
+  if (!customer || !address) {
+    alert("Bitte speichere zuerst deine persoenlichen Daten im Account.");
+    return;
+  }
+  const email = customer.email;
 
-  const submitBtn = checkoutForm.querySelector("button[type='submit']");
+  const submitBtn = confirmCheckoutButton;
   submitBtn.textContent = "Wird verarbeitet…";
   submitBtn.disabled    = true;
 
   try {
-    // 1. Kunde: vorhandenen verwenden oder neu anlegen
-    let customerId;
-    const existing = await sbFetch("GET", `customers?email=eq.${encodeURIComponent(email)}&select=id`);
-    if (existing && existing.length > 0) {
-      customerId = existing[0].id;
-    } else {
-      const { data: { user } } = await sb.auth.getUser();
-      const [c] = await sbFetch("POST", "customers", {
-        email,
-        first_name: formData.get("firstName"),
-        last_name:  formData.get("lastName"),
-        user_id:    user?.id || null,
-      });
-      customerId = c.id;
-    }
-
-    // 2. Adresse anlegen
-    const [address] = await sbFetch("POST", "addresses", {
-      customer_id:  customerId,
-      line1:        formData.get("street"),
-      postal_code:  formData.get("postalCode"),
-      city:         formData.get("city"),
-      country_code: "DE",
-      is_billing:   true,
-      is_shipping:  true,
-    });
-
-    // 3. Bestellnummer
+    // 1. Bestellnummer
     const allOrders  = await sbFetch("GET", "orders?select=id");
     const seq        = String((allOrders?.length ?? 0) + 1).padStart(4, "0");
     const orderNumber   = `KA-2026-${seq}`;
@@ -528,7 +557,7 @@ async function completeOrder(formData) {
     // 4. Bestellung (status=paid → Trigger → Make)
     const [order] = await sbFetch("POST", "orders", {
       order_number:       orderNumber,
-      customer_id:        customerId,
+      customer_id:        customer.id,
       billing_address_id: address.id,
       shipping_address_id:address.id,
       status:             "paid",
@@ -562,6 +591,7 @@ async function completeOrder(formData) {
     renderCart();
     cartPanel.classList.remove("open");
     cartPanel.setAttribute("aria-hidden", "true");
+    checkoutPage.hidden = true;
 
     successText.textContent = `Bestellung ${orderNumber} angelegt. Bestellbestätigung mit Rechnung ${invoiceNumber} wurde an ${email} versendet.`;
     successDialog.showModal();
@@ -595,14 +625,19 @@ closeCartButton.addEventListener("click", () => {
   cartPanel.setAttribute("aria-hidden", "true");
 });
 checkoutButton.addEventListener("click", openCheckout);
-closeCheckoutButton.addEventListener("click", () => checkoutDialog.close());
 closeSuccessButton.addEventListener("click", () => successDialog.close());
-
-checkoutForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  completeOrder(new FormData(checkoutForm));
-  checkoutDialog.close();
-  checkoutForm.reset();
+confirmCheckoutButton.addEventListener("click", completeOrder);
+backToCartButton.addEventListener("click", () => {
+  checkoutPage.hidden = true;
+  cartPanel.classList.add("open");
+  cartPanel.setAttribute("aria-hidden", "false");
+});
+editAccountFromCheckout.addEventListener("click", async () => {
+  const { data: { user } } = await sb.auth.getUser();
+  if (user) await loadAccountProfile(user);
+  accountDropdown.hidden = false;
+  accountMenuButton.setAttribute("aria-expanded", "true");
+  accountMenu.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
 // ─── Init ─────────────────────────────────────────────────────

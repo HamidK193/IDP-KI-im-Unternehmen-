@@ -819,7 +819,6 @@ dialog::backdrop {
   backdrop-filter: blur(6px);
 }
 
-#checkoutForm,
 .success-state {
   display: grid;
   gap: 22px;
@@ -837,6 +836,101 @@ dialog::backdrop {
 
 #authDialog .dialog-header h2 {
   font-size: clamp(34px, 4.5vw, 46px);
+}
+
+.checkout-page {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(54px, 7vw, 96px) clamp(18px, 4vw, 48px);
+  background: var(--bg);
+}
+
+.checkout-shell {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.74fr) minmax(360px, 1fr);
+  gap: clamp(20px, 4vw, 42px);
+  align-items: start;
+}
+
+.checkout-account-panel,
+.checkout-order-panel {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.checkout-account-panel {
+  display: grid;
+  gap: 18px;
+  padding: clamp(22px, 4vw, 34px);
+}
+
+.checkout-account-panel h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.checkout-account-status {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.checkout-account-details {
+  padding: 16px;
+  background: #eee6d9;
+}
+
+.checkout-account-details p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.checkout-account-details dl {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.checkout-account-details div {
+  display: grid;
+  gap: 4px;
+}
+
+.checkout-account-details dt {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.checkout-account-details dd {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.checkout-order-panel {
+  display: grid;
+  gap: 18px;
+  padding: clamp(22px, 4vw, 34px);
+}
+
+.checkout-order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.checkout-order-panel #checkoutSummary {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  background: #eee6d9;
 }
 
 .form-grid {
@@ -1059,6 +1153,7 @@ dialog::backdrop {
 @media (max-width: 980px) {
   .hero,
   .collection-strip,
+  .checkout-shell,
   .lookbook-section,
   .atelier-section,
   .review-page {

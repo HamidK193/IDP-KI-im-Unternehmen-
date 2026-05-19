@@ -43,6 +43,9 @@
 - Angemeldete Kunden haben ein Account-Dropdown mit bearbeitbaren
   persoenlichen Daten. Diese Daten werden im Checkout automatisch
   vorausgefuellt.
+- Der Checkout ist ein eigener Kassenbereich auf der Seite. Angemeldete Kunden
+  sehen dort ihre uebernommenen Accountdaten und den Warenkorb und muessen nur
+  noch den Kauf abschliessen.
 - Das Supabase-Schema liegt in `supabase/schema.sql`.
 - Geplante Tabellen:
   - `customers`

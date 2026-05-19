@@ -165,6 +165,27 @@
           </div>
         </div>
       </section>
+
+      <section id="checkoutPage" class="checkout-page" aria-labelledby="checkoutPageTitle" hidden>
+        <div class="checkout-shell">
+          <div class="checkout-account-panel">
+            <p class="section-label">Kasse</p>
+            <h2 id="checkoutPageTitle">Bestellung pruefen</h2>
+            <p id="checkoutAccountStatus" class="checkout-account-status"></p>
+            <div id="checkoutAccountDetails" class="checkout-account-details"></div>
+            <button id="editAccountFromCheckout" class="secondary-button ghost" type="button">Persoenliche Daten bearbeiten</button>
+          </div>
+
+          <div class="checkout-order-panel">
+            <div class="checkout-order-header">
+              <p class="section-label">Warenkorb</p>
+              <button id="backToCartButton" class="secondary-button ghost" type="button">Zurueck zum Warenkorb</button>
+            </div>
+            <div id="checkoutSummary"></div>
+            <button id="confirmCheckoutButton" class="primary-button" type="button">Kauf abschliessen</button>
+          </div>
+        </div>
+      </section>
     </main>
 
     <aside id="cartPanel" class="cart-panel" aria-hidden="true">
@@ -249,53 +270,6 @@
         </div>
         <p id="registerError" class="auth-error" hidden></p>
         <button class="primary-button" type="submit">Konto erstellen</button>
-      </form>
-    </dialog>
-
-    <!-- Checkout -->
-    <dialog id="checkoutDialog">
-      <form id="checkoutForm" method="dialog">
-        <div class="dialog-header">
-          <div>
-            <p class="section-label">Secure Checkout</p>
-            <h2>Bestellung abschließen</h2>
-          </div>
-          <button type="button" id="closeCheckoutButton" class="icon-button" aria-label="Checkout schließen">×</button>
-        </div>
-
-        <div class="form-grid">
-          <label>
-            Vorname
-            <input required name="firstName" autocomplete="given-name" />
-          </label>
-          <label>
-            Nachname
-            <input required name="lastName" autocomplete="family-name" />
-          </label>
-          <label class="span-2">
-            E-Mail
-            <input required name="email" type="email" autocomplete="email" />
-          </label>
-          <label class="span-2">
-            Straße und Hausnummer
-            <input required name="street" autocomplete="street-address" />
-          </label>
-          <label>
-            PLZ
-            <input required name="postalCode" autocomplete="postal-code" />
-          </label>
-          <label>
-            Ort
-            <input required name="city" autocomplete="address-level2" />
-          </label>
-        </div>
-
-        <div class="review-box">
-          <h3>Bestellübersicht</h3>
-          <div id="checkoutSummary"></div>
-        </div>
-
-        <button class="primary-button" type="submit">Kauf abschließen</button>
       </form>
     </dialog>
 
