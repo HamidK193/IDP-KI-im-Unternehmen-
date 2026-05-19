@@ -1180,19 +1180,109 @@ dialog::backdrop {
   border: none;
   cursor: pointer;
   font: inherit;
-  color: var(--ink, #0a0a0a);
+  color: currentColor;
   padding: 0;
   letter-spacing: 0.04em;
 }
 .nav-text-button:hover { opacity: 0.6; }
 
+.account-menu {
+  position: relative;
+}
+
+.account-menu-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .user-label {
   font-size: 13px;
-  color: var(--muted, #666);
+  color: currentColor;
   max-width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.account-dropdown {
+  position: absolute;
+  top: calc(100% + 18px);
+  right: 0;
+  z-index: 60;
+  width: min(380px, calc(100vw - 28px));
+  padding: 18px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.account-dropdown-header {
+  display: grid;
+  gap: 4px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.account-dropdown-header strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.profile-form {
+  display: grid;
+  gap: 12px;
+  padding-top: 14px;
+}
+
+.profile-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.profile-form input {
+  min-height: 42px;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background: #fffdf8;
+  font-size: 14px;
+  text-transform: none;
+}
+
+.profile-row {
+  display: grid;
+  grid-template-columns: minmax(90px, 0.7fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+.profile-message {
+  margin: 0;
+  padding: 10px 12px;
+  color: #244635;
+  background: #eef3f1;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.profile-message.error {
+  color: #8b1e16;
+  background: #fdf0ef;
+}
+
+.account-logout-button {
+  width: 100%;
+  min-height: 40px;
+  margin-top: 12px;
 }
 
 .auth-tabs {
@@ -1225,4 +1315,14 @@ dialog::backdrop {
   background: #fdf0ef;
   padding: 8px 12px;
   border-radius: 6px;
+}
+
+@media (max-width: 700px) {
+  .account-dropdown {
+    right: -82px;
+  }
+
+  .profile-row {
+    grid-template-columns: 1fr;
+  }
 }

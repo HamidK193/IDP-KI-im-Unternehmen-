@@ -33,6 +33,11 @@ Alle wichtigen Aenderungen am Projekt werden hier kurz protokolliert.
 
 ## 2026-05-19
 
+- Account-Dropdown fuer angemeldete Kunden ergaenzt:
+  - persoenliche Daten lassen sich nach Login anzeigen und bearbeiten
+  - gespeicherte Daten werden fuer den Checkout wiederverwendet
+  - Supabase-Auth-Migration um UPDATE-Rechte und eigene Adress-Policies
+    erweitert
 - Kaeuferfluss vereinfacht:
   - `website/review.html` und `website/review.js` entfernt
   - Checkout erzeugt jetzt direkt eine gesendete Demo-E-Mail in

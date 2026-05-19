@@ -40,6 +40,9 @@
 - Nach dem Checkout wird eine Demo-E-Mail mit Status `sent` in
   `kara_emails` gespeichert.
 - Rechnungen erhalten im Shop-Prototyp direkt den Status `sent`.
+- Angemeldete Kunden haben ein Account-Dropdown mit bearbeitbaren
+  persoenlichen Daten. Diese Daten werden im Checkout automatisch
+  vorausgefuellt.
 - Das Supabase-Schema liegt in `supabase/schema.sql`.
 - Geplante Tabellen:
   - `customers`

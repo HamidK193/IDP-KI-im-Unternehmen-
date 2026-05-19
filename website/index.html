@@ -32,8 +32,49 @@
       <nav class="nav-links utility-nav" aria-label="Shop Navigation">
         <a href="#productsTitle">Search</a>
         <button id="accountButton" class="nav-text-button" aria-label="Account">Account</button>
-        <span id="userLabel" class="user-label" hidden></span>
-        <button id="logoutButton" class="nav-text-button" hidden>Abmelden</button>
+        <div id="accountMenu" class="account-menu" hidden>
+          <button id="accountMenuButton" class="nav-text-button account-menu-button" type="button" aria-expanded="false">
+            <span id="userLabel" class="user-label"></span>
+            <span aria-hidden="true">▾</span>
+          </button>
+          <div id="accountDropdown" class="account-dropdown" hidden>
+            <div class="account-dropdown-header">
+              <p class="section-label">Account</p>
+              <strong id="accountDropdownTitle">Persoenliche Daten</strong>
+            </div>
+            <form id="profileForm" class="profile-form">
+              <label>
+                Vorname
+                <input required name="firstName" autocomplete="given-name" />
+              </label>
+              <label>
+                Nachname
+                <input required name="lastName" autocomplete="family-name" />
+              </label>
+              <label>
+                E-Mail
+                <input required type="email" name="email" autocomplete="email" />
+              </label>
+              <label>
+                Strasse und Hausnummer
+                <input required name="street" autocomplete="street-address" />
+              </label>
+              <div class="profile-row">
+                <label>
+                  PLZ
+                  <input required name="postalCode" autocomplete="postal-code" />
+                </label>
+                <label>
+                  Ort
+                  <input required name="city" autocomplete="address-level2" />
+                </label>
+              </div>
+              <p id="profileMessage" class="profile-message" hidden></p>
+              <button class="primary-button compact-button" type="submit">Daten speichern</button>
+            </form>
+            <button id="logoutButton" class="secondary-button account-logout-button" type="button">Abmelden</button>
+          </div>
+        </div>
         <a href="#atelier">Loyalty</a>
         <button id="cartButton" class="cart-button" aria-label="Warenkorb öffnen">
           Cart (<strong id="cartCount">0</strong>)

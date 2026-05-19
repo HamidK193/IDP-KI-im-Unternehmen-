@@ -75,6 +75,9 @@ const successDialog      = document.querySelector("#successDialog");
 const successText        = document.querySelector("#successText");
 const closeSuccessButton = document.querySelector("#closeSuccessButton");
 const accountButton      = document.querySelector("#accountButton");
+const accountMenu        = document.querySelector("#accountMenu");
+const accountMenuButton  = document.querySelector("#accountMenuButton");
+const accountDropdown    = document.querySelector("#accountDropdown");
 const logoutButton       = document.querySelector("#logoutButton");
 const userLabel          = document.querySelector("#userLabel");
 const authDialog         = document.querySelector("#authDialog");
@@ -83,6 +86,13 @@ const loginForm          = document.querySelector("#loginForm");
 const registerForm       = document.querySelector("#registerForm");
 const loginError         = document.querySelector("#loginError");
 const registerError      = document.querySelector("#registerError");
+const profileForm        = document.querySelector("#profileForm");
+const profileMessage     = document.querySelector("#profileMessage");
+
+let currentProfile = {
+  customer: null,
+  address: null,
+};
 
 // ─── Hilfsfunktionen ─────────────────────────────────────────
 function money(value) {
@@ -119,35 +129,114 @@ function productFallback(event) {
 function updateAuthUI(user) {
   if (user) {
     accountButton.hidden = true;
-    userLabel.hidden     = false;
-    logoutButton.hidden  = false;
+    accountMenu.hidden   = false;
     userLabel.textContent = user.email;
+    loadAccountProfile(user);
   } else {
     accountButton.hidden = false;
-    userLabel.hidden     = true;
-    logoutButton.hidden  = true;
+    accountMenu.hidden   = true;
+    accountDropdown.hidden = true;
+    accountMenuButton?.setAttribute("aria-expanded", "false");
+    currentProfile = { customer: null, address: null };
+  }
+}
+
+function fillProfileForm(user, customer = null, address = null) {
+  profileForm.firstName.value  = customer?.first_name || "";
+  profileForm.lastName.value   = customer?.last_name || "";
+  profileForm.email.value      = customer?.email || user?.email || "";
+  profileForm.street.value     = address?.line1 || "";
+  profileForm.postalCode.value = address?.postal_code || "";
+  profileForm.city.value       = address?.city || "";
+}
+
+function fillCheckoutFromProfile() {
+  const { customer, address } = currentProfile;
+  if (!customer) return;
+  checkoutForm.firstName.value  = customer.first_name || "";
+  checkoutForm.lastName.value   = customer.last_name || "";
+  checkoutForm.email.value      = customer.email || "";
+  checkoutForm.street.value     = address?.line1 || "";
+  checkoutForm.postalCode.value = address?.postal_code || "";
+  checkoutForm.city.value       = address?.city || "";
+}
+
+function showProfileMessage(text, isError = false) {
+  profileMessage.textContent = text;
+  profileMessage.hidden = false;
+  profileMessage.classList.toggle("error", isError);
+}
+
+async function loadAccountProfile(user) {
+  if (!user) return;
+  try {
+    const rows = await sbFetch("GET", `customers?user_id=eq.${user.id}&select=*&limit=1`);
+    const customer = rows?.[0] || null;
+    let address = null;
+
+    if (customer) {
+      const addrs = await sbFetch("GET", `addresses?customer_id=eq.${customer.id}&is_billing=eq.true&order=created_at.desc&limit=1&select=*`);
+      address = addrs?.[0] || null;
+      userLabel.textContent = customer.first_name
+        ? `${customer.first_name} ${customer.last_name || ""}`.trim()
+        : customer.email;
+    } else {
+      userLabel.textContent = user.email;
+    }
+
+    currentProfile = { customer, address };
+    fillProfileForm(user, customer, address);
+  } catch (err) {
+    console.warn("Profil konnte nicht geladen werden:", err);
+    fillProfileForm(user);
   }
 }
 
 async function prefillCheckout() {
   const { data: { user } } = await sb.auth.getUser();
   if (!user) return;
-  try {
-    const rows = await sbFetch("GET", `customers?user_id=eq.${user.id}&select=*`);
-    if (!rows || rows.length === 0) return;
-    const c = rows[0];
-    checkoutForm.firstName.value  = c.first_name  || "";
-    checkoutForm.lastName.value   = c.last_name   || "";
-    checkoutForm.email.value      = c.email        || "";
+  if (!currentProfile.customer) await loadAccountProfile(user);
+  fillCheckoutFromProfile();
+}
 
-    const addrs = await sbFetch("GET", `addresses?customer_id=eq.${c.id}&is_billing=eq.true&order=created_at.desc&limit=1&select=*`);
-    if (addrs && addrs.length > 0) {
-      const a = addrs[0];
-      checkoutForm.street.value     = a.line1       || "";
-      checkoutForm.postalCode.value = a.postal_code || "";
-      checkoutForm.city.value       = a.city        || "";
-    }
-  } catch (_) {}
+async function saveProfile(formData) {
+  const { data: { user } } = await sb.auth.getUser();
+  if (!user) throw new Error("Du bist nicht angemeldet.");
+
+  const customerBody = {
+    email: formData.get("email"),
+    first_name: formData.get("firstName"),
+    last_name: formData.get("lastName"),
+    user_id: user.id,
+  };
+
+  let customer = currentProfile.customer;
+  if (customer) {
+    [customer] = await sbFetch("PATCH", `customers?id=eq.${customer.id}`, customerBody);
+  } else {
+    [customer] = await sbFetch("POST", "customers", customerBody);
+  }
+
+  const addressBody = {
+    customer_id: customer.id,
+    line1: formData.get("street"),
+    postal_code: formData.get("postalCode"),
+    city: formData.get("city"),
+    country_code: "DE",
+    is_billing: true,
+    is_shipping: true,
+  };
+
+  let address = currentProfile.address;
+  if (address) {
+    [address] = await sbFetch("PATCH", `addresses?id=eq.${address.id}`, addressBody);
+  } else {
+    [address] = await sbFetch("POST", "addresses", addressBody);
+  }
+
+  currentProfile = { customer, address };
+  userLabel.textContent = `${customer.first_name || ""} ${customer.last_name || ""}`.trim() || customer.email || user.email;
+  fillProfileForm(user, customer, address);
 }
 
 // Auth-Tabs
@@ -168,10 +257,30 @@ document.querySelectorAll(".auth-tab").forEach((btn) => {
 accountButton.addEventListener("click", () => authDialog.showModal());
 closeAuthButton.addEventListener("click", () => authDialog.close());
 
+accountMenuButton.addEventListener("click", async () => {
+  const isOpen = !accountDropdown.hidden;
+  accountDropdown.hidden = isOpen;
+  accountMenuButton.setAttribute("aria-expanded", String(!isOpen));
+  profileMessage.hidden = true;
+  if (!isOpen) {
+    const { data: { user } } = await sb.auth.getUser();
+    if (user) await loadAccountProfile(user);
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (accountMenu.hidden || accountDropdown.hidden) return;
+  if (!accountMenu.contains(event.target)) {
+    accountDropdown.hidden = true;
+    accountMenuButton.setAttribute("aria-expanded", "false");
+  }
+});
+
 logoutButton.addEventListener("click", async () => {
   await sb.auth.signOut();
   updateAuthUI(null);
-  // Checkout-Felder leeren
+  accountDropdown.hidden = true;
+  accountMenuButton.setAttribute("aria-expanded", "false");
   checkoutForm.reset();
 });
 
@@ -190,6 +299,7 @@ loginForm.addEventListener("submit", async (e) => {
     return;
   }
   updateAuthUI(data.user);
+  await loadAccountProfile(data.user);
   authDialog.close();
   loginForm.reset();
 });
@@ -229,13 +339,37 @@ registerForm.addEventListener("submit", async (e) => {
   } catch (_) {}
 
   updateAuthUI(data.user);
+  await loadAccountProfile(data.user);
   authDialog.close();
   registerForm.reset();
+});
+
+profileForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const submitBtn = profileForm.querySelector("button[type='submit']");
+  profileMessage.hidden = true;
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Speichert...";
+
+  try {
+    await saveProfile(new FormData(profileForm));
+    fillCheckoutFromProfile();
+    showProfileMessage("Deine Daten wurden gespeichert.");
+  } catch (err) {
+    showProfileMessage("Speichern fehlgeschlagen: " + err.message, true);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Daten speichern";
+  }
 });
 
 // Auth-State beim Laden wiederherstellen
 sb.auth.onAuthStateChange((_event, session) => {
   updateAuthUI(session?.user || null);
+});
+
+sb.auth.getUser().then(({ data }) => {
+  updateAuthUI(data?.user || null);
 });
 
 // ─── Render ───────────────────────────────────────────────────
