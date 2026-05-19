@@ -105,3 +105,16 @@ CREATE TRIGGER trg_order_paid_notify_make
   ON public.orders
   FOR EACH ROW
   EXECUTE FUNCTION public.notify_make_order_paid();
+
+-- ============================================================
+-- Nachtraegliche Ergaenzung: SELECT-Policies fuer anon
+-- (benoetigt fuer Kunden-Duplikatpruefung im Checkout)
+-- ============================================================
+DROP POLICY IF EXISTS "anon_read_customers" ON public.customers;
+DROP POLICY IF EXISTS "anon_read_addresses" ON public.addresses;
+
+CREATE POLICY "anon_read_customers"
+  ON public.customers FOR SELECT TO anon USING (true);
+
+CREATE POLICY "anon_read_addresses"
+  ON public.addresses FOR SELECT TO anon USING (true);
