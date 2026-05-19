@@ -1,6 +1,6 @@
 # Zielarchitektur und Prozessfluss
 
-Die Website nimmt Bestellungen entgegen, Supabase speichert die operativen Daten, Make orchestriert den Folgeprozess, Word/PDF liefert die standardisierte Rechnung, Excel dient der menschlichen Kontrolle.
+Die Website nimmt Bestellungen entgegen, Supabase speichert die operativen Daten, Make orchestriert den Folgeprozess, Word/PDF liefert die standardisierte Rechnung, danach wird die Bestell- und Rechnungs-E-Mail direkt versendet.
 
 ```mermaid
 flowchart LR
@@ -8,10 +8,9 @@ flowchart LR
     B --> C["Supabase Webhook"]
     C --> D["Make-Szenario"]
     D --> E["Word- oder PDF-Vorlage"]
-    D --> F["Excel-Pruefliste"]
+    D --> F["E-Mail Versand"]
     D --> G["Supabase: invoices"]
-    F --> H["Menschliche Freigabe"]
-    H --> I["Versand an Kunden"]
+    F --> H["Versand an Kunden"]
 ```
 
 ## Statuskette
@@ -27,7 +26,4 @@ flowchart LR
 ### Rechnung
 
 - `draft`
-- `needs_review`
-- `approved`
 - `sent`
-- `rejected`

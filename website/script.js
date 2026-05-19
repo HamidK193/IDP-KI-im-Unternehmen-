@@ -348,13 +348,27 @@ function completeOrder(formData) {
     orderId,
     orderNumber,
     customerId,
-    status: "needs_review",
+    status: "sent",
     createdAt: new Date().toISOString(),
+    sentAt: new Date().toISOString(),
+  });
+
+  const emails = loadCollection(`${storagePrefix}_emails`);
+  emails.push({
+    id: `MAIL-2026-${nextSequence(`${storagePrefix}_email_seq`)}`,
+    orderId,
+    orderNumber,
+    invoiceNumber,
+    to: formData.get("email"),
+    subject: `Deine Kara Bestellung ${orderNumber}`,
+    status: "sent",
+    sentAt: new Date().toISOString(),
   });
 
   saveCollection(`${storagePrefix}_customers`, customers);
   saveCollection(`${storagePrefix}_orders`, orders);
   saveCollection(`${storagePrefix}_invoices`, invoices);
+  saveCollection(`${storagePrefix}_emails`, emails);
 
   state.cart = [];
   saveCart();
@@ -362,7 +376,7 @@ function completeOrder(formData) {
   cartPanel.classList.remove("open");
   cartPanel.setAttribute("aria-hidden", "true");
 
-  successText.textContent = `Bestellung ${orderNumber} wurde angelegt. Der Rechnungsentwurf ${invoiceNumber} wartet jetzt auf Prüfung.`;
+  successText.textContent = `Bestellung ${orderNumber} wurde angelegt. Die Bestellbestätigung mit Rechnung ${invoiceNumber} wurde an ${formData.get("email")} versendet.`;
   successDialog.showModal();
 }
 

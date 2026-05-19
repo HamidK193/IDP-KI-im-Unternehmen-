@@ -13,8 +13,8 @@ Supabase Webhook bei neuer Bestellung mit `status = paid`.
 5. Betraege pruefen und Vorlagen-Mapping erzeugen
 6. Rechnungsvorlage befuellen
 7. Rechnungseintrag in Supabase erzeugen
-8. Kontrollzeile in Excel schreiben
-9. Bestellung auf `invoice_draft_created` setzen
+8. Bestell- und Rechnungs-E-Mail versenden
+9. Bestellung auf `completed` setzen
 
 ## Fehlerfaelle
 
@@ -22,6 +22,6 @@ Supabase Webhook bei neuer Bestellung mit `status = paid`.
 - Rechnungsadresse unvollstaendig
 - Produktpreis oder Steuersatz fehlt
 - Bestellsumme passt nicht
-- Rechnung bereits vorhanden
+- Rechnung oder E-Mail bereits vorhanden
 
-In allen Fehlerfaellen bleibt der Status auf manueller Pruefung.
+In allen Fehlerfaellen wird kein Versand ausgeloest und der Fall muss intern geprueft werden.

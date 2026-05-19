@@ -263,7 +263,8 @@ main {
 .hero {
   position: relative;
   display: block;
-  min-height: 100vh;
+  height: clamp(720px, 90svh, 960px);
+  min-height: 0;
   background: var(--charcoal);
 }
 
@@ -271,10 +272,10 @@ main {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.04) 46%, rgba(0, 0, 0, 0.34) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.08) 54%, rgba(0, 0, 0, 0.56) 100%),
-    url("https://images.unsplash.com/photo-1644424232401-a93a1405d902?auto=format&fit=crop&w=1400&q=88")
-      center 34% / cover;
+    linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 44%, rgba(0, 0, 0, 0.46) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.02) 55%, rgba(0, 0, 0, 0.58) 100%),
+    url("https://images.pexels.com/photos/20417667/pexels-photo-20417667.jpeg?auto=compress&cs=tinysrgb&w=2400")
+      center 44% / cover;
 }
 
 .hero-copy {
@@ -350,7 +351,7 @@ main {
 .review-page {
   max-width: var(--max);
   margin: 0 auto;
-  padding: clamp(58px, 8vw, 112px) clamp(18px, 4vw, 48px);
+  padding: clamp(46px, 6.5vw, 88px) clamp(18px, 4vw, 48px);
 }
 
 .collection-strip {
@@ -358,6 +359,7 @@ main {
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.78fr);
   gap: 44px;
   align-items: end;
+  min-height: 260px;
 }
 
 .collection-strip h2,
@@ -1050,6 +1052,7 @@ dialog::backdrop {
   }
 
   .hero {
+    height: clamp(640px, 86svh, 840px);
     min-height: auto;
   }
 
@@ -1123,7 +1126,11 @@ dialog::backdrop {
     bottom: 32px;
   }
 
-  .hero,
+  .hero {
+    height: 82svh;
+    min-height: 620px;
+  }
+
   .atelier-image {
     min-height: 100vh;
   }

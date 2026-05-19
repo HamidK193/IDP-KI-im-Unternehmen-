@@ -10,18 +10,17 @@ Der Shop-Prototyp wurde zu einem modernen Luxury-Streetwear-Shop für das fiktiv
 - Kategorie-Filter
 - Warenkorb
 - Checkout mit Kundendaten
-- lokale Speicherung von Kunden, Bestellungen und Rechnungen
-- einfache Rechnungsprüfung mit Freigabe oder Zurückweisung
+- lokale Speicherung von Kunden, Bestellungen, Rechnungen und versendeten Demo-E-Mails
+- direkte Bestellbestätigung nach dem Kauf statt Käufer-Freigabe
 
 ## Seiten
 
 - `index.html` - Shop, Warenkorb und Checkout
-- `review.html` - Prüfoberfläche für Rechnungsentwürfe
 
 ## Nächste technische Schritte
 
 1. lokale Speicherung durch Supabase ersetzen
 2. Produkte aus Supabase laden
 3. Bestellungen in Supabase schreiben
-4. Make-Szenario zwischen bezahlter Bestellung und Rechnungsprüfung einhängen
-5. echte Rechnungsvorlage als Word- oder PDF-Datei anbinden
+4. Make-Szenario nach bezahlter Bestellung die Rechnung erzeugen lassen
+5. echte Bestell- und Rechnungs-E-Mail anbinden

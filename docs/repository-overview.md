@@ -4,7 +4,7 @@ Dieses Repository enthaelt die technische Grundlage fuer den IDP-Demonstrator.
 
 ## Struktur
 
-- `website/` - Shop-Prototyp mit Checkout und Rechnungspruefung
+- `website/` - Shop-Prototyp mit Checkout und Bestellmail-Demo
 - `supabase/` - SQL-Schema fuer Kunden, Bestellungen und Rechnungen
 - `make/` - Beispielpayload fuer die spaetere Automatisierung
 - `docs/` - fachliche Beschreibung des End-to-End-Prozesses
@@ -15,4 +15,4 @@ Dieses Repository enthaelt die technische Grundlage fuer den IDP-Demonstrator.
 2. Produkte aus Supabase laden
 3. Bestellungen in Supabase schreiben
 4. Make an bezahlte Bestellungen anbinden
-5. Rechnungsvorlage und Freigabestrecke anschliessen
+5. Rechnungsvorlage und E-Mail-Versandstrecke anschliessen
