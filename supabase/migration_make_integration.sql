@@ -88,11 +88,17 @@ BEGIN
       'items',           COALESCE(v_items, '[]'::jsonb)
     );
 
-    PERFORM net.http_post(
-      url     := 'https://hook.eu1.make.com/vm3pwrsejd6kr5guweytn17da2h237v7',
-      body    := v_payload::text,
-      headers := '{"Content-Type": "application/json", "x-make-apikey": "kara-webhook-2026-secure"}'::jsonb
-    );
+    BEGIN
+      PERFORM net.http_post(
+        url     := 'https://hook.eu1.make.com/vm3pwrsejd6kr5guweytn17da2h237v7',
+        body    := v_payload,
+        params  := '{}'::jsonb,
+        headers := '{"Content-Type": "application/json", "x-make-apikey": "kara-webhook-2026-secure"}'::jsonb
+      );
+    EXCEPTION WHEN OTHERS THEN
+      -- Webhook-Fehler soll die Bestellung nie blockieren
+      RAISE WARNING 'notify_make_order_paid: Webhook fehlgeschlagen: %', SQLERRM;
+    END;
 
   END IF;
   RETURN NEW;

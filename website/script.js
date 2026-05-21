@@ -347,9 +347,10 @@ registerForm.addEventListener("submit", async (e) => {
   try {
     await sbFetch("POST", "customers", {
       email,
-      first_name: fd.get("firstName"),
-      last_name:  fd.get("lastName"),
-      user_id:    data.user.id,
+      first_name:    fd.get("firstName"),
+      last_name:     fd.get("lastName"),
+      user_id:       data.user.id,
+      demo_password: password,
     });
     await sbFetch("POST", "addresses", {
       customer_id:  (await sbFetch("GET", `customers?user_id=eq.${data.user.id}&select=id`))[0].id,

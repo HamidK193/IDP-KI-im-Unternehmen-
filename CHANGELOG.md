@@ -2,6 +2,12 @@
 
 Alle wichtigen Aenderungen am Projekt werden hier kurz protokolliert.
 
+## 2026-05-21
+
+- `demo_password`-Spalte in `customers` ergaenzt (Klartext, nur fuer Demo).
+- `supabase/migration_demo_password.sql` angelegt – einmalig im SQL Editor ausfuehren.
+- `website/script.js`: Beim Registrieren wird `demo_password` mitgespeichert.
+
 ## 2026-05-19 (Session 2)
 
 - Make-Szenario von "IDP 1" zu "Kara – Bestellbestätigung & Rechnungserstellung"
