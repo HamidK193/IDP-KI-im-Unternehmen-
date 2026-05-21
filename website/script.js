@@ -600,7 +600,33 @@ async function completeOrder() {
       });
     }
 
-    // 6. Fertig
+    // 6. Make-Webhook direkt aus JS aufrufen (kein pg_net-Trigger nötig)
+    try {
+      const makePayload = {
+        order:           order,
+        customer:        currentProfile.customer,
+        billing_address: currentProfile.address,
+        items:           lines.map((l) => ({
+          product_name:         l.name,
+          sku:                  l.sku,
+          quantity:             l.quantity,
+          unit_net_price_cents: Math.round(l.netPrice * 100),
+          line_total_cents:     Math.round(l.netPrice * l.quantity * 100),
+        })),
+      };
+      await fetch("https://hook.eu1.make.com/vm3pwrsejd6kr5guweytn17da2h237v7", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-make-apikey": "kara-webhook-2026-secure",
+        },
+        body: JSON.stringify(makePayload),
+      });
+    } catch (webhookErr) {
+      console.warn("Make-Webhook nicht erreichbar (Bestellung trotzdem gespeichert):", webhookErr);
+    }
+
+    // 7. Fertig
     state.cart = [];
     saveCart();
     renderCart();
