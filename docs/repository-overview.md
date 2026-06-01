@@ -1,18 +1,30 @@
-# Repository Overview
+﻿# Repository Overview
 
-Dieses Repository enthaelt die technische Grundlage fuer den IDP-Demonstrator.
+Dieses Repository enthält die technische Grundlage für den
+IDP-Demonstrator "KI im Unternehmen".
 
 ## Struktur
 
-- `website/` - Shop-Prototyp mit Checkout und Bestellmail-Demo
-- `supabase/` - SQL-Schema fuer Kunden, Bestellungen und Rechnungen
-- `make/` - Beispielpayload fuer die spaetere Automatisierung
-- `docs/` - fachliche Beschreibung des End-to-End-Prozesses
+- `website/` - statischer Prototyp mit KI-Cockpit und Kara-Shop
+- `supabase/` - SQL-Schema für eine spätere Backend-Integration
+- `make/` - Beispielpayload für die spätere Automatisierung
+- `docs/` - fachliche Beschreibung von Use-Case, Architektur und Prozess
+- `docs/ki-cockpit-dokumentation.md` - zentrale Dokumentation des KI-Cockpits
+- `tools/` - Hilfsskripte für Projektartefakte
 
-## Naechste Schritte
+## Aktueller Fokus
 
-1. lokale Speicherung im Shop durch Supabase ersetzen
-2. Produkte aus Supabase laden
-3. Bestellungen in Supabase schreiben
-4. Make an bezahlte Bestellungen anbinden
-5. Rechnungsvorlage und E-Mail-Versandstrecke anschliessen
+Der Prototyp zeigt, wie ein kleines E-Commerce-KMU KI intern einsetzen kann:
+
+- Tagesbriefing für Mitarbeitende
+- Supportantworten vorbereiten
+- Rechnungen und Bestellungen prüfen
+- interne Prozessfragen beantworten
+- KI-Vorschläge menschlich freigeben oder ablehnen
+
+## Nächste Schritte
+
+1. KI-Cockpit im Browser und mobil testen.
+2. Präsentationsstory für die IDP-Abgabe finalisieren.
+3. Optional echte KI-API vorbereiten.
+4. Supabase und Make als spätere Ausbaustufe anbinden.

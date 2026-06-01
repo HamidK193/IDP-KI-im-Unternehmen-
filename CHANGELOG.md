@@ -1,11 +1,42 @@
-# CHANGELOG.md
+﻿# CHANGELOG.md
 
-Alle wichtigen Aenderungen am Projekt werden hier kurz protokolliert.
+Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
+
+## 2026-06-01
+
+- IDP fachlich von reinem Shop-/Rechnungsprozess auf "KI im Unternehmen"
+  neu ausgerichtet.
+- `website/index.html`: Neues `Kara AI Operations` Cockpit als primären
+  Einstieg ergänzt.
+- `website/script.js`: Lokale KI-Demo-Daten, Aufgaben, Supportfälle,
+  Knowledge Base, simulierte Claude/Codex-Vorschläge und Freigabe-/Ablehnlogik
+  ergänzt.
+- `website/styles.css`: Responsives Operations-Cockpit mit KPI-Bereich,
+  Aufgabenliste, Fallansicht und KI-Assistentenpanel gestaltet.
+- `README.md`, `docs/use-case.md`, `docs/architecture.md` und `memory.md`
+  auf den neuen KI-Demonstrator aktualisiert.
+- `docs/ki-cockpit-dokumentation.md` als zentrale Projektdokumentation
+  ergänzt.
+- Deutsche Texte auf echte Umlaute umgestellt und die Regel in `AGENTS.md`
+  festgehalten.
+- Lokale KI-Demo-Daten versioniert, damit alte Browserdaten mit
+  Ersatzschreibweisen automatisch ersetzt werden.
+- Abgabeplan für die ursprüngliche IDP-Aufgabenstellung ergänzt:
+  20-Seiten-Word-Dokument, 20-Minuten-Präsentation, LinkedIn-Beitrag und
+  Techday-/WI-Tag-Material.
+- `PLAN.md` als strukturierter Schritt-für-Schritt-Plan angelegt und
+  abgearbeitet.
+- `outputs/IDP_KI_kleine_Unternehmen_Dokumentation.docx` als Word-Entwurf für
+  die IDP-Dokumentation erzeugt.
+- `outputs/IDP_KI_kleine_Unternehmen_Präsentation.pptx` als editierbare
+  12-Folien-Präsentation für den 20-Minuten-Vortrag erzeugt.
+- LinkedIn-Beitrag, Techday-One-Pager und How-To-Leitfaden final im
+  `docs/`-Ordner ergänzt.
 
 ## 2026-05-21
 
-- `demo_password`-Spalte in `customers` ergaenzt (Klartext, nur fuer Demo).
-- `supabase/migration_demo_password.sql` angelegt – einmalig im SQL Editor ausfuehren.
+- `demo_password`-Spalte in `customers` ergänzt (Klartext, nur für Demo).
+- `supabase/migration_demo_password.sql` angelegt – einmalig im SQL Editor ausführen.
 - `website/script.js`: Beim Registrieren wird `demo_password` mitgespeichert.
 
 ## 2026-05-19 (Session 2)
@@ -21,9 +52,9 @@ Alle wichtigen Aenderungen am Projekt werden hier kurz protokolliert.
 - `docs/use-case.md` von Papierpfad auf Kara umgeschrieben.
 - `supabase/migration_make_integration.sql` neu angelegt:
   - pg_net Extension aktivieren
-  - RLS-Policies fuer Website (anon): INSERT customers, addresses, orders,
+  - RLS-Policies für Website (anon): INSERT customers, addresses, orders,
     order_items; SELECT products, invoices
-  - RLS-Policies fuer Make (anon): INSERT invoices, UPDATE orders status
+  - RLS-Policies für Make (anon): INSERT invoices, UPDATE orders status
   - Trigger-Funktion `notify_make_order_paid` + Trigger auf orders-Tabelle
     (feuert bei status = 'paid', sendet JSON-Payload an Make-Webhook)
 
@@ -40,26 +71,26 @@ Alle wichtigen Aenderungen am Projekt werden hier kurz protokolliert.
 ## 2026-05-19
 
 - Checkout auf Accountdaten-Flow umgebaut:
-  - `Zur Kasse` fuehrt angemeldete Kunden in einen eigenen Kassenbereich
-  - gespeicherte Accountdaten werden sichtbar uebernommen
+  - `Zur Kasse` führt angemeldete Kunden in einen eigenen Kassenbereich
+  - gespeicherte Accountdaten werden sichtbar übernommen
   - altes Checkout-Dateneingabeformular entfernt
   - Soll-Verhalten in `docs/checkout-account-flow.md` dokumentiert
-- Account-Dropdown fuer angemeldete Kunden ergaenzt:
-  - persoenliche Daten lassen sich nach Login anzeigen und bearbeiten
-  - gespeicherte Daten werden fuer den Checkout wiederverwendet
+- Account-Dropdown für angemeldete Kunden ergänzt:
+  - persönliche Daten lassen sich nach Login anzeigen und bearbeiten
+  - gespeicherte Daten werden für den Checkout wiederverwendet
   - Supabase-Auth-Migration um UPDATE-Rechte und eigene Adress-Policies
     erweitert
-- Kaeuferfluss vereinfacht:
+- Käuferfluss vereinfacht:
   - `website/review.html` und `website/review.js` entfernt
   - Checkout erzeugt jetzt direkt eine gesendete Demo-E-Mail in
     `kara_emails`
   - Rechnungen erhalten im Prototyp direkt den Status `sent`
   - Erfolgsdialog verweist nicht mehr auf eine Rechnungsfreigabe
-- Hero-Bild erneut ersetzt und hoeher gesetzt, damit Gesichter und Kleidung
+- Hero-Bild erneut ersetzt und höher gesetzt, damit Gesichter und Kleidung
   sichtbar bleiben.
 - Repository von `origin/main` aktualisiert:
   - letzter Stand nach Pull: `1b866fc`
-  - geaendert wurden `website/README.md`, `website/index.html`,
+  - geändert wurden `website/README.md`, `website/index.html`,
     `website/review.html`, `website/script.js`, `website/review.js` und
     `website/styles.css`
 - Website-Prototyp wurde fachlich und visuell von `Papierpfad Atelier` zu

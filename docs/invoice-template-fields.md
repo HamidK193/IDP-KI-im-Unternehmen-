@@ -1,4 +1,4 @@
-# Rechnungsvorlage: benoetigte Felder
+﻿# Rechnungsvorlage: benötigte Felder
 
 ## Kopfbereich
 
@@ -20,12 +20,12 @@
 - `{{subtotal_net}}`
 - `{{shipping_net}}`
 - `{{vat_amount}}`
-- `{{total_gross}}`
+- `{{total_groß}}`
 
 ## Positionen
 
-Die Word-Vorlage enthaelt zwei Beispielzeilen. Make kann diese Zeilen entweder
-direkt befuellen oder fuer weitere Produkte duplizieren.
+Die Word-Vorlage enthält zwei Beispielzeilen. Make kann diese Zeilen entweder
+direkt befüllen oder für weitere Produkte duplizieren.
 
 - `{{item_name_1}}`
 - `{{item_desc_1}}`
@@ -44,5 +44,5 @@ direkt befuellen oder fuer weitere Produkte duplizieren.
 - Word: `docs/templates/kara-rechnungsvorlage.docx`
 - PDF: `docs/templates/kara-rechnungsvorlage.pdf`
 
-Die Vorlage enthaelt Layout, Tabellenstruktur und Pflichttexte; Make fuellt nur
+Die Vorlage enthält Layout, Tabellenstruktur und Pflichttexte; Make füllt nur
 definierte Felder.

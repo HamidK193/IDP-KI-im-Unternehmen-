@@ -1,39 +1,39 @@
-# AGENTS.md
+﻿# AGENTS.md
 
 ## Zweck
 
-Diese Datei enthaelt allgemeine Arbeitsregeln und den verbindlichen Projektplan
-fuer dieses Repository.
+Diese Datei enthält allgemeine Arbeitsregeln und den verbindlichen Projektplan
+für dieses Repository.
 
 ## Allgemeine Arbeitsregeln
 
 - Halte den Code einfach, lesbar und gut erweiterbar.
-- Pflege `README.md`, `memory.md` und `CHANGELOG.md` nach groesseren Schritten.
+- Verwende in deutschen Texten immer echte Umlaute und `ß`.
+- Pflege `README.md`, `memory.md` und `CHANGELOG.md` nach größeren Schritten.
 - Dokumentiere fachliche Entscheidungen in `docs/`, damit der Projektstand auch
   in einem neuen Chat schnell verstanden werden kann.
 - Vermeide Overengineering. Das Projekt ist ein kleiner IDP-MVP.
-- Veraendere vorhandene Demo-Daten nur bewusst und dokumentiere den Grund.
+- Verändere vorhandene Demo-Daten nur bewusst und dokumentiere den Grund.
 - Halte Website-Prototyp, Supabase-Schema, Make-Konzept und Rechnungsprozess
   fachlich synchron.
 - Preise werden fachlich in Cent gedacht; der aktuelle Website-Prototyp nutzt
-  fuer die Demo noch Dezimalwerte in JavaScript.
+  für die Demo noch Dezimalwerte in JavaScript.
 - Der lokale Website-Prototyp speichert Daten aktuell in `localStorage`.
 
 ## Verbindlicher Projektplan
 
 ### Aktueller MVP
 
-- moderner Shop-Prototyp fuer das fiktive Unternehmen `Kara`
-- Produktkatalog mit Kategorien und Filterung
-- Warenkorb mit Mengensteuerung
-- Checkout mit Kundendaten und Adresse
-- lokale Speicherung von Kunden, Bestellungen und Rechnungsentwuerfen
-- direkte Bestell- und Rechnungsbestaetigung nach dem Checkout
-- geplantes Supabase-Datenmodell fuer Kunden, Adressen, Produkte,
-  Bestellungen, Positionen und Rechnungen
-- Make-Szenario als Zielprozess zwischen bezahlter Bestellung und
-  Rechnungsentwurf dokumentiert
-- Rechnungsfelder fuer eine Word- oder PDF-Vorlage dokumentiert
+- KI-Operations-Cockpit für das fiktive Unternehmen `Kara`
+- Kara als kleines E-Commerce-KMU mit ca. 20 bis 80 Mitarbeitenden
+- interaktive Demo, wie KI im Unternehmen genutzt werden kann
+- simulierte Claude/Codex-Vorschläge ohne API-Key und ohne echte Kundendaten
+- Tagesbriefing mit Kennzahlen, offenen Aufgaben, Risiken und Empfehlungen
+- Aufgaben für Support, Bestellung, Rechnung, Analyse und interne Wissensfrage
+- KI-Panel mit Prompt, Antwortvorschlag, Quelle, Risiko und Status
+- Human-in-the-loop: Vorschläge können freigegeben oder abgelehnt werden
+- bestehender Shop-Prototyp bleibt als sekundäre Datenquelle erhalten
+- Supabase- und Make-Konzept bleiben als spätere Ausbaustufe dokumentiert
 
 ### Relevante Quelldateien
 
@@ -51,30 +51,30 @@ fuer dieses Repository.
 
 ### Aktuelle Arbeitsschritte
 
-1. Shop-Prototyp lokal stabil halten.
-2. Dokumentation nach jedem groesseren Schritt aktualisieren.
-3. Supabase-Projekt vorbereiten und Schema einspielen.
-4. Produkte aus Supabase laden.
-5. Checkout-Bestellungen in Supabase schreiben.
-6. Make-Szenario an bezahlte Bestellungen anbinden.
-7. Rechnung aus Vorlage erzeugen.
-8. Rechnungsdatensatz in Supabase speichern.
-9. Bestell- und Rechnungs-E-Mail automatisiert versenden.
-10. Versandstatus nachvollziehbar speichern.
+1. KI-Cockpit lokal stabil halten.
+2. Shop-Prototyp als Datenquelle und Kontext erhalten.
+3. Dokumentation nach jedem größeren Schritt aktualisieren.
+4. Demo-Ablauf für die IDP-Präsentation finalisieren.
+5. Responsive Darstellung und Statuswechsel testen.
+6. Optional echte KI-Schnittstelle vorbereiten, aber Demo-Modus behalten.
+7. Supabase-Projekt später vorbereiten und Schema einspielen.
+8. Checkout-Bestellungen später in Supabase schreiben.
+9. Make-Szenario später an bezahlte Bestellungen anbinden.
+10. Rechnungs- und E-Mail-Prozess später produktionsnäher ausbauen.
 
-### Spaetere Erweiterungen
+### Spätere Erweiterungen
 
 - PDF- oder Word-Rechnungsvorlage als Datei im Prozess anbinden
-- echte E-Mail-Versandstrecke ueber Make oder Backend anbinden
+- echte E-Mail-Versandstrecke über Make oder Backend anbinden
 - Supabase Row Level Security Policies konkretisieren
 - Produkt- und Bestelldaten seedbar machen
-- Tests fuer Summenberechnung, Checkout und Rechnungsstatus ergaenzen
+- Tests für Summenberechnung, Checkout und Rechnungsstatus ergänzen
 - Deployment der statischen Website vorbereiten
 
-## Handover Bei Grossem Kontext
+## Handover Bei Großem Kontext
 
-Wenn der Kontext zu gross wird oder ein Agent die Arbeit an einen naechsten
-Agenten uebergibt, muss ein kompaktes, aber vollstaendiges Handover erstellt
+Wenn der Kontext zu groß wird oder ein Agent die Arbeit an einen nächsten
+Agenten übergibt, muss ein kompaktes, aber vollständiges Handover erstellt
 werden.
 
 ### Immer Einbeziehen
@@ -91,6 +91,6 @@ werden.
 
 - Das Handover soll kurz, klar und konkret sein.
 - Bereits getroffene Entscheidungen deutlich nennen.
-- Offene Aufgaben in sinnvoller Reihenfolge auffuehren.
+- Offene Aufgaben in sinnvoller Reihenfolge aufführen.
 - Wichtige Dateipfade immer explizit nennen.
 - Wenn externe Dienste oder Zugangsdaten fehlen, das klar vermerken.

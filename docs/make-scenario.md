@@ -1,6 +1,6 @@
-# Make-Szenario: End-to-End
+﻿# Make-Szenario: End-to-End
 
-## Ausloeser
+## Auslöser
 
 Supabase Webhook bei neuer Bestellung mit `status = paid`.
 
@@ -10,18 +10,18 @@ Supabase Webhook bei neuer Bestellung mit `status = paid`.
 2. Kunde laden
 3. Rechnungsadresse laden
 4. Bestellpositionen laden
-5. Betraege pruefen und Vorlagen-Mapping erzeugen
-6. Rechnungsvorlage befuellen
+5. Beträge prüfen und Vorlagen-Mapping erzeugen
+6. Rechnungsvorlage befüllen
 7. Rechnungseintrag in Supabase erzeugen
 8. Bestell- und Rechnungs-E-Mail versenden
 9. Bestellung auf `completed` setzen
 
-## Fehlerfaelle
+## Fehlerfälle
 
 - Kunde fehlt
-- Rechnungsadresse unvollstaendig
+- Rechnungsadresse unvollständig
 - Produktpreis oder Steuersatz fehlt
 - Bestellsumme passt nicht
 - Rechnung oder E-Mail bereits vorhanden
 
-In allen Fehlerfaellen wird kein Versand ausgeloest und der Fall muss intern geprueft werden.
+In allen Fehlerfällen wird kein Versand ausgelöst und der Fall muss intern geprüft werden.

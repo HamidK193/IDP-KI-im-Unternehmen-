@@ -1,104 +1,78 @@
-# memory.md
+﻿# memory.md
 
-## Projektgedaechtnis
+## Projektgedächtnis
 
 ### Projekt
 
 - Repository: `IDP-KI-im-Unternehmen-`
-- Thema: IDP-Demonstrator fuer einen automatisierten Bestell- und
-  Rechnungsprozess
-- Aktueller Shop-Kontext: `Kara`, fiktiver Luxury-Streetwear-Shop
-- Sprache/Technik aktuell:
-  - statische Website mit HTML, CSS und JavaScript
-  - Supabase-Schema als SQL-Datei
-  - Make-Szenario als dokumentierter Zielprozess
+- Thema: IDP-Demonstrator für KI-Nutzung in einem kleinen Unternehmen
+- Aktueller Unternehmenskontext: `Kara`, fiktives E-Commerce-KMU für
+  Luxury-Streetwear
+- Ziel: zeigen, wie KI Mitarbeitende bei Support, Bestellungen, Rechnungen,
+  Wissensfragen und Auswertungen unterstützt
 
 ### Aktueller Stand
 
-- Der lokale Branch `main` ist nach dem Pull vom 2026-05-19 auf
-  `origin/main`.
-- Letzter bekannter Commit nach Pull: `1b866fc`.
-- Die Website liegt in `website/`.
-- Einstieg Shop: `website/index.html`.
-- Die Website speichert Demo-Daten aktuell im Browser-`localStorage`.
-- Der Storage-Prefix ist `kara`.
-- Relevante Storage-Collections:
-  - `kara_cart`
-  - `kara_customers`
-  - `kara_orders`
-  - `kara_invoices`
-  - `kara_emails`
-- Der Produktkatalog ist in `website/script.js` als JavaScript-Array
-  hinterlegt.
-- Produkte haben `sku`, `name`, `category`, `description`, `netPrice`,
-  `vatRate` und `image`.
-- Der Warenkorb berechnet:
-  - Zwischensumme netto
-  - Versand netto
-  - Umsatzsteuer
-  - Gesamtbetrag brutto
-- Nach dem Checkout wird eine Demo-E-Mail mit Status `sent` in
-  `kara_emails` gespeichert.
-- Rechnungen erhalten im Shop-Prototyp direkt den Status `sent`.
-- Angemeldete Kunden haben ein Account-Dropdown mit bearbeitbaren
-  persoenlichen Daten. Diese Daten werden im Checkout automatisch
-  vorausgefuellt.
-- Der Checkout ist ein eigener Kassenbereich auf der Seite. Angemeldete Kunden
-  sehen dort ihre uebernommenen Accountdaten und den Warenkorb und muessen nur
-  noch den Kauf abschliessen.
-- Das Supabase-Schema liegt in `supabase/schema.sql`.
-- Geplante Tabellen:
-  - `customers`
-  - `addresses`
-  - `products`
-  - `orders`
-  - `order_items`
-  - `invoices`
-- RLS wird im Schema fuer alle Tabellen aktiviert, konkrete Policies fehlen
-  noch.
-- Das Make-Konzept liegt in `docs/make-scenario.md`.
-- Ein Beispielpayload liegt in `make/payload-example.json`.
+- Primärer Einstieg ist jetzt das `Kara AI Operations` Cockpit in
+  `website/index.html`.
+- Der bestehende Shop bleibt darunter als Datenquelle und Demo-Prozess erhalten.
+- Die KI ist im MVP simuliert und benötigt keinen API-Key.
+- Claude/Codex wird als möglicher interner Assistent erklärt.
+- Die Demo zeigt Human-in-the-loop: KI-Vorschläge können freigegeben oder
+  abgelehnt werden.
+- Lokale Speicherung erfolgt im Browser-`localStorage`.
+- Storage-Prefix ist `kara`.
+
+### Relevante lokale Collections
+
+- `kara_ai_tasks`
+- `kara_support_cases`
+- `kara_ai_runs`
+- `kara_knowledge_base`
+- `kara_cart`
+- `kara_customers`
+- `kara_orders`
+- `kara_invoices`
+- `kara_emails`
 
 ### Wichtige fachliche Entscheidungen
 
-- Der aktuelle Website-Prototyp ist ein Demo-Frontend, noch keine echte
-  Backend-Integration.
-- Supabase ist als operative Datenbasis geplant.
-- Make soll den Prozess nach einer bezahlten Bestellung orchestrieren.
-- Eine Rechnung wird als eigener Datensatz modelliert.
-- Bestellpositionen sollen Preis-Snapshots speichern.
-- Kunden und Adressen werden getrennt modelliert.
-- Rechnungen sollen nach dem Kauf direkt per E-Mail versendet werden.
+- Fokus liegt nicht mehr auf einem reinen Shop-/Rechnungsprozess, sondern auf
+  dem Nachweis "KI im Unternehmen".
+- Zielunternehmen ist ein kleines KMU mit ca. 20 bis 80 Mitarbeitenden.
+- KI erstellt Vorschläge, Zusammenfassungen und Prüfhinweise.
+- Menschliche Freigabe bleibt für Kundenantworten, Rechnungen und operative
+  Entscheidungen sichtbar.
+- Keine echten Kundendaten und keine externen KI-Requests im MVP.
+- Supabase und Make bleiben als spätere Ausbaustufe dokumentiert.
+- Die IDP-Abgabe wird über `PLAN.md` gesteuert; der Plan ist aktuell
+  abgearbeitet.
+- Word-Dokumentation und PowerPoint-Präsentation liegen unter `outputs/`.
+- LinkedIn-Beitrag, Techday-One-Pager und How-To-Leitfaden liegen unter `docs/`.
 
-### Aktuelle Ziele
+### Relevante Dateien
 
-- Dokumentation auf dem Stand der Website halten.
-- Supabase-Anbindung als naechsten technischen Schwerpunkt vorbereiten.
-- Produktdaten aus dem Hardcode in eine Datenquelle ueberfuehren.
-- Checkout so umbauen, dass Kunden, Adressen, Bestellungen und Positionen in
-  Supabase geschrieben werden.
-- Make-Szenario an bezahlte Bestellungen anbinden.
-- Rechnung real erzeugen und per E-Mail versenden.
-- echten E-Mail-Versand ueber Make oder Backend anbinden.
+- `website/index.html` - KI-Cockpit, Shop, Checkout
+- `website/script.js` - KI-Demo-Daten, KI-Simulation, Shop-Logik
+- `website/styles.css` - Cockpit- und Shop-Design
+- `docs/use-case.md` - fachlicher KI-Use-Case
+- `docs/architecture.md` - Prozessfluss und Zielarchitektur
+- `docs/repository-overview.md` - Repo-Überblick
+- `docs/how-to-leitfaden-ki-kmu.md` - praktischer KI-Einstiegsleitfaden
+- `docs/linkedin-post.md` - LinkedIn-Beitrag
+- `docs/techday-one-pager.md` - Techday-/WI-Tag-Material
+- `outputs/IDP_KI_kleine_Unternehmen_Dokumentation.docx` - Word-Dokumentation
+- `outputs/IDP_KI_kleine_Unternehmen_Präsentation.pptx` - PowerPoint-Präsentation
+- `PLAN.md` - abgearbeiteter Schritt-für-Schritt-Plan
+- `supabase/schema.sql` - späteres Backend-Datenmodell
+- `make/payload-example.json` - späterer Automationspayload
 
-### Bekannte offene Punkte
+### Offene Punkte
 
-- Supabase ist noch nicht in die Website integriert.
-- Es gibt noch keine konkreten RLS-Policies.
-- Es gibt noch keine Seed-Daten fuer Produkte.
-- Es gibt noch keine automatisierten Tests.
-- Es gibt noch keine echte Word- oder PDF-Rechnungsvorlage im Repository.
-- Das Beispielpayload passt fachlich noch zum alten Papierpfad-Use-Case und
-  sollte fuer Kara aktualisiert werden.
-- Einige Texte in den frisch gepullten Website-Dateien koennen je nach
-  Editor/Terminal als Zeichenkodierungs-Mojibake erscheinen; vor groesseren
-  Textkorrekturen sollte die Datei mit UTF-8 geprueft werden.
-
-### Spaetere Erweiterungen
-
-- E-Mail-Templates fuer Bestellbestaetigung und Rechnung.
-- Produktpflege oder Produkt-Seeds ueber Supabase.
-- Statushistorie fuer Bestellungen und Rechnungen.
-- Export fuer Excel-Pruefliste.
-- Deployment der Website.
-- Kleine Test-Suite fuer Berechnungen und Statuswechsel.
+- Word-Dokumentation in Word öffnen und Inhaltsverzeichnis bei Bedarf
+  aktualisieren.
+- PowerPoint im Präsentationsmodus durchgehen und Sprechanteile final festlegen.
+- Browser- und Mobilansicht vor der Abgabe kurz prüfen.
+- Optional echte KI-Schnittstelle vorbereiten, aber Demo-Modus behalten.
+- Optional Supabase/Make wieder an den Prozess anbinden.
+- Tests für KI-Statuswechsel und lokale Speicherung ergänzen.

@@ -1,24 +1,25 @@
-# Handover fuer den naechsten Chat
+﻿# Handover für den nächsten Chat
 
 ## Projekt
 
 - Repository: `IDP-KI-im-Unternehmen-`
-- Thema: IDP-Demonstrator fuer einen automatisierten Bestell- und
-  Rechnungsprozess
+- Thema: IDP-Demonstrator für KI-Nutzung in einem kleinen Unternehmen
 - Aktueller Branch: `main`
-- Letzter bekannter Commit nach Pull: `1b866fc`
-- Aktueller Website-Kontext: `Kara`, fiktiver Luxury-Streetwear-Shop
+- Aktueller Website-Kontext: `Kara`, fiktives E-Commerce-KMU für
+  Luxury-Streetwear
 
 ## Wichtigste Projektidee
 
-Ein Shop nimmt Bestellungen entgegen. Die operativen Daten sollen in Supabase
-gespeichert werden. Danach soll Make automatisch eine Rechnung aus einer
-Vorlage erzeugen und die Bestell- bzw. Rechnungs-E-Mail direkt versenden.
+Kara nutzt ein internes KI-Operations-Cockpit, um zu zeigen, wie KI im
+Unternehmen praktisch eingesetzt werden kann. Die KI erstellt Vorschläge für
+Support, Rechnungsprüfung, Bestellrisiken, Auswertungen und interne
+Wissensfragen. Mitarbeitende prüfen die Vorschläge und geben sie frei oder
+lehnen sie ab.
 
-Zielprozess:
+Aktueller Zielprozess:
 
 ```text
-Website-Kauf -> Supabase -> Make -> Word/PDF-Rechnung -> E-Mail-Versand -> Kunde
+Shop-/Backoffice-Daten -> KI-Cockpit -> KI-Vorschlag -> menschliche Prüfung -> Freigabe oder Ablehnung
 ```
 
 ## Relevante Dateien zuerst lesen
@@ -28,75 +29,67 @@ Website-Kauf -> Supabase -> Make -> Word/PDF-Rechnung -> E-Mail-Versand -> Kunde
 3. `memory.md`
 4. `CHANGELOG.md`
 5. `docs/repository-overview.md`
-6. `docs/architecture.md`
-7. `docs/data-model.md`
-8. `docs/make-scenario.md`
-9. `docs/invoice-template-fields.md`
+6. `docs/use-case.md`
+7. `docs/architecture.md`
+8. `website/README.md`
 
 ## Zentrale Code-Dateien
 
 - `website/index.html`
-  - Shop, Startseite, Warenkorb, Checkout-Dialog und Erfolgsdialog
+  - KI-Cockpit, Shop, Warenkorb, Account und Checkout
 - `website/script.js`
-  - Produktdaten, Filter, Warenkorb, Checkout, lokale Speicherung
+  - KI-Demo-Daten, KI-Simulation, Statuswechsel, Shop- und Checkout-Logik
 - `website/styles.css`
-  - kompletter visueller Aufbau der Shop- und Review-Seiten
+  - responsives Operations-Cockpit und bestehendes Shop-Design
 - `supabase/schema.sql`
-  - geplantes Datenmodell fuer den spaeteren Backend-Stand
+  - geplantes Datenmodell für einen späteren Backend-Stand
 - `make/payload-example.json`
-  - Beispielpayload fuer Automatisierungsdaten
+  - Beispielpayload für eine spätere Automatisierung
 
 ## Aktueller App-Stand
 
+### KI-Cockpit
+
+- primärer Einstieg der Website
+- KPI-Übersicht und Tagesbriefing
+- Aufgabenliste für Support, Rechnung, Bestellung, Analyse und Wissen
+- simuliertes Claude/Codex-Panel mit Prompt, Antwort, Quelle, Risiko und Status
+- Freigabe/Ablehnung speichert Status lokal
+- keine echten KI-Requests und kein API-Key nötig
+
 ### Shop
 
-- Luxus-Streetwear-Shop fuer `Kara`
+- Kara-Shop bleibt als sekundäre Datenquelle erhalten
 - Produktkatalog mit Kategorien und Produktbildern
-- Filter nach Kategorie
 - Warenkorb mit Mengensteuerung
-- Checkout mit Kundendaten und Adresse
-- Bestellung wird lokal im Browser gespeichert
-
-### E-Mail-Demo
-
-- Checkout speichert eine gesendete Demo-E-Mail in `kara_emails`
-- Rechnungen werden im Prototyp direkt auf `sent` gesetzt
-- der Kunde wird nach dem Kauf nicht auf eine Freigabeseite geschickt
+- Account-/Checkout-Fluss bleibt vorhanden
 
 ### Datenhaltung
 
-- aktuell nur `localStorage`
-- geplantes Ziel: Supabase
+- aktuell lokal per `localStorage`
+- neue Collections: `kara_ai_tasks`, `kara_support_cases`, `kara_ai_runs`,
+  `kara_knowledge_base`
+- geplantes Ziel: Supabase/Make als spätere Ausbaustufe
 
-## Wichtige technische Entscheidungen
+## Wichtige Entscheidungen
 
-- Der aktuelle Prototyp soll klein und kursgerecht bleiben.
-- Die Website ist bewusst ohne Build-System gehalten.
-- Supabase-Schema und Make-Dokumentation bilden den Zielprozess ab.
-- Rechnungsdatensatz und Bestellung sind getrennte Konzepte.
+- IDP-Fokus ist jetzt "KI im Unternehmen", nicht nur Rechnungsautomatisierung.
+- Zielunternehmen ist ein kleines KMU mit 20 bis 80 Mitarbeitenden.
+- KI ist im MVP simuliert, damit die Demo stabil und datenschutzarm bleibt.
+- Human-in-the-loop ist sichtbar: keine automatische Kunden- oder
+  Rechnungsentscheidung.
+- Supabase und Make bleiben dokumentiert, aber sind nicht Kern der aktuellen
+  Demo.
 
-## Bekannte offene Probleme / naechste sinnvolle Aufgaben
+## Bekannte offene Aufgaben
 
-### 1. Supabase-Anbindung
+1. KI-Cockpit im Browser und mobil prüfen.
+2. Präsentationsablauf für die neue KI-Story finalisieren.
+3. Optional kleine Tests für KI-Statuswechsel und lokale Speicherung bauen.
+4. Optional echte KI-API vorbereiten, aber Demo-Modus behalten.
+5. Später Supabase/Make wieder anbinden.
 
-- Produkte aus Supabase laden.
-- Kunden und Adressen in Supabase schreiben.
-- Bestellungen und Bestellpositionen in Supabase schreiben.
-- Rechnungen aus Supabase lesen und aktualisieren.
-
-### 2. Dokumente aktualisieren
-
-- `make/payload-example.json` noch auf Kara anpassen.
-- `docs/use-case.md` noch von Papierpfad auf Kara aktualisieren.
-- `docs/invoice-template-fields.md` bei konkreter Vorlage erweitern.
-
-### 3. Qualitaet und Tests
-
-- Summenberechnung testbar auslagern.
-- E-Mail-Status und Checkout-Erfolg absichern.
-- Optional kleinen Smoke-Test fuer die statische Website ergaenzen.
-
-## Handover-Prompt fuer den naechsten Agenten
+## Handover-Prompt für den nächsten Agenten
 
 ```text
 Arbeite im Repository `IDP-KI-im-Unternehmen-`.
@@ -107,24 +100,22 @@ Lies zuerst:
 3. memory.md
 4. CHANGELOG.md
 5. docs/handover_next_chat.md
-6. docs/architecture.md
-7. docs/data-model.md
-8. docs/make-scenario.md
+6. docs/use-case.md
+7. docs/architecture.md
+8. website/README.md
 
 Aktueller Stand:
-- Branch main
-- letzter bekannter Commit nach Pull: 1b866fc
-- statischer Kara-Shop in website/
-- lokale Speicherung per localStorage
-- Supabase-Schema in supabase/schema.sql
-- Make-Zielprozess dokumentiert
+- statische Website in website/
+- primärer Einstieg: Kara AI Operations Cockpit
+- KI-Vorschläge werden lokal simuliert
+- Human-in-the-loop mit Freigabe/Ablehnung
+- Shop bleibt als Datenquelle darunter erhalten
 
 Wichtige offene Aufgabe:
-- Supabase-Anbindung planen und implementieren oder zuerst die Dokumentation
-  von Papierpfad auf Kara aktualisieren.
+- Browser-/Mobiltest und Präsentationsstory für "KI im Unternehmen" finalisieren.
 
 Wichtige Regeln:
 - Bestehende Doku-Dateien aktuell halten.
-- README.md, memory.md und CHANGELOG.md nach groesseren Schritten pflegen.
-- Prototyp klein halten und keine unnoetige Architektur einfuehren.
+- README.md, memory.md und CHANGELOG.md nach größeren Schritten pflegen.
+- Prototyp klein halten und keine unnötige Architektur einfuehren.
 ```

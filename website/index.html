@@ -1,20 +1,20 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kara | Luxury Streetwear</title>
+    <title>Kara AI Operations | KI im Unternehmen</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="promo-bar" aria-label="Shop Hinweise">
-      <span>International Shipping</span>
-      <span>Easy Returns</span>
-      <span>Highest Quality since 2016</span>
+    <div class="promo-bar" aria-label="Demo Hinweise">
+      <span>KI-Demo für kleine Unternehmen</span>
+      <span>Human-in-the-loop</span>
+      <span>Stabil ohne API-Key</span>
     </div>
 
     <header class="topbar">
-      <a class="brand-lockup" href="#home" aria-label="Kara Startseite">
+      <a class="brand-lockup" href="#aiCockpit" aria-label="Kara AI Operations Startseite">
         <span class="logo-wordmark" aria-hidden="true">
           <svg viewBox="0 0 132 86" role="img">
             <path class="wing" d="M34 8c-11 12-15 24-12 36 3 13 13 23 31 30-8-10-12-20-12-31 0-12 5-24 15-36-9 4-16 9-22 15 1-6 1-10 0-14Z" />
@@ -24,13 +24,13 @@
         </span>
       </a>
       <nav class="nav-links primary-nav" aria-label="Hauptnavigation">
-        <a href="#collection">New In</a>
-        <a href="#productsTitle">Shop All</a>
-        <a href="#productsTitle">Basics</a>
-        <a href="#atelier">Brand</a>
+        <a href="#aiCockpit">AI Cockpit</a>
+        <a href="#aiTasks">Aufgaben</a>
+        <a href="#aiProcess">Prozess</a>
+        <a href="#productsTitle">Shop Demo</a>
       </nav>
       <nav class="nav-links utility-nav" aria-label="Shop Navigation">
-        <a href="#productsTitle">Search</a>
+        <a href="#productsTitle">Datenquelle</a>
         <button id="accountButton" class="nav-text-button" aria-label="Account">Account</button>
         <div id="accountMenu" class="account-menu" hidden>
           <button id="accountMenuButton" class="nav-text-button account-menu-button" type="button">
@@ -38,7 +38,7 @@
             <span aria-hidden="true">▾</span>
           </button>
         </div>
-        <a href="#atelier">Loyalty</a>
+        <a href="#atelier">Kontext</a>
         <button id="cartButton" class="cart-button" aria-label="Warenkorb öffnen">
           Cart (<strong id="cartCount">0</strong>)
         </button>
@@ -46,18 +46,109 @@
     </header>
 
     <main id="home" class="home-view">
-      <section class="hero">
+      <section id="aiCockpit" class="ai-cockpit" aria-labelledby="aiCockpitTitle">
+        <div class="ai-cockpit-hero">
+          <div class="ai-hero-copy">
+            <p class="section-label">Kara AI Operations</p>
+            <h1 id="aiCockpitTitle">KI im <span class="ai-title-break">Unternehmen</span> sichtbar machen.</h1>
+            <p>
+              Ein kleines E-Commerce-KMU nutzt einen internen KI-Assistenten,
+              um Support, Bestellungen, Rechnungen und operative Auswertungen
+              schneller zu bearbeiten. Die Demo zeigt Vorschläge, Quellen,
+              Risiken und menschliche Freigabe.
+            </p>
+            <div class="ai-hero-actions">
+              <a class="primary-button" href="#aiTasks">Demo starten</a>
+              <a class="secondary-button ghost" href="#productsTitle">Shop als Datenquelle ansehen</a>
+            </div>
+          </div>
+          <div class="ai-signal-board" aria-label="KI Demo Kennzahlen">
+            <span>Unternehmensgröße: 20-80 Mitarbeitende</span>
+            <span>Assistent: Claude/Codex simuliert</span>
+            <span>Prinzip: Mensch prüft vor Freigabe</span>
+          </div>
+        </div>
+
+        <div id="aiKpis" class="ai-kpi-grid" aria-label="Tageskennzahlen"></div>
+
+        <div class="ai-workspace" aria-label="Kara KI Operations Cockpit">
+          <aside id="aiTasks" class="ai-task-rail" aria-labelledby="aiTasksTitle">
+            <div class="ai-panel-heading">
+              <p class="section-label">Operative Aufgaben</p>
+              <h2 id="aiTasksTitle">Heute priorisiert</h2>
+              <p>Wähle einen Fall aus und lasse den internen KI-Assistenten einen Vorschlag erzeugen.</p>
+            </div>
+            <div id="aiTaskList" class="ai-task-list"></div>
+          </aside>
+
+          <section class="ai-command-center" aria-labelledby="aiBriefingTitle">
+            <div class="ai-briefing-panel">
+              <div class="ai-panel-heading">
+                <p class="section-label">Tagesbriefing</p>
+                <h2 id="aiBriefingTitle">Was die KI zuerst sieht</h2>
+              </div>
+              <p id="aiBriefingText" class="ai-briefing-text"></p>
+              <ul id="aiRecommendations" class="ai-recommendations"></ul>
+            </div>
+
+            <article id="aiCasePanel" class="ai-case-panel" aria-live="polite"></article>
+
+            <div id="aiProcess" class="ai-process-strip" aria-label="KI Prozess">
+              <span>1. Daten sammeln</span>
+              <span>2. KI-Vorschlag erzeugen</span>
+              <span>3. Risiko prüfen</span>
+              <span>4. Mensch gibt frei</span>
+            </div>
+          </section>
+
+          <aside class="ai-assistant-panel" aria-labelledby="aiAssistantTitle">
+            <div class="ai-assistant-header">
+              <div>
+                <p class="section-label">Simulierter Assistent</p>
+                <h2 id="aiAssistantTitle">Claude / Codex</h2>
+              </div>
+              <span id="aiRunStatus" class="status-pill">draft</span>
+            </div>
+            <div class="ai-prompt-box">
+              <span>Prompt</span>
+              <p id="aiPromptText"></p>
+            </div>
+            <div class="ai-response-box">
+              <span>Antwortvorschlag</span>
+              <p id="aiResponseText"></p>
+            </div>
+            <dl class="ai-meta-list">
+              <div>
+                <dt>Quelle</dt>
+                <dd id="aiSourceText"></dd>
+              </div>
+              <div>
+                <dt>Risiko</dt>
+                <dd id="aiRiskText"></dd>
+              </div>
+            </dl>
+            <div class="ai-assistant-actions">
+              <button id="aiGenerateButton" class="primary-button" type="button">Vorschlag erzeugen</button>
+              <button id="aiApproveButton" class="secondary-button" type="button">Freigeben</button>
+              <button id="aiRejectButton" class="secondary-button" type="button">Ablehnen</button>
+              <button id="aiResetButton" class="nav-text-button" type="button">Demo zurücksetzen</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="shopDemo" class="hero shop-demo-hero">
         <div class="hero-media" aria-label="Luxuriöse Streetwear Editorial Aufnahme"></div>
         <div class="hero-copy">
-          <p class="section-label">New in</p>
-          <h1>Winter Collection</h1>
+          <p class="section-label">Shop als Datenquelle</p>
+          <h1>Kara Commerce Demo</h1>
           <p>
             Kara verbindet hochwertige Designer-Silhouetten mit
             tragbarer Streetwear: lange Mäntel, schwere Knitwear, klare Hosen
             und reduzierte Essentials.
           </p>
           <div class="hero-actions">
-            <a class="primary-button" href="#productsTitle">Shop now</a>
+            <a class="primary-button" href="#productsTitle">Shop ansehen</a>
           </div>
         </div>
       </section>
@@ -140,7 +231,7 @@
         <div class="account-page-copy">
           <p class="section-label">Account</p>
           <h1>Meine Daten</h1>
-          <p id="accountPageStatus">Melde dich an, um deine Daten fuer den naechsten Einkauf zu speichern.</p>
+          <p id="accountPageStatus">Melde dich an, um deine Daten für den nächsten Einkauf zu speichern.</p>
         </div>
         <div class="account-page-panel">
           <div id="accountAuthPanel">
@@ -164,7 +255,7 @@
                 <input required type="email" name="email" autocomplete="email" />
               </label>
               <label>
-                Strasse und Hausnummer
+                Straße und Hausnummer
                 <input required name="street" autocomplete="street-address" />
               </label>
               <div class="profile-row">
@@ -208,9 +299,9 @@
           </div>
           <div class="checkout-method-box">
             <span>Zahlung</span>
-            <strong>Demo-Zahlung bestaetigt</strong>
+            <strong>Demo-Zahlung bestätigt</strong>
           </div>
-          <button id="confirmCheckoutButton" class="primary-button checkout-pay-button" type="button">Kauf abschliessen</button>
+          <button id="confirmCheckoutButton" class="primary-button checkout-pay-button" type="button">Kauf abschließen</button>
         </div>
         <aside class="checkout-summary-panel">
           <div id="checkoutSummary"></div>
@@ -321,7 +412,7 @@
           </svg>
         </span>
       </div>
-      <p>Fiktiver Luxury-Streetwear-Shop für den IDP-Demonstrator.</p>
+      <p>Fiktives KMU für den IDP-Demonstrator: KI im Unternehmen mit menschlicher Freigabe.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>

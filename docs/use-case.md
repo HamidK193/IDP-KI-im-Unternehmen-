@@ -1,17 +1,16 @@
-# End-to-End-Use-Case
+﻿# End-to-End-Use-Case
 
 ## Grundidee
 
-Ein kleiner spezialisierter Online-Shop verkauft kuratierte Luxury-Streetwear.
-Nach einem Kauf auf der Website soll der Prozess so weit automatisiert ablaufen,
-dass:
+Der IDP zeigt, wie ein kleines Unternehmen KI sinnvoll im Arbeitsalltag nutzen
+kann. Kara ist ein fiktives E-Commerce-KMU mit etwa 20 bis 80 Mitarbeitenden.
+Das Unternehmen verkauft kuratierte Luxury-Streetwear und muss täglich
+Supportanfragen, Bestellungen, Rechnungen und operative Entscheidungen
+bearbeiten.
 
-1. der Kunde mit seinen relevanten Daten einmal sauber in Supabase gespeichert
-   wird,
-2. die Bestellung mit Positionen, Preisen und Status nachvollziehbar vorliegt,
-3. automatisch ein Rechnungsentwurf erzeugt wird,
-4. eine Bestellbestätigungs-E-Mail direkt an den Kunden versendet wird,
-5. eine verantwortliche Person Rechnung freigeben und versenden kann.
+Die Demo zeigt einen internen KI-Assistenten für Mitarbeitende. Die KI
+erstellt Vorschläge und Prüfhinweise, aber die Entscheidung bleibt beim
+Menschen.
 
 ## Fiktives Unternehmen
 
@@ -19,14 +18,44 @@ dass:
 
 **Kara**
 
-### Geschaeftsidee
+### Geschäftsidee
 
-Kara ist ein moderner Online-Shop fuer hochwertige, kuratierte
+Kara ist ein moderner Online-Shop für hochwertige, kuratierte
 Luxury-Streetwear-Kollektionen. Das Sortiment umfasst Outerwear, Knitwear,
 Tailoring, Essentials, Denim, Shirts und Accessories.
 
+### Unternehmensgröße
+
+Kara wird als kleines KMU verstanden:
+
+- 20 bis 80 Mitarbeitende
+- kleines Support- und Backoffice-Team
+- keine eigene große IT-Abteilung
+- hoher Bedarf an einfachen, sicheren KI-Werkzeugen
+
 ## Zielprozess
 
+```text
+Shop-/Backoffice-Daten -> KI-Cockpit -> Vorschlag -> menschliche Prüfung -> Freigabe oder Ablehnung
 ```
-Website-Kauf -> Supabase -> Make -> Rechnung (needs_review) -> E-Mail an Kunden
-```
+
+## Gezeigte KI-Anwendungsfälle
+
+1. **Tagesbriefing**: Die KI fasst Umsatz, offene Aufgaben, Risiken und nächste
+   Schritte für das Team zusammen.
+2. **Support-Assistent**: Die KI entwirft Antworten auf Kundenanfragen, zum
+   Beispiel zu Retouren oder Adressänderungen.
+3. **Rechnungsprüfung**: Die KI erkennt fehlende Daten oder unstimmige
+   Rechnungsfelder.
+4. **Bestellprüfung**: Die KI warnt vor operativen Risiken wie falscher Adresse
+   oder knappem Bestand.
+5. **Wissensassistent**: Die KI beantwortet interne Prozessfragen anhand einer
+   kleinen Knowledge Base.
+
+## Grenzen der Demo
+
+- keine echten Kundendaten
+- keine echte externe KI-Anfrage
+- keine automatische Entscheidung durch KI
+- keine produktive Datenschutzfreigabe
+- Supabase und Make bleiben als spätere Integrationsstufe dokumentiert

@@ -1,9 +1,28 @@
-// ─── Supabase ────────────────────────────────────────────────
+﻿// ─── Supabase ────────────────────────────────────────────────
 const SUPABASE_URL = "https://eqysqzuoeceqdevzlozh.supabase.co";
 const SUPABASE_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVxeXNxenVvZWNlcWRldnpsb3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5NDMzNjUsImV4cCI6MjA5NDUxOTM2NX0.beXhi9xak--i914WPXlVpu3spujxjEyH5SrYFIxKqBM";
 
-const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const sb = window.supabase?.createClient
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
+  : {
+      auth: {
+        async getSession() {
+          return { data: { session: null } };
+        },
+        async getUser() {
+          return { data: { user: null } };
+        },
+        onAuthStateChange() {},
+        async signOut() {},
+        async signInWithPassword() {
+          return { data: {}, error: new Error("Supabase ist in der lokalen KI-Demo nicht geladen.") };
+        },
+        async signUp() {
+          return { data: {}, error: new Error("Supabase ist in der lokalen KI-Demo nicht geladen.") };
+        },
+      },
+    };
 
 // aktuelles JWT-Token oder Anon-Key für REST-Aufrufe
 async function getToken() {
@@ -49,10 +68,111 @@ const products = [
 ];
 
 const storagePrefix = "kara";
+const aiDemoDataVersion = "2026-06-01-umlaute-1";
 const shippingNet   = 6.9;
 const state = {
   cart:     JSON.parse(localStorage.getItem(`${storagePrefix}_cart`) || "[]"),
   category: "Alle",
+};
+
+const aiTaskDefaults = [
+  {
+    id: "support-retoure",
+    type: "support",
+    title: "Kundenmail zu Retoure beantworten",
+    owner: "Customer Care",
+    priority: "hoch",
+    status: "open",
+    linkedCaseId: "case-1007",
+    source: "Support Inbox",
+    impact: "Antwortzeit unter 10 Minuten halten",
+  },
+  {
+    id: "invoice-check",
+    type: "invoice",
+    title: "Rechnung RE-2026-0041 prüfen",
+    owner: "Backoffice",
+    priority: "mittel",
+    status: "open",
+    source: "Rechnungsentwurf",
+    impact: "Fehler vor Versand erkennen",
+  },
+  {
+    id: "order-risk",
+    type: "order",
+    title: "Bestellung KA-2026-0042 absichern",
+    owner: "Operations",
+    priority: "hoch",
+    status: "open",
+    source: "Checkout + Warenkorb",
+    impact: "Teillieferung vermeiden",
+  },
+  {
+    id: "sales-analysis",
+    type: "analysis",
+    title: "Tagesumsatz zusammenfassen",
+    owner: "Management",
+    priority: "niedrig",
+    status: "open",
+    source: "Shop Demo + lokale Orders",
+    impact: "Entscheidung für nächste Aktion",
+  },
+  {
+    id: "knowledge-policy",
+    type: "knowledge",
+    title: "Interne Prozessfrage klären",
+    owner: "Team Lead",
+    priority: "mittel",
+    status: "open",
+    source: "Kara Knowledge Base",
+    impact: "Einheitliche Antwort im Team",
+  },
+];
+
+const supportCaseDefaults = [
+  {
+    id: "case-1007",
+    customer: "Lea Sommer",
+    subject: "Retoure für Double Face Coat Onyx",
+    message:
+      "Ich habe den Mantel gestern erhalten. Die Größe passt nicht, aber ich möchte ihn gegen eine Nummer kleiner tauschen. Wie gehe ich vor?",
+    sentiment: "neutral",
+    orderNumber: "KA-2026-0038",
+  },
+  {
+    id: "case-1008",
+    customer: "Mika Brandt",
+    subject: "Lieferadresse nach Bestellung ändern",
+    message:
+      "Meine Bestellung ist gerade raus, aber die Hausnummer ist falsch. Könnt ihr das noch korrigieren?",
+    sentiment: "dringend",
+    orderNumber: "KA-2026-0042",
+  },
+];
+
+const knowledgeBaseDefaults = [
+  {
+    topic: "Retouren",
+    text: "Kara bietet 14 Tage Rückgabe. Umtausch wird bevorzugt, wenn der Artikel verfügbar ist. Support sendet ein Retourenlabel und vermerkt den Wunsch im Auftrag.",
+  },
+  {
+    topic: "Rechnungen",
+    text: "Rechnungen werden vor Versand auf Kundendaten, Umsatzsteuer, Summe und Rechnungsnummer geprüft. KI darf nur Hinweise geben, nicht automatisch versenden.",
+  },
+  {
+    topic: "Datenschutz",
+    text: "Im Demo-Modus werden keine echten Kundendaten an externe KI-Dienste gesendet. Produktiv wäre eine Datenschutz- und Rollenfreigabe notwendig.",
+  },
+];
+
+ensureAiDemoDataVersion();
+
+const aiState = {
+  selectedTaskId: "support-retoure",
+  tasks: readLocalCollection("ai_tasks", aiTaskDefaults),
+  supportCases: readLocalCollection("support_cases", supportCaseDefaults),
+  knowledgeBase: readLocalCollection("knowledge_base", knowledgeBaseDefaults),
+  runs: readLocalCollection("ai_runs", []),
 };
 
 // ─── DOM-Refs ────────────────────────────────────────────────
@@ -98,6 +218,20 @@ const loginError         = document.querySelector("#loginError");
 const registerError      = document.querySelector("#registerError");
 const profileForm        = document.querySelector("#profileForm");
 const profileMessage     = document.querySelector("#profileMessage");
+const aiKpis             = document.querySelector("#aiKpis");
+const aiTaskList         = document.querySelector("#aiTaskList");
+const aiBriefingText     = document.querySelector("#aiBriefingText");
+const aiRecommendations  = document.querySelector("#aiRecommendations");
+const aiCasePanel        = document.querySelector("#aiCasePanel");
+const aiPromptText       = document.querySelector("#aiPromptText");
+const aiResponseText     = document.querySelector("#aiResponseText");
+const aiSourceText       = document.querySelector("#aiSourceText");
+const aiRiskText         = document.querySelector("#aiRiskText");
+const aiRunStatus        = document.querySelector("#aiRunStatus");
+const aiGenerateButton   = document.querySelector("#aiGenerateButton");
+const aiApproveButton    = document.querySelector("#aiApproveButton");
+const aiRejectButton     = document.querySelector("#aiRejectButton");
+const aiResetButton      = document.querySelector("#aiResetButton");
 
 let currentProfile = {
   customer: null,
@@ -106,8 +240,48 @@ let currentProfile = {
 let pendingCheckoutAfterAuth = false;
 
 // ─── Hilfsfunktionen ─────────────────────────────────────────
+function storageKey(name) {
+  return `${storagePrefix}_${name}`;
+}
+
+function ensureAiDemoDataVersion() {
+  const versionKey = storageKey("ai_demo_version");
+  if (localStorage.getItem(versionKey) === aiDemoDataVersion) return;
+
+  writeLocalCollection("ai_tasks", aiTaskDefaults);
+  writeLocalCollection("support_cases", supportCaseDefaults);
+  writeLocalCollection("knowledge_base", knowledgeBaseDefaults);
+  writeLocalCollection("ai_runs", []);
+  localStorage.setItem(versionKey, aiDemoDataVersion);
+}
+
+function cloneDemoData(value) {
+  return JSON.parse(JSON.stringify(value));
+}
+
+function readLocalCollection(name, fallback) {
+  try {
+    const raw = localStorage.getItem(storageKey(name));
+    if (!raw) {
+      localStorage.setItem(storageKey(name), JSON.stringify(fallback));
+      return cloneDemoData(fallback);
+    }
+    return JSON.parse(raw);
+  } catch (err) {
+    console.warn(`Lokale Demo-Daten konnten nicht gelesen werden: ${name}`, err);
+    return cloneDemoData(fallback);
+  }
+}
+
+function writeLocalCollection(name, value) {
+  localStorage.setItem(storageKey(name), JSON.stringify(value));
+}
+
 function money(value) {
-  return `€ ${value.toFixed(2).replace(".", ",")}`;
+  return new Intl.NumberFormat("de-DE", {
+    style: "currency",
+    currency: "EUR",
+  }).format(value);
 }
 
 function saveCart() {
@@ -134,6 +308,261 @@ function totals() {
 function productFallback(event) {
   event.target.classList.add("image-fallback");
   event.target.removeAttribute("src");
+}
+
+function selectedAiTask() {
+  return aiState.tasks.find((task) => task.id === aiState.selectedTaskId) || aiState.tasks[0];
+}
+
+function aiRunFor(taskId) {
+  return aiState.runs.find((run) => run.taskId === taskId) || null;
+}
+
+function saveAiState() {
+  writeLocalCollection("ai_tasks", aiState.tasks);
+  writeLocalCollection("support_cases", aiState.supportCases);
+  writeLocalCollection("knowledge_base", aiState.knowledgeBase);
+  writeLocalCollection("ai_runs", aiState.runs);
+}
+
+function updateTaskStatus(taskId, status) {
+  const task = aiState.tasks.find((item) => item.id === taskId);
+  if (task) task.status = status;
+}
+
+function upsertAiRun(run) {
+  const index = aiState.runs.findIndex((item) => item.taskId === run.taskId);
+  if (index >= 0) aiState.runs[index] = { ...aiState.runs[index], ...run };
+  else aiState.runs.unshift(run);
+}
+
+function aiStatusLabel(status) {
+  return {
+    open: "offen",
+    draft: "entwurf",
+    reviewed: "zur Prüfung",
+    approved: "freigegeben",
+    rejected: "abgelehnt",
+  }[status] || status;
+}
+
+function aiMetrics() {
+  const openTasks = aiState.tasks.filter((task) => task.status !== "approved").length;
+  const approvedTasks = aiState.tasks.filter((task) => task.status === "approved").length;
+  const localOrders = readLocalCollection("orders", []);
+  const orderRevenue = localOrders.reduce((sum, order) => sum + (Number(order.total) || Number(order.total_cents) / 100 || 0), 0);
+
+  return [
+    { label: "Umsatz heute", value: money(orderRevenue || 4820), note: "aus Shop- und Demo-Daten" },
+    { label: "Offene KI-Aufgaben", value: String(openTasks), note: `${approvedTasks} bereits freigegeben` },
+    { label: "Risiko-Hinweise", value: "2", note: "Rechnung und Lieferadresse prüfen" },
+    { label: "Zeitgewinn", value: "6,5 h", note: "geschätzt für Support + Backoffice" },
+  ];
+}
+
+function buildAiSuggestion(task) {
+  const supportCase = aiState.supportCases.find((item) => item.id === task.linkedCaseId) || aiState.supportCases[0];
+  const knowledge = aiState.knowledgeBase.map((item) => `${item.topic}: ${item.text}`).join(" ");
+
+  if (task.type === "support") {
+    return {
+      prompt:
+        `Formuliere eine freundliche Antwort an ${supportCase.customer}. Nutze Bestellnummer ${supportCase.orderNumber}, Kara Retourenregeln und weise auf menschliche Prüfung hin.`,
+      response:
+        `Hallo ${supportCase.customer}, danke für deine Nachricht. Wir können den Umtausch für ${supportCase.orderNumber} vorbereiten. Du erhältst ein Retourenlabel, legst den Mantel bei und vermerkst "Umtausch in kleinerer Größe". Sobald der Artikel bei uns eingeht, prüft unser Team die Verfügbarkeit und bestätigt den Austausch. Falls die Größe ausverkauft ist, melden wir uns mit Rückerstattung oder Alternative.`,
+      source: `Supportfall ${supportCase.id}, Bestellung ${supportCase.orderNumber}, Knowledge Base Retouren`,
+      risk: "Niedrig: Antwort darf nach kurzer Prüfung übernommen werden.",
+    };
+  }
+
+  if (task.type === "invoice") {
+    return {
+      prompt:
+        "Prüfe einen Rechnungsentwurf auf Kundendaten, Umsatzsteuer, Summenlogik und Freigabestatus.",
+      response:
+        "Die Rechnung kann vorbereitet werden, aber vor Versand sollten zwei Punkte geprüft werden: Die Lieferadresse fehlt im Entwurf und die Umsatzsteuer muss mit dem Bruttobetrag abgeglichen werden. Empfehlung: Rechnung auf 'needs_review' lassen, Adresse aus dem Kundenkonto ergänzen und erst danach versenden.",
+      source: "Rechnungsentwurf RE-2026-0041, Kundendaten, Bestellpositionen",
+      risk: "Mittel: Finanzdokumente brauchen menschliche Freigabe.",
+    };
+  }
+
+  if (task.type === "order") {
+    return {
+      prompt:
+        "Bewerte eine bezahlte Bestellung auf operative Risiken, Lieferadresse und mögliche Teillieferung.",
+      response:
+        "Bestellung KA-2026-0042 sollte priorisiert werden. Die Adresse wurde vom Kunden als fehlerhaft gemeldet und ein Artikel hat nur noch geringen Bestand. Empfehlung: Versand stoppen, Adresse bestätigen lassen, Bestand reservieren und erst danach das Paket freigeben.",
+      source: "Checkout-Daten, Supportfall case-1008, Produktbestand Demo",
+      risk: "Hoch: Ohne Prüfung droht Falschversand.",
+    };
+  }
+
+  if (task.type === "analysis") {
+    return {
+      prompt:
+        "Fasse die heutige Unternehmenslage für ein kleines E-Commerce-KMU in drei klaren Handlungsempfehlungen zusammen.",
+      response:
+        "Heute sind Outerwear und Tailoring die stärksten Bereiche. Support-Aufkommen entsteht vor allem durch Retouren und Adressänderungen. Empfehlung: Retourenhinweis im Checkout sichtbarer machen, Adressänderung bis Versand automatisiert abfragen und morgen zwei margenstarke Outerwear-Produkte in den Fokus setzen.",
+      source: "Produktkatalog, Demo-Bestellungen, Supportfälle",
+      risk: "Niedrig: Management-Zusammenfassung, keine automatische Aktion.",
+    };
+  }
+
+  return {
+    prompt:
+      "Beantworte eine interne Prozessfrage anhand der Kara Knowledge Base und nenne Grenzen der KI-Nutzung.",
+    response:
+      `Kara sollte KI für Entwürfe, Zusammenfassungen und Prüfhinweise nutzen. Entscheidungen mit Kundenwirkung bleiben beim Menschen. Relevante interne Regel: ${knowledge}`,
+    source: "Kara Knowledge Base",
+    risk: "Mittel: Interne Regel kann helfen, ersetzt aber keine Datenschutzfreigabe.",
+  };
+}
+
+function renderAiKpis() {
+  if (!aiKpis) return;
+  aiKpis.innerHTML = aiMetrics()
+    .map(
+      (item) => `
+        <article class="ai-kpi">
+          <span>${item.label}</span>
+          <strong>${item.value}</strong>
+          <p>${item.note}</p>
+        </article>`,
+    )
+    .join("");
+}
+
+function renderAiTasks() {
+  if (!aiTaskList) return;
+  aiTaskList.innerHTML = aiState.tasks
+    .map((task) => {
+      const active = task.id === selectedAiTask().id;
+      const run = aiRunFor(task.id);
+      const status = run?.status || task.status;
+      return `
+        <button class="ai-task-button ${active ? "active" : ""}" type="button" data-ai-task="${task.id}">
+          <span class="ai-task-topline">
+            <span>${task.owner}</span>
+            <strong>${task.priority}</strong>
+          </span>
+          <span class="ai-task-title">${task.title}</span>
+          <span class="ai-task-bottomline">
+            <span>${task.impact}</span>
+            <em>${aiStatusLabel(status)}</em>
+          </span>
+        </button>`;
+    })
+    .join("");
+}
+
+function renderAiBriefing() {
+  if (!aiBriefingText || !aiRecommendations) return;
+  const openTasks = aiState.tasks.filter((task) => task.status !== "approved").length;
+  aiBriefingText.textContent =
+    `Kara hat heute ${openTasks} offene KI-unterstützte Aufgaben. Die wichtigsten Hebel sind schnelle Kundenantworten, sichere Rechnungsfreigabe und weniger manuelle Abstimmung zwischen Support und Backoffice.`;
+  aiRecommendations.innerHTML = [
+    "Supportfälle zuerst bearbeiten, weil Kunden direkt warten.",
+    "Rechnungen nur nach menschlicher Prüfung versenden.",
+    "KI-Ergebnisse mit Quelle und Risiko anzeigen, nicht als Black Box.",
+  ]
+    .map((text) => `<li>${text}</li>`)
+    .join("");
+}
+
+function renderAiCasePanel() {
+  if (!aiCasePanel) return;
+  const task = selectedAiTask();
+  const supportCase = aiState.supportCases.find((item) => item.id === task.linkedCaseId);
+
+  const detail =
+    task.type === "support" && supportCase
+      ? `
+        <dl>
+          <div><dt>Kunde</dt><dd>${supportCase.customer}</dd></div>
+          <div><dt>Betreff</dt><dd>${supportCase.subject}</dd></div>
+          <div><dt>Nachricht</dt><dd>${supportCase.message}</dd></div>
+        </dl>`
+      : `
+        <dl>
+          <div><dt>Quelle</dt><dd>${task.source}</dd></div>
+          <div><dt>Ziel</dt><dd>${task.impact}</dd></div>
+          <div><dt>Kontrolle</dt><dd>KI erstellt einen Vorschlag. Freigabe bleibt beim Menschen.</dd></div>
+        </dl>`;
+
+  aiCasePanel.innerHTML = `
+    <div class="ai-panel-heading">
+      <p class="section-label">Aktiver Fall</p>
+      <h2>${task.title}</h2>
+      <p>${task.owner} - Priorität ${task.priority}</p>
+    </div>
+    ${detail}`;
+}
+
+function renderAiAssistant() {
+  const task = selectedAiTask();
+  const run = aiRunFor(task.id);
+  const suggestion = run || buildAiSuggestion(task);
+  const status = run?.status || "draft";
+
+  aiPromptText.textContent = suggestion.prompt;
+  aiResponseText.textContent = run
+    ? suggestion.response
+    : "Noch kein Vorschlag erzeugt. Starte die Simulation, um zu zeigen, wie Claude/Codex einen bearbeitbaren Entwurf liefert.";
+  aiSourceText.textContent = suggestion.source;
+  aiRiskText.textContent = suggestion.risk;
+  aiRunStatus.textContent = aiStatusLabel(status);
+  aiRunStatus.dataset.status = status;
+
+  aiApproveButton.disabled = !run || run.status === "approved";
+  aiRejectButton.disabled = !run || run.status === "rejected";
+}
+
+function renderAiCockpit() {
+  renderAiKpis();
+  renderAiTasks();
+  renderAiBriefing();
+  renderAiCasePanel();
+  renderAiAssistant();
+}
+
+function generateAiSuggestion() {
+  const task = selectedAiTask();
+  const suggestion = buildAiSuggestion(task);
+  upsertAiRun({
+    ...suggestion,
+    id: `run-${task.id}`,
+    taskId: task.id,
+    status: "reviewed",
+    createdAt: new Date().toISOString(),
+  });
+  updateTaskStatus(task.id, "reviewed");
+  saveAiState();
+  renderAiCockpit();
+}
+
+function setAiRunStatus(status) {
+  const task = selectedAiTask();
+  const run = aiRunFor(task.id);
+  if (!run) return;
+  upsertAiRun({
+    ...run,
+    status,
+    decidedAt: new Date().toISOString(),
+  });
+  updateTaskStatus(task.id, status);
+  saveAiState();
+  renderAiCockpit();
+}
+
+function resetAiDemo() {
+  aiState.selectedTaskId = "support-retoure";
+  aiState.tasks = cloneDemoData(aiTaskDefaults);
+  aiState.supportCases = cloneDemoData(supportCaseDefaults);
+  aiState.knowledgeBase = cloneDemoData(knowledgeBaseDefaults);
+  aiState.runs = [];
+  saveAiState();
+  localStorage.setItem(storageKey("ai_demo_version"), aiDemoDataVersion);
+  renderAiCockpit();
 }
 
 // ─── Auth ─────────────────────────────────────────────────────
@@ -166,8 +595,8 @@ function renderAccountPage(user = null) {
   accountAuthPanel.hidden = isLoggedIn;
   accountProfilePanel.hidden = !isLoggedIn;
   accountPageStatus.textContent = isLoggedIn
-    ? "Du bist angemeldet. Hier kannst du deine gespeicherten Daten fuer kommende Bestellungen bearbeiten."
-    : "Melde dich an oder erstelle ein Konto. Danach werden deine Daten fuer die Kasse automatisch verwendet.";
+    ? "Du bist angemeldet. Hier kannst du deine gespeicherten Daten für kommende Bestellungen bearbeiten."
+    : "Melde dich an oder erstelle ein Konto. Danach werden deine Daten für die Kasse automatisch verwendet.";
 }
 
 function openAuthDialog(tab = "login") {
@@ -518,7 +947,7 @@ function renderCheckoutAccount() {
   const missing = !customer.first_name || !customer.last_name || !customer.email || !address?.line1 || !address?.postal_code || !address?.city;
   checkoutAccountHeadline.textContent = "Angemeldet";
   checkoutAccountStatus.textContent = missing
-    ? "Account erkannt. Vervollstaendige deine Daten im Account, dann uebernimmt die Kasse alles automatisch."
+    ? "Account erkannt. Vervollstaendige deine Daten im Account, dann übernimmt die Kasse alles automatisch."
     : "Account erkannt. Liefer- und Rechnungsdaten werden automatisch verwendet, ohne sie hier erneut anzuzeigen.";
   confirmCheckoutButton.disabled = missing || cartLines().length === 0;
 }
@@ -552,7 +981,7 @@ async function completeOrder() {
   const summary = totals();
   const { customer, address } = currentProfile;
   if (!customer || !address) {
-    alert("Bitte speichere zuerst deine persoenlichen Daten im Account.");
+    alert("Bitte speichere zuerst deine persönlichen Daten im Account.");
     showView("account");
     return;
   }
@@ -655,6 +1084,11 @@ document.addEventListener("click", (e) => {
     renderFilters();
     renderProducts();
   }
+  const aiTaskButton = e.target.closest("[data-ai-task]");
+  if (aiTaskButton) {
+    aiState.selectedTaskId = aiTaskButton.dataset.aiTask;
+    renderAiCockpit();
+  }
 });
 
 cartButton.addEventListener("click", () => {
@@ -680,7 +1114,13 @@ editAccountFromCheckout.addEventListener("click", async () => {
   showView("account");
 });
 
+aiGenerateButton.addEventListener("click", generateAiSuggestion);
+aiApproveButton.addEventListener("click", () => setAiRunStatus("approved"));
+aiRejectButton.addEventListener("click", () => setAiRunStatus("rejected"));
+aiResetButton.addEventListener("click", resetAiDemo);
+
 // ─── Init ─────────────────────────────────────────────────────
+renderAiCockpit();
 renderFilters();
 renderProducts();
 renderCart();
