@@ -4,6 +4,9 @@ Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
 ## 2026-06-02
 
+- GitHub-Pages-Link im `README.md` ergänzt und `website/.nojekyll` vorbereitet,
+  damit die Website aus dem Ordner `website/` über GitHub Pages geöffnet werden
+  kann.
 - Arbeitsregel ergänzt: Änderungen sollen künftig direkt mit GitHub
   synchronisiert werden. Da lokales `git push` in der Codex-Umgebung nicht
   zuverlässig funktioniert, wird für Textdateien der GitHub-Connector als
