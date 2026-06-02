@@ -1,4 +1,4 @@
-﻿# memory.md
+# memory.md
 
 ## Projektgedächtnis
 
@@ -49,6 +49,9 @@
   abgearbeitet.
 - Word-Dokumentation und PowerPoint-Präsentation liegen unter `outputs/`.
 - LinkedIn-Beitrag, Techday-One-Pager und How-To-Leitfaden liegen unter `docs/`.
+- Neue Änderungen sollen ab sofort nicht nur lokal, sondern direkt in GitHub
+  landen. In der Codex-Umgebung ist normales `git push` nicht zuverlässig, daher
+  wird für Textdateien der GitHub-Connector als direkter Commit-Weg genutzt.
 
 ### Relevante Dateien
 
@@ -76,3 +79,5 @@
 - Optional echte KI-Schnittstelle vorbereiten, aber Demo-Modus behalten.
 - Optional Supabase/Make wieder an den Prozess anbinden.
 - Tests für KI-Statuswechsel und lokale Speicherung ergänzen.
+- Bei künftigen Änderungen prüfen, ob die Datei zusätzlich auf GitHub committed
+  wurde, damit lokaler Stand und Repository nicht auseinanderlaufen.
