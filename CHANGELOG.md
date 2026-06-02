@@ -2,6 +2,21 @@
 
 Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
+## 2026-06-02
+
+- Word-Dokumentation vollständig überarbeitet:
+  - Aufbau jetzt im Stil einer wissenschaftlichen Hochschularbeit mit Deckblatt,
+    Abstract, Management Summary, Inhaltsverzeichnis, Abbildungs-,
+    Tabellen- und Abkürzungsverzeichnis.
+  - Formatierung auf Word-Formatvorlagen, Times New Roman, 1,5 Zeilenabstand
+    und wissenschaftliche Kapitelstruktur umgestellt.
+  - Diskussion, Limitationen, Handlungsempfehlungen und Ausblick ergänzt.
+  - Inhaltsverzeichnis und Felder über Microsoft Word aktualisiert.
+  - Umfang über Word geprüft: 26 Seiten und 4.885 Wörter.
+  - Umlaute direkt aus der DOCX geprüft: keine typischen Encoding-Fehler oder Ersatzzeichen.
+- `tools/build_idp_docx.py` als reproduzierbarer Generator für die
+  wissenschaftliche Word-Dokumentation neu aufgebaut.
+
 ## 2026-06-01
 
 - IDP fachlich von reinem Shop-/Rechnungsprozess auf "KI im Unternehmen"

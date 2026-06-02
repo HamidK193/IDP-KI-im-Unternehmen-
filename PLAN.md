@@ -57,9 +57,12 @@ Dokumentation, Präsentation, LinkedIn-Beitrag und Techday-/WI-Tag-Material.
 6. Fazit und Ausblick formulieren.
 7. Word-Datei erzeugen und prüfen.
 
-**Ergebnis:** `outputs/IDP_KI_kleine_Unternehmen_Dokumentation.docx` wurde erzeugt
-und strukturell geprüft. Eine visuelle DOCX-Renderprüfung war lokal nicht
-möglich, weil LibreOffice/`soffice` auf dem System nicht verfügbar ist.
+**Ergebnis:** `outputs/IDP_KI_kleine_Unternehmen_Dokumentation.docx` wurde als
+wissenschaftlich strukturierte Word-Dokumentation neu aufgebaut. Die Datei
+enthält Deckblatt, Abstract, Management Summary, Inhaltsverzeichnis,
+Abbildungs-, Tabellen- und Abkürzungsverzeichnis, nummerierte Kapitel,
+Diskussion, Limitationen, Handlungsempfehlungen, Literaturverzeichnis und
+Anhang. Microsoft Word meldet 26 Seiten und 4.885 Wörter.
 
 ### Phase 4: Präsentation
 
@@ -90,7 +93,9 @@ wurde geprüft.
 4. README, CHANGELOG und `memory.md` aktualisieren.
 
 **Ergebnis:** Website, JavaScript, Abgabeartefakte und Dokumentation wurden
-abschließend geprüft. Deutsche Texte verwenden echte Umlaute.
+abschließend geprüft. Die Word-Dokumentation wurde direkt aus der DOCX-Datei
+auf echte Umlaute geprüft; es wurden keine typischen Encoding-Fehler oder
+Ersatzzeichen gefunden.
 
 ## Definition of Done
 
