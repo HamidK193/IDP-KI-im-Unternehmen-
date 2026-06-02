@@ -1,4 +1,4 @@
-﻿# IDP-KI-im-Unternehmen-
+# IDP-KI-im-Unternehmen-
 
 IDP-Demonstrator für den Einsatz von KI in einem kleinen Unternehmen.
 
@@ -12,6 +12,15 @@ Die KI ist im MVP simuliert. Dadurch läuft die Demo stabil ohne API-Key,
 Kosten oder echte Kundendaten. Claude/Codex wird als möglicher interner
 Assistent erklärt, der Vorschläge, Zusammenfassungen und Prüfhinweise liefert,
 aber keine fachlichen Entscheidungen automatisch trifft.
+
+## Website öffnen
+
+Die veröffentlichte GitHub-Pages-Version ist hier erreichbar:
+
+https://hamidk193.github.io/IDP-KI-im-Unternehmen-/
+
+Nach einem neuen Commit kann es kurz dauern, bis GitHub Pages die aktuelle
+Version bereitstellt.
 
 ## Wichtige Dateien
 
