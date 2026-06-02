@@ -1,9 +1,13 @@
-﻿# CHANGELOG.md
+# CHANGELOG.md
 
 Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
 ## 2026-06-02
 
+- Arbeitsregel ergänzt: Änderungen sollen künftig direkt mit GitHub
+  synchronisiert werden. Da lokales `git push` in der Codex-Umgebung nicht
+  zuverlässig funktioniert, wird für Textdateien der GitHub-Connector als
+  direkter Commit-Weg genutzt.
 - Word-Dokumentation vollständig überarbeitet:
   - Aufbau jetzt im Stil einer wissenschaftlichen Hochschularbeit mit Deckblatt,
     Abstract, Management Summary, Inhaltsverzeichnis, Abbildungs-,
