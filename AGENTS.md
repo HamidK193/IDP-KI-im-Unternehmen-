@@ -1,4 +1,4 @@
-﻿# AGENTS.md
+# AGENTS.md
 
 ## Zweck
 
@@ -19,6 +19,13 @@ für dieses Repository.
 - Preise werden fachlich in Cent gedacht; der aktuelle Website-Prototyp nutzt
   für die Demo noch Dezimalwerte in JavaScript.
 - Der lokale Website-Prototyp speichert Daten aktuell in `localStorage`.
+- Änderungen sollen nicht nur lokal gespeichert werden. Jede relevante Änderung
+  wird zusätzlich direkt in GitHub committed. Wenn lokales `git push` in der
+  Codex-Umgebung blockiert ist, wird der GitHub-Connector für Textdateien
+  genutzt und der lokale Stand parallel angepasst.
+- Binärdateien wie `.docx`, `.pptx`, `.pdf` oder Bilder werden nur dann direkt
+  auf GitHub aktualisiert, wenn ein geeigneter Upload-/Git-Weg verfügbar ist;
+  andernfalls wird der Nutzer klar darauf hingewiesen.
 
 ## Verbindlicher Projektplan
 
