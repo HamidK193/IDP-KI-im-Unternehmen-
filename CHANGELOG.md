@@ -2,6 +2,35 @@
 
 Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
+## 2026-06-04
+
+- `website/index.html`: Navigation und Seitentitel wieder auf `Kara AI Operations`
+  fokussiert. Das KI-Cockpit ist visuell der erste Einstieg, der Shop bleibt als
+  Datenquelle darunter erhalten.
+- `website/styles.css`: Cockpit an produktnahe SaaS-/Dashboard-Referenzen aus
+  Mobbin, Refero und Dribbble angelehnt. Neue App-Fläche mit KPI-Zeile,
+  dunkler Aufgaben-Rail, Statusfarben, Assistentenpanel und responsivem
+  Mobile-Layout ergänzt.
+- `website/script.js`: Aufgabenstatus in der Aufgabenliste mit `data-status`
+  ausgabefähig gemacht und Fallüberschrift semantisch an das Panel angepasst.
+- `README.md`, `memory.md`, `website/README.md` und
+  `docs/ki-cockpit-dokumentation.md`: UI-Entscheidung und Annahme zur
+  referenzbasierten, nicht 1:1 kopierten Umsetzung dokumentiert.
+
+## 2026-06-03
+
+- `website/index.html`: Startseite auf einen modernen Kara Premium-Streetwear-Shop
+  umgebaut. Shop-Hero, Peso-orientierte Topbar, New-In-Bereich, Kategorien,
+  Produktgrid, Lookbook und Atelier-Bereich stehen jetzt vor dem KI-Cockpit.
+- `website/styles.css`: Visuelles System auf Schwarz/Weiß, dünne Linien,
+  große Fashion-Bilder und eckige Shop-Controls umgestellt. Beige/Grün-Optik
+  entfernt und Mobile-Layout neu geprüft.
+- `website/script.js`: Sortiment auf 20 Fashion-Produkte erweitert,
+  Produktkarten mit Badge/Wishlist-Anmutung ergänzt und Filter-Reihenfolge
+  an Shop-Kategorien angepasst.
+- `supabase/seed_products.sql`: Produkt-Seed an das erweiterte Sortiment
+  angepasst, damit Supabase/Checkout-Daten konsistent bleiben können.
+
 ## 2026-06-02
 
 - GitHub-Pages-Link im `README.md` ergänzt und `website/.nojekyll` vorbereitet,

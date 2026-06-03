@@ -53,18 +53,26 @@ async function sbFetch(method, path, body = null) {
 
 // ─── Produkte ────────────────────────────────────────────────
 const products = [
-  { sku: "KA-COT-01", name: "Double Face Coat Onyx",    category: "Outerwear",   description: "Langer Wollmantel mit breiter Schulter, verdeckter Knopfleiste und schwerem Fall.",          netPrice: 289.9, vatRate: 0.19, image: "https://images.pexels.com/photos/20406876/pexels-photo-20406876.jpeg?auto=compress&cs=tinysrgb&w=900" },
-  { sku: "KA-BMB-02", name: "Leather Bomber Noir",      category: "Outerwear",   description: "Kurzer Bomber mit glatter Oberfläche, kompaktem Bund und edlem Hardware-Finish.",             netPrice: 349.9, vatRate: 0.19, image: "https://images.pexels.com/photos/6939119/pexels-photo-6939119.jpeg?auto=compress&cs=tinysrgb&w=900" },
-  { sku: "KA-KNT-03", name: "Merino Knit Stone",        category: "Knitwear",    description: "Weicher Merino-Strick mit entspannter Silhouette und cleanem Rundhalsausschnitt.",             netPrice: 139.9, vatRate: 0.19, image: "https://images.pexels.com/photos/20520671/pexels-photo-20520671.jpeg?auto=compress&cs=tinysrgb&w=900" },
-  { sku: "KA-KNT-04", name: "Ribbed Cardigan Espresso", category: "Knitwear",    description: "Gerippter Cardigan in dunklem Braun mit tiefem Ausschnitt und schweren Knöpfen.",             netPrice: 159.9, vatRate: 0.19, image: "https://images.pexels.com/photos/18794485/pexels-photo-18794485.jpeg?auto=compress&cs=tinysrgb&w=900" },
-  { sku: "KA-TRS-05", name: "Wide Trouser Graphite",    category: "Tailoring",   description: "Weite Anzughose mit Bundfalte, fließendem Bein und modernem Cropped-Fit.",                    netPrice: 129.9, vatRate: 0.19, image: "https://images.pexels.com/photos/20818929/pexels-photo-20818929.jpeg?auto=compress&cs=tinysrgb&w=900" },
-  { sku: "KA-BLZ-06", name: "Relaxed Blazer Black",     category: "Tailoring",   description: "Unstrukturierter Blazer mit langen Revers und einer Silhouette wie aus dem Editorial.",       netPrice: 219.9, vatRate: 0.19, image: "https://images.pexels.com/photos/13219629/pexels-photo-13219629.jpeg?auto=compress&cs=tinysrgb&w=900" },
-  { sku: "KA-HDY-07", name: "Heavy Hoodie Ash",         category: "Essentials",  description: "Luxuriöser Heavyweight-Hoodie ohne Print, innen weich und außen trocken im Griff.",           netPrice: 119.9, vatRate: 0.19, image: "https://images.pexels.com/photos/3061826/pexels-photo-3061826.jpeg?auto=compress&cs=tinysrgb&w=900" },
-  { sku: "KA-TEE-08", name: "Mercerized Tee Ivory",     category: "Essentials",  description: "Cleanes Premium-Shirt mit leichtem Glanz, festerem Kragen und geradem Saum.",                 netPrice:  69.9, vatRate: 0.19, image: "https://images.pexels.com/photos/30561922/pexels-photo-30561922.jpeg?auto=compress&cs=tinysrgb&w=900" },
-  { sku: "KA-DNM-09", name: "Raw Denim Wide Black",     category: "Denim",       description: "Dunkler Raw Denim mit weitem Bein, tiefer Leibhöhe und minimalem Branding.",                  netPrice: 149.9, vatRate: 0.19, image: "https://images.pexels.com/photos/8505247/pexels-photo-8505247.jpeg?auto=compress&cs=tinysrgb&w=900" },
-  { sku: "KA-SHR-10", name: "Silk Shirt Bone",          category: "Shirts",      description: "Fließendes Hemd mit camp collar, matter Seidenoptik und entspannter Länge.",                  netPrice: 129.9, vatRate: 0.19, image: "https://images.pexels.com/photos/19179149/pexels-photo-19179149.jpeg?auto=compress&cs=tinysrgb&w=900" },
-  { sku: "KA-BAG-11", name: "Structured Tote Black",    category: "Accessories", description: "Architektonische Tote Bag mit cleanem Volumen und genügend Platz für den Alltag.",            netPrice: 119.9, vatRate: 0.19, image: "https://images.pexels.com/photos/20406852/pexels-photo-20406852.jpeg?auto=compress&cs=tinysrgb&w=900" },
-  { sku: "KA-CAP-12", name: "Wool Cap Charcoal",        category: "Accessories", description: "Flache Wool Cap mit tonal gesticktem Kara-Zeichen und verstellbarem Lederriemen.",            netPrice:  59.9, vatRate: 0.19, image: "https://images.pexels.com/photos/10050979/pexels-photo-10050979.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-COT-01", name: "Double Face Coat Onyx", category: "Outerwear", badge: "New", description: "Langer Wollmantel mit breiter Schulter, verdeckter Knopfleiste und schwerem Fall.", netPrice: 289.9, vatRate: 0.19, image: "https://images.pexels.com/photos/20406876/pexels-photo-20406876.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-BMB-02", name: "Leather Bomber Noir", category: "Outerwear", badge: "New", description: "Kurzer Bomber mit glatter Oberfläche, kompaktem Bund und edlem Hardware-Finish.", netPrice: 349.9, vatRate: 0.19, image: "https://images.pexels.com/photos/9558594/pexels-photo-9558594.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-PUF-13", name: "Puffer Jacket Carbon", category: "Outerwear", badge: "Drop", description: "Voluminöse Puffer-Jacke in mattem Schwarz mit hoher Kapuze und cleaner Nahtführung.", netPrice: 239.9, vatRate: 0.19, image: "https://images.pexels.com/photos/9558588/pexels-photo-9558588.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-CRG-14", name: "Cargo Jacket Slate", category: "Outerwear", badge: "Limited", description: "Technische Cargo-Jacke mit großen Taschen, geradem Schnitt und zurückhaltendem Branding.", netPrice: 189.9, vatRate: 0.19, image: "https://images.pexels.com/photos/1192609/pexels-photo-1192609.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-HDY-07", name: "Kara Logo Hoodie", category: "Basics", badge: "New", description: "Schwerer Hoodie aus Premium-Jersey mit klarer Silhouette und tonal wirkendem Kara-Logo.", netPrice: 129.9, vatRate: 0.19, image: "https://images.pexels.com/photos/6311392/pexels-photo-6311392.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-TEE-08", name: "Mercerized Tee Ivory", category: "Basics", badge: "Core", description: "Cleanes Premium-Shirt mit leichtem Glanz, festem Kragen und geradem Saum.", netPrice: 69.9, vatRate: 0.19, image: "https://images.pexels.com/photos/30561922/pexels-photo-30561922.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-ZIP-15", name: "Zip Hoodie Washed Black", category: "Basics", badge: "New", description: "Verwaschener Zip Hoodie mit schwerem Reißverschluss und entspannter Passform.", netPrice: 139.9, vatRate: 0.19, image: "https://images.pexels.com/photos/7679725/pexels-photo-7679725.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-LST-16", name: "Longsleeve Bone", category: "Basics", badge: "Core", description: "Langes Jersey-Shirt in gebrochenem Weiß mit etwas breiterem Ärmel und trockenem Griff.", netPrice: 79.9, vatRate: 0.19, image: "https://images.pexels.com/photos/7691241/pexels-photo-7691241.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-DNM-09", name: "Wide Denim Black", category: "Pants", badge: "New", description: "Dunkler Denim mit weitem Bein, tiefer Leibhöhe und minimalem Branding.", netPrice: 149.9, vatRate: 0.19, image: "https://images.pexels.com/photos/375880/pexels-photo-375880.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-TRS-05", name: "Wide Trouser Graphite", category: "Pants", badge: "Core", description: "Weite Anzughose mit Bundfalte, fließendem Bein und modernem Cropped-Fit.", netPrice: 129.9, vatRate: 0.19, image: "https://images.pexels.com/photos/20818929/pexels-photo-20818929.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-CRG-17", name: "Nylon Cargo Pant", category: "Pants", badge: "Drop", description: "Gerade Cargohose mit leichten Nylonflächen, verdeckten Taschen und verstellbarem Saum.", netPrice: 159.9, vatRate: 0.19, image: "https://images.pexels.com/photos/7679455/pexels-photo-7679455.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-SWT-18", name: "Heavy Sweatpant Ash", category: "Pants", badge: "Core", description: "Dichte Sweatpants mit weitem Bein, sauberer Kordel und minimalistischer Verarbeitung.", netPrice: 109.9, vatRate: 0.19, image: "https://images.pexels.com/photos/6311661/pexels-photo-6311661.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-SNK-19", name: "Court Sneaker Black", category: "Footwear", badge: "New", description: "Schwarz-weißer Court Sneaker mit glatter Oberfläche und ruhiger, klassischer Linie.", netPrice: 159.9, vatRate: 0.19, image: "https://images.pexels.com/photos/2421374/pexels-photo-2421374.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-BOT-20", name: "Leather Boot Noir", category: "Footwear", badge: "Limited", description: "Schwerer Lederboot mit kantiger Sohle, cleanem Schaft und hochwertigem Finish.", netPrice: 249.9, vatRate: 0.19, image: "https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-LOF-21", name: "Chunky Loafer Black", category: "Footwear", badge: "Drop", description: "Moderner Loafer mit breiter Sohle, glänzendem Obermaterial und reduzierter Form.", netPrice: 189.9, vatRate: 0.19, image: "https://images.pexels.com/photos/267301/pexels-photo-267301.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-KNT-03", name: "Merino Knit Stone", category: "Knitwear", badge: "Core", description: "Weicher Merino-Strick mit entspannter Silhouette und cleanem Rundhalsausschnitt.", netPrice: 139.9, vatRate: 0.19, image: "https://images.pexels.com/photos/20520671/pexels-photo-20520671.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-KNT-04", name: "Ribbed Cardigan Espresso", category: "Knitwear", badge: "Drop", description: "Gerippter Cardigan in dunklem Braun mit tiefem Ausschnitt und schweren Knöpfen.", netPrice: 159.9, vatRate: 0.19, image: "https://images.pexels.com/photos/18794485/pexels-photo-18794485.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-BAG-11", name: "Structured Tote Black", category: "Accessories", badge: "Core", description: "Architektonische Tote Bag mit cleanem Volumen und genug Platz für den Alltag.", netPrice: 119.9, vatRate: 0.19, image: "https://images.pexels.com/photos/20406852/pexels-photo-20406852.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-CAP-12", name: "Wool Cap Charcoal", category: "Accessories", badge: "New", description: "Flache Wool Cap mit tonal gesticktem Kara-Zeichen und verstellbarem Lederriemen.", netPrice: 59.9, vatRate: 0.19, image: "https://images.pexels.com/photos/10050979/pexels-photo-10050979.jpeg?auto=compress&cs=tinysrgb&w=900" },
+  { sku: "KA-GLV-22", name: "Leather Glove Black", category: "Accessories", badge: "Limited", description: "Schmale Lederhandschuhe mit weichem Futter und eleganter Linienführung.", netPrice: 89.9, vatRate: 0.19, image: "https://images.pexels.com/photos/7679815/pexels-photo-7679815.jpeg?auto=compress&cs=tinysrgb&w=900" },
 ];
 
 const storagePrefix = "kara";
@@ -448,7 +456,7 @@ function renderAiTasks() {
           <span class="ai-task-title">${task.title}</span>
           <span class="ai-task-bottomline">
             <span>${task.impact}</span>
-            <em>${aiStatusLabel(status)}</em>
+            <em data-status="${status}">${aiStatusLabel(status)}</em>
           </span>
         </button>`;
     })
@@ -492,7 +500,7 @@ function renderAiCasePanel() {
   aiCasePanel.innerHTML = `
     <div class="ai-panel-heading">
       <p class="section-label">Aktiver Fall</p>
-      <h2>${task.title}</h2>
+      <h3>${task.title}</h3>
       <p>${task.owner} - Priorität ${task.priority}</p>
     </div>
     ${detail}`;
@@ -835,7 +843,9 @@ sb.auth.getUser().then(({ data }) => {
 
 // ─── Render ───────────────────────────────────────────────────
 function renderFilters() {
-  const cats = ["Alle", ...new Set(products.map((p) => p.category))];
+  const preferredOrder = ["Alle", "Outerwear", "Basics", "Pants", "Footwear", "Knitwear", "Accessories"];
+  const available = new Set(products.map((p) => p.category));
+  const cats = preferredOrder.filter((category) => category === "Alle" || available.has(category));
   categoryFilters.innerHTML = cats
     .map(
       (c) =>
@@ -855,7 +865,9 @@ function renderProducts() {
       (p) => `
       <article class="product-card">
         <div class="product-media">
+          <span class="product-badge">${p.badge || "New"}</span>
           <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="productFallback(event)" />
+          <button class="wishlist-button" type="button" aria-label="${p.name} zur Wunschliste hinzufügen">♡</button>
         </div>
         <div class="product-body">
           <div class="product-meta"><span>${p.category}</span><span>${p.sku}</span></div>

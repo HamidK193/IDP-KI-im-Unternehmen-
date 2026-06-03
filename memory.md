@@ -15,6 +15,8 @@
 
 - Primärer Einstieg ist jetzt das `Kara AI Operations` Cockpit in
   `website/index.html`.
+- Das Cockpit ist als moderne Operations-App gestaltet: KPI-Zeile,
+  Aufgaben-Rail, Fallansicht und Assistentenpanel stehen im ersten Viewport.
 - Der bestehende Shop bleibt darunter als Datenquelle und Demo-Prozess erhalten.
 - Die KI ist im MVP simuliert und benötigt keinen API-Key.
 - Claude/Codex wird als möglicher interner Assistent erklärt.
@@ -45,6 +47,9 @@
   Entscheidungen sichtbar.
 - Keine echten Kundendaten und keine externen KI-Requests im MVP.
 - Supabase und Make bleiben als spätere Ausbaustufe dokumentiert.
+- UI-Referenzrichtung seit 2026-06-04: produktnahe SaaS-/Dashboard-Muster aus
+  Mobbin, Refero und Dribbble; keine 1:1-Kopie, sondern Umsetzung mit den
+  vorhandenen statischen HTML/CSS/JS-Komponenten.
 - Die IDP-Abgabe wird über `PLAN.md` gesteuert; der Plan ist aktuell
   abgearbeitet.
 - Word-Dokumentation und PowerPoint-Präsentation liegen unter `outputs/`.

@@ -42,6 +42,18 @@ Das KI-Cockpit ist der primäre Einstieg der Website.
 - **Shop-Demo**: bleibt unterhalb des Cockpits als operative Datenquelle
   erhalten.
 
+## UI-Entscheidung vom 2026-06-04
+
+Die Oberfläche wurde stärker als produktnahe SaaS-/Dashboard-App aufgebaut.
+Referenzrichtung sind aktuelle UI-Sammlungen wie Mobbin, Refero und Dribbble:
+klare Navigationsleiste, großer Cockpit-Einstieg, kompakte KPI-Karten,
+dunkle Aufgaben-Rail, zentrale Fallansicht und ein rechts geführtes
+Assistentenpanel. Die Umsetzung bleibt bewusst einfach im bestehenden
+statischen Prototyp und nutzt die vorhandenen HTML-, CSS- und JavaScript-Muster.
+
+Annahme: Da keine konkreten Screenshots vorlagen, wurden die genannten
+Referenzseiten als Stil- und Strukturrahmen genutzt, nicht als 1:1-Vorlage.
+
 ## KI-Nutzung im Demonstrator
 
 Die KI ist im MVP simuliert. Es werden keine externen KI-Anfragen gesendet und

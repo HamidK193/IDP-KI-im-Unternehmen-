@@ -8,6 +8,12 @@ Mitarbeitende sehen offene Support-, Bestell-, Rechnungs- und Analyseaufgaben,
 lassen sich realistische KI-Vorschläge erzeugen und geben diese bewusst frei
 oder lehnen sie ab.
 
+Die Oberfläche ist jetzt als produktnahe Operations-App gestaltet: zuerst das
+Kara-AI-Cockpit mit KPI-Zeile, Aufgaben-Rail, Fallansicht und Assistentenpanel,
+danach der Shop als operative Datenquelle. Die Gestaltung orientiert sich an
+aktuellen SaaS- und Dashboard-Referenzen wie Mobbin, Refero und Dribbble, bleibt
+aber im bestehenden statischen HTML/CSS/JS-Prototyp.
+
 Die KI ist im MVP simuliert. Dadurch läuft die Demo stabil ohne API-Key,
 Kosten oder echte Kundendaten. Claude/Codex wird als möglicher interner
 Assistent erklärt, der Vorschläge, Zusammenfassungen und Prüfhinweise liefert,
