@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="page-noise" aria-hidden="true"></div>
     <header class="app-header">
       <a class="brand" href="#intro" aria-label="IDP KI-Control Start">
         <span class="brand-mark" aria-hidden="true">IDP</span>
@@ -14,7 +15,7 @@
       </a>
       <nav class="main-nav" aria-label="Hauptnavigation">
         <a href="#problem">Problem</a>
-        <a href="#cases">Fallbeispiele</a>
+        <a href="#cases">Einsatzfelder</a>
         <a href="#cockpit">Cockpit</a>
         <a href="#flow">Datenfluss</a>
         <a href="#governance">Grenzen</a>
@@ -25,23 +26,38 @@
     <main>
       <section id="intro" class="slide hero-slide" aria-labelledby="heroTitle">
         <div class="hero-copy">
-          <p class="eyebrow">Technischer IDP-Demonstrator</p>
-          <h1 id="heroTitle">KI macht Controlling aus Datenbanken steuerbar.</h1>
+          <div class="hero-kicker-row">
+            <p class="eyebrow">Technischer IDP-Demonstrator</p>
+            <span class="live-chip">Human-in-the-loop</span>
+          </div>
+          <h1 id="heroTitle">KI-Controlling für kleine Unternehmen.</h1>
           <p>
-            Die Website dient als interaktive Präsentationsoberfläche für drei
-            datengetriebene KI-Fallbeispiele. Der Fokus liegt auf Kennzahlen,
-            Datenbanken, Trends, Begründungen und menschlicher Prüfung.
+            Aus Finance, ERP, CRM, HR und Projektdaten entsteht ein prüfbares
+            Steuerungsbild. Die Demo zeigt, wie KI Kennzahlen verdichtet,
+            Abweichungen erklärt und Maßnahmen vorbereitet, ohne Entscheidungen
+            automatisch zu übernehmen.
           </p>
+          <div class="hero-facts" aria-label="Kernpunkte der Demo">
+            <article><strong>3</strong><span>Einsatzfelder</span></article>
+            <article><strong>6</strong><span>Datenquellen</span></article>
+            <article><strong>1</strong><span>KI-Cockpit</span></article>
+          </div>
           <div class="hero-actions">
-            <a class="primary-button" href="#cases">Fallbeispiele öffnen</a>
-            <a class="secondary-button" href="#cockpit">Hauptdemo starten</a>
+            <a class="primary-button" href="#cases">Einsatzfelder ansehen</a>
+            <a class="secondary-button" href="#cockpit">Cockpit öffnen</a>
           </div>
         </div>
 
         <div class="hero-dashboard" aria-label="Vorschau des Controlling-Cockpits">
           <div class="dashboard-topline">
-            <span>Controlling-Cockpit</span>
+            <span>Control Room</span>
             <strong>Demo-Modus</strong>
+          </div>
+          <div class="decision-strip" aria-label="Prüfstrecke">
+            <span class="is-done">Daten</span>
+            <span class="is-done">Analyse</span>
+            <span class="is-active">Begründung</span>
+            <span>Freigabe</span>
           </div>
           <div class="mini-kpis">
             <article>
@@ -72,6 +88,12 @@
               Umsatz steigt, aber Deckungsbeitrag sinkt durch höhere
               Beschaffungskosten und verspätete Budgetkorrekturen.
             </p>
+          </div>
+          <div class="source-pills" aria-label="Verwendete Datenbanken">
+            <span>Finance DB</span>
+            <span>ERP</span>
+            <span>CRM</span>
+            <span>Data Warehouse</span>
           </div>
         </div>
       </section>
@@ -107,11 +129,11 @@
 
       <section id="cases" class="slide cases-slide" aria-labelledby="casesTitle">
         <div class="section-heading">
-          <p class="eyebrow">Drei Fallbeispiele</p>
-          <h2 id="casesTitle">Alle werden vorgestellt, eines wird im Detail demonstriert.</h2>
+          <p class="eyebrow">KI-Einsatzfelder</p>
+          <h2 id="casesTitle">Drei praxisnahe Wege zu besserer Unternehmenssteuerung.</h2>
         </div>
         <div class="case-layout">
-          <div id="caseTabs" class="case-tabs" aria-label="Fallbeispiele auswählen"></div>
+          <div id="caseTabs" class="case-tabs" aria-label="Einsatzfeld auswählen"></div>
           <article id="caseDetail" class="case-detail" aria-live="polite"></article>
         </div>
       </section>
@@ -119,7 +141,7 @@
       <section id="cockpit" class="slide cockpit-slide" aria-labelledby="cockpitTitle">
         <div class="section-heading cockpit-heading">
           <div>
-            <p class="eyebrow">Hauptfallbeispiel</p>
+            <p class="eyebrow">Interaktives KI-Cockpit</p>
             <h2 id="cockpitTitle">KI-gestütztes Controlling-Cockpit</h2>
           </div>
           <div class="mode-switch" aria-label="Szenario auswählen">
@@ -167,10 +189,10 @@
               </div>
               <div>
                 <dt>Menschliche Prüfung</dt>
-                <dd>Controller prüft Begründung, Quellen und Maßnahme vor Umsetzung.</dd>
+                <dd>Eine verantwortliche Person prüft Begründung, Quellen und Maßnahme vor der Umsetzung.</dd>
               </div>
             </dl>
-            <button id="runAnalysisButton" class="primary-button full-button" type="button">Analyse ausführen</button>
+            <button id="runAnalysisButton" class="primary-button full-button" type="button">KI-Analyse simulieren</button>
           </aside>
         </div>
       </section>
@@ -191,7 +213,7 @@
       <section id="functions" class="slide functions-slide" aria-labelledby="functionsTitle">
         <div class="section-heading">
           <p class="eyebrow">Funktionen</p>
-          <h2 id="functionsTitle">Was die Demo fachlich und technisch zeigt.</h2>
+          <h2 id="functionsTitle">Welche Fähigkeiten das KI-Cockpit bündelt.</h2>
         </div>
         <div class="function-grid">
           <article><h3>Kennzahlen berechnen</h3><p>Umsatz, Kostenquote, Deckungsbeitrag, Liquidität, Budgetabweichung, Forecast und Risikoindex.</p></article>
@@ -199,7 +221,7 @@
           <article><h3>Ursachen begründen</h3><p>KI-Antworten nennen Datenquellen und zeigen, worauf eine Interpretation gestützt wird.</p></article>
           <article><h3>Empfehlungen vorschlagen</h3><p>Die KI formuliert nächste Schritte, aber kein automatisches Management-Urteil.</p></article>
           <article><h3>Risiko sichtbar machen</h3><p>Unsichere Daten, widersprüchliche Quellen und hohe Finanzwirkung werden markiert.</p></article>
-          <article><h3>Präsentation unterstützen</h3><p>Große Sektionen funktionieren als Slides für die IDP-Vorstellung.</p></article>
+          <article><h3>Entscheidungen dokumentieren</h3><p>Jede Empfehlung bleibt mit Quelle, Risiko und Prüfstatus nachvollziehbar.</p></article>
         </div>
       </section>
 
@@ -226,20 +248,20 @@
 
       <section id="summary" class="slide summary-slide" aria-labelledby="summaryTitle">
         <div>
-          <p class="eyebrow">Fazit für die Präsentation</p>
-          <h2 id="summaryTitle">Der beste Use Case ist das Controlling-Cockpit.</h2>
+          <p class="eyebrow">Nutzen für kleine Unternehmen</p>
+          <h2 id="summaryTitle">KI wird zum prüfbaren Steuerungsinstrument.</h2>
           <p>
-            Es verbindet alle wichtigen Projektziele: technische Datenintegration,
-            KI-Analyse, betriebswirtschaftliche Kennzahlen, nachvollziehbare
-            Empfehlungen und menschliche Kontrolle.
+            Der Demonstrator zeigt, wie kleine Unternehmen KI einsetzen können,
+            ohne Kontrolle abzugeben: Daten werden gebündelt, Abweichungen
+            erklärt und Maßnahmen nachvollziehbar vorbereitet.
           </p>
         </div>
         <ol class="presentation-steps">
-          <li>Problem verteilter Unternehmensdaten erklären.</li>
-          <li>Drei Fallbeispiele kurz vorstellen.</li>
-          <li>Controlling-Cockpit im Detail demonstrieren.</li>
-          <li>Kennzahlen, Trends, Quellen und Empfehlung zeigen.</li>
-          <li>Grenzen, Datenschutz und Human-in-the-loop einordnen.</li>
+          <li>Datenquellen aus Fachbereichen zusammenführen.</li>
+          <li>Kennzahlen und Abweichungen schneller erkennen.</li>
+          <li>Ursachen, Risiken und Datenqualität transparent machen.</li>
+          <li>Maßnahmen vorbereiten und fachlich prüfen lassen.</li>
+          <li>Datenschutz, Verantwortung und Freigabe klar absichern.</li>
         </ol>
       </section>
     </main>

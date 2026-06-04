@@ -14,17 +14,31 @@
 ### Aktueller Stand
 
 - Die Website ist keine Kara-Shop- oder E-Commerce-Demo mehr.
-- Der Prototyp ist eine interaktive Informations- und Präsentationsoberfläche.
-- Die Oberfläche besteht aus großen, slide-artigen Sektionen und einer
-  Dashboard-Demo.
-- Es gibt drei KI-Fallbeispiele:
+- Der Prototyp ist eine interaktive Informations- und Cockpitoberfläche.
+- Die Oberfläche ist jetzt stärker als dunkler Control-Room-Demonstrator
+  gestaltet: Hero, Datenpipeline, KPI-Zellen und Cockpit wirken wie eine
+  echte Produktoberfläche statt wie eine einfache Folienseite.
+- Es gibt drei KI-Einsatzfelder:
   1. KI-gestütztes Controlling-Cockpit
   2. Budget- und Kostenabweichungsanalyse
   3. Forecasting und Frühwarnsystem
-- Das Controlling-Cockpit ist der Hauptfall und wird im Detail gezeigt.
+- Das Controlling-Cockpit ist das zentrale interaktive Element der Website.
 - Die Demo nutzt nur realistische Beispieldaten im Browser.
 - Es werden keine echten Unternehmensdaten, keine Kundendaten und keine externe
   KI-API verwendet.
+
+### Letzter umgesetzter Schritt
+
+- Die Website wurde visuell und textlich überarbeitet.
+- Der Hero nutzt jetzt einen dunklen Control-Room-Look mit Datenpipeline,
+  KPI-Zellen, KI-Begründung und sichtbarer Freigabelogik.
+- Die frühere sichtbare Meta-Sprache wurde entfernt. Die Sektion zu den drei
+  Bereichen heißt jetzt `KI-Einsatzfelder` und formuliert fachliche Mehrwerte
+  statt interner Arbeitsnotizen.
+- Dynamische Texte in `website/script.js` wurden professioneller formuliert:
+  `Controlling`, `Kostensteuerung` und `Frühwarnung`.
+- Die Browserprüfung zeigte keine horizontalen Überläufe und keine kaputten
+  Umlaute.
 
 ### Wichtige fachliche Entscheidungen
 
@@ -34,10 +48,16 @@
   Datenqualität, Risiko, Quellen und Human-in-the-loop.
 - KI liefert keine automatische Entscheidung, sondern eine begründete
   Empfehlung.
-- Die Präsentation soll zeigen, wie alle relevanten Unternehmensdatenbanken in
-  einem Controlling-Cockpit zusammengeführt werden können.
-- UI-Referenzrichtung: moderne Produkt- und Dashboard-Muster aus Mobbin, Refero
-  und Dribbble, ohne 1:1-Kopie.
+- Die Website soll zeigen, wie relevante Unternehmensdatenbanken in einem
+  Controlling-Cockpit zusammengeführt werden können.
+- Sichtbare Seitentexte dürfen keine internen Planhinweise, Arbeitsnotizen oder
+  Meta-Kommentare zum Aufbau der Präsentation enthalten.
+- UI-Referenzrichtung: moderne Dashboard-UX mit klarer Entscheidungsfläche,
+  progressiver Offenlegung, sichtbarer Datenpipeline, semantischen
+  Statusfarben und menschlicher Freigabe statt rein dekorativer Charts.
+- AgentMemory wurde vorbereitet: Die acht Skills aus
+  `rohitg00/agentmemory` sind lokal installiert und der MCP-Block
+  `mcp_servers.agentmemory` wurde in `~/.codex/config.toml` ergänzt.
 
 ### Demo-Datenquellen
 
@@ -60,8 +80,8 @@
 
 ### Relevante Dateien
 
-- `website/index.html` - Präsentationsoberfläche und Cockpit-Struktur
-- `website/script.js` - Fallbeispiele, Szenarien und Interaktion
+- `website/index.html` - Seitenstruktur und Cockpit-Oberfläche
+- `website/script.js` - Einsatzfelder, Szenarien und Interaktion
 - `website/styles.css` - Slide-/Dashboard-Design
 - `README.md` - Projektüberblick
 - `CHANGELOG.md` - Änderungsprotokoll
@@ -73,7 +93,7 @@
 
 ### Offene Punkte
 
-- Präsentationstext für den Hauptfall final üben.
+- Vortragstext für das zentrale KI-Cockpit final üben.
 - Optional echte Datenbank- oder CSV-Anbindung vorbereiten.
 - Optional echte KI-Schnittstelle hinter einem Demo-Modus ergänzen.
 - Optional Tests für Szenario-Umschaltung und UI-Zustände ergänzen.

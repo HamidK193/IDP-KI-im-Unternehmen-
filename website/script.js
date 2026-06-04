@@ -1,32 +1,32 @@
 const useCases = [
   {
     id: "controlling",
-    label: "01 Hauptfall",
+    label: "01 Controlling",
     title: "KI-gestütztes Controlling-Cockpit",
     summary:
-      "Analysiert alle relevanten Unternehmensdatenbanken, berechnet Kennzahlen, erkennt Trends und schlägt begründete Maßnahmen vor.",
+      "Bündelt Finanz-, Vertriebs- und Projektdaten zu einem gemeinsamen Steuerungsbild mit Kennzahlen, Trends und begründeten Empfehlungen.",
     why:
-      "Dieses Fallbeispiel ist am stärksten, weil es Datenintegration, betriebswirtschaftliche Steuerung, KI-Erklärung und menschliche Freigabe in einem Ablauf verbindet.",
-    outputs: ["Kennzahlen", "Trenddiagramme", "Ursachenanalyse", "Handlungsempfehlung"],
+      "Das Cockpit macht Unternehmensdaten schneller auswertbar und zeigt, welche Entscheidungen fachlich geprüft werden müssen.",
+    outputs: ["Kennzahlen", "Trendvergleich", "Ursachenanalyse", "Prüfbare Empfehlung"],
   },
   {
     id: "budget",
-    label: "02 Fallbeispiel",
+    label: "02 Kostensteuerung",
     title: "Budget- und Kostenabweichungsanalyse",
     summary:
-      "Vergleicht Plan- und Ist-Werte, markiert auffällige Kostenstellen und priorisiert Abweichungen nach finanzieller Wirkung.",
+      "Vergleicht Plan- und Ist-Werte, erkennt auffällige Kostenstellen und priorisiert Abweichungen nach finanzieller Wirkung.",
     why:
-      "Der Use Case zeigt, wie KI operative Controlling-Arbeit beschleunigt, ohne die fachliche Bewertung zu automatisieren.",
+      "Kleine Unternehmen erhalten schneller Klarheit darüber, wo Budgets aus dem Rahmen laufen und welche Ursachen geprüft werden sollten.",
     outputs: ["Plan-Ist-Vergleich", "Kostenstellen-Ranking", "Abweichungsgründe", "Prüfschritte"],
   },
   {
     id: "forecast",
-    label: "03 Fallbeispiel",
+    label: "03 Frühwarnung",
     title: "Forecasting und Frühwarnsystem",
     summary:
-      "Nutzt historische Daten, um Umsatz, Kosten oder Liquidität zu prognostizieren und kritische Szenarien früh sichtbar zu machen.",
+      "Nutzt historische Daten, um Umsatz, Kosten und Liquidität zu prognostizieren und kritische Entwicklungen früh sichtbar zu machen.",
     why:
-      "Der Use Case macht deutlich, dass KI nicht nur rückblickend analysiert, sondern auch vorausschauende Steuerung unterstützt.",
+      "Das Frühwarnsystem unterstützt vorausschauende Steuerung, bevor Engpässe oder Kostenrisiken akut werden.",
     outputs: ["Szenarien", "Forecast", "Frühwarnsignale", "Steuerungsempfehlung"],
   },
 ];
@@ -154,7 +154,7 @@ function renderCaseDetail() {
     <h3>${item.title}</h3>
     <p>${item.summary}</p>
     <div class="reason-box">
-      <span>Warum wichtig?</span>
+      <span>Mehrwert</span>
       <p>${item.why}</p>
     </div>
     <ul class="output-list">
@@ -277,7 +277,7 @@ runAnalysisButton.addEventListener("click", () => {
   runAnalysisButton.disabled = true;
 
   window.setTimeout(() => {
-    analysisState.textContent = "Empfehlung bereit";
+    analysisState.textContent = "prüfbereit";
     analysisState.classList.remove("is-running");
     runAnalysisButton.disabled = false;
   }, 700);

@@ -4,6 +4,22 @@ Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
 ## 2026-06-04
 
+- `website/index.html` und `website/script.js`: sichtbare Copy professioneller
+  formuliert. Interne Planhinweise wurden entfernt. Die Sektion heißt jetzt
+  "KI-Einsatzfelder" und beschreibt fachliche Mehrwerte statt Arbeitsnotizen.
+- `memory.md`: Projektregel ergänzt, dass sichtbare Seitentexte keine internen
+  Planhinweise oder Meta-Überschriften enthalten dürfen.
+- `website/index.html` und `website/styles.css`: Startbereich und
+  Präsentationsoberfläche auf einen modernen dunklen Control-Room-Look
+  umgestellt. Der Hero zeigt jetzt direkt die IDP-Logik aus Datenquellen,
+  KPI-Zusammenfassung, Analysephase, KI-Begründung und menschlicher Freigabe.
+- Designentscheidung aktualisiert: Fokus auf moderne Dashboard-UX,
+  progressive Offenlegung, schnelle KPI-Erfassung, sichtbare Datenpipeline und
+  klare Handlungslogik statt dekorativer Standardkarten.
+- `rohitg00/agentmemory`: acht AgentMemory-Skills lokal installiert
+  (`remember`, `recall`, `recap`, `handoff`, `forget`, `commit-context`,
+  `commit-history`, `session-history`) und AgentMemory als MCP-Server in
+  `~/.codex/config.toml` vorbereitet.
 - Fachliche Neuausrichtung: Der Kara-Shop und die E-Commerce-Ausrichtung werden
   nicht mehr verwendet. Der MVP ist jetzt ein technischer IDP-Demonstrator für
   KI im Controlling und in der Unternehmenssteuerung.
@@ -18,7 +34,7 @@ Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 - `website/styles.css`: Design vollständig auf moderne slide-artige
   Dashboard-/Produkt-UI umgestellt, inspiriert von Mobbin, Refero und Dribbble.
 - `README.md`, `memory.md`, `website/README.md`, `AGENTS.md` und relevante
-  Dateien in `docs/`: neuen Fokus, drei Fallbeispiele, Hauptfall,
+  Dateien in `docs/`: neuen Fokus, drei Fallbeispiele, zentrales Cockpit,
   Datenquellen, Funktionen, Ablauf, Datenschutzgrenzen und Präsentationslogik
   dokumentiert.
 - `website/index.html`: Navigation und Seitentitel wieder auf `Kara AI Operations`
