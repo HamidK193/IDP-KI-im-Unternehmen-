@@ -5,84 +5,76 @@
 ### Projekt
 
 - Repository: `IDP-KI-im-Unternehmen-`
-- Thema: IDP-Demonstrator für KI-Nutzung in einem kleinen Unternehmen
-- Aktueller Unternehmenskontext: `Kara`, fiktives E-Commerce-KMU für
-  Luxury-Streetwear
-- Ziel: zeigen, wie KI Mitarbeitende bei Support, Bestellungen, Rechnungen,
-  Wissensfragen und Auswertungen unterstützt
+- Thema: IDP-Demonstrator für KI-Nutzung in Unternehmen
+- Aktueller Fokus: datenbasiertes Controlling, Unternehmenssteuerung und
+  Analyse aller relevanten Unternehmensdatenbanken
+- Ziel: zeigen, wie KI Kennzahlen berechnet, Trends erkennt, Abweichungen
+  begründet und Handlungsempfehlungen vorschlägt
 
 ### Aktueller Stand
 
-- Primärer Einstieg ist jetzt das `Kara AI Operations` Cockpit in
-  `website/index.html`.
-- Das Cockpit ist als moderne Operations-App gestaltet: KPI-Zeile,
-  Aufgaben-Rail, Fallansicht und Assistentenpanel stehen im ersten Viewport.
-- Der bestehende Shop bleibt darunter als Datenquelle und Demo-Prozess erhalten.
-- Die KI ist im MVP simuliert und benötigt keinen API-Key.
-- Claude/Codex wird als möglicher interner Assistent erklärt.
-- Die Demo zeigt Human-in-the-loop: KI-Vorschläge können freigegeben oder
-  abgelehnt werden.
-- Lokale Speicherung erfolgt im Browser-`localStorage`.
-- Storage-Prefix ist `kara`.
-
-### Relevante lokale Collections
-
-- `kara_ai_tasks`
-- `kara_support_cases`
-- `kara_ai_runs`
-- `kara_knowledge_base`
-- `kara_cart`
-- `kara_customers`
-- `kara_orders`
-- `kara_invoices`
-- `kara_emails`
+- Die Website ist keine Kara-Shop- oder E-Commerce-Demo mehr.
+- Der Prototyp ist eine interaktive Informations- und Präsentationsoberfläche.
+- Die Oberfläche besteht aus großen, slide-artigen Sektionen und einer
+  Dashboard-Demo.
+- Es gibt drei KI-Fallbeispiele:
+  1. KI-gestütztes Controlling-Cockpit
+  2. Budget- und Kostenabweichungsanalyse
+  3. Forecasting und Frühwarnsystem
+- Das Controlling-Cockpit ist der Hauptfall und wird im Detail gezeigt.
+- Die Demo nutzt nur realistische Beispieldaten im Browser.
+- Es werden keine echten Unternehmensdaten, keine Kundendaten und keine externe
+  KI-API verwendet.
 
 ### Wichtige fachliche Entscheidungen
 
-- Fokus liegt nicht mehr auf einem reinen Shop-/Rechnungsprozess, sondern auf
-  dem Nachweis "KI im Unternehmen".
-- Zielunternehmen ist ein kleines KMU mit ca. 20 bis 80 Mitarbeitenden.
-- KI erstellt Vorschläge, Zusammenfassungen und Prüfhinweise.
-- Menschliche Freigabe bleibt für Kundenantworten, Rechnungen und operative
-  Entscheidungen sichtbar.
-- Keine echten Kundendaten und keine externen KI-Requests im MVP.
-- Supabase und Make bleiben als spätere Ausbaustufe dokumentiert.
-- UI-Referenzrichtung seit 2026-06-04: produktnahe SaaS-/Dashboard-Muster aus
-  Mobbin, Refero und Dribbble; keine 1:1-Kopie, sondern Umsetzung mit den
-  vorhandenen statischen HTML/CSS/JS-Komponenten.
-- Die IDP-Abgabe wird über `PLAN.md` gesteuert; der Plan ist aktuell
-  abgearbeitet.
-- Word-Dokumentation und PowerPoint-Präsentation liegen unter `outputs/`.
-- LinkedIn-Beitrag, Techday-One-Pager und How-To-Leitfaden liegen unter `docs/`.
-- Neue Änderungen sollen ab sofort nicht nur lokal, sondern direkt in GitHub
-  landen. In der Codex-Umgebung ist normales `git push` nicht zuverlässig, daher
-  wird für Textdateien der GitHub-Connector als direkter Commit-Weg genutzt.
+- Der frühere Kara-Store wird fachlich ignoriert und nicht mehr als Zielbild
+  verwendet.
+- Der Demonstrator soll technischer wirken: Datenbanken, Kennzahlen, Trends,
+  Datenqualität, Risiko, Quellen und Human-in-the-loop.
+- KI liefert keine automatische Entscheidung, sondern eine begründete
+  Empfehlung.
+- Die Präsentation soll zeigen, wie alle relevanten Unternehmensdatenbanken in
+  einem Controlling-Cockpit zusammengeführt werden können.
+- UI-Referenzrichtung: moderne Produkt- und Dashboard-Muster aus Mobbin, Refero
+  und Dribbble, ohne 1:1-Kopie.
+
+### Demo-Datenquellen
+
+- Finance DB: GuV, Cashflow, Buchungen
+- ERP: Einkauf, Bestand, Lieferanten
+- CRM: Umsatzpipeline, Kunden, Aufträge
+- HR: Personalkosten, Kapazitäten
+- Projekt DB: Budgets, Laufzeiten, Auslastung
+- Data Warehouse: historische Kennzahlen
+
+### Gezeigte Kennzahlen
+
+- Umsatz
+- Kostenquote
+- Deckungsbeitrag
+- Liquidität
+- Budgetabweichung
+- Forecast
+- Risikoindex
 
 ### Relevante Dateien
 
-- `website/index.html` - KI-Cockpit, Shop, Checkout
-- `website/script.js` - KI-Demo-Daten, KI-Simulation, Shop-Logik
-- `website/styles.css` - Cockpit- und Shop-Design
-- `docs/use-case.md` - fachlicher KI-Use-Case
-- `docs/architecture.md` - Prozessfluss und Zielarchitektur
+- `website/index.html` - Präsentationsoberfläche und Cockpit-Struktur
+- `website/script.js` - Fallbeispiele, Szenarien und Interaktion
+- `website/styles.css` - Slide-/Dashboard-Design
+- `README.md` - Projektüberblick
+- `CHANGELOG.md` - Änderungsprotokoll
+- `docs/use-case.md` - fachlicher Use Case
+- `docs/architecture.md` - Datenfluss und technischer Aufbau
+- `docs/data-model.md` - Demo-Datenmodell
+- `docs/ki-cockpit-dokumentation.md` - zentrale Cockpit-Dokumentation
 - `docs/repository-overview.md` - Repo-Überblick
-- `docs/how-to-leitfaden-ki-kmu.md` - praktischer KI-Einstiegsleitfaden
-- `docs/linkedin-post.md` - LinkedIn-Beitrag
-- `docs/techday-one-pager.md` - Techday-/WI-Tag-Material
-- `outputs/IDP_KI_kleine_Unternehmen_Dokumentation.docx` - Word-Dokumentation
-- `outputs/IDP_KI_kleine_Unternehmen_Präsentation.pptx` - PowerPoint-Präsentation
-- `PLAN.md` - abgearbeiteter Schritt-für-Schritt-Plan
-- `supabase/schema.sql` - späteres Backend-Datenmodell
-- `make/payload-example.json` - späterer Automationspayload
 
 ### Offene Punkte
 
-- Word-Dokumentation in Word öffnen und Inhaltsverzeichnis bei Bedarf
-  aktualisieren.
-- PowerPoint im Präsentationsmodus durchgehen und Sprechanteile final festlegen.
-- Browser- und Mobilansicht vor der Abgabe kurz prüfen.
-- Optional echte KI-Schnittstelle vorbereiten, aber Demo-Modus behalten.
-- Optional Supabase/Make wieder an den Prozess anbinden.
-- Tests für KI-Statuswechsel und lokale Speicherung ergänzen.
-- Bei künftigen Änderungen prüfen, ob die Datei zusätzlich auf GitHub committed
-  wurde, damit lokaler Stand und Repository nicht auseinanderlaufen.
+- Präsentationstext für den Hauptfall final üben.
+- Optional echte Datenbank- oder CSV-Anbindung vorbereiten.
+- Optional echte KI-Schnittstelle hinter einem Demo-Modus ergänzen.
+- Optional Tests für Szenario-Umschaltung und UI-Zustände ergänzen.
+- Bei künftigen Änderungen prüfen, ob lokaler Stand und GitHub synchron sind.

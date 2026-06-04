@@ -1,61 +1,85 @@
-﻿# End-to-End-Use-Case
+# End-to-End-Use-Case
 
 ## Grundidee
 
-Der IDP zeigt, wie ein kleines Unternehmen KI sinnvoll im Arbeitsalltag nutzen
-kann. Kara ist ein fiktives E-Commerce-KMU mit etwa 20 bis 80 Mitarbeitenden.
-Das Unternehmen verkauft kuratierte Luxury-Streetwear und muss täglich
-Supportanfragen, Bestellungen, Rechnungen und operative Entscheidungen
-bearbeiten.
+Der IDP zeigt, wie KI im Unternehmen zur datenbasierten Steuerung eingesetzt
+werden kann. Der bisherige Shop-Kontext wird nicht mehr verwendet. Der neue
+Fokus liegt auf Controlling, Datenanalyse und Unternehmenssteuerung.
 
-Die Demo zeigt einen internen KI-Assistenten für Mitarbeitende. Die KI
-erstellt Vorschläge und Prüfhinweise, aber die Entscheidung bleibt beim
-Menschen.
+Die zentrale Frage lautet:
 
-## Fiktives Unternehmen
+> Wie kann KI alle relevanten Unternehmensdatenbanken analysieren, Kennzahlen
+> berechnen, Trends erklären und Handlungsempfehlungen für das Management
+> vorbereiten?
 
-### Name
+## Zielgruppe
 
-**Kara**
+Die Demo richtet sich an:
 
-### Geschäftsidee
+- Controlling
+- Geschäftsführung
+- Fachabteilungen mit Budgetverantwortung
+- IT- und Datenverantwortliche
+- Projektteams, die KI-Anwendungsfälle im Unternehmen bewerten
 
-Kara ist ein moderner Online-Shop für hochwertige, kuratierte
-Luxury-Streetwear-Kollektionen. Das Sortiment umfasst Outerwear, Knitwear,
-Tailoring, Essentials, Denim, Shirts und Accessories.
+## Drei KI-Fallbeispiele
 
-### Unternehmensgröße
+### 1. KI-gestütztes Controlling-Cockpit
 
-Kara wird als kleines KMU verstanden:
+Dies ist der Hauptfall der Präsentation.
 
-- 20 bis 80 Mitarbeitende
-- kleines Support- und Backoffice-Team
-- keine eigene große IT-Abteilung
-- hoher Bedarf an einfachen, sicheren KI-Werkzeugen
+Die KI analysiert alle relevanten Unternehmensdatenbanken, zum Beispiel Finance
+DB, ERP, CRM, HR, Projekt DB und Data Warehouse. Daraus berechnet sie zentrale
+Kennzahlen, erkennt Trends und Abweichungen, begründet Auffälligkeiten und
+schlägt konkrete Maßnahmen vor.
+
+Gezeigte Kennzahlen:
+
+- Umsatz
+- Kostenquote
+- Deckungsbeitrag
+- Liquidität
+- Budgetabweichung
+- Forecast
+- Risikoindex
+
+Warum dieser Fall der beste Hauptfall ist:
+
+- Er ist technisch nachvollziehbar.
+- Er verbindet mehrere Datenquellen.
+- Er zeigt betriebswirtschaftlichen Nutzen.
+- Er macht KI-Erklärbarkeit sichtbar.
+- Er enthält Human-in-the-loop statt automatischer Entscheidung.
+
+### 2. Budget- und Kostenabweichungsanalyse
+
+Die KI vergleicht Plan- und Ist-Werte, erkennt auffällige Kostenstellen und
+priorisiert Abweichungen nach finanzieller Wirkung. Sie schlägt Prüfschritte vor,
+ersetzt aber keine fachliche Budgetentscheidung.
+
+### 3. Forecasting und Frühwarnsystem
+
+Die KI nutzt historische Daten, um Umsatz, Kosten oder Liquidität zu
+prognostizieren. Sie erkennt negative Trends frühzeitig und zeigt Szenarien wie
+stabil, kritisch und Wachstum.
 
 ## Zielprozess
 
 ```text
-Shop-/Backoffice-Daten -> KI-Cockpit -> Vorschlag -> menschliche Prüfung -> Freigabe oder Ablehnung
+Unternehmensdatenbanken
+-> KI-Analyse
+-> Kennzahlenberechnung
+-> Trend- und Abweichungserkennung
+-> Begründung mit Quellen und Datenqualität
+-> Handlungsempfehlung
+-> menschliche Prüfung
 ```
-
-## Gezeigte KI-Anwendungsfälle
-
-1. **Tagesbriefing**: Die KI fasst Umsatz, offene Aufgaben, Risiken und nächste
-   Schritte für das Team zusammen.
-2. **Support-Assistent**: Die KI entwirft Antworten auf Kundenanfragen, zum
-   Beispiel zu Retouren oder Adressänderungen.
-3. **Rechnungsprüfung**: Die KI erkennt fehlende Daten oder unstimmige
-   Rechnungsfelder.
-4. **Bestellprüfung**: Die KI warnt vor operativen Risiken wie falscher Adresse
-   oder knappem Bestand.
-5. **Wissensassistent**: Die KI beantwortet interne Prozessfragen anhand einer
-   kleinen Knowledge Base.
 
 ## Grenzen der Demo
 
-- keine echten Kundendaten
+- keine echten Unternehmensdaten
 - keine echte externe KI-Anfrage
 - keine automatische Entscheidung durch KI
 - keine produktive Datenschutzfreigabe
-- Supabase und Make bleiben als spätere Integrationsstufe dokumentiert
+- keine echte Datenbankverbindung im MVP
+- Szenarien und Kennzahlen sind realistische Demo-Daten

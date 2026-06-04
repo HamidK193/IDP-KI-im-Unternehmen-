@@ -1,23 +1,45 @@
-# IDP-KI-im-Unternehmen-
+# IDP-KI-im-Unternehmen
 
-IDP-Demonstrator für den Einsatz von KI in einem kleinen Unternehmen.
+IDP-Demonstrator für den Einsatz von KI in Unternehmen.
 
-Der aktuelle Prototyp zeigt das fiktive E-Commerce-KMU **Kara**. Im Mittelpunkt
-steht nicht mehr nur der Shop, sondern ein interaktives **KI-Operations-Cockpit**:
-Mitarbeitende sehen offene Support-, Bestell-, Rechnungs- und Analyseaufgaben,
-lassen sich realistische KI-Vorschläge erzeugen und geben diese bewusst frei
-oder lehnen sie ab.
+Der aktuelle Prototyp ist keine Shop- oder Unternehmenswebsite mehr, sondern
+eine interaktive Informations- und Präsentationsoberfläche zum Thema
+**KI im Controlling und in der Unternehmenssteuerung**.
 
-Die Oberfläche ist jetzt als produktnahe Operations-App gestaltet: zuerst das
-Kara-AI-Cockpit mit KPI-Zeile, Aufgaben-Rail, Fallansicht und Assistentenpanel,
-danach der Shop als operative Datenquelle. Die Gestaltung orientiert sich an
-aktuellen SaaS- und Dashboard-Referenzen wie Mobbin, Refero und Dribbble, bleibt
-aber im bestehenden statischen HTML/CSS/JS-Prototyp.
+Im Mittelpunkt stehen drei datengetriebene KI-Fallbeispiele. Alle werden
+vorgestellt, aber das **KI-gestützte Controlling-Cockpit** ist der zentrale
+Demo-Use-Case und wird im Detail gezeigt.
 
-Die KI ist im MVP simuliert. Dadurch läuft die Demo stabil ohne API-Key,
-Kosten oder echte Kundendaten. Claude/Codex wird als möglicher interner
-Assistent erklärt, der Vorschläge, Zusammenfassungen und Prüfhinweise liefert,
-aber keine fachlichen Entscheidungen automatisch trifft.
+## Hauptidee
+
+Unternehmen besitzen viele Datenbanken, aber oft keinen schnellen Überblick über
+Kennzahlen, Trends, Abweichungen und Ursachen. Die Demo zeigt, wie KI alle
+relevanten Unternehmensdatenbanken auswerten kann, Kennzahlen berechnet,
+Entwicklungen visuell darstellt, Auffälligkeiten begründet und konkrete
+Handlungsempfehlungen vorschlägt.
+
+Die KI trifft keine automatische Entscheidung. Empfehlungen werden mit Quelle,
+Datenqualität, Risiko und Human-in-the-loop-Prüfung dargestellt.
+
+## Drei Fallbeispiele
+
+1. **KI-gestütztes Controlling-Cockpit**
+   - Analyse aller relevanten Unternehmensdatenbanken
+   - Kennzahlen wie Umsatz, Kostenquote, Deckungsbeitrag, Liquidität,
+     Budgetabweichung, Forecast und Risikoindex
+   - Trendanalyse, Begründung und Handlungsempfehlung
+   - Hauptfall für die Präsentation
+
+2. **Budget- und Kostenabweichungsanalyse**
+   - Plan-Ist-Vergleich
+   - auffällige Kostenstellen
+   - Ursachenhypothesen
+   - priorisierte Prüfschritte
+
+3. **Forecasting und Frühwarnsystem**
+   - Prognose von Umsatz, Kosten und Liquidität
+   - Szenarien wie stabil, kritisch und Wachstum
+   - frühe Warnsignale und Steuerungsempfehlungen
 
 ## Website öffnen
 
@@ -28,42 +50,37 @@ https://hamidk193.github.io/IDP-KI-im-Unternehmen-/
 Nach einem neuen Commit kann es kurz dauern, bis GitHub Pages die aktuelle
 Version bereitstellt.
 
+Lokal kann die statische Website mit einem einfachen HTTP-Server geöffnet werden:
+
+```powershell
+cd A:\Codex\IDP\website
+py -m http.server 8080
+```
+
+Danach:
+
+```text
+http://localhost:8080/
+```
+
 ## Wichtige Dateien
 
-- `website/` - statischer Prototyp mit KI-Cockpit und Shop-Datenquelle
-- `website/index.html` - Einstieg in Kara AI Operations
-- `website/script.js` - lokale Demo-Daten, KI-Simulation, Shop- und Checkout-Logik
-- `website/styles.css` - responsive Cockpit- und Shop-Gestaltung
-- `supabase/schema.sql` - geplantes Datenmodell für spätere Backend-Anbindung
-- `make/payload-example.json` - Beispielpayload für die spätere Automatisierung
-- `docs/` - fachliche und technische Dokumentation
-- `docs/ki-cockpit-dokumentation.md` - zentrale Dokumentation des neuen KI-Cockpits
-- `docs/abgabeplan-idp-ki-kleine-unternehmen.md` - Abgabeplan für Word-Dokument,
-  Präsentation, LinkedIn und Techday/WI-Tag
-- `docs/how-to-leitfaden-ki-kmu.md` - praxisnaher KI-Einstiegsleitfaden
-- `docs/linkedin-post.md` - formulierter LinkedIn-Beitrag
-- `docs/techday-one-pager.md` - Kurzmaterial für Techday/WI-Tag
-- `outputs/IDP_KI_kleine_Unternehmen_Dokumentation.docx` - Word-Dokumentation
-- `outputs/IDP_KI_kleine_Unternehmen_Präsentation.pptx` - PowerPoint-Präsentation
-- `PLAN.md` - abgearbeiteter Schritt-für-Schritt-Plan zur IDP-Abgabe
-- `AGENTS.md` - Arbeitsregeln und Projektplan
+- `website/index.html` - interaktive Präsentationsoberfläche
+- `website/script.js` - Fallbeispiele, Demo-Kennzahlen, Szenarien und Interaktion
+- `website/styles.css` - modernes Slide-/Dashboard-Design
+- `docs/use-case.md` - fachlicher Use Case
+- `docs/architecture.md` - technischer Aufbau und Datenfluss
+- `docs/data-model.md` - Demo-Datenmodell für den Controlling-MVP
+- `docs/ki-cockpit-dokumentation.md` - zentrale Dokumentation des Cockpits
+- `docs/repository-overview.md` - Überblick über das Repository
 - `memory.md` - Projektgedächtnis für spätere Chats
 - `CHANGELOG.md` - Änderungsprotokoll
 
-## Demo-Ablauf
+## Präsentationsablauf
 
-1. KI-Cockpit öffnen.
-2. Tagesbriefing und offene Aufgaben zeigen.
-3. Eine Aufgabe aus Support, Rechnung, Bestellung, Analyse oder Wissen wählen.
-4. Einen simulierten Claude/Codex-Vorschlag erzeugen.
-5. Quelle, Risiko und Antwort prüfen.
-6. Vorschlag freigeben oder ablehnen.
-7. Shop darunter als operative Datenquelle zeigen.
-
-## Nächste Schritte
-
-1. Word-Dokumentation in Word öffnen und bei Bedarf ein automatisches Inhaltsverzeichnis aktualisieren.
-2. PowerPoint einmal im Präsentationsmodus durchgehen und Sprechanteile festlegen.
-3. Demo im Browser vor der Abgabe kurz zurücksetzen und den Kernflow prüfen.
-4. Optional echte KI-Schnittstelle vorbereiten, aber Demo-Modus behalten.
-5. Supabase- und Make-Prozess als spätere Ausbaustufe wieder anbinden.
+1. Problem verteilter Unternehmensdatenbanken erklären.
+2. Die drei KI-Fallbeispiele kurz vorstellen.
+3. Das Controlling-Cockpit als besten Hauptfall begründen.
+4. Szenarien, Kennzahlen, Trends und Datenquellen demonstrieren.
+5. KI-Begründung, Empfehlung, Risiko und Datenqualität zeigen.
+6. Human-in-the-loop, Datenschutz und Grenzen einordnen.

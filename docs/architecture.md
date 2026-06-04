@@ -1,55 +1,59 @@
-﻿# Zielarchitektur und Prozessfluss
+# Zielarchitektur und Prozessfluss
 
-Die aktuelle MVP-Architektur ist bewusst lokal und präsentationssicher. Die
-Website zeigt ein KI-Operations-Cockpit, lokale Demo-Daten und den bestehenden
-Shop als Datenquelle. Externe KI-, Supabase- und Make-Anbindungen sind für
-spätere Ausbaustufen vorgesehen.
-
-```mermaid
-flowchart LR
-    A["Shop- und Backoffice-Daten"] --> B["Lokale Demo-Daten im Browser"]
-    B --> C["Kara AI Operations Cockpit"]
-    C --> D["Simulierter Claude/Codex-Assistent"]
-    D --> E["Vorschlag mit Quelle und Risiko"]
-    E --> F["Menschliche Prüfung"]
-    F --> G["Freigeben oder Ablehnen"]
-```
+Die aktuelle MVP-Architektur ist bewusst statisch und präsentationssicher. Die
+Website zeigt eine interaktive Demo für KI-gestütztes Controlling, ohne echte
+Datenbanken oder externe KI-Dienste anzubinden.
 
 ## Aktueller MVP
 
 - statische Website in `website/`
-- lokale Speicherung im Browser mit `localStorage`
-- simulierte KI-Vorschläge ohne API-Key
-- Shop bleibt als operative Datenquelle sichtbar
-- Freigabeprinzip: KI erstellt Vorschlag, Mensch entscheidet
+- Demo-Daten direkt in `website/script.js`
+- interaktive Fallbeispiel-Auswahl
+- Szenario-Umschaltung für das Controlling-Cockpit
+- SVG-Trenddiagramm ohne externe Chart-Bibliothek
+- simulierte KI-Analyse mit Empfehlung, Risiko und Datenqualität
 
-## Lokale Demo-Collections
+```mermaid
+flowchart LR
+    A["Finance DB"] --> G["Demo-Datensatz im Browser"]
+    B["ERP"] --> G
+    C["CRM"] --> G
+    D["HR"] --> G
+    E["Projekt DB"] --> G
+    F["Data Warehouse"] --> G
+    G --> H["KI-Analyse simuliert"]
+    H --> I["Kennzahlen und Trends"]
+    I --> J["Begründung und Empfehlung"]
+    J --> K["Menschliche Prüfung"]
+```
 
-- `kara_ai_tasks`
-- `kara_support_cases`
-- `kara_ai_runs`
-- `kara_knowledge_base`
-- bestehend: `kara_cart`, `kara_customers`, `kara_orders`, `kara_invoices`,
-  `kara_emails`
+## Fachlicher Datenfluss
 
-## Statuskette für KI-Vorschläge
-
-- `draft`
-- `reviewed`
-- `approved`
-- `rejected`
+1. Alle relevanten Unternehmensdatenbanken werden als Quellen gedacht.
+2. Die KI aggregiert Daten und berechnet Kennzahlen.
+3. Trends, Abweichungen und Auffälligkeiten werden erkannt.
+4. Die KI formuliert Ursachenhypothesen und Handlungsempfehlungen.
+5. Datenqualität und Risiko werden sichtbar gemacht.
+6. Ein Mensch prüft die Empfehlung vor Umsetzung.
 
 ## Spätere Zielarchitektur
 
 ```mermaid
 flowchart LR
-    A["Website / Shop"] --> B["Supabase"]
-    B --> C["KI-Service oder gesicherter API-Proxy"]
-    C --> D["KI-Vorschlag"]
-    D --> E["Mitarbeiterfreigabe"]
-    E --> F["Make-Szenario"]
-    F --> G["Rechnung / E-Mail / Statusupdate"]
+    A["Unternehmensdatenbanken"] --> B["ETL / Data Warehouse"]
+    B --> C["Kennzahlen-Service"]
+    C --> D["KI-Service über gesicherten API-Proxy"]
+    D --> E["Erklärung, Risiko, Empfehlung"]
+    E --> F["Controlling-Cockpit"]
+    F --> G["Human-in-the-loop-Freigabe"]
 ```
 
-Für eine produktive Version müssten Datenschutz, Rollenrechte, API-Key-Schutz,
-Logging und menschliche Freigabe konkret umgesetzt werden.
+## Produktive Anforderungen
+
+- Rollen- und Rechtekonzept
+- Datenschutzprüfung
+- gesicherter API-Key-Schutz
+- Logging und Audit Trail
+- Datenqualitätsprüfungen
+- klare Verantwortlichkeiten für Empfehlungen
+- keine automatischen Managemententscheidungen

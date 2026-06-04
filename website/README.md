@@ -2,31 +2,33 @@
 
 ## Aktueller Stand
 
-Die Website zeigt jetzt zuerst **Kara AI Operations** als produktnahes
-KI-Operations-Cockpit für das IDP-Schulprojekt. Der Premium-Streetwear-Shop
-bleibt darunter als operative Datenquelle, Kontext und Checkout-Demo erhalten.
+Die Website ist ein technischer IDP-Demonstrator zu **KI im Unternehmen** mit
+Fokus auf Controlling, Datenanalyse und Unternehmenssteuerung.
 
-- App-orientierte Topbar mit Cockpit-, Aufgaben-, Prozess- und Shopdaten-Navigation
-- erster Viewport als SaaS-/Dashboard-Oberfläche mit KPI-Zeile und Statussignalen
-- dunkle Aufgaben-Rail, Fallansicht und Assistentenpanel im Human-in-the-loop-Flow
-- New-In-Bereich, Kategorie-Kacheln und erweiterter Produktkatalog
-- Produktkarten mit Badge, Wishlist-Anmutung, Preis im Shop-Format und Add-to-cart
-- Warenkorb, Account und Checkout-Demo bleiben angebunden
-- KI-Cockpit für Support, Bestellungen, Rechnungen, Analyse und Wissen
-- simulierter Claude/Codex-Assistent mit Prompt, Antwort, Quelle und Risiko
-- Freigabe oder Ablehnung von KI-Vorschlägen im Human-in-the-loop-Prinzip
+Sie ist keine Shop- oder E-Commerce-Seite mehr. Der Prototyp dient als
+interaktive Informations- und Präsentationsoberfläche mit großen
+Slide-Sektionen und einer beispielhaften Dashboard-UI.
 
-## Seiten
+## Inhalte
 
-- `index.html` - Kara-Shop, Warenkorb, Account, Checkout und KI-Cockpit
+- technisches Hero-Intro
+- Problemstellung: viele Unternehmensdatenbanken, wenig Überblick
+- drei KI-Fallbeispiele
+- detaillierter Hauptfall: KI-gestütztes Controlling-Cockpit
+- Datenfluss von Datenbanken über KI-Analyse bis zur menschlichen Prüfung
+- Funktionen, Grenzen, Datenschutz und Human-in-the-loop
+- Fazit und Präsentationsablauf
 
-## Lokale Demo-Daten
+## Interaktion
 
-- `kara_ai_tasks`
-- `kara_support_cases`
-- `kara_ai_runs`
-- `kara_knowledge_base`
-- bestehende Shopdaten wie `kara_cart`, `kara_orders`, `kara_invoices`
+- Fallbeispiele können per Karten ausgewählt werden.
+- Das Controlling-Cockpit besitzt drei Szenarien:
+  - stabil
+  - kritisch
+  - Wachstum
+- Kennzahlen, Trenddiagramm, KI-Findings, Datenqualität, Risiko und Empfehlung
+  ändern sich je nach Szenario.
+- Der Button `Analyse ausführen` simuliert eine KI-Auswertung.
 
 ## Lokal starten
 
@@ -40,9 +42,3 @@ Danach im Browser öffnen:
 ```text
 http://localhost:8080/
 ```
-
-## Nächste technische Schritte
-
-1. Supabase-Seed bei Bedarf erneut ausführen, damit alle 20 Produkte in der Datenbank stehen.
-2. Optional echte KI-API hinter Demo-Modus vorbereiten.
-3. Optional Produktbilder später durch eigene Kara-Assets ersetzen.

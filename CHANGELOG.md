@@ -4,6 +4,23 @@ Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
 ## 2026-06-04
 
+- Fachliche Neuausrichtung: Der Kara-Shop und die E-Commerce-Ausrichtung werden
+  nicht mehr verwendet. Der MVP ist jetzt ein technischer IDP-Demonstrator für
+  KI im Controlling und in der Unternehmenssteuerung.
+- `website/index.html`: komplett als interaktive Präsentationsoberfläche neu
+  aufgebaut. Enthält jetzt Problemstellung, drei KI-Fallbeispiele,
+  detailliertes Controlling-Cockpit, Datenfluss, Funktionen, Governance und
+  Präsentationsfazit.
+- `website/script.js`: alte Supabase-, Shop-, Account-, Checkout- und
+  Warenkorb-Logik entfernt. Neue Demo-Daten für Fallbeispiele, Datenquellen,
+  Controlling-Szenarien, Kennzahlen, Trenddiagramm, KI-Findings und Empfehlungen
+  ergänzt.
+- `website/styles.css`: Design vollständig auf moderne slide-artige
+  Dashboard-/Produkt-UI umgestellt, inspiriert von Mobbin, Refero und Dribbble.
+- `README.md`, `memory.md`, `website/README.md`, `AGENTS.md` und relevante
+  Dateien in `docs/`: neuen Fokus, drei Fallbeispiele, Hauptfall,
+  Datenquellen, Funktionen, Ablauf, Datenschutzgrenzen und Präsentationslogik
+  dokumentiert.
 - `website/index.html`: Navigation und Seitentitel wieder auf `Kara AI Operations`
   fokussiert. Das KI-Cockpit ist visuell der erste Einstieg, der Shop bleibt als
   Datenquelle darunter erhalten.

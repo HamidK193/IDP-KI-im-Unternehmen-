@@ -3,378 +3,247 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kara AI Operations | KI im Unternehmen</title>
+    <title>IDP KI-Control | KI im Unternehmen</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="promo-bar" aria-label="Demo Hinweise">
-      <span>KI-Demo für kleine Unternehmen</span>
-      <span>Human-in-the-loop</span>
-      <span>Stabil ohne API-Key</span>
-    </div>
-
-    <header class="topbar">
-      <a class="brand-lockup" href="#aiCockpit" aria-label="Kara AI Operations Startseite">
-        <span class="kara-logo" aria-hidden="true">Kara</span>
+    <header class="app-header">
+      <a class="brand" href="#intro" aria-label="IDP KI-Control Start">
+        <span class="brand-mark" aria-hidden="true">IDP</span>
+        <span>KI-Control</span>
       </a>
-      <nav class="nav-links primary-nav" aria-label="Hauptnavigation">
-        <a href="#aiCockpit">Cockpit</a>
-        <a href="#aiTasks">Aufgaben</a>
-        <a href="#aiProcess">Prozess</a>
-        <a href="#productsTitle">Shopdaten</a>
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <a href="#problem">Problem</a>
+        <a href="#cases">Fallbeispiele</a>
+        <a href="#cockpit">Cockpit</a>
+        <a href="#flow">Datenfluss</a>
+        <a href="#governance">Grenzen</a>
       </nav>
-      <nav class="nav-links utility-nav" aria-label="Shop Navigation">
-        <a href="#productsTitle">Datenquelle</a>
-        <button id="accountButton" class="nav-text-button" type="button">Account</button>
-        <div id="accountMenu" class="account-menu" hidden>
-          <button id="accountMenuButton" class="nav-text-button account-menu-button" type="button">
-            <span id="userLabel" class="user-label"></span>
-            <span aria-hidden="true">▾</span>
-          </button>
-        </div>
-        <a href="#atelier">Kontext</a>
-        <button id="cartButton" class="cart-button" type="button" aria-label="Warenkorb öffnen">
-          Cart (<strong id="cartCount">0</strong>)
-        </button>
-      </nav>
+      <a class="header-action" href="#cockpit">Demo ansehen</a>
     </header>
 
-    <main id="home" class="home-view">
-      <section id="shopDemo" class="hero shop-demo-hero" aria-labelledby="heroTitle">
-        <div class="hero-media" aria-label="Kara Streetwear Editorial"></div>
+    <main>
+      <section id="intro" class="slide hero-slide" aria-labelledby="heroTitle">
         <div class="hero-copy">
-          <h1 id="heroTitle">Kara Atelier</h1>
-          <p>Zeitlose Designs. Höchste Qualität. Für jeden Moment.</p>
+          <p class="eyebrow">Technischer IDP-Demonstrator</p>
+          <h1 id="heroTitle">KI macht Controlling aus Datenbanken steuerbar.</h1>
+          <p>
+            Die Website dient als interaktive Präsentationsoberfläche für drei
+            datengetriebene KI-Fallbeispiele. Der Fokus liegt auf Kennzahlen,
+            Datenbanken, Trends, Begründungen und menschlicher Prüfung.
+          </p>
           <div class="hero-actions">
-            <a class="primary-button light-button" href="#productsTitle">Shop Now</a>
+            <a class="primary-button" href="#cases">Fallbeispiele öffnen</a>
+            <a class="secondary-button" href="#cockpit">Hauptdemo starten</a>
           </div>
         </div>
-      </section>
 
-      <section id="newIn" class="shop-section feature-products" aria-labelledby="newInTitle">
-        <div class="section-heading compact-heading">
-          <div>
-            <h2 id="newInTitle">New In</h2>
+        <div class="hero-dashboard" aria-label="Vorschau des Controlling-Cockpits">
+          <div class="dashboard-topline">
+            <span>Controlling-Cockpit</span>
+            <strong>Demo-Modus</strong>
           </div>
-          <a class="text-link" href="#productsTitle">View All</a>
-        </div>
-        <div class="feature-grid" aria-label="Neue Produkte">
-          <article class="feature-card">
-            <span>New</span>
-            <img src="https://images.pexels.com/photos/6311392/pexels-photo-6311392.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Schwarzer Premium Hoodie" />
-            <div><strong>Kara Logo Hoodie</strong><p>129,90 €</p></div>
-          </article>
-          <article class="feature-card">
-            <span>New</span>
-            <img src="https://images.pexels.com/photos/9558594/pexels-photo-9558594.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Schwarze Bomberjacke" />
-            <div><strong>Atelier Bomber Jacket</strong><p>199,90 €</p></div>
-          </article>
-          <article class="feature-card">
-            <span>New</span>
-            <img src="https://images.pexels.com/photos/375880/pexels-photo-375880.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Weite dunkle Denim Hose" />
-            <div><strong>Wide Denim Black</strong><p>119,90 €</p></div>
-          </article>
-          <article class="feature-card">
-            <span>New</span>
-            <img src="https://images.pexels.com/photos/2421374/pexels-photo-2421374.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Schwarz weiße Sneaker" />
-            <div><strong>Kara Court Sneaker</strong><p>159,90 €</p></div>
-          </article>
-        </div>
-      </section>
-
-      <section class="category-showcase" aria-label="Shop Kategorien">
-        <a id="outerwear" href="#productsTitle" class="category-tile tile-outerwear">
-          <span>Outerwear</span>
-          <small>Entdecken</small>
-        </a>
-        <a id="footwear" href="#productsTitle" class="category-tile tile-footwear">
-          <span>Footwear</span>
-          <small>Entdecken</small>
-        </a>
-        <a id="accessories" href="#productsTitle" class="category-tile tile-accessories">
-          <span>Accessories</span>
-          <small>Entdecken</small>
-        </a>
-        <a href="#productsTitle" class="category-tile tile-all">
-          <span>Shop All</span>
-          <small>Entdecken</small>
-        </a>
-      </section>
-
-      <section class="shop-section" aria-labelledby="productsTitle">
-        <div class="section-heading">
-          <div>
-            <h2 id="productsTitle">Shop All</h2>
-            <p>Premium Streetwear für einen realistischen Fashion-Checkout im Schulprojekt.</p>
+          <div class="mini-kpis">
+            <article>
+              <span>Umsatztrend</span>
+              <strong>+8,4%</strong>
+            </article>
+            <article>
+              <span>Kostenquote</span>
+              <strong>41,8%</strong>
+            </article>
+            <article>
+              <span>Risikoindex</span>
+              <strong>72</strong>
+            </article>
           </div>
-          <div id="categoryFilters" class="filter-row" aria-label="Produktfilter"></div>
-        </div>
-        <div id="productGrid" class="product-grid"></div>
-      </section>
-
-      <section id="aiCockpit" class="ai-cockpit" aria-labelledby="aiCockpitTitle">
-        <div class="ai-cockpit-hero">
-          <div class="ai-hero-copy">
-            <p class="section-label">Kara AI Operations</p>
-            <h1 id="aiCockpitTitle">KI im Unternehmen steuerbar machen.</h1>
+          <div class="hero-chart" aria-hidden="true">
+            <span style="--bar: 58%"></span>
+            <span style="--bar: 64%"></span>
+            <span style="--bar: 51%"></span>
+            <span style="--bar: 72%"></span>
+            <span style="--bar: 78%"></span>
+            <span style="--bar: 68%"></span>
+            <span style="--bar: 83%"></span>
+          </div>
+          <div class="insight-card">
+            <span>KI-Begründung</span>
             <p>
-              Das Backoffice von Kara nutzt einen simulierten KI-Assistenten für Support,
-              Bestellungen, Rechnungen und Tagesanalysen. Jeder Vorschlag bleibt im
-              Human-in-the-loop-Prozess und wird erst nach Prüfung freigegeben.
+              Umsatz steigt, aber Deckungsbeitrag sinkt durch höhere
+              Beschaffungskosten und verspätete Budgetkorrekturen.
             </p>
-            <div class="ai-hero-actions">
-              <a class="primary-button" href="#aiTasks">Demo starten</a>
-              <a class="secondary-button" href="#productsTitle">Shopdaten ansehen</a>
-            </div>
           </div>
-          <div class="ai-signal-board" aria-label="KI Demo Kennzahlen">
-            <strong>Live Demo</strong>
-            <span>Claude / Codex simuliert</span>
-            <span>Keine echten Kundendaten an KI</span>
-            <span>Mensch prüft vor Freigabe</span>
+        </div>
+      </section>
+
+      <section id="problem" class="slide problem-slide" aria-labelledby="problemTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Problemstellung</p>
+          <h2 id="problemTitle">Viele Datenbanken, aber kein gemeinsames Steuerungsbild.</h2>
+        </div>
+        <div class="problem-grid">
+          <article>
+            <span>01</span>
+            <h3>Daten sind verteilt</h3>
+            <p>Finanzen, Vertrieb, Einkauf, Personal und Projekte liegen in getrennten Systemen.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Kennzahlen werden spät sichtbar</h3>
+            <p>Berichte entstehen manuell und zeigen Auffälligkeiten oft erst nachträglich.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Ursachen bleiben unklar</h3>
+            <p>Dashboards zeigen Werte, erklären aber selten, warum Trends entstehen.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Entscheidungen brauchen Kontext</h3>
+            <p>KI soll nicht entscheiden, sondern Quellen, Risiko und Empfehlungen transparent machen.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="cases" class="slide cases-slide" aria-labelledby="casesTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Drei Fallbeispiele</p>
+          <h2 id="casesTitle">Alle werden vorgestellt, eines wird im Detail demonstriert.</h2>
+        </div>
+        <div class="case-layout">
+          <div id="caseTabs" class="case-tabs" aria-label="Fallbeispiele auswählen"></div>
+          <article id="caseDetail" class="case-detail" aria-live="polite"></article>
+        </div>
+      </section>
+
+      <section id="cockpit" class="slide cockpit-slide" aria-labelledby="cockpitTitle">
+        <div class="section-heading cockpit-heading">
+          <div>
+            <p class="eyebrow">Hauptfallbeispiel</p>
+            <h2 id="cockpitTitle">KI-gestütztes Controlling-Cockpit</h2>
+          </div>
+          <div class="mode-switch" aria-label="Szenario auswählen">
+            <button class="mode-button active" type="button" data-scenario="stabil">Stabil</button>
+            <button class="mode-button" type="button" data-scenario="kritisch">Kritisch</button>
+            <button class="mode-button" type="button" data-scenario="wachstum">Wachstum</button>
           </div>
         </div>
 
-        <div id="aiKpis" class="ai-kpi-grid" aria-label="Tageskennzahlen"></div>
-
-        <div class="ai-workspace" aria-label="Kara KI Operations Cockpit">
-          <aside id="aiTasks" class="ai-task-rail" aria-labelledby="aiTasksTitle">
-            <div class="ai-panel-heading">
-              <h3 id="aiTasksTitle">Heute priorisiert</h3>
-              <p>Wähle einen Fall aus und lasse die KI einen prüfbaren Vorschlag erzeugen.</p>
-            </div>
-            <div id="aiTaskList" class="ai-task-list"></div>
+        <div class="cockpit-grid">
+          <aside class="source-panel" aria-labelledby="sourcesTitle">
+            <h3 id="sourcesTitle">Analysierte Datenbanken</h3>
+            <div id="sourceList" class="source-list"></div>
           </aside>
 
-          <section class="ai-command-center" aria-labelledby="aiBriefingTitle">
-            <div class="ai-briefing-panel">
-              <div class="ai-panel-heading">
-                <h3 id="aiBriefingTitle">Tagesbriefing</h3>
+          <section class="analytics-panel" aria-label="Kennzahlen und Trends">
+            <div id="metricGrid" class="metric-grid"></div>
+            <div class="trend-card">
+              <div class="panel-title">
+                <h3>Trendvergleich</h3>
+                <span id="trendLabel">Q1 bis Q4</span>
               </div>
-              <p id="aiBriefingText" class="ai-briefing-text"></p>
-              <ul id="aiRecommendations" class="ai-recommendations"></ul>
-            </div>
-
-            <article id="aiCasePanel" class="ai-case-panel" aria-live="polite"></article>
-
-            <div id="aiProcess" class="ai-process-strip" aria-label="KI Prozess">
-              <span>Daten sammeln</span>
-              <span>Vorschlag erzeugen</span>
-              <span>Risiko prüfen</span>
-              <span>Freigeben</span>
+              <svg id="trendChart" class="trend-chart" viewBox="0 0 640 260" role="img" aria-label="Trenddiagramm für Umsatz, Kosten und Liquidität"></svg>
             </div>
           </section>
 
-          <aside class="ai-assistant-panel" aria-labelledby="aiAssistantTitle">
-            <div class="ai-assistant-header">
+          <aside class="ai-panel" aria-labelledby="aiPanelTitle">
+            <div class="panel-title">
+              <h3 id="aiPanelTitle">KI-Analyse</h3>
+              <span id="analysisState">bereit</span>
+            </div>
+            <div id="findingList" class="finding-list"></div>
+            <div class="recommendation-box">
+              <span>Empfehlung</span>
+              <p id="recommendationText"></p>
+            </div>
+            <dl class="confidence-list">
               <div>
-                <h3 id="aiAssistantTitle">Assistent</h3>
-                <p>Claude / Codex Demo</p>
-              </div>
-              <span id="aiRunStatus" class="status-pill">draft</span>
-            </div>
-            <div class="ai-prompt-box">
-              <span>Prompt</span>
-              <p id="aiPromptText"></p>
-            </div>
-            <div class="ai-response-box">
-              <span>Antwortvorschlag</span>
-              <p id="aiResponseText"></p>
-            </div>
-            <dl class="ai-meta-list">
-              <div>
-                <dt>Quelle</dt>
-                <dd id="aiSourceText"></dd>
+                <dt>Datenqualität</dt>
+                <dd id="qualityText"></dd>
               </div>
               <div>
                 <dt>Risiko</dt>
-                <dd id="aiRiskText"></dd>
+                <dd id="riskText"></dd>
+              </div>
+              <div>
+                <dt>Menschliche Prüfung</dt>
+                <dd>Controller prüft Begründung, Quellen und Maßnahme vor Umsetzung.</dd>
               </div>
             </dl>
-            <div class="ai-assistant-actions">
-              <button id="aiGenerateButton" class="primary-button" type="button">Vorschlag erzeugen</button>
-              <button id="aiApproveButton" class="secondary-button" type="button">Freigeben</button>
-              <button id="aiRejectButton" class="secondary-button" type="button">Ablehnen</button>
-              <button id="aiResetButton" class="nav-text-button" type="button">Demo zurücksetzen</button>
-            </div>
+            <button id="runAnalysisButton" class="primary-button full-button" type="button">Analyse ausführen</button>
           </aside>
         </div>
       </section>
 
-      <section id="lookbook" class="lookbook-section" aria-labelledby="lookbookTitle">
-        <div class="lookbook-copy">
-          <h2 id="lookbookTitle">Dress codes for late trains, galleries and hotel lobbies.</h2>
+      <section id="flow" class="slide flow-slide" aria-labelledby="flowTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Technischer Aufbau</p>
+          <h2 id="flowTitle">Von allen Datenbanken zur begründeten Empfehlung.</h2>
+        </div>
+        <div class="flow-map" aria-label="Datenfluss">
+          <article><span>01</span><strong>Datenquellen</strong><p>ERP, CRM, Finance, HR, Projekte und Data Warehouse.</p></article>
+          <article><span>02</span><strong>KI-Analyse</strong><p>Aggregation, Kennzahlenberechnung, Mustererkennung und Plausibilitätsprüfung.</p></article>
+          <article><span>03</span><strong>Erklärung</strong><p>Trends, Abweichungen, Ursachenhypothesen, Datenqualität und Risiko.</p></article>
+          <article><span>04</span><strong>Steuerung</strong><p>Handlungsempfehlung, Priorität, Verantwortlichkeit und menschliche Freigabe.</p></article>
+        </div>
+      </section>
+
+      <section id="functions" class="slide functions-slide" aria-labelledby="functionsTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Funktionen</p>
+          <h2 id="functionsTitle">Was die Demo fachlich und technisch zeigt.</h2>
+        </div>
+        <div class="function-grid">
+          <article><h3>Kennzahlen berechnen</h3><p>Umsatz, Kostenquote, Deckungsbeitrag, Liquidität, Budgetabweichung, Forecast und Risikoindex.</p></article>
+          <article><h3>Trends analysieren</h3><p>Die Demo trennt stabile Entwicklungen von auffälligen Abweichungen und Frühwarnsignalen.</p></article>
+          <article><h3>Ursachen begründen</h3><p>KI-Antworten nennen Datenquellen und zeigen, worauf eine Interpretation gestützt wird.</p></article>
+          <article><h3>Empfehlungen vorschlagen</h3><p>Die KI formuliert nächste Schritte, aber kein automatisches Management-Urteil.</p></article>
+          <article><h3>Risiko sichtbar machen</h3><p>Unsichere Daten, widersprüchliche Quellen und hohe Finanzwirkung werden markiert.</p></article>
+          <article><h3>Präsentation unterstützen</h3><p>Große Sektionen funktionieren als Slides für die IDP-Vorstellung.</p></article>
+        </div>
+      </section>
+
+      <section id="governance" class="slide governance-slide" aria-labelledby="governanceTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Grenzen und Verantwortung</p>
+          <h2 id="governanceTitle">Die KI unterstützt Controlling, ersetzt aber keine Freigabe.</h2>
+        </div>
+        <div class="governance-layout">
+          <article>
+            <h3>Datenschutz</h3>
+            <p>Im MVP werden nur realistische Demo-Daten verwendet. Produktiv wären Rollenrechte, Protokollierung und gesicherte API-Zugriffe notwendig.</p>
+          </article>
+          <article>
+            <h3>Human-in-the-loop</h3>
+            <p>Empfehlungen werden erst nach menschlicher Prüfung übernommen. Kritische Maßnahmen brauchen Verantwortliche.</p>
+          </article>
+          <article>
+            <h3>Transparenz</h3>
+            <p>Jede Analyse zeigt Quelle, Datenqualität, Risiko und Begründung, damit Ergebnisse nachvollziehbar bleiben.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="summary" class="slide summary-slide" aria-labelledby="summaryTitle">
+        <div>
+          <p class="eyebrow">Fazit für die Präsentation</p>
+          <h2 id="summaryTitle">Der beste Use Case ist das Controlling-Cockpit.</h2>
           <p>
-            Kara wirkt wie ein ruhiger Premium-Shop: große Bildflächen, klare
-            Produktkarten, reduziertes Schwarz/Weiß und ein Checkout, der für die
-            Demo echte Abläufe simuliert.
+            Es verbindet alle wichtigen Projektziele: technische Datenintegration,
+            KI-Analyse, betriebswirtschaftliche Kennzahlen, nachvollziehbare
+            Empfehlungen und menschliche Kontrolle.
           </p>
         </div>
-        <div class="lookbook-grid" aria-label="Lookbook Bilder">
-          <div class="lookbook-image lookbook-one"></div>
-          <div class="lookbook-image lookbook-two"></div>
-          <div class="lookbook-image lookbook-three"></div>
-        </div>
-      </section>
-
-      <section id="atelier" class="atelier-section" aria-labelledby="atelierTitle">
-        <div class="atelier-image" aria-label="Detailaufnahme hochwertiger Kleidung"></div>
-        <div class="atelier-copy">
-          <h2 id="atelierTitle">Schwere Stoffe, klare Kanten, keine laute Grafik.</h2>
-          <p>
-            Das fiktive Unternehmen Kara zeigt, wie ein kleiner Fashion-Shop Bestellungen,
-            Kundendaten, Rechnungen und KI-Vorschläge in einem verständlichen
-            Unternehmensprozess zusammenführen kann.
-          </p>
-          <div class="service-grid" aria-label="Shop Vorteile">
-            <span>Kostenloser Rückversand</span>
-            <span>Versand in 48 Stunden</span>
-            <span>Automatische Bestellmail</span>
-            <span>KI-gestütztes Backoffice</span>
-          </div>
-        </div>
+        <ol class="presentation-steps">
+          <li>Problem verteilter Unternehmensdaten erklären.</li>
+          <li>Drei Fallbeispiele kurz vorstellen.</li>
+          <li>Controlling-Cockpit im Detail demonstrieren.</li>
+          <li>Kennzahlen, Trends, Quellen und Empfehlung zeigen.</li>
+          <li>Grenzen, Datenschutz und Human-in-the-loop einordnen.</li>
+        </ol>
       </section>
     </main>
 
-    <main id="accountPage" class="standalone-page account-page-view" hidden>
-      <header class="checkout-topbar">
-        <a class="checkout-logo" href="./index.html" aria-label="Kara Startseite">Kara</a>
-        <button id="accountBackHomeButton" class="nav-text-button" type="button">Zum Shop</button>
-      </header>
-      <section class="account-page-shell">
-        <div class="account-page-copy">
-          <h1>Meine Daten</h1>
-          <p id="accountPageStatus">Melde dich an, um deine Daten für den nächsten Einkauf zu speichern.</p>
-        </div>
-        <div class="account-page-panel">
-          <div id="accountAuthPanel">
-            <div class="account-auth-actions">
-              <button id="accountPageLoginButton" class="primary-button" type="button">Anmelden</button>
-              <button id="accountPageRegisterButton" class="secondary-button" type="button">Registrieren</button>
-            </div>
-          </div>
-          <div id="accountProfilePanel" hidden>
-            <form id="profileForm" class="profile-form">
-              <label>Vorname<input required name="firstName" autocomplete="given-name" /></label>
-              <label>Nachname<input required name="lastName" autocomplete="family-name" /></label>
-              <label>E-Mail<input required type="email" name="email" autocomplete="email" /></label>
-              <label>Straße und Hausnummer<input required name="street" autocomplete="street-address" /></label>
-              <div class="profile-row">
-                <label>PLZ<input required name="postalCode" autocomplete="postal-code" /></label>
-                <label>Ort<input required name="city" autocomplete="address-level2" /></label>
-              </div>
-              <p id="profileMessage" class="profile-message" hidden></p>
-              <button class="primary-button compact-button" type="submit">Daten speichern</button>
-            </form>
-            <button id="logoutButton" class="secondary-button account-logout-button" type="button">Abmelden</button>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <main id="checkoutPage" class="checkout-standalone-page" hidden>
-      <header class="checkout-topbar">
-        <a class="checkout-logo" href="./index.html" aria-label="Kara Startseite">Kara</a>
-        <button id="backToCartButton" class="checkout-cart-icon" type="button" aria-label="Warenkorb">Bag</button>
-      </header>
-      <section class="checkout-layout" aria-labelledby="checkoutPageTitle">
-        <div class="checkout-main-panel">
-          <h1 id="checkoutPageTitle">Checkout</h1>
-          <div class="checkout-signed-in">
-            <div>
-              <strong id="checkoutAccountHeadline">Angemeldet</strong>
-              <p id="checkoutAccountStatus"></p>
-            </div>
-            <button id="editAccountFromCheckout" class="nav-text-button" type="button">Account bearbeiten</button>
-          </div>
-          <div class="checkout-method-box">
-            <span>Versand</span>
-            <strong>Standardversand 48 Stunden</strong>
-          </div>
-          <div class="checkout-method-box">
-            <span>Zahlung</span>
-            <strong>Demo-Zahlung bestätigt</strong>
-          </div>
-          <button id="confirmCheckoutButton" class="primary-button checkout-pay-button" type="button">Kauf abschließen</button>
-        </div>
-        <aside class="checkout-summary-panel">
-          <div id="checkoutSummary"></div>
-        </aside>
-      </section>
-    </main>
-
-    <aside id="cartPanel" class="cart-panel" aria-hidden="true">
-      <div class="panel-header">
-        <div>
-          <span>Shopping Bag</span>
-          <h2>Warenkorb</h2>
-        </div>
-        <button id="closeCartButton" class="icon-button" type="button" aria-label="Warenkorb schließen">×</button>
-      </div>
-      <div id="cartItems" class="cart-items"></div>
-      <div class="cart-summary">
-        <div><span>Zwischensumme</span><strong id="subtotal">0,00 €</strong></div>
-        <div><span>Versand</span><strong id="shipping">0,00 €</strong></div>
-        <div class="total"><span>Gesamt</span><strong id="total">0,00 €</strong></div>
-      </div>
-      <button id="checkoutButton" class="primary-button" type="button">Zur Kasse</button>
-    </aside>
-
-    <dialog id="authDialog">
-      <div class="dialog-header">
-        <div>
-          <span>Kara Account</span>
-          <h2 id="authDialogTitle">Anmelden</h2>
-        </div>
-        <button type="button" id="closeAuthButton" class="icon-button" aria-label="Schließen">×</button>
-      </div>
-
-      <div class="auth-tabs">
-        <button class="auth-tab active" type="button" data-tab="login">Anmelden</button>
-        <button class="auth-tab" type="button" data-tab="register">Registrieren</button>
-      </div>
-
-      <form id="loginForm" class="auth-form">
-        <div class="form-grid">
-          <label class="span-2">E-Mail<input required type="email" name="email" autocomplete="email" /></label>
-          <label class="span-2">Passwort<input required type="password" name="password" autocomplete="current-password" /></label>
-        </div>
-        <p id="loginError" class="auth-error" hidden></p>
-        <button class="primary-button" type="submit">Anmelden</button>
-      </form>
-
-      <form id="registerForm" class="auth-form" hidden>
-        <div class="form-grid">
-          <label>Vorname<input required name="firstName" autocomplete="given-name" /></label>
-          <label>Nachname<input required name="lastName" autocomplete="family-name" /></label>
-          <label class="span-2">E-Mail<input required type="email" name="email" autocomplete="email" /></label>
-          <label class="span-2">Passwort <small>(min. 6 Zeichen)</small><input required type="password" name="password" minlength="6" autocomplete="new-password" /></label>
-          <label class="span-2">Straße und Hausnummer<input required name="street" autocomplete="street-address" /></label>
-          <label>PLZ<input required name="postalCode" autocomplete="postal-code" /></label>
-          <label>Ort<input required name="city" autocomplete="address-level2" /></label>
-        </div>
-        <p id="registerError" class="auth-error" hidden></p>
-        <button class="primary-button" type="submit">Konto erstellen</button>
-      </form>
-    </dialog>
-
-    <dialog id="successDialog">
-      <div class="success-state">
-        <span>Kara</span>
-        <h2>Bestellung angelegt</h2>
-        <p id="successText"></p>
-        <div class="success-actions">
-          <button id="closeSuccessButton" class="primary-button" type="button">Weiter einkaufen</button>
-        </div>
-      </div>
-    </dialog>
-
-    <footer class="site-footer">
-      <span class="kara-logo" aria-hidden="true">Kara</span>
-      <p>Fiktives KMU für den IDP-Demonstrator: Premium Streetwear, Shop-Prozess und KI im Unternehmen.</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>

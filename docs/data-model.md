@@ -1,26 +1,77 @@
-# Supabase-Datenmodell
+# Demo-Datenmodell
 
-## Tabellen
+Der aktuelle MVP nutzt keine echte Datenbankverbindung. Die Daten werden als
+realistische Demo-Objekte in `website/script.js` gepflegt.
 
-- `customers`
-- `addresses`
-- `products`
-- `orders`
-- `order_items`
-- `invoices`
+## Gedachte Unternehmensdatenbanken
 
-## Wichtige Designentscheidungen
+- **Finance DB**
+  - GuV
+  - Cashflow
+  - Buchungen
+  - Zahlungsziele
 
-1. Kunden und Adressen getrennt halten.
-2. Preise in Cent speichern.
-3. Bestellpositionen mit Preis-Snapshot speichern.
-4. Rechnung als eigene Tabelle führen.
-5. RLS aktivieren.
+- **ERP**
+  - Einkauf
+  - Bestand
+  - Lieferanten
+  - Beschaffungskosten
 
-## Beziehungen
+- **CRM**
+  - Umsatzpipeline
+  - Kunden
+  - Aufträge
+  - Abschlusswahrscheinlichkeiten
 
-- Ein Kunde hat viele Adressen.
-- Ein Kunde hat viele Bestellungen.
-- Eine Bestellung hat viele Positionen.
-- Eine Bestellung hat genau eine Rechnung.
-- Eine Rechnung gehört genau zu einer Bestellung und einem Kunden.
+- **HR**
+  - Personalkosten
+  - Kapazitäten
+  - Auslastung
+
+- **Projekt DB**
+  - Budgets
+  - Laufzeiten
+  - Kostenstellen
+  - Projektfortschritt
+
+- **Data Warehouse**
+  - historische Kennzahlen
+  - aggregierte Monatswerte
+  - Vergleichsperioden
+
+## Demo-Objekte in der Website
+
+- `useCases`: drei KI-Fallbeispiele
+- `sources`: gedachte Datenbanken mit Qualitätswert
+- `scenarios`: stabile, kritische und wachstumsorientierte Controlling-Szenarien
+- `metrics`: Kennzahlen je Szenario
+- `chart`: Trenddaten für Umsatz, Kosten und Liquidität
+- `findings`: KI-Analyseergebnisse
+- `recommendation`: Handlungsempfehlung
+- `quality`: Datenqualität
+- `risk`: Risiko der Analyse
+
+## Kennzahlen
+
+- Umsatz
+- Kostenquote
+- Deckungsbeitrag
+- Liquidität
+- Budgetabweichung
+- Forecast
+- Risikoindex
+
+## Spätere echte Tabellen oder Views
+
+Für eine produktionsnähere Version könnten folgende Views bereitgestellt werden:
+
+- `vw_financial_kpis`
+- `vw_budget_variance`
+- `vw_cost_centers`
+- `vw_liquidity_forecast`
+- `vw_sales_pipeline`
+- `vw_project_budget_status`
+- `vw_data_quality_checks`
+
+Preise oder Shop-Positionen sind für den aktuellen MVP nicht mehr fachlich
+relevant.

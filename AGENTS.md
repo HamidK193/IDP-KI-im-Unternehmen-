@@ -14,11 +14,10 @@ für dieses Repository.
   in einem neuen Chat schnell verstanden werden kann.
 - Vermeide Overengineering. Das Projekt ist ein kleiner IDP-MVP.
 - Verändere vorhandene Demo-Daten nur bewusst und dokumentiere den Grund.
-- Halte Website-Prototyp, Supabase-Schema, Make-Konzept und Rechnungsprozess
+- Halte Website-Prototyp, Dokumentation und später mögliche Datenbankkonzepte
   fachlich synchron.
-- Preise werden fachlich in Cent gedacht; der aktuelle Website-Prototyp nutzt
-  für die Demo noch Dezimalwerte in JavaScript.
-- Der lokale Website-Prototyp speichert Daten aktuell in `localStorage`.
+- Der lokale Website-Prototyp nutzt aktuell statische Demo-Daten in
+  `website/script.js`.
 - Änderungen sollen nicht nur lokal gespeichert werden. Jede relevante Änderung
   wird zusätzlich direkt in GitHub committed. Wenn lokales `git push` in der
   Codex-Umgebung blockiert ist, wird der GitHub-Connector für Textdateien
@@ -31,52 +30,55 @@ für dieses Repository.
 
 ### Aktueller MVP
 
-- KI-Operations-Cockpit für das fiktive Unternehmen `Kara`
-- Kara als kleines E-Commerce-KMU mit ca. 20 bis 80 Mitarbeitenden
-- interaktive Demo, wie KI im Unternehmen genutzt werden kann
-- simulierte Claude/Codex-Vorschläge ohne API-Key und ohne echte Kundendaten
-- Tagesbriefing mit Kennzahlen, offenen Aufgaben, Risiken und Empfehlungen
-- Aufgaben für Support, Bestellung, Rechnung, Analyse und interne Wissensfrage
-- KI-Panel mit Prompt, Antwortvorschlag, Quelle, Risiko und Status
-- Human-in-the-loop: Vorschläge können freigegeben oder abgelehnt werden
-- bestehender Shop-Prototyp bleibt als sekundäre Datenquelle erhalten
-- Supabase- und Make-Konzept bleiben als spätere Ausbaustufe dokumentiert
+- Technischer IDP-Demonstrator zum Thema `KI im Unternehmen`
+- Fokus auf datenbasiertes Controlling, Unternehmenssteuerung und Analyse
+  relevanter Unternehmensdatenbanken
+- interaktive Präsentationsoberfläche mit großen, slide-artigen Sektionen
+- keine Shop-, Produkt-, Warenkorb- oder E-Commerce-Ausrichtung mehr
+- drei KI-Fallbeispiele:
+  1. KI-gestütztes Controlling-Cockpit
+  2. Budget- und Kostenabweichungsanalyse
+  3. Forecasting und Frühwarnsystem
+- Hauptfall: KI-gestütztes Controlling-Cockpit
+- KI analysiert gedachte Datenquellen wie Finance DB, ERP, CRM, HR, Projekt DB
+  und Data Warehouse
+- Demo zeigt Kennzahlen, Trends, Abweichungen, Datenqualität, Risiko,
+  Begründungen und Handlungsempfehlungen
+- Human-in-the-loop: Empfehlungen werden vor Umsetzung menschlich geprüft
+- keine echten Unternehmensdaten und keine externe KI-API im MVP
 
 ### Relevante Quelldateien
 
 - `website/index.html`
 - `website/script.js`
 - `website/styles.css`
-- `supabase/schema.sql`
-- `make/payload-example.json`
+- `docs/use-case.md`
 - `docs/architecture.md`
 - `docs/data-model.md`
-- `docs/make-scenario.md`
-- `docs/invoice-template-fields.md`
+- `docs/ki-cockpit-dokumentation.md`
 - `docs/repository-overview.md`
-- `docs/use-case.md`
+- `README.md`
+- `memory.md`
+- `CHANGELOG.md`
 
 ### Aktuelle Arbeitsschritte
 
-1. KI-Cockpit lokal stabil halten.
-2. Shop-Prototyp als Datenquelle und Kontext erhalten.
-3. Dokumentation nach jedem größeren Schritt aktualisieren.
-4. Demo-Ablauf für die IDP-Präsentation finalisieren.
-5. Responsive Darstellung und Statuswechsel testen.
-6. Optional echte KI-Schnittstelle vorbereiten, aber Demo-Modus behalten.
-7. Supabase-Projekt später vorbereiten und Schema einspielen.
-8. Checkout-Bestellungen später in Supabase schreiben.
-9. Make-Szenario später an bezahlte Bestellungen anbinden.
-10. Rechnungs- und E-Mail-Prozess später produktionsnäher ausbauen.
+1. Controlling-Demonstrator lokal stabil halten.
+2. Drei Fallbeispiele klar und verständlich darstellen.
+3. Hauptfall `KI-gestütztes Controlling-Cockpit` im Detail ausbauen.
+4. Präsentationsablauf für die IDP-Vorstellung finalisieren.
+5. Responsive Darstellung und Interaktionen testen.
+6. Optional echte Datenbank- oder CSV-Anbindung vorbereiten.
+7. Optional echte KI-Schnittstelle vorbereiten, aber Demo-Modus behalten.
+8. Datenschutz, Rollenrechte und Human-in-the-loop fachlich dokumentieren.
 
 ### Spätere Erweiterungen
 
-- PDF- oder Word-Rechnungsvorlage als Datei im Prozess anbinden
-- echte E-Mail-Versandstrecke über Make oder Backend anbinden
-- Supabase Row Level Security Policies konkretisieren
-- Produkt- und Bestelldaten seedbar machen
-- Tests für Summenberechnung, Checkout und Rechnungsstatus ergänzen
-- Deployment der statischen Website vorbereiten
+- echte Datenbank-Views oder CSV-Daten anbinden
+- echte KI-Schnittstelle über gesicherten API-Proxy vorbereiten
+- Audit Trail und Rollenrechte skizzieren
+- Tests für Szenario-Umschaltung und Chart-Darstellung ergänzen
+- Deployment der statischen Website prüfen
 
 ## Handover Bei Großem Kontext
 
@@ -91,7 +93,7 @@ werden.
 - `memory.md`
 - `CHANGELOG.md`
 - relevante Dateien in `website/`
-- relevante Dateien in `supabase/`, `make/` und `docs/`
+- relevante Dateien in `docs/`
 - offene To-dos, Fehler oder Blocker
 
 ### Handover-Regeln
