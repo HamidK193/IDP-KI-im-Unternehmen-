@@ -1271,21 +1271,105 @@ main > section:not(.hero-slide) {
 
   .slide,
   .cockpit-slide {
-    width: min(100% - 28px, var(--max));
-    padding: 38px 0;
+    width: min(100% - 24px, var(--max));
+    padding: 26px 0;
   }
 
   .hero-slide {
-    padding-top: 30px;
+    padding-top: 24px;
   }
 
-  .hero-facts,
+  .section-heading {
+    margin-bottom: 14px;
+  }
+
+  /* Kompakte 2-Spalten-Raster auf dem Handy statt einer langen Einzelspalte. */
+  .hero-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .metric-grid,
   .problem-grid,
   .function-grid,
   .governance-layout,
   .flow-map {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  /* Governance hat 3 Karten -> dritte ueber volle Breite. */
+  .governance-layout article:last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Karten kompakter: weniger Padding, keine grosse Mindesthoehe. */
+  .problem-grid article,
+  .flow-map article,
+  .function-grid article,
+  .governance-layout article {
+    min-height: 0;
+    padding: 14px;
+    gap: 9px;
+  }
+
+  .problem-grid article h3,
+  .function-grid article h3,
+  .governance-layout article h3,
+  .flow-map article strong {
+    font-size: 16px;
+  }
+
+  .problem-grid article p,
+  .flow-map article p,
+  .function-grid article p,
+  .governance-layout article p {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .problem-grid article > span,
+  .flow-map article > span {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  /* Datenbank-Liste zweispaltig statt langer Einzelspalte. */
+  .source-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .source-item {
+    padding: 12px;
+  }
+
+  /* KPI-Karten im Cockpit kompakter. */
+  .metric-card {
+    min-height: 0;
+    padding: 12px;
+  }
+
+  .metric-card strong {
+    font-size: 22px;
+  }
+
+  .metric-hint {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  /* Praesentationsschritte zweispaltig und kompakt. */
+  .presentation-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .presentation-steps li {
+    grid-template-columns: 22px 1fr;
+    gap: 8px;
+    padding: 12px;
+    font-size: 13px;
   }
 
   .cockpit-heading {
@@ -1329,11 +1413,11 @@ main > section:not(.hero-slide) {
   }
 
   h1 {
-    font-size: clamp(36px, 11vw, 48px);
+    font-size: clamp(32px, 8.5vw, 42px);
   }
 
   h2 {
-    font-size: clamp(32px, 11vw, 48px);
+    font-size: clamp(25px, 6.6vw, 34px);
   }
 
   .mini-kpis {
@@ -1381,5 +1465,13 @@ main > section:not(.hero-slide) {
   .metric-card,
   .presentation-steps li {
     display: grid;
+  }
+}
+
+@media (max-width: 380px) {
+  /* Sehr schmale Geraete: KPI-Karten brauchen volle Breite fuer die Erklaerung. */
+  .metric-grid,
+  .presentation-steps {
+    grid-template-columns: 1fr;
   }
 }

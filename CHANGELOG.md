@@ -4,6 +4,13 @@ Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
 ## 2026-06-06
 
+- `website/styles.css`: kompaktere Mobile-Ansicht. Karten-Raster (Problem,
+  Funktionen, Governance, Datenfluss, KPI-Karten, Datenbank-Liste,
+  Praesentationsschritte) erscheinen auf dem Handy jetzt zweispaltig statt in einer
+  langen Einzelspalte, mit kleineren Abstaenden, Mindesthoehen und Ueberschriften,
+  damit deutlich weniger gescrollt werden muss. Sehr schmale Geraete (< 380px)
+  fallen bei den KPI-Karten auf eine Spalte zurueck. Desktop bleibt unveraendert.
+
 - `website/styles.css`, `website/script.js`: einheitliches, professionelles dunkles
   Farbschema (Slate-Navy mit Indigo/Teal/Amber). Die hellen/weißen Flächen im
   Cockpit (Analyse-Panel, KPI-Karten, Trendkarte, Diagrammbeschreibung) wurden auf
