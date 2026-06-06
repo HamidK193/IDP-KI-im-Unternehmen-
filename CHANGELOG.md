@@ -2,6 +2,37 @@
 
 Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
+## 2026-06-06
+
+- `website/styles.css`, `website/script.js`: einheitliches, professionelles dunkles
+  Farbschema (Slate-Navy mit Indigo/Teal/Amber). Die hellen/weißen Flächen im
+  Cockpit (Analyse-Panel, KPI-Karten, Trendkarte, Diagrammbeschreibung) wurden auf
+  dunkle, harmonische Flächen umgestellt, sodass keine störende weiße Insel mehr
+  entsteht. Die Diagrammlinien sind jetzt eindeutig zuordenbar: Legende als
+  Pillen mit farbigen Linien-Swatches (Umsatz/Kosten/Liquidität) plus beschriftete
+  Achsen und Beschreibung. Kopfzeile auf dem Handy korrigiert (kein Verrutschen des
+  Demo-Buttons mehr durch eine leere Navigationsspalte) und `overflow-x: clip`
+  gegen horizontales Verschieben ergänzt.
+- `website/script.js`, `website/index.html`, `website/styles.css`: Controlling-Cockpit
+  auf aussagekräftige Kennzahlen umgestellt (Umsatzwachstum YoY, EBIT-Marge,
+  Rohertragsmarge, Free Cashflow, Cash Conversion Cycle, Liquiditätsgrad 2. Grades),
+  jeweils mit kurzer Erklärung pro Kennzahl. Das Trenddiagramm hat jetzt eine
+  Einführung, eine farbige Legende, beschriftete Achsen (Index-Skala und Monate),
+  Datenpunkte und eine Szenario-Beschreibung. Mobile Ansicht optimiert: einklappbares
+  Navigationsmenü (Hamburger), größere Touch-Flächen, vollbreite Buttons und
+  responsives, lesbares Diagramm. Szenario- und Analyse-Buttons funktionieren auf
+  Handy und Laptop (per Tap und Klick geprüft).
+- `docs/prompt-zweite-webseite.md`: Kennzahlen und Szenario-Daten an die neuen,
+  aussagekräftigen Controlling-KPIs angeglichen.
+
+- `docs/prompt-zweite-webseite.md`: neuer, vollständiger Prompt zur Erzeugung
+  einer zweiten, interaktiven Präsentations-Website für den Techday-Stand. Der
+  Prompt gibt eine moderne Control-Room-UI/UX vor, fordert zuerst die Übersicht
+  aller drei Fallstudien und danach jede Fallstudie einzeln im Detail (Worum geht
+  es, Wie man es macht, Was man braucht, Probleme, Risiken, Aufwand, Fazit) und
+  enthält alle verbindlichen Demo-Inhalte (Datenquellen, Szenario-Daten,
+  Datenfluss, Governance, Aufwandsübersicht).
+
 ## 2026-06-04
 
 - `website/index.html` und `website/script.js`: sichtbare Copy professioneller
