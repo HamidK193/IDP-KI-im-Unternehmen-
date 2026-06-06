@@ -1,22 +1,25 @@
 :root {
-  --bg: #090d14;
-  --bg-2: #111827;
-  --paper: #f3f5f8;
-  --paper-2: #e7ebf1;
-  --surface: #ffffff;
-  --ink: #0d111a;
-  --muted: #647084;
-  --muted-2: #9aa5b5;
-  --line: rgba(13, 17, 26, 0.12);
+  /* Durchgehend dunkles, professionelles Farbschema (Slate-Navy + Indigo/Teal).
+     Eine harmonische Palette für alle Flächen, ohne helle Inseln. */
+  --bg: #0a0f1c;
+  --bg-2: #111a2c;
+  --surface: #131d31; /* Karten-/Panel-Fläche statt Weiß */
+  --surface-2: #1a2740;
+  --ink: #eaf0fb; /* helle Primärschrift auf Dunkel */
+  --muted: #98a6c0; /* sekundäre Schrift */
+  --muted-2: #6a7894;
+  --line: rgba(255, 255, 255, 0.1);
   --line-dark: rgba(255, 255, 255, 0.12);
-  --blue: #2f62ff;
-  --cyan: #22d3ee;
-  --green: #20c77a;
-  --amber: #f7b955;
-  --red: #ff5a68;
+  --blue: #5b8cff; /* Akzent / Trendlinie Umsatz */
+  --cyan: #34d6e6;
+  --teal: #2dd4bf; /* Trendlinie Liquidität */
+  --green: #34d39a; /* gut */
+  --amber: #f3b552; /* Warnung / Trendlinie Kosten */
+  --red: #f8737f; /* kritisch */
   --dark: #0c111c;
-  --radius: 8px;
-  --shadow: 0 24px 70px rgba(4, 9, 20, 0.28);
+  --radius: 10px;
+  --shadow: 0 24px 70px rgba(2, 6, 16, 0.45);
+  --grad: linear-gradient(135deg, #6ea8ff, #5eead4);
   --max: 1460px;
 }
 
@@ -26,6 +29,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* Verhindert horizontales Verrutschen/Scrollen auf dem Handy, ohne die
+     sticky Kopfzeile zu zerstören (clip statt hidden). */
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
@@ -108,7 +115,7 @@ a:focus-visible {
   height: 34px;
   color: #06111d;
   border-radius: var(--radius);
-  background: linear-gradient(135deg, #e9f3ff, #7dd3fc);
+  background: var(--grad);
   font-size: 12px;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
 }
@@ -343,8 +350,8 @@ p {
 
 .primary-button {
   color: #06111d;
-  border-color: #8be9ff;
-  background: linear-gradient(135deg, #8be9ff, #7cffb0);
+  border-color: #6ea8ff;
+  background: var(--grad);
 }
 
 .primary-button:hover,
@@ -472,7 +479,7 @@ p {
 .decision-strip .is-active {
   color: #06111d;
   border-color: transparent;
-  background: linear-gradient(135deg, #8be9ff, #7cffb0);
+  background: var(--grad);
 }
 
 .mini-kpis,
@@ -494,7 +501,7 @@ p {
   padding: 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #f8f9fd;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .hero-dashboard .mini-kpis article {
@@ -548,7 +555,7 @@ p {
   height: var(--bar);
   min-height: 22px;
   border-radius: 6px 6px 2px 2px;
-  background: linear-gradient(180deg, #8be9ff, var(--blue));
+  background: linear-gradient(180deg, #6ea8ff, var(--blue));
   animation: barRise 700ms ease both;
 }
 
@@ -567,7 +574,7 @@ p {
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #f8f9fd;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .hero-dashboard .insight-card {
@@ -677,7 +684,7 @@ main > section:not(.hero-slide) {
   height: 34px;
   color: #06111d;
   border-radius: 999px;
-  background: linear-gradient(135deg, #8be9ff, #7cffb0);
+  background: var(--grad);
   font-size: 12px;
   font-weight: 900;
 }
@@ -807,7 +814,7 @@ main > section:not(.hero-slide) {
 .mode-button.active,
 .mode-button:hover {
   color: #06111d;
-  background: linear-gradient(135deg, #8be9ff, #7cffb0);
+  background: var(--grad);
 }
 
 .cockpit-grid {
@@ -834,7 +841,7 @@ main > section:not(.hero-slide) {
 }
 
 .analytics-panel {
-  background: #f4f6fa;
+  color: #fff;
 }
 
 .ai-panel {
@@ -885,16 +892,22 @@ main > section:not(.hero-slide) {
   flex-direction: column;
   gap: 6px;
   min-height: 148px;
-  background: #fff;
+  border-color: var(--line-dark);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.metric-card span {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .metric-card strong {
+  color: #fff;
   font-size: clamp(22px, 2.4vw, 32px);
   line-height: 1;
 }
 
 .metric-card em {
-  color: #0b8f55;
+  color: var(--green);
   font-size: 13px;
   font-style: normal;
   font-weight: 850;
@@ -903,18 +916,26 @@ main > section:not(.hero-slide) {
 .metric-hint {
   margin-top: auto;
   padding-top: 6px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 11.5px;
   font-weight: 600;
   line-height: 1.4;
 }
 
 .metric-card[data-tone="warn"] em {
-  color: #a76b00;
+  color: var(--amber);
 }
 
 .metric-card[data-tone="bad"] em {
-  color: #c43142;
+  color: var(--red);
+}
+
+.metric-card[data-tone="warn"] {
+  border-color: rgba(243, 181, 82, 0.32);
+}
+
+.metric-card[data-tone="bad"] {
+  border-color: rgba(248, 115, 127, 0.34);
 }
 
 .trend-card {
@@ -940,15 +961,19 @@ main > section:not(.hero-slide) {
 .legend-item {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  color: var(--ink);
+  gap: 8px;
+  padding: 5px 11px 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
   font-size: 12.5px;
   font-weight: 800;
 }
 
 .legend-item i {
-  width: 12px;
-  height: 12px;
+  width: 18px;
+  height: 4px;
   border-radius: 999px;
 }
 
@@ -980,8 +1005,8 @@ main > section:not(.hero-slide) {
   border: 1px solid var(--line);
   border-left: 3px solid var(--blue);
   border-radius: var(--radius);
-  background: #f8f9fd;
-  color: var(--ink);
+  background: rgba(91, 140, 255, 0.1);
+  color: rgba(255, 255, 255, 0.86);
   font-size: 13.5px;
   font-weight: 600;
   line-height: 1.5;

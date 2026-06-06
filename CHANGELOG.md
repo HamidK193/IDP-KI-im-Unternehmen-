@@ -4,6 +4,15 @@ Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
 ## 2026-06-06
 
+- `website/styles.css`, `website/script.js`: einheitliches, professionelles dunkles
+  Farbschema (Slate-Navy mit Indigo/Teal/Amber). Die hellen/weißen Flächen im
+  Cockpit (Analyse-Panel, KPI-Karten, Trendkarte, Diagrammbeschreibung) wurden auf
+  dunkle, harmonische Flächen umgestellt, sodass keine störende weiße Insel mehr
+  entsteht. Die Diagrammlinien sind jetzt eindeutig zuordenbar: Legende als
+  Pillen mit farbigen Linien-Swatches (Umsatz/Kosten/Liquidität) plus beschriftete
+  Achsen und Beschreibung. Kopfzeile auf dem Handy korrigiert (kein Verrutschen des
+  Demo-Buttons mehr durch eine leere Navigationsspalte) und `overflow-x: clip`
+  gegen horizontales Verschieben ergänzt.
 - `website/script.js`, `website/index.html`, `website/styles.css`: Controlling-Cockpit
   auf aussagekräftige Kennzahlen umgestellt (Umsatzwachstum YoY, EBIT-Marge,
   Rohertragsmarge, Free Cashflow, Cash Conversion Cycle, Liquiditätsgrad 2. Grades),

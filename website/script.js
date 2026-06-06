@@ -42,9 +42,9 @@ const sources = [
 
 // Drei Trendlinien des Diagramms (indexierte Entwicklung, Startmonat = Basis).
 const chartSeries = [
-  { key: "revenue", label: "Umsatz", color: "#2f62ff" },
-  { key: "cost", label: "Kosten", color: "#f7b955" },
-  { key: "liquidity", label: "Liquidität", color: "#20c77a" },
+  { key: "revenue", label: "Umsatz", color: "#5b8cff" },
+  { key: "cost", label: "Kosten", color: "#f3b552" },
+  { key: "liquidity", label: "Liquidität", color: "#2dd4bf" },
 ];
 const chartMonths = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun"];
 
@@ -374,7 +374,7 @@ function renderChart() {
 
   trendChart.innerHTML = `
     <text class="axis-title" x="${left - 8}" y="14">Index (Startmonat = Basis)</text>
-    <g class="chart-grid" stroke="rgba(13, 17, 26, 0.10)" stroke-width="1">${grid}</g>
+    <g class="chart-grid" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1">${grid}</g>
     <g class="chart-axis">${xAxis}</g>
     ${lines}`;
 
