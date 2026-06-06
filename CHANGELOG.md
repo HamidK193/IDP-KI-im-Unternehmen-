@@ -2,6 +2,16 @@
 
 Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
+## 2026-06-06
+
+- `docs/prompt-zweite-webseite.md`: neuer, vollständiger Prompt zur Erzeugung
+  einer zweiten, interaktiven Präsentations-Website für den Techday-Stand. Der
+  Prompt gibt eine moderne Control-Room-UI/UX vor, fordert zuerst die Übersicht
+  aller drei Fallstudien und danach jede Fallstudie einzeln im Detail (Worum geht
+  es, Wie man es macht, Was man braucht, Probleme, Risiken, Aufwand, Fazit) und
+  enthält alle verbindlichen Demo-Inhalte (Datenquellen, Szenario-Daten,
+  Datenfluss, Governance, Aufwandsübersicht).
+
 ## 2026-06-04
 
 - `website/index.html` und `website/script.js`: sichtbare Copy professioneller
