@@ -181,8 +181,9 @@ Human-in-the-loop-Prüfung dargestellt.
 - **Wie man es macht:**
   1. Relevante Datenquellen anbinden bzw. als Views bereitstellen.
   2. Daten in einem Data Warehouse zusammenführen (ETL/Aggregation).
-  3. Kennzahlen-Service berechnet KPIs (Umsatz, Kostenquote, Deckungsbeitrag,
-     Liquidität, Budgetabweichung, Forecast, Risikoindex).
+  3. Kennzahlen-Service berechnet aussagekräftige KPIs: Umsatzwachstum (YoY),
+     EBIT-Marge, Rohertragsmarge, Free Cashflow, Cash Conversion Cycle und
+     Liquiditätsgrad 2. Grades (Quick Ratio).
   4. KI-Service (über gesicherten API-Proxy) erkennt Trends/Abweichungen,
      formuliert Ursachenhypothesen und Empfehlungen.
   5. Cockpit-Frontend zeigt KPIs, Trends, Findings, Risiko und Datenqualität.
@@ -265,58 +266,69 @@ Sechs gedachte Unternehmensdatenbanken mit Demo-Datenqualität:
 
 ### Live-Cockpit – Szenario-Daten (genau diese Werte verwenden)
 
-Drei umschaltbare Szenarien. Jede KPI hat einen Trend und eine Tonalität
-(`good`/`neutral`/`warn`/`bad`) für die Farbgebung. Die Chart-Werte sind
-normalisierte Punkte (0–100) für die Linien Umsatz, Kosten, Liquidität über
-6 Perioden.
+Drei umschaltbare Szenarien. Jede KPI hat einen Trend, eine kurze Erklärung
+(warum sie steuerungsrelevant ist) und eine Tonalität (`good`/`warn`/`bad`) für
+die Farbgebung. Verwende bewusst **aussagekräftige Controlling-Kennzahlen** mit
+Entscheidungsrelevanz (Wachstum, Profitabilität, Cash, Liquidität) statt
+beliebiger Werte. Die Chart-Werte sind normalisierte Indexpunkte (0–100, Basis =
+Startmonat) für die Linien Umsatz, Kosten, Liquidität über 6 Monate.
+
+Erkläre jede Kennzahl mit einem kurzen Hinweis, z. B.:
+- **Umsatzwachstum (YoY):** Wachstum gegenüber Vorjahr, gesund ab ca. +5 %.
+- **EBIT-Marge:** operativer Gewinn je Umsatz-Euro – Ertragskraft des Kerngeschäfts.
+- **Rohertragsmarge:** Umsatzanteil nach Wareneinsatz – Basis aller Margen.
+- **Free Cashflow:** frei verfügbarer Mittelzufluss – echte, schwer manipulierbare Finanzkraft.
+- **Cash Conversion Cycle:** Tage der Kapitalbindung (Lager + Forderungen − Verbindlichkeiten), kürzer ist besser.
+- **Liquiditätsgrad 2. Grades (Quick Ratio):** kurzfristige Zahlungsfähigkeit ohne Vorräte, gesund ab ca. 100 %.
 
 **Szenario A – „Stabile Entwicklung"** (Risiko: niedrig, Datenqualität: hoch,
-95% der Datensätze plausibel)
-- Umsatz: 4,82 Mio. € (+8,4%, good)
-- Kostenquote: 41,8% (-1,2 pp, good)
-- Deckungsbeitrag: 1,34 Mio. € (+5,1%, good)
-- Liquidität: 780 Tsd. € (+12 Tage, neutral)
-- Budgetabweichung: 3,6% (im Rahmen, neutral)
-- Risikoindex: 42 (niedrig, good)
+95 % der Datensätze plausibel)
+- Umsatzwachstum (YoY): +8,4 % (über Zielkorridor, good)
+- EBIT-Marge: 12,6 % (+1,3 pp, good)
+- Rohertragsmarge: 58,2 % (+0,9 pp, good)
+- Free Cashflow: 612 Tsd. € (+7,8 %, good)
+- Cash Conversion Cycle: 38 Tage (-3 Tage, good)
+- Liquiditätsgrad 2. Grades: 128 % (stabil, good)
 - Chart Umsatz: [62, 68, 71, 77, 82, 86]; Kosten: [52, 50, 49, 48, 47, 46];
   Liquidität: [44, 48, 52, 57, 61, 65]
-- Findings: „Umsatz wächst über drei Perioden stabil." / „Kostenquote sinkt leicht
-  durch bessere Einkaufskonditionen." / „Liquidität bleibt ausreichend für laufende
-  Verpflichtungen."
-- Empfehlung: „Budgetplanung beibehalten, aber Einkaufspreise weiter beobachten und
-  monatlich prüfen, ob der positive Deckungsbeitrag stabil bleibt."
+- Findings: „Umsatz wächst über sechs Perioden stabil, die EBIT-Marge zieht leicht
+  an." / „Die Rohertragsmarge bleibt durch bessere Einkaufskonditionen hoch." /
+  „Free Cashflow und Liquiditätsgrad decken laufende Verpflichtungen sicher ab."
+- Empfehlung: „Kurs halten: Einkaufskonditionen weiter sichern und monatlich prüfen,
+  ob EBIT-Marge und Free Cashflow stabil bleiben."
 
 **Szenario B – „Kritische Abweichung"** (Risiko: hoch, Datenqualität: mittel,
-8% verspätete Buchungen)
-- Umsatz: 4,31 Mio. € (-6,8%, bad)
-- Kostenquote: 49,6% (+7,4 pp, bad)
-- Deckungsbeitrag: 920 Tsd. € (-18,9%, bad)
-- Liquidität: 410 Tsd. € (-21 Tage, bad)
-- Budgetabweichung: 12,4% (kritisch, bad)
-- Risikoindex: 78 (hoch, bad)
+8 % verspätete Buchungen)
+- Umsatzwachstum (YoY): -6,8 % (unter Plan, bad)
+- EBIT-Marge: 4,1 % (-5,2 pp, bad)
+- Rohertragsmarge: 49,5 % (-4,1 pp, bad)
+- Free Cashflow: -180 Tsd. € (negativ, bad)
+- Cash Conversion Cycle: 67 Tage (+12 Tage, bad)
+- Liquiditätsgrad 2. Grades: 82 % (unter 100 %, bad)
 - Chart Umsatz: [72, 69, 65, 58, 54, 49]; Kosten: [48, 51, 57, 63, 69, 74];
   Liquidität: [66, 59, 51, 43, 35, 29]
-- Findings: „Kosten steigen stärker als Umsatz und drücken den Deckungsbeitrag." /
-  „Zwei Kostenstellen überschreiten das Monatsbudget deutlich." /
-  „Liquiditätsreserve fällt im Forecast unter den Sicherheitswert."
-- Empfehlung: „Kostenstellen 410 und 620 sofort prüfen, variable Ausgaben einfrieren
-  und Liquiditätsforecast in der nächsten Steuerungsrunde priorisieren."
+- Findings: „Sinkender Umsatz trifft auf steigende Kosten – die EBIT-Marge halbiert
+  sich." / „Der Cash Conversion Cycle steigt: Kapital ist länger gebunden." /
+  „Der Free Cashflow wird negativ, der Liquiditätsgrad fällt unter die 100-%-Marke."
+- Empfehlung: „Kostenstellen 410 und 620 sofort prüfen, Zahlungsziele verkürzen und
+  den Liquiditätsforecast in der nächsten Steuerungsrunde priorisieren."
 
 **Szenario C – „Wachstum mit Engpass"** (Risiko: mittel, Datenqualität: hoch,
 Forecast-Daten vollständig)
-- Umsatz: 5,26 Mio. € (+14,2%, good)
-- Kostenquote: 45,1% (+2,1 pp, warn)
-- Deckungsbeitrag: 1,46 Mio. € (+9,8%, good)
-- Liquidität: 560 Tsd. € (-8 Tage, warn)
-- Budgetabweichung: 7,2% (prüfen, warn)
-- Risikoindex: 61 (mittel, warn)
+- Umsatzwachstum (YoY): +14,2 % (stark, good)
+- EBIT-Marge: 9,8 % (-0,4 pp, warn)
+- Rohertragsmarge: 55,4 % (-1,2 pp, warn)
+- Free Cashflow: 95 Tsd. € (knapp, warn)
+- Cash Conversion Cycle: 58 Tage (+9 Tage, warn)
+- Liquiditätsgrad 2. Grades: 104 % (knapp über Ziel, warn)
 - Chart Umsatz: [58, 64, 70, 79, 86, 92]; Kosten: [46, 48, 51, 56, 61, 64];
   Liquidität: [63, 61, 58, 54, 50, 47]
-- Findings: „Umsatzwachstum ist stark, aber Working Capital bindet Liquidität." /
-  „Beschaffungskosten steigen schneller als geplant." / „Forecast zeigt
-  Engpassrisiko bei weiterem Wachstum."
-- Empfehlung: „Wachstum beibehalten, Zahlungsziele prüfen und Einkaufskonditionen
-  neu verhandeln, bevor zusätzliche Kampagnenbudgets freigegeben werden."
+- Findings: „Starkes Umsatzwachstum bindet Working Capital und drückt den Free
+  Cashflow." / „Beschaffungskosten steigen schneller als geplant und belasten die
+  Rohertragsmarge." / „Der steigende Cash Conversion Cycle zeigt ein Engpassrisiko
+  bei weiterem Wachstum."
+- Empfehlung: „Wachstum halten, aber Zahlungsziele und Einkaufskonditionen neu
+  verhandeln, bevor zusätzliche Kampagnenbudgets freigegeben werden."
 
 **Cockpit-Interaktion:**
 - Drei Szenario-Buttons schalten alle KPIs, das Diagramm, die Findings, die

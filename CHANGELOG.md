@@ -4,6 +4,18 @@ Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
 ## 2026-06-06
 
+- `website/script.js`, `website/index.html`, `website/styles.css`: Controlling-Cockpit
+  auf aussagekräftige Kennzahlen umgestellt (Umsatzwachstum YoY, EBIT-Marge,
+  Rohertragsmarge, Free Cashflow, Cash Conversion Cycle, Liquiditätsgrad 2. Grades),
+  jeweils mit kurzer Erklärung pro Kennzahl. Das Trenddiagramm hat jetzt eine
+  Einführung, eine farbige Legende, beschriftete Achsen (Index-Skala und Monate),
+  Datenpunkte und eine Szenario-Beschreibung. Mobile Ansicht optimiert: einklappbares
+  Navigationsmenü (Hamburger), größere Touch-Flächen, vollbreite Buttons und
+  responsives, lesbares Diagramm. Szenario- und Analyse-Buttons funktionieren auf
+  Handy und Laptop (per Tap und Klick geprüft).
+- `docs/prompt-zweite-webseite.md`: Kennzahlen und Szenario-Daten an die neuen,
+  aussagekräftigen Controlling-KPIs angeglichen.
+
 - `docs/prompt-zweite-webseite.md`: neuer, vollständiger Prompt zur Erzeugung
   einer zweiten, interaktiven Präsentations-Website für den Techday-Stand. Der
   Prompt gibt eine moderne Control-Room-UI/UX vor, fordert zuerst die Übersicht

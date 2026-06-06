@@ -13,13 +13,23 @@
         <span class="brand-mark" aria-hidden="true">IDP</span>
         <span>KI-Control</span>
       </a>
-      <nav class="main-nav" aria-label="Hauptnavigation">
+      <nav id="primaryNav" class="main-nav" aria-label="Hauptnavigation">
         <a href="#problem">Problem</a>
         <a href="#cases">Einsatzfelder</a>
         <a href="#cockpit">Cockpit</a>
         <a href="#flow">Datenfluss</a>
         <a href="#governance">Grenzen</a>
       </nav>
+      <button
+        id="navToggle"
+        class="nav-toggle"
+        type="button"
+        aria-label="Menü öffnen"
+        aria-expanded="false"
+        aria-controls="primaryNav"
+      >
+        <span></span><span></span><span></span>
+      </button>
       <a class="header-action" href="#cockpit">Demo ansehen</a>
     </header>
 
@@ -61,16 +71,16 @@
           </div>
           <div class="mini-kpis">
             <article>
-              <span>Umsatztrend</span>
+              <span>Umsatzwachstum</span>
               <strong>+8,4%</strong>
             </article>
             <article>
-              <span>Kostenquote</span>
-              <strong>41,8%</strong>
+              <span>EBIT-Marge</span>
+              <strong>12,6%</strong>
             </article>
             <article>
-              <span>Risikoindex</span>
-              <strong>72</strong>
+              <span>Free Cashflow</span>
+              <strong>612 T€</strong>
             </article>
           </div>
           <div class="hero-chart" aria-hidden="true">
@@ -85,7 +95,7 @@
           <div class="insight-card">
             <span>KI-Begründung</span>
             <p>
-              Umsatz steigt, aber Deckungsbeitrag sinkt durch höhere
+              Umsatz steigt, aber die EBIT-Marge sinkt durch höhere
               Beschaffungskosten und verspätete Budgetkorrekturen.
             </p>
           </div>
@@ -162,9 +172,12 @@
             <div class="trend-card">
               <div class="panel-title">
                 <h3>Trendvergleich</h3>
-                <span id="trendLabel">Q1 bis Q4</span>
+                <span id="trendLabel">Stabile Entwicklung</span>
               </div>
-              <svg id="trendChart" class="trend-chart" viewBox="0 0 640 260" role="img" aria-label="Trenddiagramm für Umsatz, Kosten und Liquidität"></svg>
+              <p class="chart-intro">Indexierte 6-Monats-Entwicklung der drei Kernlinien. Höher ist bei Umsatz und Liquidität besser, bei den Kosten schlechter.</p>
+              <div id="trendLegend" class="chart-legend" aria-label="Legende des Trenddiagramms"></div>
+              <svg id="trendChart" class="trend-chart" viewBox="0 0 560 290" role="img" aria-label="Trenddiagramm für Umsatz, Kosten und Liquidität über sechs Monate"></svg>
+              <p id="trendDescription" class="chart-description"></p>
             </div>
           </section>
 
@@ -216,7 +229,7 @@
           <h2 id="functionsTitle">Welche Fähigkeiten das KI-Cockpit bündelt.</h2>
         </div>
         <div class="function-grid">
-          <article><h3>Kennzahlen berechnen</h3><p>Umsatz, Kostenquote, Deckungsbeitrag, Liquidität, Budgetabweichung, Forecast und Risikoindex.</p></article>
+          <article><h3>Kennzahlen berechnen</h3><p>Umsatzwachstum, EBIT- und Rohertragsmarge, Free Cashflow, Cash Conversion Cycle und Liquiditätsgrad.</p></article>
           <article><h3>Trends analysieren</h3><p>Die Demo trennt stabile Entwicklungen von auffälligen Abweichungen und Frühwarnsignalen.</p></article>
           <article><h3>Ursachen begründen</h3><p>KI-Antworten nennen Datenquellen und zeigen, worauf eine Interpretation gestützt wird.</p></article>
           <article><h3>Empfehlungen vorschlagen</h3><p>Die KI formuliert nächste Schritte, aber kein automatisches Management-Urteil.</p></article>
