@@ -242,11 +242,9 @@ const scenarios = {
   },
 };
 
-let selectedCase = "controlling";
 let selectedScenario = "stabil";
 
-const caseTabs = document.querySelector("#caseTabs");
-const caseDetail = document.querySelector("#caseDetail");
+const caseGrid = document.querySelector("#caseGrid");
 const sourceList = document.querySelector("#sourceList");
 const metricGrid = document.querySelector("#metricGrid");
 const trendChart = document.querySelector("#trendChart");
@@ -260,32 +258,34 @@ const riskText = document.querySelector("#riskText");
 const analysisState = document.querySelector("#analysisState");
 const runAnalysisButton = document.querySelector("#runAnalysisButton");
 
-function renderCaseTabs() {
-  caseTabs.innerHTML = useCases
-    .map(
-      (item) => `
-        <button class="case-tab ${item.id === selectedCase ? "active" : ""}" type="button" data-case="${item.id}" aria-pressed="${item.id === selectedCase}">
-          <span>${item.label}</span>
-          <strong>${item.title}</strong>
-          <small>${item.summary}</small>
-        </button>`,
-    )
+// Alle drei Fallbeispiele werden gleichzeitig als klar getrennte Karten gezeigt,
+// damit die Uebersicht sofort erkennbar ist. Der Hauptfall wird hervorgehoben.
+function renderCases() {
+  caseGrid.innerHTML = useCases
+    .map((item) => {
+      const [num, ...rest] = item.label.split(" ");
+      const kicker = rest.join(" ");
+      const isMain = item.id === "controlling";
+      return `
+        <article class="case-card${isMain ? " is-main" : ""}">
+          <div class="case-card-head">
+            <span class="case-num">${num}</span>
+            <span class="case-kicker">${kicker}</span>
+            ${isMain ? '<span class="case-badge">Hauptfall · Live-Demo</span>' : ""}
+          </div>
+          <h3>${item.title}</h3>
+          <p class="case-summary">${item.summary}</p>
+          <div class="reason-box">
+            <span>Mehrwert</span>
+            <p>${item.why}</p>
+          </div>
+          <ul class="output-list">
+            ${item.outputs.map((output) => `<li>${output}</li>`).join("")}
+          </ul>
+          ${isMain ? '<a class="case-cta" href="#cockpit">Live-Cockpit ansehen →</a>' : ""}
+        </article>`;
+    })
     .join("");
-}
-
-function renderCaseDetail() {
-  const item = useCases.find((entry) => entry.id === selectedCase);
-  caseDetail.innerHTML = `
-    <p class="eyebrow">${item.label}</p>
-    <h3>${item.title}</h3>
-    <p>${item.summary}</p>
-    <div class="reason-box">
-      <span>Mehrwert</span>
-      <p>${item.why}</p>
-    </div>
-    <ul class="output-list">
-      ${item.outputs.map((output) => `<li>${output}</li>`).join("")}
-    </ul>`;
 }
 
 function renderSources() {
@@ -411,13 +411,6 @@ function setScenario(scenarioId) {
 }
 
 document.addEventListener("click", (event) => {
-  const caseButton = event.target.closest("[data-case]");
-  if (caseButton) {
-    selectedCase = caseButton.dataset.case;
-    renderCaseTabs();
-    renderCaseDetail();
-  }
-
   const scenarioButton = event.target.closest("[data-scenario]");
   if (scenarioButton) {
     setScenario(scenarioButton.dataset.scenario);
@@ -453,7 +446,6 @@ if (navToggle && appHeader) {
   });
 }
 
-renderCaseTabs();
-renderCaseDetail();
+renderCases();
 renderSources();
 renderCockpit();

@@ -4,6 +4,14 @@ Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
 ## 2026-06-06
 
+- `website/index.html`, `website/script.js`, `website/styles.css`: Die drei
+  Fallbeispiele werden nicht mehr per Tab versteckt, sondern als drei klar
+  getrennte, gleichzeitig sichtbare Karten nebeneinander gezeigt (echte
+  Uebersicht). Der Hauptfall (Controlling-Cockpit) ist mit Akzentrahmen,
+  "Hauptfall"-Badge und Direktlink zum Live-Cockpit hervorgehoben. Zusaetzlich
+  bekommen die Abschnitte nummerierte Kapitel-Label (01-07) und eine sichtbare
+  Trennlinie, damit die einzelnen Bereiche klar voneinander abgegrenzt sind.
+
 - `website/styles.css`: kompaktere Mobile-Ansicht. Karten-Raster (Problem,
   Funktionen, Governance, Datenfluss, KPI-Karten, Datenbank-Liste,
   Praesentationsschritte) erscheinen auf dem Handy jetzt zweispaltig statt in einer

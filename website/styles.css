@@ -380,7 +380,7 @@ p {
 }
 
 .hero-dashboard,
-.case-detail,
+.case-card,
 .source-panel,
 .analytics-panel,
 .ai-panel,
@@ -623,6 +623,16 @@ main > section:not(.hero-slide) {
   position: relative;
 }
 
+/* Klare, sichtbare Trennlinie zwischen den einzelnen Abschnitten. */
+.problem-slide,
+.cases-slide,
+.cockpit-slide,
+.flow-slide,
+.functions-slide,
+.governance-slide {
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
 .section-heading {
   margin-bottom: 22px;
 }
@@ -689,77 +699,132 @@ main > section:not(.hero-slide) {
   font-weight: 900;
 }
 
-.case-layout {
+/* Drei Fallbeispiele als klar getrennte, gleich hohe Karten nebeneinander. */
+.case-grid {
   display: grid;
-  grid-template-columns: minmax(300px, 0.72fr) minmax(0, 1.28fr);
-  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
   align-items: stretch;
 }
 
-.case-tabs {
+.case-card {
+  position: relative;
   display: grid;
-  gap: 10px;
-}
-
-.case-tab {
-  display: grid;
-  gap: 9px;
-  min-height: 132px;
-  padding: 18px;
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.045);
-  text-align: left;
-  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
-}
-
-.case-tab:hover,
-.case-tab.active {
-  border-color: rgba(139, 233, 255, 0.6);
-  background: linear-gradient(135deg, rgba(47, 98, 255, 0.22), rgba(34, 211, 238, 0.08));
-}
-
-.case-tab span,
-.case-tab small {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.case-tab strong {
-  color: #fff;
-  font-size: 19px;
-  line-height: 1.1;
-}
-
-.case-tab small {
-  font-size: 13px;
-  line-height: 1.45;
-}
-
-.case-detail {
-  display: grid;
-  gap: 18px;
-  min-height: 420px;
-  padding: clamp(24px, 4vw, 46px);
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: 14px;
+  padding: 22px;
   color: #fff;
   border-color: rgba(255, 255, 255, 0.12);
   background:
-    linear-gradient(135deg, rgba(139, 233, 255, 0.12), transparent 34%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035)),
+    #111827;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.case-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(110, 168, 255, 0.45);
+}
+
+/* Hauptfall deutlich hervorheben. */
+.case-card.is-main {
+  border-color: rgba(110, 168, 255, 0.55);
+  background:
+    linear-gradient(135deg, rgba(91, 140, 255, 0.2), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)),
     #0d1422;
 }
 
-.case-detail p {
-  color: rgba(255, 255, 255, 0.68);
+.case-card.is-main::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--grad);
 }
 
-.case-detail .reason-box {
+.case-card-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.case-num {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: #06111d;
+  border-radius: var(--radius);
+  background: var(--grad);
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.case-kicker {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.case-badge {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid rgba(110, 168, 255, 0.5);
+  border-radius: 999px;
+  background: rgba(91, 140, 255, 0.16);
+  color: #cfe0ff;
+  font-size: 10.5px;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.case-card h3 {
+  font-size: clamp(20px, 1.7vw, 25px);
+}
+
+.case-summary {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.case-card .reason-box {
   border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.case-detail .reason-box span,
-.case-detail .reason-box p {
-  color: rgba(255, 255, 255, 0.72);
+.case-card .reason-box span,
+.case-card .reason-box p {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.case-cta {
+  display: inline-flex;
+  align-items: center;
+  align-self: start;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  background: var(--grad);
+  color: #06111d;
+  font-size: 13px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.section-lead {
+  max-width: 760px;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.55;
 }
 
 .output-list {
@@ -1195,10 +1260,13 @@ main > section:not(.hero-slide) {
   }
 
   .hero-slide,
-  .case-layout,
   .cockpit-grid,
   .summary-slide {
     grid-template-columns: 1fr;
+  }
+
+  .case-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero-slide {
@@ -1295,6 +1363,16 @@ main > section:not(.hero-slide) {
   .flow-map {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
+  }
+
+  /* Fallbeispiele auf dem Handy je volle Breite, klar getrennt. */
+  .case-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .case-card {
+    padding: 18px;
   }
 
   /* Governance hat 3 Karten -> dritte ueber volle Breite. */
