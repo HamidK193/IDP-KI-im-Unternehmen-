@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KI-Controlling-Cockpit – KI für kleine Unternehmen | IDP Pforzheim</title>
+  <title>Kara·Cockpit – KI-Controlling für kleine Unternehmen | IDP Pforzheim</title>
   <meta name="description" content="KI macht die Zahlen kleiner Unternehmen lesbar: Das IDP-Projekt der Hochschule Pforzheim zeigt am fiktiven Unternehmen Kara, wie ein KI-Controlling-Cockpit verteilte Daten zusammenführt, Kennzahlen berechnet und begründete Empfehlungen vorbereitet – der Mensch entscheidet." />
   <meta name="color-scheme" content="light dark" />
-  <meta property="og:title" content="KI-Controlling-Cockpit – KI für kleine Unternehmen" />
-  <meta property="og:description" content="Interaktive Live-Demo: 6 Datenquellen, 6 Kennzahlen, 3 Szenarien. KI bereitet vor, der Mensch entscheidet. Diese Website wurde mit KI (Claude) gebaut." />
+  <meta property="og:title" content="Kara·Cockpit – KI-Controlling für kleine Unternehmen" />
+  <meta property="og:description" content="Interaktives Demo-Cockpit: 6 Datenquellen, 6 Kennzahlen, 3 Szenarien. KI bereitet vor, der Mensch entscheidet. Diese Website wurde mit KI (Claude) gebaut." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://kara-cockpit.de/screenshots/og.png" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -33,7 +33,7 @@
 
   <header class="site-header" id="top">
     <div class="header-inner">
-      <a class="brand" href="#top" aria-label="Zum Seitenanfang">
+      <a class="brand" href="index.html" aria-label="Kara·Cockpit – zur Startseite">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
           <rect x="2" y="18" width="6" height="12" rx="1.5" />
           <rect x="13" y="10" width="6" height="20" rx="1.5" />
@@ -45,15 +45,17 @@
       <nav class="main-nav" id="mainNav" aria-label="Hauptnavigation">
         <ul>
           <li><a href="#projekt">Projekt</a></li>
+          <li><a href="#kennzahlen">Kennzahlen</a></li>
+          <li><a href="#integrationen">Integrationen</a></li>
           <li><a href="#faelle">Fallbeispiele</a></li>
-          <li><a href="#demo">Live-Demo</a></li>
           <li><a href="#funktionsweise">Funktionsweise</a></li>
-          <li><a href="#ki-gebaut">Mit KI gebaut</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
+          <li class="nav-cta-item"><a class="nav-cta" href="cockpit.html">Cockpit öffnen</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
+        <a class="nav-cta nav-cta-desktop" href="cockpit.html">Cockpit öffnen</a>
         <button class="theme-toggle" id="themeToggle" type="button" aria-label="Zwischen hellem und dunklem Farbschema umschalten">
           <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <circle cx="12" cy="12" r="4.2" />
@@ -106,8 +108,8 @@
         </p>
 
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="#demo">
-            Live-Demo ansehen
+          <a class="btn btn-primary" href="cockpit.html">
+            Cockpit ansehen
             <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <a class="btn btn-ghost" href="#projekt">Projekt entdecken</a>
@@ -133,232 +135,202 @@
             <p class="panel-kicker">Das Problem</p>
             <h3>Daten überall, Erkenntnisse nirgends</h3>
             <p>
-              Kleine Unternehmen sammeln Daten in vielen Systemen – Finanzbuchhaltung,
-              Warenwirtschaft, Kundenmanagement. Doch zwischen den vorhandenen Daten und
-              den Erkenntnissen, die daraus gezogen werden, klafft eine Lücke: Es fehlen
-              Zeit, geschultes Personal und Budget für eigene KI-Projekte.
+              Kleine Unternehmen sammeln Daten in vielen Systemen – Buchhaltung,
+              Warenwirtschaft, Kundenmanagement. Doch zwischen den vorhandenen Daten
+              und den Erkenntnissen daraus klafft eine Lücke: Es fehlen Zeit,
+              geschultes Personal und Budget für eigene KI-Projekte.
             </p>
-            <ul class="tick-list tick-list-bad">
-              <li>Zahlen liegen verstreut in getrennten Systemen</li>
-              <li>Kein schneller, verlässlicher Gesamtüberblick</li>
-              <li>Abweichungen fallen oft erst spät auf</li>
-            </ul>
           </article>
 
           <article class="panel panel-solution reveal">
             <p class="panel-kicker">Die Lösung</p>
             <h3>Ein KI-Controlling-Cockpit</h3>
             <p>
-              Die KI verbindet sich mit den Datenquellen, berechnet zentrale Kennzahlen
-              wie Umsatz, Kostenquote und Liquidität, erkennt Trends und Abweichungen –
-              und begründet, was warum auffällig ist. Daraus entstehen priorisierte
-              Handlungsempfehlungen.
+              Die KI verbindet sich mit den Datenquellen, berechnet die zentralen
+              Kennzahlen, erkennt Trends und Abweichungen – und begründet, was warum
+              auffällig ist. Jede Empfehlung prüft ein Mensch, bevor sie gilt.
             </p>
-            <ul class="tick-list tick-list-good">
-              <li>Alle Kennzahlen auf einer Oberfläche</li>
-              <li>Jede Auffälligkeit wird von der KI begründet</li>
-              <li>Empfehlung inkl. Datenqualität und Risiko</li>
-            </ul>
           </article>
         </div>
+      </div>
+    </section>
 
-        <blockquote class="research-question reveal">
-          <p>
-            „Wie kann ein kleines Unternehmen Künstliche Intelligenz kontrolliert
-            einsetzen, um verteilte Unternehmensdaten auszuwerten, Kennzahlen und Trends
-            zu erkennen und begründete Handlungsempfehlungen vorzubereiten?“
-          </p>
-          <footer>Forschungsfrage des IDP-Projekts</footer>
-        </blockquote>
+    <!-- ============================== KENNZAHLEN ============================== -->
+    <section class="section section-alt" id="kennzahlen" aria-labelledby="kennzahlen-title">
+      <div class="section-inner section-inner-wide">
+        <p class="section-eyebrow reveal"><span>02</span> Kennzahlen auf einen Blick</p>
+        <h2 id="kennzahlen-title" class="reveal">Sechs Steuerungsgrößen, ein Dashboard.</h2>
+        <p class="section-lead reveal">
+          So sieht ein stabiler Monat bei Kara aus – berechnet aus sechs Datenquellen.
+          Alle Werte sind Demo-Daten.
+        </p>
 
-        <div class="note-row">
-          <div class="note-card reveal">
-            <p class="note-card-label">Beispielunternehmen</p>
-            <h3>Kara ist fiktiv – und genau deshalb typisch</h3>
-            <p>
-              Kara steht für ein kleines Unternehmen mit schmalem Budget und ohne eigene
-              IT-Abteilung: mehrere Datenbanken, aber nur mühsam ein klarer Blick auf die
-              Lage. Alle Werte sind realistisch gewählte Beispieldaten – echte
-              Unternehmens- oder Kundendaten werden bewusst nicht eingesetzt.
-            </p>
+        <div class="kpi-row" id="kpiRow">
+          <!-- KPI-Karten per JavaScript (Szenario „stabil") -->
+        </div>
+
+        <div class="insight-block reveal">
+          <figure class="chart-panel chart-panel-home">
+            <figcaption class="chart-head">
+              <span class="chart-title">Trend über 6 Perioden <span class="chart-sub">(Indexwerte)</span></span>
+              <span class="chart-legend">
+                <span class="legend-item"><span class="legend-swatch swatch-revenue" aria-hidden="true"></span>Umsatz</span>
+                <span class="legend-item"><span class="legend-swatch swatch-cost" aria-hidden="true"></span>Kosten</span>
+                <span class="legend-item"><span class="legend-swatch swatch-liquidity" aria-hidden="true"></span>Liquidität</span>
+              </span>
+            </figcaption>
+            <svg id="homeChart" viewBox="0 0 640 300" role="img" aria-label="Trenddiagramm: Umsatz steigt, Kosten sinken leicht, Liquidität wächst über sechs Perioden." preserveAspectRatio="xMidYMid meet"></svg>
+          </figure>
+
+          <div class="insight-aside">
+            <h3>Was die KI daraus liest</h3>
+            <ul class="finding-list">
+              <li>Umsatz wächst über drei Perioden stabil.</li>
+              <li>Kostenquote sinkt leicht durch bessere Einkaufskonditionen.</li>
+              <li>Liquidität bleibt ausreichend für laufende Verpflichtungen.</li>
+            </ul>
+            <a class="btn btn-ghost btn-small" href="cockpit.html">Alle drei Szenarien im Cockpit →</a>
           </div>
-          <div class="note-card note-card-accent reveal">
-            <p class="note-card-label">Human-in-the-loop</p>
-            <h3>KI bereitet vor, der Mensch entscheidet</h3>
-            <p>
-              Jede Empfehlung erscheint mit Quelle, Datenqualität und Risiko. Ein Mensch
-              prüft sie und gibt sie frei – oder verwirft sie. Automatische Entscheidungen
-              trifft das Cockpit bewusst nicht.
-            </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== INTEGRATIONEN ============================== -->
+    <section class="section" id="integrationen" aria-labelledby="integrationen-title">
+      <div class="section-inner">
+        <p class="section-eyebrow reveal"><span>03</span> Integrationen</p>
+        <h2 id="integrationen-title" class="reveal">Verbindet alle relevanten Quellen kleiner Unternehmen.</h2>
+        <p class="section-lead reveal">
+          Beispiele typischer Werkzeuge – per MCP-Konnektor, API oder CSV anbindbar.
+          Die KI baut die Anbindung weitgehend selbst auf.
+        </p>
+
+        <div class="hub reveal" role="img" aria-label="Diagramm: Acht typische Datenquellen wie DATEV, lexoffice, SAP Business One, HubSpot, Bank-Schnittstelle, Personio, Excel und PDF/CSV senden Daten an den zentralen Knoten Kara·Cockpit mit KI-Analyse durch Claude.">
+          <svg class="hub-wires" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <!-- Leitungen per JavaScript -->
+          </svg>
+          <div class="hub-center">
+            <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <rect x="2" y="18" width="6" height="12" rx="1.5" />
+              <rect x="13" y="10" width="6" height="20" rx="1.5" />
+              <rect x="24" y="2" width="6" height="28" rx="1.5" class="brand-mark-accent" />
+            </svg>
+            <strong>Kara·Cockpit</strong>
+            <span>KI-Analyse (Claude)</span>
           </div>
+          <!-- Satelliten per JavaScript -->
+        </div>
+        <p class="hub-note reveal">
+          Markennamen dienen nur als Beispiele typischer Quellen – keine Partnerschaften.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== EINBLICKE (Doppelblock) ============================== -->
+    <section class="section section-alt" id="einblicke" aria-labelledby="einblicke-title">
+      <div class="section-inner section-inner-wide">
+        <p class="section-eyebrow reveal"><span>04</span> Vom Rohdatum zur Entscheidung</p>
+        <h2 id="einblicke-title" class="reveal">Zusammenführen. Verstehen. Entscheiden.</h2>
+
+        <div class="duo">
+          <article class="duo-card reveal" aria-labelledby="duo-a-title">
+            <p class="panel-kicker">Datenzusammensetzung</p>
+            <h3 id="duo-a-title">Sechs Quellen fließen zusammen</h3>
+            <p>
+              Jede Quelle bringt ihren Teil des Bildes mit – und ihre Datenqualität
+              bleibt sichtbar. So ist nachvollziehbar, wie belastbar eine Auswertung ist.
+            </p>
+            <div class="duo-sources" id="duoSources">
+              <!-- Quellen mit Qualitätsbalken per JavaScript -->
+            </div>
+          </article>
+
+          <article class="duo-card reveal" aria-labelledby="duo-b-title">
+            <p class="panel-kicker">Datenanalyse &amp; Empfehlung</p>
+            <h3 id="duo-b-title">Begründete Vorschläge statt Blackbox</h3>
+            <p>
+              Die KI erklärt, was warum auffällig ist, und bereitet priorisierte
+              Maßnahmen vor – mit Quelle, Datenqualität und Risiko.
+            </p>
+            <div class="duo-analysis">
+              <div class="mini-finding">
+                <span class="mini-finding-label">Finding</span>
+                Kosten steigen stärker als Umsatz und drücken den Deckungsbeitrag.
+              </div>
+              <div class="mini-finding mini-finding-rec">
+                <span class="mini-finding-label">Empfehlung</span>
+                Kostenstellen 410 und 620 prüfen, variable Ausgaben einfrieren.
+              </div>
+              <div class="duo-meta">
+                <span class="risk-pill" data-risk="hoch">Risiko: hoch</span>
+                <span class="duo-meta-quality">Datenqualität: mittel</span>
+              </div>
+              <p class="duo-hitl">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="7.5" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 21c.8-4 3.8-6.5 7.5-6.5s6.7 2.5 7.5 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                <strong>Human-in-the-loop:</strong>&nbsp;Freigeben oder ablehnen – entschieden wird von Menschen.
+              </p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- ============================== FALLBEISPIELE ============================== -->
-    <section class="section section-alt" id="faelle" aria-labelledby="faelle-title">
+    <section class="section" id="faelle" aria-labelledby="faelle-title">
       <div class="section-inner">
-        <p class="section-eyebrow reveal"><span>02</span> Die drei Fallbeispiele</p>
+        <p class="section-eyebrow reveal"><span>05</span> Die drei Fallbeispiele</p>
         <h2 id="faelle-title" class="reveal">Drei Wege, wie KI im Controlling konkret hilft.</h2>
-        <p class="section-lead reveal">
-          Tippe oder klicke auf eine Karte, um Outputs und Controlling-Bezug aufzublättern.
-        </p>
         <div class="case-grid" id="caseGrid">
-          <!-- Karten werden per JavaScript aus den Demo-Daten erzeugt -->
+          <!-- Karten per JavaScript -->
         </div>
       </div>
     </section>
 
-    <!-- ============================== LIVE-DEMO ============================== -->
-    <section class="section" id="demo" aria-labelledby="demo-title">
-      <div class="section-inner section-inner-wide">
-        <p class="section-eyebrow reveal"><span>03</span> Live-Demo</p>
-        <h2 id="demo-title" class="reveal">Das Controlling-Cockpit zum Ausprobieren.</h2>
+    <!-- ============================== COCKPIT-VORSCHAU ============================== -->
+    <section class="section section-alt" id="vorschau" aria-labelledby="vorschau-title">
+      <div class="section-inner">
+        <p class="section-eyebrow reveal"><span>06</span> Live-Demo</p>
+        <h2 id="vorschau-title" class="reveal">Das interaktive Cockpit wartet.</h2>
         <p class="section-lead reveal">
-          Drei Szenarien, sechs Kennzahlen, eine Empfehlung – und am Ende entscheidest du.
-          Alle Werte sind Demo-Daten des fiktiven Unternehmens Kara.
+          Drei Szenarien durchschalten, Kennzahlen beim Umspringen zusehen,
+          Empfehlungen freigeben oder ablehnen – direkt im Browser.
         </p>
 
-        <div class="cockpit reveal" role="region" aria-label="Interaktives Controlling-Cockpit">
-          <div class="cockpit-toolbar">
-            <div class="scenario-switch" role="tablist" aria-label="Szenario wählen">
-              <button class="scenario-tab" type="button" role="tab" id="tab-stabil" aria-selected="true" aria-controls="cockpitBody" data-scenario="stabil">
-                <span class="scenario-dot dot-good" aria-hidden="true"></span> Stabil
-              </button>
-              <button class="scenario-tab" type="button" role="tab" id="tab-kritisch" aria-selected="false" aria-controls="cockpitBody" data-scenario="kritisch">
-                <span class="scenario-dot dot-bad" aria-hidden="true"></span> Kritisch
-              </button>
-              <button class="scenario-tab" type="button" role="tab" id="tab-wachstum" aria-selected="false" aria-controls="cockpitBody" data-scenario="wachstum">
-                <span class="scenario-dot dot-warn" aria-hidden="true"></span> Wachstum
-              </button>
-            </div>
-            <p class="cockpit-state">
-              <span class="state-pulse" aria-hidden="true"></span>
-              <span id="cockpitState">Szenario: Stabile Entwicklung</span>
-            </p>
-          </div>
-
-          <div class="cockpit-body" id="cockpitBody" role="tabpanel" aria-labelledby="tab-stabil">
-
-            <div class="source-strip" id="sourceStrip" role="group" aria-label="Angebundene Datenquellen mit Datenqualität">
-              <!-- Datenquellen per JavaScript -->
-            </div>
-
-            <div class="metric-grid" id="metricGrid">
-              <!-- KPI-Karten per JavaScript -->
-            </div>
-
-            <div class="cockpit-lower">
-              <figure class="chart-panel">
-                <figcaption class="chart-head">
-                  <span class="chart-title">Trend über 6 Perioden <span class="chart-sub">(Indexwerte)</span></span>
-                  <span class="chart-legend">
-                    <span class="legend-item"><span class="legend-swatch swatch-revenue" aria-hidden="true"></span>Umsatz</span>
-                    <span class="legend-item"><span class="legend-swatch swatch-cost" aria-hidden="true"></span>Kosten</span>
-                    <span class="legend-item"><span class="legend-swatch swatch-liquidity" aria-hidden="true"></span>Liquidität</span>
-                  </span>
-                </figcaption>
-                <svg id="trendChart" viewBox="0 0 640 300" role="img" aria-labelledby="trendChartTitle trendChartDesc" preserveAspectRatio="xMidYMid meet">
-                  <title id="trendChartTitle">Trenddiagramm</title>
-                  <desc id="trendChartDesc">Verlauf von Umsatz, Kosten und Liquidität über sechs Perioden im gewählten Szenario.</desc>
-                </svg>
-                <p class="visually-hidden" id="chartTextAlt" aria-live="polite"></p>
-              </figure>
-
-              <div class="analysis-panel">
-                <h3 class="analysis-title">
-                  <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.2 12 7l4.8 2-4.8 2-2 4.8L8 11 3.2 9 8 7l2-4.8Z"/></svg>
-                  KI-Findings
-                </h3>
-                <ul class="finding-list" id="findingList"></ul>
-
-                <div class="recommendation">
-                  <p class="recommendation-label">Empfehlung der KI</p>
-                  <p id="recommendationText"></p>
-                </div>
-
-                <dl class="meta-row">
-                  <div><dt>Datenqualität</dt><dd id="qualityText"></dd></div>
-                  <div><dt>Risiko</dt><dd><span class="risk-pill" id="riskPill"></span></dd></div>
-                </dl>
-
-                <div class="hitl">
-                  <p class="hitl-label">Menschliche Prüfung – du entscheidest:</p>
-                  <div class="hitl-actions">
-                    <button class="btn btn-approve" id="approveBtn" type="button">
-                      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="m2.5 8.5 3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Freigeben
-                    </button>
-                    <button class="btn btn-reject" id="rejectBtn" type="button">
-                      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="m4 4 8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Ablehnen
-                    </button>
-                  </div>
-                  <p class="hitl-feedback" id="hitlFeedback" role="status"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <a class="preview-frame reveal" href="cockpit.html" aria-label="Zum interaktiven Cockpit – Vorschaubild der Cockpit-Seite">
+          <img src="assets/cockpit-preview.png" alt="Vorschau der Cockpit-Seite: Datenquellen links, Kennzahlen und Trenddiagramm in der Mitte, KI-Findings rechts" width="1440" height="900" loading="lazy" />
+          <span class="preview-cta">
+            Zum interaktiven Cockpit
+            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
       </div>
     </section>
 
     <!-- ============================== FUNKTIONSWEISE ============================== -->
-    <section class="section section-alt" id="funktionsweise" aria-labelledby="funktionsweise-title">
+    <section class="section" id="funktionsweise" aria-labelledby="funktionsweise-title">
       <div class="section-inner">
-        <p class="section-eyebrow reveal"><span>04</span> Wie es funktioniert</p>
+        <p class="section-eyebrow reveal"><span>07</span> Wie es funktioniert</p>
         <h2 id="funktionsweise-title" class="reveal">Vom Datensilo zur geprüften Entscheidung.</h2>
         <p class="section-lead reveal">
           Sechs Schritte – die ersten fünf übernimmt die KI, den letzten der Mensch.
           Tippe auf einen Schritt für Details.
         </p>
 
-        <ol class="flow" id="processFlow">
-          <!-- Schritte per JavaScript -->
-        </ol>
+        <ol class="flow" id="processFlow"></ol>
         <div class="flow-detail reveal" id="flowDetail" role="status"></div>
-
-        <h3 class="sub-heading reveal">Die Verknüpfungen dahinter</h3>
-        <p class="section-lead reveal">
-          Das Besondere: Claude kommentiert nicht nur fertige Zahlen – die KI baut die
-          Anbindung an die Datenquellen weitgehend selbst auf. Genau das senkt die
-          Einstiegshürde für kleine Unternehmen.
-        </p>
-
-        <div class="connector-grid">
-          <article class="connector-card reveal">
-            <svg class="connector-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6" fill="none"/><path d="M4.5 11.5v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6" fill="none"/></svg>
-            <h4>MCP-Konnektoren</h4>
-            <p>Sichere Verbindungen zu Datenbanken wie Finance DB, ERP oder SQL über das Model Context Protocol – die KI erschließt die Felder selbst.</p>
-          </article>
-          <article class="connector-card reveal">
-            <svg class="connector-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3" fill="none"/><circle cx="6" cy="18" r="3" fill="none"/><circle cx="18" cy="18" r="3"/><path d="M9 6h6M6 9v6M18 9v6M9 18h6" fill="none"/></svg>
-            <h4>Make / Zapier</h4>
-            <p>Automatisierungswerkzeuge stoßen wiederkehrende Abläufe an – etwa Monatsberichte oder Benachrichtigungen bei kritischen Abweichungen.</p>
-          </article>
-          <article class="connector-card reveal">
-            <svg class="connector-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 17.5C4 13 7.5 5 12 5s8 8 8 12.5" fill="none"/><path d="M8.5 17.5c0-2.5 1.5-7 3.5-7s3.5 4.5 3.5 7" fill="none"/><line x1="2.5" y1="17.5" x2="21.5" y2="17.5"/></svg>
-            <h4>Claude-API &amp; Cowork</h4>
-            <p>Die Claude-Programmierschnittstelle und die Arbeitsumgebung Cowork, in der Claude Auswertungen erstellt und Dateien erzeugt.</p>
-          </article>
-          <article class="connector-card reveal">
-            <svg class="connector-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 2.5h8.5L20 8v13.5H6Z" fill="none"/><path d="M14.5 2.5V8H20" fill="none"/><path d="M9 13h6M9 16.5h6" /></svg>
-            <h4>Excel &amp; PDF</h4>
-            <p>Vertraute Dateiformate bleiben Ein- und Ausgang: Plandaten aus Excel hinein, fertige Berichte als PDF heraus.</p>
-          </article>
-        </div>
       </div>
     </section>
 
     <!-- ============================== MIT KI GEBAUT ============================== -->
-    <section class="section" id="ki-gebaut" aria-labelledby="ki-gebaut-title">
+    <section class="section section-alt" id="ki-gebaut" aria-labelledby="ki-gebaut-title">
       <div class="section-inner">
-        <p class="section-eyebrow reveal"><span>05</span> Mit KI gebaut</p>
+        <p class="section-eyebrow reveal"><span>08</span> Mit KI gebaut</p>
         <h2 id="ki-gebaut-title" class="reveal">Diese Website ist selbst der Beweis.</h2>
         <p class="section-lead reveal">
-          Konzept, Code, Texte, Diagramm, Tests und Deployment: Diese Seite wurde von
-          Claude (Claude Code) auf Basis eines einzigen ausführlichen Prompts gebaut –
-          dieselbe Arbeitsweise, mit der auch das Cockpit-Projekt entstanden ist.
+          Konzept, Code, Texte, Diagramme, Tests, Deployment – und sogar das
+          Techday-Video: alles von Claude (Claude Code) auf Basis ausführlicher
+          Prompts gebaut. Dieselbe Arbeitsweise, mit der auch das Cockpit-Projekt
+          entstanden ist.
         </p>
 
         <div class="split">
@@ -366,68 +338,53 @@
             <p class="panel-kicker">Was sind Skills?</p>
             <h3>Wiederverwendbare Fähigkeiten für KI-Agenten</h3>
             <p>
-              Skills sind kleine Anleitungspakete, die einem KI-Agenten beibringen, wie
-              eine Aufgabe gut gelöst wird – etwa „gestalte hochwertige Interfaces“ oder
-              „prüfe Barrierefreiheit“. Einmal installiert, nutzt die KI sie immer wieder.
-              So wird aus einem allgemeinen Modell ein eingespieltes Werkzeug.
+              Skills sind kleine Anleitungspakete, die einem KI-Agenten beibringen,
+              wie eine Aufgabe gut gelöst wird – etwa „gestalte hochwertige
+              Interfaces“ oder „prüfe Barrierefreiheit“. Einmal installiert, nutzt
+              die KI sie immer wieder.
             </p>
             <ul class="skill-chips">
               <li><code>frontend-design</code></li>
               <li><code>ui-ux-pro-max</code></li>
               <li><code>web-design-guidelines</code></li>
-              <li><code>mermaid-diagrams</code></li>
+              <li><code>remotion-best-practices</code></li>
+              <li><code>elevenlabs-tts</code></li>
             </ul>
           </article>
 
           <article class="panel reveal">
-            <p class="panel-kicker">Vom Prompt zur Seite</p>
-            <h3>So entstand das Projekt</h3>
+            <p class="panel-kicker">Vom Prompt zum Projekt</p>
+            <h3>So ist alles entstanden</h3>
             <ol class="timeline">
               <li><span class="timeline-marker" aria-hidden="true"></span><strong>Idee</strong><span>KI-Einsatz im Controlling kleiner Unternehmen eingrenzen</span></li>
-              <li><span class="timeline-marker" aria-hidden="true"></span><strong>Recherche</strong><span>Grundlagen, Recht &amp; Ethik, Potenziale und Grenzen</span></li>
-              <li><span class="timeline-marker" aria-hidden="true"></span><strong>Doku</strong><span>Wissenschaftliche Ausarbeitung mit drei Fallbeispielen</span></li>
-              <li><span class="timeline-marker" aria-hidden="true"></span><strong>Website</strong><span>Diese Seite – per Prompt von Claude gebaut und getestet</span></li>
-              <li><span class="timeline-marker" aria-hidden="true"></span><strong>Deployment</strong><span>Automatisch live über GitHub Pages</span></li>
+              <li><span class="timeline-marker" aria-hidden="true"></span><strong>Recherche &amp; Doku</strong><span>Wissenschaftliche Ausarbeitung mit drei Fallbeispielen</span></li>
+              <li><span class="timeline-marker" aria-hidden="true"></span><strong>Website &amp; Cockpit</strong><span>Diese Seiten – per Prompt gebaut, getestet, deployt</span></li>
+              <li><span class="timeline-marker" aria-hidden="true"></span><strong>Video</strong><span>60-Sekunden-Erklärvideo, deterministisch gerendert</span></li>
+              <li><span class="timeline-marker" aria-hidden="true"></span><strong>Techday</strong><span>Live am Stand – mit QR-Code zum Selbstausprobieren</span></li>
             </ol>
           </article>
         </div>
-
-        <dl class="meta-stats reveal">
-          <div><dt>Prompt</dt><dd>1</dd></div>
-          <div><dt>Dateien</dt><dd>3</dd></div>
-          <div><dt>Build-Schritt</dt><dd>0</dd></div>
-          <div><dt>Frameworks</dt><dd>0</dd></div>
-        </dl>
-        <p class="meta-stats-caption reveal">Reines HTML, CSS und JavaScript – kein Framework, kein Build, direkt auf GitHub Pages.</p>
       </div>
     </section>
 
     <!-- ============================== KONTAKT ============================== -->
-    <section class="section section-alt" id="kontakt" aria-labelledby="kontakt-title">
+    <section class="section" id="kontakt" aria-labelledby="kontakt-title">
       <div class="section-inner">
-        <p class="section-eyebrow reveal"><span>06</span> Über &amp; Kontakt</p>
+        <p class="section-eyebrow reveal"><span>09</span> Über &amp; Kontakt</p>
         <h2 id="kontakt-title" class="reveal">Ein Projekt der Hochschule Pforzheim.</h2>
 
         <div class="contact-grid">
           <div class="contact-text reveal">
             <p>
-              Dieses Projekt entstand im Rahmen des <strong>Interdisziplinären Projekts
-              (IDP)</strong> an der Hochschule Pforzheim. Es untersucht, wie kleine
-              Unternehmen Künstliche Intelligenz kontrolliert im Controlling einsetzen
-              können – wissenschaftlich fundiert und als zeigbarer Demonstrator umgesetzt.
-            </p>
-            <p>
-              Das Controlling-Cockpit auf dieser Seite ist ein <strong>Demo-MVP</strong>:
-              Beispieldaten und simulierte KI-Logik im Browser, bewusst ohne echte
-              Datenbankverbindungen. Für den produktiven Einsatz würde die simulierte
-              Analyse durch echte, über Konnektoren angebundene Auswertungen ersetzt –
-              mit Rollenrechten, Audit-Trail und verbindlicher menschlicher Freigabe.
+              Dieses Projekt entstand im Rahmen des <strong>Interdisziplinären
+              Projekts (IDP)</strong> an der Hochschule Pforzheim. Das Cockpit ist
+              ein <strong>Demo-MVP</strong>: Beispieldaten und simulierte KI-Logik
+              im Browser, bewusst ohne echte Datenbankverbindungen.
             </p>
             <ul class="contact-facts">
               <li><strong>Hochschule</strong> Hochschule Pforzheim</li>
               <li><strong>Rahmen</strong> Interdisziplinäres Projekt (IDP)</li>
               <li><strong>Thema</strong> KI im Controlling kleiner Unternehmen</li>
-              <li><strong>Demonstrator</strong> KI-Controlling-Cockpit „Kara“</li>
               <li><strong>Team</strong>
                 <span class="team-names">
                   <a href="https://www.linkedin.com/in/abdulhamid-karatas-673947300/" rel="noopener" target="_blank">Abdulhamid Karatas</a>
@@ -446,7 +403,7 @@
           <div class="qr-card reveal">
             <p class="qr-label">Seite mitnehmen</p>
             <img src="assets/qr-live.svg" alt="QR-Code zur Live-Website kara-cockpit.de" width="180" height="180" loading="lazy" />
-            <p class="qr-hint">QR-Code scannen und die Demo auf dem eigenen Handy öffnen.</p>
+            <p class="qr-hint">QR-Code scannen und die Demo auf dem eigenen Handy öffnen: kara-cockpit.de</p>
           </div>
         </div>
       </div>
@@ -460,6 +417,7 @@
         <p>KI für kleine Unternehmen – IDP, Hochschule Pforzheim.</p>
       </div>
       <nav class="footer-links" aria-label="Weiterführende Links">
+        <a href="cockpit.html">Interaktives Cockpit</a>
         <a href="https://github.com/HamidK193/IDP-KI-im-Unternehmen-" rel="noopener" target="_blank">GitHub-Repository</a>
         <a href="https://github.com/HamidK193/IDP-KI-im-Unternehmen-/tree/main/docs/thesis" rel="noopener" target="_blank">Wissenschaftliche Doku</a>
         <a href="#top">Nach oben</a>
@@ -468,6 +426,7 @@
         Datenschutz-Hinweis: Diese Seite zeigt ausschließlich realistisch gewählte
         <strong>Demo-Daten</strong> eines fiktiven Unternehmens. Es werden keine echten
         Unternehmens- oder Kundendaten verarbeitet und keine Tracker eingesetzt.
+        Genannte Markennamen sind Beispiele typischer Quellen, keine Partnerschaften.
       </p>
       <p class="footer-copy">© 2026 Abdulhamid Karatas &amp; Kadir Atar · IDP, Hochschule Pforzheim · Website gebaut mit Claude</p>
     </div>

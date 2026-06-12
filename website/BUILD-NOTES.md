@@ -1,131 +1,117 @@
-# BUILD-NOTES – Techday-Website „Kara·Cockpit“
+# BUILD-NOTES – Techday-Website „Kara·Cockpit“ (V2: zweiseitiger Aufbau)
 
-Erstellt am 12.06.2026 von Claude (Claude Code) in einem autonomen Durchlauf
-auf Basis eines einzigen ausführlichen Prompts. Diese Notizen dokumentieren,
-was gebaut wurde und welche Entscheidungen dabei getroffen wurden.
+Erstellt von Claude (Claude Code) in autonomen Durchläufen. Stand 12.06.2026:
+Redesign nach dem Vorbild moderner AI-/SaaS-Templates (Alter, Flexfolio, Exact),
+eigenständig im Kara·Cockpit-Petrol-Design umgesetzt. Statisch ohne Build,
+GitHub Pages, Domain `kara-cockpit.de`.
 
-## Was gebaut wurde
+## Aufbau: zwei Seiten
 
-Eine komplett neue, responsive Single-Page-Website für den Techday-Infostand
-mit zwei Zielen: (1) Meta-Beweis, dass sich mit KI hochwertige Websites bauen
-lassen, und (2) verständliche Beschreibung des IDP-Projekts
-„KI für kleine Unternehmen – KI-Controlling-Cockpit am Beispiel des fiktiven
-Unternehmens Kara“ (Hochschule Pforzheim).
+### `index.html` – Homepage (Übersicht aus Dashboard-Blöcken, Alter-Stil)
 
-### Abschnitte (Single-Page mit Sprungnavigation)
+1. **Hero** – Tagline, CTAs „Cockpit ansehen“ (→ cockpit.html) und „Projekt
+   entdecken“, KI-Badge, animierter Hintergrund, Eckdaten-Leiste.
+2. **Das Projekt** – Problem/Lösung in zwei kompakten Panels.
+3. **Kennzahlen-Blöcke** – sechs KPI-Karten (Szenario „stabil“ aus
+   `script.js`) mit Zähl-Animation beim Scrollen + Insights-Block
+   (SVG-Trenddiagramm + „Was die KI daraus liest“).
+4. **Integrations-Hub** – zentraler Knoten „Kara·Cockpit · KI-Analyse
+   (Claude)“, acht Satelliten typischer Quellen (DATEV, lexoffice,
+   SAP Business One, HubSpot, Bank/FinTS, Personio, Excel/Sheets, PDF/CSV)
+   mit animierten, nach innen gerichteten Pfeil-Leitungen. Monochrome
+   Generik-Icons, ausdrücklich als „Beispiele, keine Partnerschaften“
+   gekennzeichnet. Mobil wird das Radial-Layout zum gestapelten Raster.
+5. **Doppelblock** – links „Datenzusammensetzung“ (6 Quellen mit
+   Qualitätsbalken), rechts „Datenanalyse & Empfehlung“ (Finding, Empfehlung,
+   Risiko-Pille, Human-in-the-loop-Hinweis).
+6. **Drei Fallbeispiele** – Karten mit Kurzbeschreibung + Controlling-Bezug.
+7. **Cockpit-Vorschau** – Screenshot der Cockpit-Seite im Browser-Rahmen
+   (`assets/cockpit-preview.png`) mit großem CTA „Zum interaktiven Cockpit“.
+8. **Wie es funktioniert** – interaktiver 6-Schritte-Prozessfluss
+   (auto-durchlaufend, klickbar, Schritt 6 = Mensch).
+9. **Mit KI gebaut** – Skills-Erklärung + Projekt-Timeline (inkl. Video).
+10. **Kontakt/Footer** – Hochschule Pforzheim, IDP, Team mit LinkedIn/E-Mail,
+    QR-Code zu kara-cockpit.de, Datenschutz-Hinweis (nur Demo-Daten).
 
-1. **Hero** – Tagline „KI macht die Zahlen kleiner Unternehmen lesbar“,
-   zwei CTAs, KI-Badge, animierter Hintergrund (Grid + Glows + gezeichnete
-   Sparklines), Eckdaten-Leiste.
-2. **Das Projekt** – Problem/Lösung-Gegenüberstellung, Forschungsfrage als
-   Zitat, Hinweiskarten zu Kara (fiktiv) und Human-in-the-loop.
-3. **Die drei Fallbeispiele** – aufklappbare Karten (Cockpit, Budget-/
-   Kostenabweichung, Forecasting) mit Outputs und Controlling-Bezug.
-4. **Live-Demo: Controlling-Cockpit** – 3 Szenario-Tabs (stabil/kritisch/
-   Wachstum), 6 Datenquellen mit animierten Qualitätsbalken, 6 KPI-Karten mit
-   animierten Wertwechseln und Trendindikatoren, animiertes SVG-Trenddiagramm
-   (Umsatz/Kosten/Liquidität), KI-Findings, Empfehlung, Datenqualität, Risiko
-   sowie „Freigeben/Ablehnen“ als Human-in-the-loop-Element.
-5. **Wie es funktioniert** – interaktiver 6-Schritte-Prozessfluss
-   (auto-durchlaufend, klickbar, Schritt 6 = Mensch) plus die vier
-   Verknüpfungen (MCP, Make/Zapier, Claude-API/Cowork, Excel/PDF).
-6. **Mit KI gebaut** – Erklärung von Skills, genutzte Skills als Chips,
-   Timeline Idee → Recherche → Doku → Website → Deployment, Eckdaten
-   (1 Prompt, 3 Dateien, 0 Build-Schritte, 0 Frameworks).
-7. **Über/Kontakt** – Hochschule Pforzheim, IDP, MVP-Hinweis, QR-Code zur
-   Live-URL.
-8. **Footer** – Repo- und Doku-Links, Datenschutz-Hinweis (nur Demo-Daten),
-   Copyright.
+### `cockpit.html` – Interaktives Cockpit (Flexfolio-Stil, 3 Spalten)
 
-### Dateien
+- **Toolbar**: Szenario-Umschalter (stabil/kritisch/Wachstum, Tabs-Pattern
+  mit Pfeiltasten) + Status.
+- **Links**: sechs Datenquellen mit animierten Qualitätsbalken
+  (Datenzusammensetzung).
+- **Mitte**: sechs KPI-Karten (animierte Wertwechsel, Einheiten-bewusst:
+  Mio./Tsd. wird nicht interpoliert) + animiertes SVG-Trenddiagramm.
+- **Rechts**: KI-Findings, Empfehlung, Datenqualität/Risiko und
+  „Freigeben/Ablehnen“ (Human-in-the-loop) mit Status-Feedback.
+- Mobil stapeln die Spalten in der Reihenfolge Kennzahlen → Quellen → Analyse.
+
+## Dateien
 
 ```
 website/
-├── index.html        Semantisches HTML5, alle Inhalte
-├── styles.css        Design-Tokens, Light/Dark, Responsive, Animationen
-├── script.js         Demo-Daten + gesamte Interaktion (Vanilla JS)
+├── index.html              Homepage (Dashboard-Blöcke)
+├── cockpit.html            Interaktive Cockpit-Seite
+├── styles.css              Design-Tokens, Light/Dark, beide Seiten, Responsive
+├── script.js               Demo-Daten + gesamte Interaktion (eine Datei,
+│                           Blöcke initialisieren sich nur bei vorhandenen Elementen)
+├── CNAME                   kara-cockpit.de (GitHub Pages Custom Domain)
+├── .nojekyll               GitHub Pages ohne Jekyll
 ├── assets/
-│   ├── favicon.svg   Balken-Logo
-│   └── qr-live.svg   QR-Code zur Live-URL (per npx qrcode generiert)
-├── screenshots/      10 Screenshots (360/390/768/1024/1440 px, hell+dunkel) + og.png
-├── BUILD-NOTES.md    Diese Datei
-├── README.md         Kurzüberblick + lokaler Start
-└── .nojekyll         GitHub Pages ohne Jekyll
+│   ├── favicon.svg         Balken-Logo
+│   ├── qr-live.svg         QR-Code → https://kara-cockpit.de
+│   └── cockpit-preview.png Vorschaubild der Cockpit-Seite (Homepage-Block 7)
+├── screenshots/            12 aktuelle Screenshots (360/390/768/1024/1440,
+│                           hell+dunkel, Homepage + Cockpit) + og.png
+├── BUILD-NOTES.md          Diese Datei
+└── README.md               Kurzüberblick + lokaler Start
 ```
-
-## Genutzte Skills
-
-- **frontend-design** – Design-Leitlinie: bewusste, eigenständige Ästhetik
-  statt generischer „KI-Optik“; Typografie-, Farb- und Motion-Prinzipien.
-- **ui-ux-pro-max** – UX-Checks: Kontraste ≥ 4,5:1, Touch-Ziele ≥ 44 px,
-  `prefers-reduced-motion`, Fokuszustände, keine horizontalen Scrolls.
-- **web-design-guidelines** – als Review-Checkliste für Barrierefreiheit und
-  Interface-Qualität.
-- **mermaid-diagrams** – nicht benötigt; der Prozessfluss wurde als
-  interaktives HTML/CSS-Element umgesetzt (besser bedienbar als ein
-  statisches Diagramm).
-- Neu installiert wurde keine zusätzliche Skill: Für Icons (Inline-SVG),
-  Animationen (CSS + IntersectionObserver) und Accessibility reichten die
-  vorhandenen Skills und Bordmittel. Der QR-Code entstand mit
-  `npx qrcode`, die Screenshots mit `playwright-core` + installiertem Chrome.
 
 ## Designentscheidungen
 
-- **Ästhetik „Präzisionsinstrument“**: warmes Papier-Beige im Light-Mode,
-  tiefes Petrol-Grün im Dark-Mode, Smaragd als einziger Akzent, semantische
-  Ampelfarben (good/warn/bad) für Controlling-Inhalte.
-- **Typografie**: Bricolage Grotesque (Display), Atkinson Hyperlegible
-  (Fließtext, sehr gut lesbar), JetBrains Mono (Zahlen, Labels, Daten) –
-  via Google Fonts mit `display=swap`.
-- **Eigenes SVG-Trenddiagramm statt Chart.js**: keine CDN-Abhängigkeit
-  (Messe-WLAN!), volle Theme-Kontrolle über CSS-Variablen, animierte
-  Übergänge zwischen Szenarien per requestAnimationFrame.
-- **Kein localStorage für Inhalte** – nur optional für die Theme-Wahl
-  (mit try/catch-Fallback auf die Systemeinstellung).
-- **Dark/Light**: `prefers-color-scheme` wird respektiert; der Umschalter
-  setzt `data-theme` und überstimmt die Systemeinstellung.
-- **Barrierearm**: Skip-Link, Landmarken mit Namen, Tabs-Pattern mit
-  Pfeiltasten, `aria-expanded`/`aria-controls` an den Karten,
-  Text-Alternative für das Diagramm (`aria-live`), `prefers-reduced-motion`
-  deaktiviert alle Animationen, Fokusringe via `:focus-visible`,
-  Touch-Ziele ≥ 44 px.
-- **Responsive Breakpoints**: 1100 px (Raster reduzieren), 880 px
-  (Hamburger-Menü), 760 px (einspaltig, kompakte Abstände), 480/400 px
-  (Feinanpassungen). Inhalt bleibt auf allen Breiten identisch.
-- **Ohne JavaScript** bleibt die Seite lesbar (`no-js`-Fallback zeigt alle
-  Inhalte; nur die Demo-Interaktion braucht JS).
+- **Petrol-Design beibehalten**: Tokens, Typografie (Bricolage Grotesque /
+  Atkinson Hyperlegible / JetBrains Mono) und Komponenten-Sprache sind mit
+  der Vorversion identisch – nur die Informationsarchitektur ist neu.
+- **Integrations-Hub statt Logo-Wand**: generische, monochrome Icons +
+  Klartext-Namen, damit keine Markenrechte/Partnerschaften suggeriert werden;
+  Leitungen als gestrichelte SVG-Pfade mit CSS-Dash-Animation Richtung
+  Zentrum und Pfeilspitzen (bei `prefers-reduced-motion` statisch).
+- **Eigenes SVG-Diagramm statt Chart.js**: keine CDN-Abhängigkeit
+  (Messe-WLAN), volle Theme-Kontrolle, animierte Szenario-Übergänge per
+  requestAnimationFrame.
+- **Eine `script.js` für beide Seiten**: jeder Block prüft, ob seine Elemente
+  existieren – kein Build, keine Module, kein doppelter Code.
+- **Barrierearm**: Skip-Link, Landmarken, Tabs mit Pfeiltasten,
+  `aria-live`-Statusmeldungen, Text-Alternativen (Hub als `role="img"` mit
+  beschreibendem Label, Diagramm mit verstecktem Text), Fokusringe,
+  Touch-Ziele ≥ 44 px, `prefers-reduced-motion` deaktiviert alle Animationen.
+- **Responsive Breakpoints**: 1180 (Cockpit 2-spaltig), 1100, 920 (Cockpit
+  1-spaltig, Doppelblöcke stapeln), 880 (Hamburger + CTA ins Menü), 760
+  (Hub als Raster, kompakte Abstände), 430 (Feinanpassungen).
 
 ## Qualitätssicherung (durchgeführt)
 
-- Interaktiv getestet bei 360/390/768/1024/1440 px, hell und dunkel:
-  Szenario-Wechsel, animierte KPI-Werte, Diagramm-Übergänge, Freigeben/
-  Ablehnen, Theme-Umschalter, Hamburger-Menü, Scroll-Spy, Karten-Toggle.
-- `html-validate`: 0 Fehler (abgesehen von der reinen Stilregel
-  „void-style“; selbstschließende Void-Tags sind valides HTML5).
-- Alle internen Anker-Links programmatisch geprüft: keine toten Ziele.
-- Touch-Ziele programmatisch geprüft: alle ≥ 44 px.
-- Kein horizontaler Overflow bei 360 px.
-- Konsole ohne Fehler/Warnungen.
-- Behobene Befunde aus dem Test: Szenario-Umschalter lief bei 360 px über
-  (Schrift/Padding verkleinert), Topbar brach bei 768 px um (Hamburger-
-  Breakpoint auf 880 px), Fallbeispiel-Karten waren initial aufgeklappt
-  (Markup von `<button>`+`<span>` auf `<article>`+Toggle-Button umgebaut –
-  zugleich HTML-Validitätsfix).
+- Beide Seiten interaktiv getestet (360/768/1024/1440, hell+dunkel):
+  Szenario-Wechsel mit animierten KPIs und Diagramm, Freigeben/Ablehnen,
+  Theme-Umschalter, Hamburger, Scroll-Spy, KPI-Zählanimation, Hub-Aufbau.
+- `html-validate` für beide Seiten: 0 Fehler (Stilregel „void-style“
+  deaktiviert; selbstschließende Void-Tags sind valides HTML5).
+- Alle internen Anker programmatisch geprüft, kein horizontaler Overflow
+  bei 360 px, Konsole ohne Fehler/Warnungen.
+- Behobene Befunde: Header-CTA brach bei 1024 px um (nowrap); auf dem Handy
+  kamen die Datenquellen vor den Kennzahlen (Spaltenreihenfolge per
+  CSS-`order` gedreht).
 
 ## Lokal starten
 
 ```powershell
 cd A:\Codex\IDP\website
 py -m http.server 8080
-# dann http://localhost:8080/ öffnen
+# dann http://localhost:8080/ öffnen (Cockpit: /cockpit.html)
 ```
 
 ## Deployment (GitHub Pages)
 
-- Workflow `.github/workflows/deploy.yml` lädt bei jedem Push auf `main`
-  den Ordner `website/` als Pages-Artefakt hoch (actions/upload-pages-artifact
-  → actions/deploy-pages). Am Workflow war keine Änderung nötig.
-- Alle Pfade in der Website sind relativ, damit sie unter dem
-  Pages-Unterpfad funktionieren.
-- Live-URL: <https://kara-cockpit.de/>
-- Status: Deploy-Lauf zu diesem Stand erfolgreich (siehe Actions-Tab).
+- Workflow `.github/workflows/deploy.yml` lädt bei jedem Push auf `main` den
+  Ordner `website/` als Pages-Artefakt hoch; `CNAME` und `.nojekyll` bleiben
+  erhalten. Relative Pfade überall.
+- Live-URL: <https://kara-cockpit.de/> (Cockpit: <https://kara-cockpit.de/cockpit.html>)

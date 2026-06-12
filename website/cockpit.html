@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interaktives Cockpit – Kara·Cockpit | KI-Controlling-Demo</title>
+  <meta name="description" content="Das interaktive KI-Controlling-Cockpit des fiktiven Unternehmens Kara: drei Szenarien, sechs Kennzahlen, sechs Datenquellen, KI-Findings und Human-in-the-loop-Freigabe – komplett im Browser, nur Demo-Daten." />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:title" content="Interaktives Cockpit – Kara·Cockpit" />
+  <meta property="og:description" content="Drei Szenarien durchschalten, Kennzahlen live beim Umspringen zusehen, Empfehlungen freigeben oder ablehnen." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://kara-cockpit.de/screenshots/og.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Frühes Theme-Setup, verhindert Farbblitz beim Laden.
+    (function () {
+      document.documentElement.classList.remove("no-js");
+      try {
+        var saved = localStorage.getItem("kara-theme");
+        if (saved === "light" || saved === "dark") {
+          document.documentElement.dataset.theme = saved;
+        }
+      } catch (e) { /* localStorage gesperrt – Systemeinstellung gilt */ }
+    })();
+  </script>
+</head>
+<body class="cockpit-page">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Kara·Cockpit – zur Startseite">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <rect x="2" y="18" width="6" height="12" rx="1.5" />
+          <rect x="13" y="10" width="6" height="20" rx="1.5" />
+          <rect x="24" y="2" width="6" height="28" rx="1.5" class="brand-mark-accent" />
+        </svg>
+        <span class="brand-text">Kara<span class="brand-sub">·Cockpit</span></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="index.html">Übersicht</a></li>
+          <li><a href="index.html#projekt">Projekt</a></li>
+          <li><a href="index.html#faelle">Fallbeispiele</a></li>
+          <li><a href="index.html#kontakt">Kontakt</a></li>
+          <li><a aria-current="page" class="active" href="cockpit.html">Cockpit</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Zwischen hellem und dunklem Farbschema umschalten">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4.2" />
+            <g stroke-linecap="round">
+              <line x1="12" y1="2.5" x2="12" y2="5" /><line x1="12" y1="19" x2="12" y2="21.5" />
+              <line x1="2.5" y1="12" x2="5" y2="12" /><line x1="19" y1="12" x2="21.5" y2="12" />
+              <line x1="5.3" y1="5.3" x2="7" y2="7" /><line x1="17" y1="17" x2="18.7" y2="18.7" />
+              <line x1="5.3" y1="18.7" x2="7" y2="17" /><line x1="17" y1="7" x2="18.7" y2="5.3" />
+            </g>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20.2 14.5A8.5 8.5 0 0 1 9.5 3.8 8.5 8.5 0 1 0 20.2 14.5Z" />
+          </svg>
+        </button>
+        <button class="nav-burger" id="navBurger" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menü öffnen">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="cockpit-hero" aria-labelledby="cockpit-title">
+      <div class="section-inner section-inner-wide">
+        <p class="section-eyebrow"><span>Demo</span> Interaktives Cockpit</p>
+        <h1 id="cockpit-title">Das Controlling-Cockpit von Kara.</h1>
+        <p class="section-lead">
+          Schalte zwischen drei Szenarien um und beobachte, wie Kennzahlen, Trend
+          und Empfehlung reagieren. Alle Werte sind Demo-Daten des fiktiven
+          Unternehmens Kara – am Ende entscheidest du.
+        </p>
+      </div>
+    </section>
+
+    <section class="section cockpit-section" aria-label="Interaktives Controlling-Cockpit">
+      <div class="section-inner section-inner-wide">
+
+        <div class="cockpit-toolbar">
+          <div class="scenario-switch" role="tablist" aria-label="Szenario wählen">
+            <button class="scenario-tab" type="button" role="tab" id="tab-stabil" aria-selected="true" aria-controls="cockpitBody" data-scenario="stabil">
+              <span class="scenario-dot dot-good" aria-hidden="true"></span> Stabil
+            </button>
+            <button class="scenario-tab" type="button" role="tab" id="tab-kritisch" aria-selected="false" aria-controls="cockpitBody" data-scenario="kritisch">
+              <span class="scenario-dot dot-bad" aria-hidden="true"></span> Kritisch
+            </button>
+            <button class="scenario-tab" type="button" role="tab" id="tab-wachstum" aria-selected="false" aria-controls="cockpitBody" data-scenario="wachstum">
+              <span class="scenario-dot dot-warn" aria-hidden="true"></span> Wachstum
+            </button>
+          </div>
+          <p class="cockpit-state">
+            <span class="state-pulse" aria-hidden="true"></span>
+            <span id="cockpitState">Szenario: Stabile Entwicklung</span>
+          </p>
+        </div>
+
+        <div class="cockpit-layout" id="cockpitBody" role="tabpanel" aria-labelledby="tab-stabil">
+
+          <!-- Links: Datenzusammensetzung -->
+          <aside class="cockpit-col cockpit-col-sources" aria-label="Datenquellen mit Datenqualität">
+            <h2 class="col-title">Datenquellen</h2>
+            <p class="col-sub">Datenzusammensetzung &amp; Qualität</p>
+            <div class="source-stack" id="sourceStrip"></div>
+          </aside>
+
+          <!-- Mitte: KPIs + Trend -->
+          <div class="cockpit-col cockpit-col-main">
+            <h2 class="col-title">Kennzahlen</h2>
+            <p class="col-sub">Berechnet aus allen sechs Quellen</p>
+            <div class="metric-grid" id="metricGrid"></div>
+
+            <figure class="chart-panel">
+              <figcaption class="chart-head">
+                <span class="chart-title">Trend über 6 Perioden <span class="chart-sub">(Indexwerte)</span></span>
+                <span class="chart-legend">
+                  <span class="legend-item"><span class="legend-swatch swatch-revenue" aria-hidden="true"></span>Umsatz</span>
+                  <span class="legend-item"><span class="legend-swatch swatch-cost" aria-hidden="true"></span>Kosten</span>
+                  <span class="legend-item"><span class="legend-swatch swatch-liquidity" aria-hidden="true"></span>Liquidität</span>
+                </span>
+              </figcaption>
+              <svg id="trendChart" viewBox="0 0 640 300" role="img" aria-labelledby="trendChartTitle trendChartDesc" preserveAspectRatio="xMidYMid meet">
+                <title id="trendChartTitle">Trenddiagramm</title>
+                <desc id="trendChartDesc">Verlauf von Umsatz, Kosten und Liquidität über sechs Perioden im gewählten Szenario.</desc>
+              </svg>
+              <p class="visually-hidden" id="chartTextAlt" aria-live="polite"></p>
+            </figure>
+          </div>
+
+          <!-- Rechts: Analyse + Human-in-the-loop -->
+          <aside class="cockpit-col cockpit-col-analysis" aria-label="KI-Analyse und Freigabe">
+            <h2 class="col-title analysis-title">
+              <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.2 12 7l4.8 2-4.8 2-2 4.8L8 11 3.2 9 8 7l2-4.8Z"/></svg>
+              KI-Findings
+            </h2>
+            <ul class="finding-list" id="findingList"></ul>
+
+            <div class="recommendation">
+              <p class="recommendation-label">Empfehlung der KI</p>
+              <p id="recommendationText"></p>
+            </div>
+
+            <dl class="meta-row">
+              <div><dt>Datenqualität</dt><dd id="qualityText"></dd></div>
+              <div><dt>Risiko</dt><dd><span class="risk-pill" id="riskPill"></span></dd></div>
+            </dl>
+
+            <div class="hitl">
+              <p class="hitl-label">Menschliche Prüfung – du entscheidest:</p>
+              <div class="hitl-actions">
+                <button class="btn btn-approve" id="approveBtn" type="button">
+                  <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="m2.5 8.5 3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Freigeben
+                </button>
+                <button class="btn btn-reject" id="rejectBtn" type="button">
+                  <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="m4 4 8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Ablehnen
+                </button>
+              </div>
+              <p class="hitl-feedback" id="hitlFeedback" role="status"></p>
+            </div>
+          </aside>
+        </div>
+
+        <p class="cockpit-footnote">
+          Demo-MVP: Beispieldaten und simulierte KI-Logik im Browser. Im produktiven
+          Einsatz würden echte, über Konnektoren angebundene Auswertungen laufen –
+          mit Rollenrechten, Audit-Trail und verbindlicher menschlicher Freigabe.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">Kara<span class="brand-sub">·Cockpit</span></span>
+        <p>KI für kleine Unternehmen – IDP, Hochschule Pforzheim.</p>
+      </div>
+      <nav class="footer-links" aria-label="Weiterführende Links">
+        <a href="index.html">Zur Übersicht</a>
+        <a href="https://github.com/HamidK193/IDP-KI-im-Unternehmen-" rel="noopener" target="_blank">GitHub-Repository</a>
+        <a href="#top">Nach oben</a>
+      </nav>
+      <p class="footer-note">
+        Datenschutz-Hinweis: Diese Seite zeigt ausschließlich realistisch gewählte
+        <strong>Demo-Daten</strong> eines fiktiven Unternehmens. Es werden keine echten
+        Unternehmens- oder Kundendaten verarbeitet und keine Tracker eingesetzt.
+      </p>
+      <p class="footer-copy">© 2026 Abdulhamid Karatas &amp; Kadir Atar · IDP, Hochschule Pforzheim · Website gebaut mit Claude</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
