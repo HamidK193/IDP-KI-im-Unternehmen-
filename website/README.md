@@ -1,34 +1,30 @@
-# Website-Prototyp
+# Techday-Website: KI-Controlling-Cockpit „Kara“
 
-## Aktueller Stand
+Moderne, responsive Single-Page-Website für den Techday-Infostand des
+IDP-Projekts **„KI für kleine Unternehmen“** (Hochschule Pforzheim).
 
-Die Website ist ein technischer IDP-Demonstrator zu **KI im Unternehmen** mit
-Fokus auf Controlling, Datenanalyse und Unternehmenssteuerung.
+Live: <https://hamidk193.github.io/IDP-KI-im-Unternehmen-/>
 
-Sie ist keine Shop- oder E-Commerce-Seite mehr. Der Prototyp dient als
-interaktive Informations- und Präsentationsoberfläche mit großen
-Slide-Sektionen und einer beispielhaften Dashboard-UI.
+## Zwei Ziele
 
-## Inhalte
+1. **Meta-Beweis**: Die Seite selbst wurde mit KI (Claude) gebaut – eigener
+   Abschnitt „Mit KI gebaut“ erzählt diese Geschichte.
+2. **Projektbeschreibung**: Sie erklärt das KI-Controlling-Cockpit am Beispiel
+   des fiktiven Unternehmens Kara, verständlich für Standbesucher.
 
-- technisches Hero-Intro
-- Problemstellung: viele Unternehmensdatenbanken, wenig Überblick
-- drei KI-Fallbeispiele
-- detaillierter Hauptfall: KI-gestütztes Controlling-Cockpit
-- Datenfluss von Datenbanken über KI-Analyse bis zur menschlichen Prüfung
-- Funktionen, Grenzen, Datenschutz und Human-in-the-loop
-- Fazit und Präsentationsablauf
+## Aufbau
 
-## Interaktion
+| Datei | Inhalt |
+|---|---|
+| `index.html` | Semantisches HTML5, alle Abschnitte (Hero, Projekt, Fallbeispiele, Live-Demo, Funktionsweise, Mit KI gebaut, Kontakt, Footer) |
+| `styles.css` | Design-Tokens (CSS-Variablen), Light/Dark, responsive Layouts, Animationen |
+| `script.js` | Demo-Daten (6 Quellen, 6 KPIs, 3 Szenarien), Cockpit-Logik, SVG-Chart, Theme, Menü, Scroll-Effekte |
+| `assets/` | Favicon, QR-Code zur Live-URL |
+| `screenshots/` | Screenshots (Handy + Desktop) für die Doku |
 
-- Fallbeispiele können per Karten ausgewählt werden.
-- Das Controlling-Cockpit besitzt drei Szenarien:
-  - stabil
-  - kritisch
-  - Wachstum
-- Kennzahlen, Trenddiagramm, KI-Findings, Datenqualität, Risiko und Empfehlung
-  ändern sich je nach Szenario.
-- Der Button `Analyse ausführen` simuliert eine KI-Auswertung.
+Kein Build-Schritt, keine Frameworks – reines HTML/CSS/JS, deshalb läuft die
+Seite direkt auf GitHub Pages (`.github/workflows/deploy.yml` lädt `website/`
+als Pages-Artefakt hoch).
 
 ## Lokal starten
 
@@ -37,8 +33,10 @@ cd A:\Codex\IDP\website
 py -m http.server 8080
 ```
 
-Danach im Browser öffnen:
+Danach im Browser öffnen: `http://localhost:8080/`
 
-```text
-http://localhost:8080/
-```
+## Hinweis
+
+Alle Zahlen sind realistisch gewählte **Demo-Daten** eines fiktiven
+Unternehmens. Keine echten Unternehmens- oder Kundendaten, keine Tracker.
+Details zur Entstehung: siehe [BUILD-NOTES.md](BUILD-NOTES.md).
