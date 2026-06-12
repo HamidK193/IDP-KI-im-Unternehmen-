@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: #0e1513; color: #e9eeea;
+    font-family: "Bricolage Grotesque", sans-serif;
+    position: relative;
+  }
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(233,238,234,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(233,238,234,.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+  h1 {
+    position: absolute; top: 120px; width: 100%; text-align: center;
+    font-size: 84px; font-weight: 800; letter-spacing: -0.02em;
+    opacity: 0; animation: fade .8s .2s forwards;
+  }
+  h1 span { color: #f08577; }
+  .hint {
+    position: absolute; top: 240px; width: 100%; text-align: center;
+    font-family: "JetBrains Mono", monospace; font-size: 28px; letter-spacing: .14em;
+    text-transform: uppercase; color: #93a09a;
+    opacity: 0; animation: fade .8s .6s forwards;
+  }
+  @keyframes fade { to { opacity: 1; } }
+
+  .chip {
+    position: absolute;
+    border: 1px solid rgba(233,238,234,.2); border-radius: 22px;
+    background: #15201c; padding: 34px 44px;
+    box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    opacity: 0;
+    animation: pop .7s cubic-bezier(.22,1,.36,1) forwards, sway 5s ease-in-out infinite alternate;
+  }
+  .chip b { display: block; font-family: "JetBrains Mono", monospace; font-size: 34px; color: #e9eeea; }
+  .chip span { display: block; font-size: 24px; color: #93a09a; margin-top: 8px; font-family: "Bricolage Grotesque", sans-serif; }
+  .chip i {
+    display: inline-block; margin-top: 16px; font-style: normal;
+    font-family: "JetBrains Mono", monospace; font-size: 22px;
+    color: #f08577; background: rgba(240,133,119,.12);
+    border-radius: 999px; padding: 6px 18px;
+  }
+  @keyframes pop { from { opacity: 0; transform: scale(.7) translateY(60px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  @keyframes sway { from { margin-top: 0; } to { margin-top: 26px; } }
+
+  .c1 { left: 140px;  top: 420px; animation-delay: .8s, 1.5s; transform-origin: center; rotate: -4deg; }
+  .c2 { left: 700px;  top: 380px; animation-delay: 1.1s, 1.9s; rotate: 3deg; }
+  .c3 { left: 1290px; top: 430px; animation-delay: 1.4s, 1.6s; rotate: -2deg; }
+  .c4 { left: 320px;  top: 720px; animation-delay: 1.7s, 2.2s; rotate: 2.5deg; }
+  .c5 { left: 880px;  top: 740px; animation-delay: 2.0s, 1.4s; rotate: -3deg; }
+  .c6 { left: 1430px; top: 730px; animation-delay: 2.3s, 2.0s; rotate: 4deg; }
+
+  .q {
+    position: absolute; font-family: "JetBrains Mono", monospace; font-weight: 700;
+    color: rgba(240,133,119,.5); font-size: 90px;
+    opacity: 0; animation: fade 1s forwards;
+  }
+  .q1 { left: 620px; top: 560px; animation-delay: 3s; }
+  .q2 { left: 1240px; top: 660px; animation-delay: 3.4s; font-size: 70px; }
+  .q3 { left: 250px; top: 640px; animation-delay: 3.8s; font-size: 60px; }
+</style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <h1>Viele Systeme. <span>Kein Überblick.</span></h1>
+  <p class="hint">Jede Zahl lebt woanders</p>
+
+  <div class="chip c1"><b>Finance DB</b><span>GuV, Cashflow, Buchungen</span><i>Silo</i></div>
+  <div class="chip c2"><b>ERP</b><span>Einkauf, Bestand, Lieferanten</span><i>Silo</i></div>
+  <div class="chip c3"><b>CRM</b><span>Pipeline, Kunden, Aufträge</span><i>Silo</i></div>
+  <div class="chip c4"><b>HR</b><span>Personalkosten, Kapazitäten</span><i>Silo</i></div>
+  <div class="chip c5"><b>Projekt DB</b><span>Budgets, Auslastung</span><i>Silo</i></div>
+  <div class="chip c6"><b>Data Warehouse</b><span>Historische Kennzahlen</span><i>Silo</i></div>
+
+  <span class="q q1">?</span>
+  <span class="q q2">?</span>
+  <span class="q q3">?</span>
+</body>
+</html>
