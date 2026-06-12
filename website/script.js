@@ -289,13 +289,16 @@
     })
     .join("");
 
+  /* Ein Klick öffnet bzw. schließt alle drei Karten gemeinsam – das Raster
+     streckt die Karten ohnehin auf gleiche Höhe, so bleibt nichts leer. */
   caseGrid.addEventListener("click", function (event) {
     var card = event.target.closest(".case-card");
     if (!card) return;
-    var toggle = card.querySelector(".case-toggle");
-    var expanded = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!expanded));
-    card.classList.toggle("is-open", !expanded);
+    var open = !card.classList.contains("is-open");
+    caseGrid.querySelectorAll(".case-card").forEach(function (item) {
+      item.classList.toggle("is-open", open);
+      item.querySelector(".case-toggle").setAttribute("aria-expanded", String(open));
+    });
   });
 
   /* ------------------------------- Cockpit -------------------------------- */
