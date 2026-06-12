@@ -127,5 +127,5 @@ py -m http.server 8080
   → actions/deploy-pages). Am Workflow war keine Änderung nötig.
 - Alle Pfade in der Website sind relativ, damit sie unter dem
   Pages-Unterpfad funktionieren.
-- Live-URL: <https://hamidk193.github.io/IDP-KI-im-Unternehmen-/>
+- Live-URL: <https://kara-cockpit.de/>
 - Status: Deploy-Lauf zu diesem Stand erfolgreich (siehe Actions-Tab).

@@ -3,7 +3,7 @@
 Moderne, responsive Single-Page-Website für den Techday-Infostand des
 IDP-Projekts **„KI für kleine Unternehmen“** (Hochschule Pforzheim).
 
-Live: <https://hamidk193.github.io/IDP-KI-im-Unternehmen-/>
+Live: <https://kara-cockpit.de/>
 
 ## Zwei Ziele
 
@@ -23,20 +23,4 @@ Live: <https://hamidk193.github.io/IDP-KI-im-Unternehmen-/>
 | `screenshots/` | Screenshots (Handy + Desktop) für die Doku |
 
 Kein Build-Schritt, keine Frameworks – reines HTML/CSS/JS, deshalb läuft die
-Seite direkt auf GitHub Pages (`.github/workflows/deploy.yml` lädt `website/`
-als Pages-Artefakt hoch).
-
-## Lokal starten
-
-```powershell
-cd A:\Codex\IDP\website
-py -m http.server 8080
-```
-
-Danach im Browser öffnen: `http://localhost:8080/`
-
-## Hinweis
-
-Alle Zahlen sind realistisch gewählte **Demo-Daten** eines fiktiven
-Unternehmens. Keine echten Unternehmens- oder Kundendaten, keine Tracker.
-Details zur Entstehung: siehe [BUILD-NOTES.md](BUILD-NOTES.md).
+Seite direkt auf GitHub Pages (`.github
