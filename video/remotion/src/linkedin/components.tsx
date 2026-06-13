@@ -99,33 +99,26 @@ export const Subtitles: React.FC<{ subs: { start: number; end: number; text: str
   if (!active) return null;
   const sf = active.start * fps;
   const op = ease(frame, sf, sf + 6);
-  const lines = active.text.split("\n");
   return (
-    <div style={{ position: "absolute", left: 70, right: 70, bottom: 96, display: "flex", justifyContent: "center" }}>
+    <div style={{ position: "absolute", left: 60, right: 60, bottom: 84, display: "flex", justifyContent: "center" }}>
       <div
         style={{
           opacity: op,
-          background: "rgba(11,17,32,0.82)",
+          background: "rgba(11,17,32,0.86)",
           border: `1px solid ${C.line}`,
           borderRadius: 18,
           padding: "20px 30px",
-          maxWidth: 940,
+          maxWidth: 960,
           textAlign: "center",
           backdropFilter: "blur(2px)",
+          fontFamily: FONT_DISPLAY, fontWeight: 600,
+          fontSize: 37, lineHeight: 1.32, color: C.white,
+          letterSpacing: "-0.01em",
+          textWrap: "balance",
         }}
       >
-        {lines.map((ln, i) => (
-          <div
-            key={i}
-            style={{
-              fontFamily: FONT_DISPLAY, fontWeight: 600,
-              fontSize: 44, lineHeight: 1.25, color: C.white,
-              letterSpacing: "-0.01em",
-            }}
-          >
-            {ln}
-          </div>
-        ))}
+        {/* Untertitel = wörtlich der gesprochene Satz, automatischer Umbruch */}
+        {active.text}
       </div>
     </div>
   );

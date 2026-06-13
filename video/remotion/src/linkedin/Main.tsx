@@ -1,15 +1,15 @@
 import React from "react";
 import { AbsoluteFill, Sequence, interpolate, useCurrentFrame } from "remotion";
 import { Background, TopBar, Subtitles, Progress } from "./components";
-import { Hook, Intro, Problem, Solution, Special, CTA } from "./scenes";
+import { Hook, Intro, Problem, Loesung, Nutzen, Faelle, CTA } from "./scenes";
 import timeline from "./timeline.json";
 
 const FPS = timeline.fps;
 const OVERLAP = 12; // Frames Crossfade-Überlappung
 export const LN_TOTAL_FRAMES = Math.ceil(timeline.totalSec * FPS);
 
-const SCENE_COMPONENTS: Record<string, React.FC> = {
-  hook: Hook, intro: Intro, problem: Problem, solution: Solution, special: Special, cta: CTA,
+const SCENE_COMPONENTS: Record<string, React.FC<{ dur: number }>> = {
+  hook: Hook, intro: Intro, problem: Problem, loesung: Loesung, nutzen: Nutzen, faelle: Faelle, cta: CTA,
 };
 
 /* Blendet eine Szene weich ein/aus; interne Animationen bleiben an der
@@ -35,7 +35,7 @@ export const LinkedInMain: React.FC = () => {
         return (
           <Sequence key={s.id} from={startF} durationInFrames={durationInFrames}>
             <SceneLayer baseDur={baseDur}>
-              <Comp />
+              <Comp dur={baseDur} />
             </SceneLayer>
           </Sequence>
         );
