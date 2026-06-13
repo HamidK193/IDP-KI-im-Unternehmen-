@@ -1,0 +1,110 @@
+{
+  "fps": 30,
+  "width": 1080,
+  "height": 1350,
+  "totalSec": 57.27,
+  "scenes": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 5.37
+    },
+    {
+      "id": "intro",
+      "start": 5.37,
+      "end": 15.02
+    },
+    {
+      "id": "problem",
+      "start": 15.02,
+      "end": 27
+    },
+    {
+      "id": "solution",
+      "start": 27,
+      "end": 39.78
+    },
+    {
+      "id": "special",
+      "start": 39.78,
+      "end": 49.43
+    },
+    {
+      "id": "cta",
+      "start": 49.43,
+      "end": 57.27
+    }
+  ],
+  "subs": [
+    {
+      "start": 0.35,
+      "end": 5.386,
+      "text": "Wie können kleine Unternehmen mit KI\nbessere Entscheidungen treffen?"
+    },
+    {
+      "start": 5.45,
+      "end": 9.606,
+      "text": "Ein Interdisziplinäres Projekt\nder Hochschule Pforzheim."
+    },
+    {
+      "start": 9.67,
+      "end": 15.036,
+      "text": "Das KI-Controlling-Cockpit\n— Abdulhamid Karatas & Kadir Atar"
+    },
+    {
+      "start": 15.1,
+      "end": 18.436,
+      "text": "Kleine Unternehmen haben ihre\nZahlen überall verstreut:"
+    },
+    {
+      "start": 18.5,
+      "end": 21.886,
+      "text": "Buchhaltung, ERP, CRM und Personal."
+    },
+    {
+      "start": 21.95,
+      "end": 27.016,
+      "text": "Für große IT-Projekte fehlt die Zeit —\nder Überblick sowieso."
+    },
+    {
+      "start": 27.08,
+      "end": 30.056,
+      "text": "Das Cockpit führt alle Daten\nan einer Stelle zusammen."
+    },
+    {
+      "start": 30.12,
+      "end": 33.376,
+      "text": "Es berechnet Kennzahlen und erkennt\nTrends und Abweichungen."
+    },
+    {
+      "start": 33.44,
+      "end": 39.796,
+      "text": "Drei Fallbeispiele: Cockpit,\nKostenabweichung, Frühwarnsystem."
+    },
+    {
+      "start": 39.86,
+      "end": 43.346,
+      "text": "Das Besondere: jede Empfehlung\nist nachvollziehbar."
+    },
+    {
+      "start": 43.41,
+      "end": 46.126,
+      "text": "Mit Quelle, Datenqualität und Risiko."
+    },
+    {
+      "start": 46.19,
+      "end": 49.446,
+      "text": "Und die Entscheidung trifft\nam Ende immer der Mensch."
+    },
+    {
+      "start": 49.51,
+      "end": 51.726,
+      "text": "Mehr dazu auf kara-cockpit.de"
+    },
+    {
+      "start": 51.79,
+      "end": 56.366,
+      "text": "Hochschule Pforzheim · betreut von\nProf. Dr. Bettina C. K. Binder"
+    }
+  ]
+}
