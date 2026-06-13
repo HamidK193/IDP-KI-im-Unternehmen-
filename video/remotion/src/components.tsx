@@ -20,7 +20,7 @@ export const GridBg: React.FC<{ masked?: boolean }> = ({ masked = true }) => (
 /** Weicher Akzent-Glow, driftet langsam. */
 export const Glow: React.FC<{
   x: number; y: number; size?: number; color?: string; drift?: number;
-}> = ({ x, y, size = 900, color = "rgba(67,212,155,0.13)", drift = 1 }) => {
+}> = ({ x, y, size = 900, color = "rgba(52,211,153,0.16)", drift = 1 }) => {
   const frame = useCurrentFrame();
   const dx = Math.sin(frame / 220) * 50 * drift;
   const dy = Math.cos(frame / 260) * 35 * drift;
@@ -79,8 +79,8 @@ export const AiSticker: React.FC<{ emphasis?: number }> = ({ emphasis = 0 }) => 
         fontSize: 23,
         fontWeight: 500,
         color: emphasis > 0 ? C.ink : C.inkSoft,
-        background: "rgba(21,32,28,0.82)",
-        border: `1px solid ${emphasis > 0 ? "rgba(67,212,155,0.55)" : C.line}`,
+        background: "rgba(15,23,42,0.82)",
+        border: `1px solid ${emphasis > 0 ? "rgba(52,211,153,0.55)" : C.line}`,
         borderRadius: 999,
         padding: "11px 22px",
         opacity: 0.92,
@@ -90,7 +90,7 @@ export const AiSticker: React.FC<{ emphasis?: number }> = ({ emphasis = 0 }) => 
         style={{
           width: 11, height: 11, borderRadius: "50%",
           background: C.accent,
-          boxShadow: `0 0 ${8 + pulse * 10}px rgba(67,212,155,${0.4 + pulse * 0.4})`,
+          boxShadow: `0 0 ${8 + pulse * 10}px rgba(52,211,153,${0.4 + pulse * 0.4})`,
         }}
       />
       Mit KI (Claude) erstellt

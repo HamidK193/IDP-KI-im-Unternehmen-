@@ -47,14 +47,14 @@ export const Intro: React.FC = () => {
     <AbsoluteFill style={{ background: C.bg }}>
       <GridBg />
       <Glow x={1200} y={-320} />
-      <Glow x={-280} y={620} color="rgba(232,179,90,0.09)" drift={-1} />
+      <Glow x={-280} y={620} color="rgba(251,191,36,0.10)" drift={-1} />
 
       <svg
         viewBox="0 0 1920 340"
         style={{ position: "absolute", bottom: 0, left: 0, width: 1920, height: 340, opacity: 0.55 }}
       >
         <Sparkline points={SPARK_1} color={C.accent} start={50} opacity={0.6} />
-        <Sparkline points={SPARK_2} color="#6fa8e8" start={95} opacity={0.4} />
+        <Sparkline points={SPARK_2} color="#60A5FA" start={95} opacity={0.4} />
       </svg>
 
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
@@ -65,13 +65,13 @@ export const Intro: React.FC = () => {
               display: "inline-flex", alignItems: "center", gap: 14,
               fontFamily: FONT_MONO, fontSize: 26, color: C.inkSoft,
               border: `1px solid ${C.line}`, borderRadius: 999,
-              padding: "16px 32px", background: "rgba(21,32,28,0.8)",
+              padding: "16px 32px", background: "rgba(30,41,59,0.85)",
             }}
           >
             <span
               style={{
                 width: 14, height: 14, borderRadius: "50%", background: C.accent,
-                boxShadow: `0 0 0 ${pulse * 11}px rgba(67,212,155,0.14)`,
+                boxShadow: `0 0 0 ${pulse * 11}px rgba(52,211,153,0.14)`,
               }}
             />
             Diese Website &amp; dieses Video wurden mit KI gebaut

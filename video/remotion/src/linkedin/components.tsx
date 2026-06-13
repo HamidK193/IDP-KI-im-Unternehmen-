@@ -31,7 +31,7 @@ export const Background: React.FC = () => {
           position: "absolute",
           width: 1100, height: 1100, borderRadius: "50%",
           top: -360, right: -320,
-          background: "radial-gradient(circle, rgba(225,29,72,0.16), transparent 62%)",
+          background: "radial-gradient(circle, rgba(52,211,153,0.18), transparent 62%)",
           filter: "blur(30px)",
           transform: `translate(${dx}px, ${dy}px)`,
         }}
@@ -41,7 +41,7 @@ export const Background: React.FC = () => {
           position: "absolute",
           width: 900, height: 900, borderRadius: "50%",
           bottom: -380, left: -300,
-          background: "radial-gradient(circle, rgba(56,89,148,0.22), transparent 62%)",
+          background: "radial-gradient(circle, rgba(37,99,235,0.16), transparent 62%)",
           filter: "blur(30px)",
         }}
       />

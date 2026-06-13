@@ -58,7 +58,7 @@ export const Hook: React.FC = () => {
         />
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: 40, opacity: ease(f, 60, 80) }}>
-        <span style={{ width: 16, height: 16, borderRadius: "50%", background: C.accent, boxShadow: `0 0 ${8 + dot * 14}px rgba(225,29,72,${0.4 + dot * 0.4})` }} />
+        <span style={{ width: 16, height: 16, borderRadius: "50%", background: C.accent, boxShadow: `0 0 ${8 + dot * 14}px rgba(52,211,153,${0.4 + dot * 0.4})` }} />
         <span style={{ fontFamily: FONT_MONO, fontSize: 26, color: C.inkSoft }}>Projektvorstellung</span>
       </div>
     </ContentBox>
@@ -196,10 +196,10 @@ export const Solution: React.FC = () => {
       <div
         style={{
           opacity: node, transform: `scale(${0.9 + node * 0.1})`,
-          background: "linear-gradient(160deg, rgba(225,29,72,0.18), rgba(241,245,249,0.04))",
+          background: "linear-gradient(160deg, rgba(52,211,153,0.18), rgba(241,245,249,0.04))",
           border: `2px solid ${C.accent}`, borderRadius: 20, padding: "22px 30px",
           display: "flex", alignItems: "center", justifyContent: "center", gap: 16,
-          boxShadow: `0 0 ${node * 60}px rgba(225,29,72,${nodeGlow * 0.5})`, marginBottom: 26,
+          boxShadow: `0 0 ${node * 60}px rgba(52,211,153,${nodeGlow * 0.5})`, marginBottom: 26,
         }}
       >
         <svg viewBox="0 0 32 32" width="36" height="36" aria-hidden="true">
@@ -245,7 +245,7 @@ export const Solution: React.FC = () => {
               style={{
                 opacity: a, transform: `translateY(${(1 - a) * 16}px)`,
                 fontFamily: FONT_DISPLAY, fontWeight: 700, fontSize: 26, color: C.ink,
-                background: C.accentSoft, border: `1px solid rgba(225,29,72,0.4)`,
+                background: C.accentSoft, border: `1px solid rgba(52,211,153,0.4)`,
                 borderRadius: 999, padding: "12px 22px",
               }}
             >
@@ -359,8 +359,8 @@ export const CTA: React.FC = () => {
             style={{
               opacity: url, transform: `scale(${0.96 + url * 0.04})`,
               display: "inline-block", fontFamily: FONT_MONO, fontWeight: 700, fontSize: 40,
-              color: C.white, background: C.accent, borderRadius: 16, padding: "20px 30px",
-              boxShadow: `0 0 ${urlPulse * 30}px rgba(225,29,72,0.4)`,
+              color: C.bg, background: C.accent, borderRadius: 16, padding: "20px 30px",
+              boxShadow: `0 0 ${urlPulse * 30}px rgba(52,211,153,0.4)`,
             }}
           >
             kara-cockpit.de

@@ -49,11 +49,11 @@ const StepCard: React.FC<{ step: (typeof STEPS)[number]; index: number }> = ({ s
         position: "relative",
         borderRadius: 24,
         border: `1px solid ${lit > 0.5 ? color : C.line}`,
-        background: step.human ? "linear-gradient(160deg, #15201c, #2a2415)" : C.bgElev,
+        background: step.human ? "linear-gradient(160deg, #1E293B, #2E2A12)" : C.bgElev,
         padding: "104px 28px 32px",
         minHeight: 296,
         textAlign: "center",
-        boxShadow: `0 0 ${lit * 60}px ${step.human ? "rgba(232,179,90," + lit * 0.3 + ")" : "rgba(67,212,155," + lit * 0.22 + ")"}`,
+        boxShadow: `0 0 ${lit * 60}px ${step.human ? "rgba(251,191,36," + lit * 0.3 + ")" : "rgba(52,211,153," + lit * 0.22 + ")"}`,
         opacity: appear,
         transform: `translateY(${(1 - appear) * 50}px)`,
       }}
@@ -95,7 +95,7 @@ const StepCard: React.FC<{ step: (typeof STEPS)[number]; index: number }> = ({ s
               fontFamily: FONT_MONO, fontSize: 21, fontWeight: 700, borderRadius: 14,
               padding: "11px 20px", background: C.accent, color: C.accentInk,
               transform: `scale(${1 - clickT * 0.08})`,
-              boxShadow: `0 0 0 ${clickT * 14}px rgba(67,212,155,0.25)`,
+              boxShadow: `0 0 0 ${clickT * 14}px rgba(52,211,153,0.25)`,
             }}
           >
             ✓ Freigeben
@@ -103,7 +103,7 @@ const StepCard: React.FC<{ step: (typeof STEPS)[number]; index: number }> = ({ s
           <span
             style={{
               fontFamily: FONT_MONO, fontSize: 21, fontWeight: 700, borderRadius: 14,
-              padding: "11px 20px", border: `1.5px solid rgba(240,133,119,0.6)`, color: C.bad,
+              padding: "11px 20px", border: `1.5px solid rgba(248,113,113,0.6)`, color: C.bad,
             }}
           >
             ✕ Ablehnen
@@ -151,7 +151,7 @@ export const Flow: React.FC = () => {
       <div
         style={{
           position: "absolute", top: 505, left: 150, width: 1620, height: 6,
-          background: "rgba(233,238,234,0.12)", borderRadius: 99,
+          background: "rgba(226,232,240,0.12)", borderRadius: 99,
         }}
       >
         <div style={{ height: "100%", width: `${progress * 100}%`, borderRadius: 99, background: C.accent }} />

@@ -212,7 +212,7 @@ export const Scenarios: React.FC = () => {
                   fontFamily: FONT_DISPLAY, fontWeight: 700, fontSize: 28,
                   padding: "14px 34px", borderRadius: 999,
                   color: isActive ? C.bg : C.inkSoft,
-                  background: isActive ? `rgba(233,238,234,${0.85 + morphIn * 0.15})` : "transparent",
+                  background: isActive ? `rgba(226,232,240,${0.85 + morphIn * 0.15})` : "transparent",
                 }}
               >
                 <span style={{ width: 13, height: 13, borderRadius: "50%", background: toneColor(s.dot) }} />

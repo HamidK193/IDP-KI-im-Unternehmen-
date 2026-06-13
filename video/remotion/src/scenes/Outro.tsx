@@ -80,7 +80,7 @@ export const Outro: React.FC = () => {
             <span
               style={{
                 display: "block", marginTop: 18, fontFamily: FONT_MONO,
-                fontSize: 24, color: "#1c2320", fontWeight: 700,
+                fontSize: 24, color: "#0F172A", fontWeight: 700,
               }}
             >
               Scannen &amp; ausprobieren

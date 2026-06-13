@@ -88,7 +88,7 @@ const Wire: React.FC<{ b: Bezier; start: number; withDot?: boolean; dotOffset?: 
         <path d="M 0 0 L -20 -11 L -20 11 Z" fill={C.accent} />
       </g>
       {dotVisible && (
-        <circle cx={dot.x} cy={dot.y} r={7} fill="#aef0d6" opacity={0.95} />
+        <circle cx={dot.x} cy={dot.y} r={7} fill="#A7F3D0" opacity={0.95} />
       )}
     </>
   );
@@ -180,9 +180,9 @@ export const Solution: React.FC = () => {
         style={{
           position: "absolute", left: 810, top: 510, width: 300, height: 300,
           borderRadius: 40, display: "grid", placeItems: "center", textAlign: "center",
-          background: "linear-gradient(160deg, #15201c, #0a2e22)",
+          background: "linear-gradient(160deg, #1E293B, #064E3B)",
           border: `2px solid ${C.accent}`,
-          boxShadow: `0 0 ${90 + hubGlow * 60}px rgba(67,212,155,${hubGlow})`,
+          boxShadow: `0 0 ${90 + hubGlow * 60}px rgba(52,211,153,${hubGlow})`,
           opacity: hub.opacity,
           transform: hub.transform,
         }}
