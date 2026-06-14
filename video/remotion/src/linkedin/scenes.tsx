@@ -113,7 +113,7 @@ const BLOCKS = [
 /* ------------------------------ 3 · PROBLEM ----------------------------- */
 export const Problem: React.FC<SP> = () => {
   const f = useCurrentFrame();
-  const label = ease(f, 70, 92);
+  const label = ease(f, 178, 202);
   return (
     <ContentBox justify="center">
       <div style={{ position: "relative", width: "100%", aspectRatio: `${W} / ${H}` }}>
@@ -125,13 +125,13 @@ export const Problem: React.FC<SP> = () => {
             const ux = dx / len, uy = dy / len;
             const x1 = b.x + ux * 96, y1 = b.y + uy * 70;
             const x2 = b.x + ux * 200, y2 = b.y + uy * 150;
-            const a = ease(f, 30 + i * 8, 50 + i * 8);
+            const a = ease(f, 44 + i * 22, 68 + i * 22);
             return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={C.inkFaint} strokeWidth={4} strokeDasharray="10 12" strokeLinecap="round" opacity={a * 0.7} />;
           })}
         </svg>
 
         {BLOCKS.map((b, i) => {
-          const a = ease(f, 8 + i * 12, 34 + i * 12);
+          const a = ease(f, 12 + i * 32, 40 + i * 32);
           return (
             <div key={b.name} style={{
               position: "absolute", left: `${(b.x / W) * 100}%`, top: `${(b.y / H) * 100}%`,
@@ -283,7 +283,7 @@ export const Faelle: React.FC<SP> = ({ dur }) => {
   const f = useCurrentFrame();
   const head = ease(f, 6, 28);
   /* Drei große Karten poppen nacheinander – getaktet auf die Nennung im Satz. */
-  const pops = [0.26, 0.5, 0.74].map((frac) => Math.round(frac * dur));
+  const pops = [0.4, 0.62, 0.82].map((frac) => Math.round(frac * dur));
   return (
     <ContentBox justify="flex-start">
       <h2 style={{ margin: "0 0 26px", opacity: head, transform: `translateY(${(1 - head) * 22}px)`, fontFamily: FONT_DISPLAY, fontWeight: 800, fontSize: 72, letterSpacing: "-0.03em", color: C.ink }}>
