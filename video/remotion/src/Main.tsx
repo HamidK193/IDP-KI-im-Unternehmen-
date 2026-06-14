@@ -13,10 +13,10 @@ import { Outro } from "./scenes/Outro";
 import tdSubs from "./td_subs.json";
 
 /* Szenenlängen (Frames @60fps). Crossfade 30 Frames zwischen den Szenen.
-   End-Szene auf 450 verkürzt (nur QR steht ruhig). Szenenstarts (Frames):
-   0, 390, 1068, 1800, 2580, 3168. Gesamt = 3618 = 60,3 s.
+   End-Szene 480 Frames (Schlusssatz + ~5 s Standzeit). Szenenstarts (Frames):
+   0, 390, 1068, 1800, 2580, 3168. Gesamt = 3648 = 60,8 s.
    VO-Platzierung + Untertitel-Cues (td_subs.json) sind darauf abgestimmt. */
-export const SCENES = [420, 708, 762, 810, 618, 450];
+export const SCENES = [420, 708, 762, 810, 618, 480];
 const OVERLAP = 30;
 export const TOTAL_FRAMES = SCENES.reduce((a, b) => a + b, 0) - OVERLAP * (SCENES.length - 1);
 
