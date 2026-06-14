@@ -80,10 +80,9 @@ export const Intro: React.FC<SP> = () => {
   const chips = ease(f, 50, 74);
   return (
     <ContentBox>
-      <div style={{ opacity: logo, transform: `scale(${0.94 + logo * 0.06})`, alignSelf: "flex-start", background: C.white, borderRadius: 20, padding: "18px 26px", marginBottom: 30, boxShadow: "0 12px 34px rgba(0,0,0,0.4)" }}>
-        <Img src={staticFile("hspf-logo.png")} style={{ height: 56, width: "auto", display: "block" }} />
-      </div>
-      <div style={{ opacity: eye, transform: `translateY(${(1 - eye) * 16}px)`, marginBottom: 18 }}>
+      {/* Logo steht durchgehend oben links (TopBar) – hier kein zweites Logo,
+          dafür mehr Raum für Titel und Namen. */}
+      <div style={{ opacity: logo, transform: `translateY(${(1 - logo) * 16}px)`, marginBottom: 18 }}>
         <Eyebrow color={C.inkSoft}>Interdisziplinäres Projekt · Hochschule Pforzheim</Eyebrow>
       </div>
       <h1 style={{ margin: 0, opacity: title, transform: `translateY(${(1 - title) * 28}px)`, fontFamily: FONT_DISPLAY, fontWeight: 800, fontSize: 88, lineHeight: 1.05, letterSpacing: "-0.03em", color: C.ink }}>
@@ -355,11 +354,9 @@ export const CTA: React.FC<SP> = ({ dur }) => {
         </span>
       </div>
 
-      {/* Logo + Namen */}
+      {/* Logo + Namen (weißes Logo ohne Kasten) */}
       <div style={{ opacity: names, transform: `translateY(${(1 - names) * 18}px)`, display: "flex", alignItems: "center", gap: 20 }}>
-        <div style={{ background: C.white, borderRadius: 14, padding: "10px 16px", boxShadow: "0 8px 24px rgba(0,0,0,0.4)" }}>
-          <Img src={staticFile("hspf-logo.png")} style={{ height: 34, width: "auto", display: "block" }} />
-        </div>
+        <Img src={staticFile("hspf-logo-white.png")} style={{ height: 46, width: "auto", display: "block" }} />
         <span style={{ fontFamily: FONT_DISPLAY, fontWeight: 700, fontSize: 28, color: C.ink }}>
           Abdulhamid Karatas &amp; Kadir Atar
         </span>

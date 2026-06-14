@@ -2,7 +2,7 @@
   "fps": 30,
   "width": 1080,
   "height": 1350,
-  "totalSec": 55.22,
+  "totalSec": 58.24,
   "scenes": [
     {
       "id": "hook",
@@ -12,32 +12,32 @@
     {
       "id": "intro",
       "start": 4.2,
-      "end": 12.77
+      "end": 14.29
     },
     {
       "id": "problem",
-      "start": 12.77,
-      "end": 24.6
+      "start": 14.29,
+      "end": 26.59
     },
     {
       "id": "loesung",
-      "start": 24.6,
-      "end": 29.77
+      "start": 26.59,
+      "end": 32.6
     },
     {
       "id": "nutzen",
-      "start": 29.77,
-      "end": 36.52
+      "start": 32.6,
+      "end": 39.35
     },
     {
       "id": "faelle",
-      "start": 36.52,
-      "end": 43.59
+      "start": 39.35,
+      "end": 46.59
     },
     {
       "id": "cta",
-      "start": 43.59,
-      "end": 55.22
+      "start": 46.59,
+      "end": 58.24
     }
   ],
   "subs": [
@@ -48,42 +48,42 @@
     },
     {
       "start": 4.49,
-      "end": 13.06,
-      "text": "In unserem Interdisziplinären Projekt an der Hochschule Pforzheim haben wir darauf eine Antwort gefunden: ein KI-Controlling-Cockpit."
+      "end": 14.58,
+      "text": "In unserem Interdisziplinären Projekt an der Hochschule Pforzheim haben wir darauf eine Antwort entwickelt: das Kara-Cockpit, ein KI-Controlling-Werkzeug für kleine Unternehmen."
     },
     {
-      "start": 13.06,
-      "end": 20.8,
+      "start": 14.58,
+      "end": 22.79,
       "text": "Denn in den meisten Betrieben liegen die Zahlen verstreut: in der Buchhaltung, im ERP-System, im CRM und in der Personalverwaltung."
     },
     {
-      "start": 20.8,
-      "end": 24.89,
+      "start": 22.79,
+      "end": 26.88,
       "text": "Lauter einzelne Inseln, die nichts miteinander verbindet."
     },
     {
-      "start": 24.89,
-      "end": 30.06,
-      "text": "Genau hier setzt das Cockpit an und führt alle diese Zahlen an einem einzigen Ort zusammen."
+      "start": 26.88,
+      "end": 32.89,
+      "text": "Genau hier setzt das Kara-Cockpit an und führt alle diese Zahlen an einem einzigen Ort zusammen."
     },
     {
-      "start": 30.06,
-      "end": 36.81,
+      "start": 32.89,
+      "end": 39.64,
       "text": "Dort werden die wichtigsten Kennzahlen automatisch berechnet, Trends und Abweichungen erkannt und verständlich erklärt."
     },
     {
-      "start": 36.81,
-      "end": 43.88,
-      "text": "Wir zeigen das an drei Fallbeispielen: dem Controlling-Cockpit, der Kostenabweichung und dem Frühwarnsystem."
+      "start": 39.64,
+      "end": 46.88,
+      "text": "Wir zeigen das an drei Fallbeispielen: dem Kara-Cockpit selbst, der Kostenabweichung und dem Frühwarnsystem."
     },
     {
-      "start": 43.88,
-      "end": 49.57,
+      "start": 46.88,
+      "end": 52.59,
       "text": "Und das Beste daran: jede Empfehlung bleibt nachvollziehbar, mit Quelle und Risiko."
     },
     {
-      "start": 49.57,
-      "end": 55.22,
+      "start": 52.59,
+      "end": 58.24,
       "text": "Schau es dir selbst an, auf kara-cockpit.de."
     }
   ]

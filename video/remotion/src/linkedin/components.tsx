@@ -49,23 +49,17 @@ export const Background: React.FC = () => {
   );
 };
 
-/* Kopfzeile mit HS-PF-Logo-Chip + Projektlabel (durchgehend, akademischer Kontext). */
+/* Kopfzeile: weißes, transparentes HS-PF-Logo oben links (ohne Kasten, groß,
+   in jeder Szene identisch) + Projektlabel rechts. */
 export const TopBar: React.FC = () => (
   <div
     style={{
       position: "absolute",
-      top: 64, left: 80, right: 80,
+      top: 66, left: 80, right: 80,
       display: "flex", alignItems: "center", justifyContent: "space-between",
     }}
   >
-    <div
-      style={{
-        background: C.white, borderRadius: 16, padding: "12px 20px",
-        display: "flex", alignItems: "center", boxShadow: "0 10px 30px rgba(0,0,0,0.35)",
-      }}
-    >
-      <Img src={staticFile("hspf-logo.png")} style={{ height: 38, width: "auto" }} />
-    </div>
+    <Img src={staticFile("hspf-logo-white.png")} style={{ height: 60, width: "auto", display: "block" }} />
     <span
       style={{
         fontFamily: FONT_MONO, fontSize: 22, letterSpacing: "0.12em",
@@ -100,24 +94,28 @@ export const Subtitles: React.FC<{ subs: { start: number; end: number; text: str
   const sf = active.start * fps;
   const op = ease(frame, sf, sf + 6);
   return (
-    <div style={{ position: "absolute", left: 60, right: 60, bottom: 84, display: "flex", justifyContent: "center" }}>
+    <div style={{ position: "absolute", left: 56, right: 56, bottom: 84, display: "flex", justifyContent: "center" }}>
       <div
         style={{
           opacity: op,
           background: "rgba(11,17,32,0.86)",
           border: `1px solid ${C.line}`,
           borderRadius: 18,
-          padding: "20px 30px",
-          maxWidth: 960,
+          padding: "18px 28px",
+          maxWidth: 968,
           textAlign: "center",
           backdropFilter: "blur(2px)",
           fontFamily: FONT_DISPLAY, fontWeight: 600,
-          fontSize: 37, lineHeight: 1.32, color: C.white,
+          fontSize: 34, lineHeight: 1.3, color: C.white,
           letterSpacing: "-0.01em",
           textWrap: "balance",
+          overflowWrap: "break-word",
+          wordBreak: "normal",
+          hyphens: "auto",
         }}
+        lang="de"
       >
-        {/* Untertitel = wörtlich der gesprochene Satz, automatischer Umbruch */}
+        {/* Untertitel = wörtlich der gesprochene Satz, automatischer Umbruch, nie abgeschnitten */}
         {active.text}
       </div>
     </div>
