@@ -356,7 +356,7 @@ export const CTA: React.FC<SP> = ({ dur }) => {
 
       {/* Logo + Namen (weißes Logo ohne Kasten) */}
       <div style={{ opacity: names, transform: `translateY(${(1 - names) * 18}px)`, display: "flex", alignItems: "center", gap: 20 }}>
-        <Img src={staticFile("hspf-logo-white.png")} style={{ height: 46, width: "auto", display: "block" }} />
+        <Img src={staticFile("hspf-logo-white.png")} style={{ height: 58, width: "auto", display: "block" }} />
         <span style={{ fontFamily: FONT_DISPLAY, fontWeight: 700, fontSize: 28, color: C.ink }}>
           Abdulhamid Karatas &amp; Kadir Atar
         </span>

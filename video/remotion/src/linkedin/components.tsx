@@ -59,7 +59,7 @@ export const TopBar: React.FC = () => (
       display: "flex", alignItems: "center", justifyContent: "space-between",
     }}
   >
-    <Img src={staticFile("hspf-logo-white.png")} style={{ height: 60, width: "auto", display: "block" }} />
+    <Img src={staticFile("hspf-logo-white.png")} style={{ height: 80, width: "auto", display: "block" }} />
     <span
       style={{
         fontFamily: FONT_MONO, fontSize: 22, letterSpacing: "0.12em",
