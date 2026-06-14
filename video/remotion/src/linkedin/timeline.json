@@ -2,83 +2,83 @@
   "fps": 30,
   "width": 1080,
   "height": 1350,
-  "totalSec": 50.2,
+  "totalSec": 36.83,
   "scenes": [
     {
       "id": "hook",
       "start": 0,
-      "end": 4.595
+      "end": 3.58
     },
     {
       "id": "intro",
-      "start": 4.595,
-      "end": 13.285
+      "start": 3.58,
+      "end": 9.83
     },
     {
       "id": "problem",
-      "start": 13.285,
-      "end": 22.255
+      "start": 9.83,
+      "end": 15.41
     },
     {
       "id": "loesung",
-      "start": 22.255,
-      "end": 27.115
+      "start": 15.41,
+      "end": 19.03
     },
     {
       "id": "nutzen",
-      "start": 27.115,
-      "end": 32.395
+      "start": 19.03,
+      "end": 23.44
     },
     {
       "id": "faelle",
-      "start": 32.395,
-      "end": 40.355
+      "start": 23.44,
+      "end": 29.39
     },
     {
       "id": "cta",
-      "start": 40.355,
-      "end": 50.2
+      "start": 29.39,
+      "end": 36.83
     }
   ],
   "subs": [
     {
-      "start": 0.6,
-      "end": 5.02,
+      "start": 0.35,
+      "end": 3.73,
       "text": "Wie behalten kleine Unternehmen ihre Zahlen wirklich im Griff?"
     },
     {
-      "start": 5.02,
-      "end": 13.71,
+      "start": 3.73,
+      "end": 9.98,
       "text": "Unser Interdisziplinäres Projekt an der Hochschule Pforzheim gibt eine Antwort: das KI-Controlling-Cockpit."
     },
     {
-      "start": 13.71,
-      "end": 22.68,
+      "start": 9.98,
+      "end": 15.56,
       "text": "Die Daten liegen verstreut in Buchhaltung, ERP, CRM und Personal, vier Inseln ohne Verbindung."
     },
     {
-      "start": 22.68,
-      "end": 27.54,
+      "start": 15.56,
+      "end": 19.18,
       "text": "Das Cockpit verbindet sie und führt alle Zahlen an einem Ort zusammen."
     },
     {
-      "start": 27.54,
-      "end": 32.82,
+      "start": 19.18,
+      "end": 23.59,
       "text": "Kennzahlen, Trends und Abweichungen, automatisch berechnet und erklärt."
     },
     {
-      "start": 32.82,
-      "end": 40.78,
+      "start": 23.59,
+      "end": 29.54,
       "text": "Drei Fallbeispiele zeigen das: das Controlling-Cockpit, die Kostenabweichung und das Frühwarnsystem."
     },
     {
-      "start": 40.78,
-      "end": 44.99,
+      "start": 29.54,
+      "end": 33.28,
       "text": "Jede Empfehlung ist nachvollziehbar, mit Quelle und Risiko."
     },
     {
-      "start": 44.99,
-      "end": 50.2,
+      "start": 33.28,
+      "end": 36.83,
       "text": "Mehr dazu auf kara-cockpit.de."
     }
   ]
