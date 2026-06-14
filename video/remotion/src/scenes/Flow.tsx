@@ -14,7 +14,7 @@ const STEPS = [
 const Icon: React.FC<{ kind: string; color: string }> = ({ kind, color }) => {
   const common = { fill: "none", stroke: color, strokeWidth: 1.7, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   return (
-    <svg width={64} height={64} viewBox="0 0 24 24">
+    <svg width={52} height={52} viewBox="0 0 24 24">
       {kind === "db" && (<g {...common}><ellipse cx="12" cy="5.5" rx="7.5" ry="3" /><path d="M4.5 5.5v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6" /><path d="M4.5 11.5v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6" /></g>)}
       {kind === "chart" && (<g {...common}><path d="M3 20h18M5 16l4-6 4 3 6-9" /></g>)}
       {kind === "speech" && (<g {...common}><path d="M4 5h16v11H9l-5 4z" /><path d="M8 9h8M8 12h5" /></g>)}
@@ -50,8 +50,8 @@ const StepCard: React.FC<{ step: (typeof STEPS)[number]; index: number }> = ({ s
         borderRadius: 24,
         border: `1px solid ${lit > 0.5 ? color : C.line}`,
         background: step.human ? "linear-gradient(160deg, #1E293B, #2E2A12)" : C.bgElev,
-        padding: "104px 28px 32px",
-        minHeight: 296,
+        padding: "130px 28px 34px",
+        minHeight: 312,
         textAlign: "center",
         boxShadow: `0 0 ${lit * 60}px ${step.human ? "rgba(251,191,36," + lit * 0.3 + ")" : "rgba(52,211,153," + lit * 0.22 + ")"}`,
         opacity: appear,
@@ -69,7 +69,7 @@ const StepCard: React.FC<{ step: (typeof STEPS)[number]; index: number }> = ({ s
       >
         {step.n}
       </span>
-      <div style={{ position: "absolute", top: 26, left: "50%", transform: "translateX(-50%)" }}>
+      <div style={{ position: "absolute", top: 62, left: "50%", transform: "translateX(-50%)", width: 52, height: 52, display: "grid", placeItems: "center" }}>
         <Icon kind={step.icon} color={color} />
       </div>
       <b style={{ fontFamily: FONT_DISPLAY, fontSize: 30, fontWeight: 800, display: "block", color: C.ink, lineHeight: 1.2 }}>

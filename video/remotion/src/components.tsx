@@ -1,6 +1,6 @@
 import React from "react";
-import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
-import { C, EASE, FONT_MONO } from "./theme";
+import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { C, EASE, FONT_DISPLAY, FONT_MONO } from "./theme";
 
 /** Dezentes Linienraster wie auf der Website. */
 export const GridBg: React.FC<{ masked?: boolean }> = ({ masked = true }) => (
@@ -93,7 +93,50 @@ export const AiSticker: React.FC<{ emphasis?: number }> = ({ emphasis = 0 }) => 
           boxShadow: `0 0 ${8 + pulse * 10}px rgba(52,211,153,${0.4 + pulse * 0.4})`,
         }}
       />
-      Mit KI (Claude) erstellt
+      Mit KI erstellt
+    </div>
+  );
+};
+
+/* Untertitel-Band (16:9): unten, halbtransparent, max. zwei Zeilen, damit
+   die Grafik darüber frei bleibt. Wird absolut aus der Timeline gesteuert. */
+export const Subtitles: React.FC<{ subs: { start: number; end: number; text: string }[] }> = ({ subs }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const active = subs.find((s) => t >= s.start && t < s.end);
+  if (!active) return null;
+  const sf = active.start * fps;
+  const op = interpolate(frame, [sf, sf + 6], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <div style={{ position: "absolute", left: 0, right: 0, bottom: 64, display: "flex", justifyContent: "center" }}>
+      <div
+        style={{
+          opacity: op,
+          maxWidth: 1640,
+          margin: "0 80px",
+          background: "rgba(11,18,32,0.78)",
+          border: `1px solid ${C.line}`,
+          borderRadius: 16,
+          padding: "16px 34px",
+          textAlign: "center",
+          fontFamily: FONT_DISPLAY,
+          fontWeight: 600,
+          fontSize: 40,
+          lineHeight: 1.28,
+          color: "#F1F5F9",
+          letterSpacing: "-0.01em",
+          textWrap: "balance",
+          overflowWrap: "break-word",
+          display: "-webkit-box",
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: "vertical",
+          overflow: "hidden",
+        }}
+        lang="de"
+      >
+        {active.text}
+      </div>
     </div>
   );
 };
