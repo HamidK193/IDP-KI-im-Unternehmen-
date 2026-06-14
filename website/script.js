@@ -131,7 +131,7 @@
     {
       title: "Datenquellen anbinden",
       actor: "KI",
-      text: "Claude verbindet sich über MCP-Konnektoren mit Finance DB, ERP, CRM, HR, Projekt DB und Data Warehouse – und erschließt die nötigen Felder selbst.",
+      text: "Die KI verbindet sich über MCP-Konnektoren mit Finance DB, ERP, CRM, HR, Projekt DB und Data Warehouse – und erschließt die nötigen Felder selbst.",
     },
     {
       title: "Daten beschaffen",

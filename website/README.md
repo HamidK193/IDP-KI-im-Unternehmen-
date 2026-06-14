@@ -9,7 +9,7 @@ Live: <https://kara-cockpit.de/> · Cockpit: <https://kara-cockpit.de/cockpit.ht
 
 ## Zwei Ziele
 
-1. **Meta-Beweis**: Die Seite selbst wurde mit KI (Claude) gebaut – eigener
+1. **Meta-Beweis**: Die Seite selbst wurde mit KI gebaut – eigener
    Abschnitt „Mit KI gebaut“ erzählt diese Geschichte.
 2. **Projektbeschreibung**: Sie erklärt das KI-Controlling-Cockpit am Beispiel
    des fiktiven Unternehmens Kara, verständlich für Standbesucher.

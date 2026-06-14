@@ -1,6 +1,6 @@
 # BUILD-NOTES – Techday-Website „Kara·Cockpit“ (V2: zweiseitiger Aufbau)
 
-Erstellt von Claude (Claude Code) in autonomen Durchläufen. Stand 12.06.2026:
+Erstellt mit KI in autonomen Durchläufen. Stand 12.06.2026:
 Redesign nach dem Vorbild moderner AI-/SaaS-Templates (Alter, Flexfolio, Exact),
 eigenständig im Kara·Cockpit-Petrol-Design umgesetzt. Statisch ohne Build,
 GitHub Pages, Domain `kara-cockpit.de`.
@@ -15,8 +15,8 @@ GitHub Pages, Domain `kara-cockpit.de`.
 3. **Kennzahlen-Blöcke** – sechs KPI-Karten (Szenario „stabil“ aus
    `script.js`) mit Zähl-Animation beim Scrollen + Insights-Block
    (SVG-Trenddiagramm + „Was die KI daraus liest“).
-4. **Integrations-Hub** – zentraler Knoten „Kara·Cockpit · KI-Analyse
-   (Claude)“, acht Satelliten typischer Quellen (DATEV, lexoffice,
+4. **Integrations-Hub** – zentraler Knoten „Kara·Cockpit · KI-Analyse“,
+   acht Satelliten typischer Quellen (DATEV, lexoffice,
    SAP Business One, HubSpot, Bank/FinTS, Personio, Excel/Sheets, PDF/CSV)
    mit animierten, nach innen gerichteten Pfeil-Leitungen. Monochrome
    Generik-Icons, ausdrücklich als „Beispiele, keine Partnerschaften“
