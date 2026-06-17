@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<style>
+  /* A0 hochkant (841 × 1189 mm), druckfertig. Schriften: Arial (laut
+     TechDay-Vorgabe zulässige Alternative zu Franklin Gothic). Grüne
+     Großschrift-Überschriften, Kara·Cockpit-Slate-&-Emerald (helle Variante). */
+  @page { size: 841mm 1189mm; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #0F172A;
+    --ink-soft: #475569;
+    --ink-faint: #64748B;
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --line: #E2E8F0;
+    --accent: #059669;
+    --accent-dark: #047857;
+    --accent-soft: #ECFDF5;
+    --revenue: #059669; --cost: #D97706; --liq: #2563EB;
+  }
+
+  html, body { width: 841mm; height: 1189mm; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Arial, "Liberation Sans", sans-serif;
+    padding: 34mm 36mm 28mm;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* dezentes Raster im Hintergrund */
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(15,23,42,0.035) 0.4mm, transparent 0.4mm),
+      linear-gradient(90deg, rgba(15,23,42,0.035) 0.4mm, transparent 0.4mm);
+    background-size: 30mm 30mm;
+    z-index: 0;
+  }
+  .content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+
+  /* Kopf */
+  header { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 9mm; }
+  .brand svg { width: 24mm; height: 24mm; }
+  .brand b { font-size: 44pt; font-weight: 800; letter-spacing: -0.02em; }
+  .brand b span { color: var(--accent); }
+  .techday-badge {
+    border: 0.6mm solid var(--line); border-radius: 5mm; background: var(--surface);
+    padding: 6mm 12mm; text-align: right;
+  }
+  .techday-badge .t1 { font-size: 26pt; font-weight: 800; color: var(--accent); letter-spacing: 0.04em; }
+  .techday-badge .t2 { font-size: 18pt; color: var(--ink-faint); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 1.5mm; }
+
+  /* Titelblock */
+  .eyebrow { margin-top: 20mm; font-size: 27pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  h1.title { margin-top: 8mm; font-size: 86pt; font-weight: 800; line-height: 1.04; letter-spacing: -0.02em; max-width: 100%; }
+  h1.title em { font-style: normal; color: var(--accent); }
+  .lead { margin-top: 9mm; font-size: 30pt; line-height: 1.4; color: var(--ink-soft); max-width: 165mm; }
+
+  /* Stat-Leiste */
+  .stats { margin-top: 14mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 0.6mm solid var(--line); border-radius: 5mm; overflow: hidden; background: var(--surface); }
+  .stats div { padding: 9mm 6mm; text-align: center; border-right: 0.6mm solid var(--line); }
+  .stats div:last-child { border-right: none; }
+  .stats .num { font-size: 60pt; font-weight: 800; color: var(--accent); line-height: 1; }
+  .stats .lbl { margin-top: 3mm; font-size: 18pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+
+  /* Hauptbereich */
+  .main { margin-top: 16mm; display: grid; grid-template-columns: 1fr 0.82fr; gap: 20mm; flex: 1; }
+
+  section.block { margin-bottom: 13mm; }
+  section.block h2 { font-size: 50pt; font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; color: var(--accent); }
+  section.block h2::before { content: ""; display: inline-block; width: 14mm; height: 3mm; background: var(--accent); border-radius: 2mm; vertical-align: middle; margin-right: 6mm; }
+  section.block p { margin-top: 5mm; font-size: 29pt; line-height: 1.42; color: var(--ink); }
+  section.block .q { margin-top: 6mm; padding: 7mm 9mm; border-left: 2.4mm solid var(--accent); background: var(--accent-soft); border-radius: 0 4mm 4mm 0; font-size: 27pt; line-height: 1.4; font-style: italic; color: var(--ink); }
+
+  ul.cases { list-style: none; margin-top: 6mm; display: grid; gap: 4mm; }
+  ul.cases li { font-size: 27pt; line-height: 1.35; padding-left: 13mm; position: relative; color: var(--ink); }
+  ul.cases li b { color: var(--accent-dark); }
+  ul.cases li::before { content: ""; position: absolute; left: 0; top: 3mm; width: 6mm; height: 6mm; background: var(--accent); border-radius: 1.5mm; transform: rotate(45deg); }
+
+  /* rechte Spalte: Bilder */
+  .visuals { display: flex; flex-direction: column; gap: 11mm; }
+  .shot { border: 0.6mm solid var(--line); border-radius: 6mm; overflow: hidden; background: var(--surface); box-shadow: 0 3mm 12mm rgba(15,23,42,0.10); }
+  .shot .bar { height: 9mm; background: #0B1220; display: flex; align-items: center; padding: 0 6mm; gap: 3mm; }
+  .shot .bar i { width: 3mm; height: 3mm; border-radius: 50%; background: #475569; display: inline-block; }
+  .shot .bar span { margin-left: 4mm; font-size: 15pt; color: #94A3B8; font-family: "Courier New", monospace; }
+  .shot img { width: 100%; display: block; }
+  .shot .cap { padding: 5mm 7mm; font-size: 19pt; color: var(--ink-faint); background: var(--surface); border-top: 0.6mm solid var(--line); }
+
+  .highlight { border: 0.6mm solid var(--accent); background: var(--accent-soft); border-radius: 6mm; padding: 10mm; }
+  .highlight .k { font-size: 19pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-dark); font-weight: 700; }
+  .highlight .v { margin-top: 4mm; font-size: 34pt; font-weight: 800; line-height: 1.2; color: var(--ink); }
+  .highlight .s { margin-top: 4mm; font-size: 24pt; color: var(--ink-soft); line-height: 1.35; }
+
+  /* Fußbereich: Projektteam + QR */
+  .team-band { margin-top: 14mm; border-radius: 7mm; background: var(--ink); color: #F1F5F9; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 18mm; padding: 14mm 16mm; }
+  .team-head { font-size: 30pt; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #34D399; }
+  .team-row { margin-top: 8mm; display: flex; gap: 14mm; flex-wrap: wrap; align-items: center; }
+  .member { display: flex; align-items: center; gap: 6mm; }
+  .member .mono { width: 22mm; height: 22mm; border-radius: 50%; background: #1E293B; border: 0.6mm solid #34D399; display: grid; place-items: center; font-size: 26pt; font-weight: 800; color: #34D399; }
+  .member .nm { font-size: 28pt; font-weight: 700; }
+  .member .ro { font-size: 19pt; color: #94A3B8; }
+  .supervisor { margin-top: 9mm; font-size: 23pt; color: #CBD5E1; }
+  .supervisor b { color: #F1F5F9; }
+
+  .qr-box { background: #FFFFFF; border-radius: 6mm; padding: 8mm; text-align: center; }
+  .qr-box img { width: 62mm; height: 62mm; display: block; }
+  .qr-box .url { margin-top: 5mm; font-size: 22pt; font-weight: 800; color: #0F172A; font-family: "Courier New", monospace; }
+  .qr-box .hint { margin-top: 1mm; font-size: 15pt; color: #64748B; }
+</style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="content">
+
+    <header>
+      <div class="brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="2" y="18" width="6" height="12" rx="1.5" fill="#0F172A" />
+          <rect x="13" y="10" width="6" height="20" rx="1.5" fill="#0F172A" />
+          <rect x="24" y="2" width="6" height="28" rx="1.5" fill="#059669" />
+        </svg>
+        <b>Kara<span>·Cockpit</span></b>
+      </div>
+      <div class="techday-badge">
+        <div class="t1">TechDay SS2026</div>
+        <div class="t2">Hochschule Pforzheim</div>
+      </div>
+    </header>
+
+    <p class="eyebrow">Interdisziplinäres Projekt (IDP) · Wirtschaftsinformatik</p>
+    <h1 class="title">KI macht die Zahlen kleiner Unternehmen <em>lesbar</em>.</h1>
+    <p class="lead">Ein KI-Controlling-Cockpit, das verteilte Unternehmensdaten zusammenführt,
+      Kennzahlen berechnet, Trends erkennt und begründete Empfehlungen vorbereitet –
+      gezeigt am fiktiven Unternehmen <b>Kara</b>.</p>
+
+    <div class="stats">
+      <div><div class="num">6</div><div class="lbl">Datenquellen</div></div>
+      <div><div class="num">6</div><div class="lbl">Kennzahlen</div></div>
+      <div><div class="num">3</div><div class="lbl">Szenarien</div></div>
+      <div><div class="num">100&nbsp;%</div><div class="lbl">Demo-Daten</div></div>
+    </div>
+
+    <div class="main">
+      <div class="text-col">
+        <section class="block">
+          <h2>Aufgabe</h2>
+          <p>Kleine Unternehmen sammeln Daten in vielen Systemen – Finanzbuchhaltung,
+            ERP, CRM und Personal –, gewinnen daraus aber selten einen schnellen,
+            verlässlichen Überblick. Zeit, Personal und Budget für eigene KI-Projekte fehlen.</p>
+          <div class="q">„Wie kann ein kleines Unternehmen KI kontrolliert einsetzen, um
+            verteilte Daten auszuwerten, Kennzahlen und Trends zu erkennen und begründete
+            Handlungsempfehlungen vorzubereiten?“</div>
+        </section>
+
+        <section class="block">
+          <h2>Umsetzung</h2>
+          <p>Das Cockpit verbindet die Datenquellen über MCP-Konnektoren, berechnet die
+            zentralen Kennzahlen, erkennt Trends und Abweichungen und begründet jede
+            Auffälligkeit. Jede Empfehlung erscheint mit Quelle, Datenqualität und Risiko –
+            die KI bereitet vor, der Mensch entscheidet (Human-in-the-loop).</p>
+          <p>Umgesetzt als statischer Web-Demonstrator (HTML/CSS/JS) ohne Backend.
+            Website, Dokumentation und Erklärvideo sind selbst mit KI entstanden.</p>
+        </section>
+
+        <section class="block">
+          <h2>Ergebnis</h2>
+          <p>Ein zeigbares Demo-Cockpit mit sechs Datenquellen, sechs Kennzahlen und drei
+            Szenarien (stabil, kritisch, Wachstum). Drei Fallbeispiele zeigen den Nutzen:</p>
+          <ul class="cases">
+            <li><b>01 Controlling-Cockpit</b> – alle Kennzahlen auf einer Oberfläche</li>
+            <li><b>02 Budget- &amp; Kostenabweichung</b> – Plan-Ist-Vergleich, Kostenstellen-Ranking</li>
+            <li><b>03 Forecasting &amp; Frühwarnsystem</b> – frühe Liquiditäts- und Risikosignale</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="visuals">
+        <div class="shot">
+          <div class="bar"><i></i><i></i><i></i><span>kara-cockpit.de/cockpit</span></div>
+          <img src="../website/screenshots/cockpit-1440-dark.png" alt="Interaktives Controlling-Cockpit" />
+          <div class="cap">Interaktives Cockpit: Szenarien, Kennzahlen, KI-Findings, Freigabe</div>
+        </div>
+        <div class="shot">
+          <img src="../website/screenshots/home-1440-hub-light.png" alt="Integrations-Hub: Datenquellen fließen ins Cockpit" />
+          <div class="cap">Integrationen: DATEV, lexoffice, SAP, HubSpot, Bank, Personio, Excel, PDF</div>
+        </div>
+        <div class="highlight">
+          <div class="k">Das Besondere</div>
+          <div class="v">Nachvollziehbar. Der Mensch entscheidet.</div>
+          <div class="s">Jede Empfehlung mit Quelle, Datenqualität und Risiko – nichts läuft automatisch.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-band">
+      <div>
+        <div class="team-head">Das Projektteam · SS2026</div>
+        <div class="team-row">
+          <div class="member"><div class="mono">AK</div><div><div class="nm">Abdulhamid Karatas</div><div class="ro">Konzept · Umsetzung</div></div></div>
+          <div class="member"><div class="mono">KA</div><div><div class="nm">Kadir Atar</div><div class="ro">Konzept · Umsetzung</div></div></div>
+        </div>
+        <div class="supervisor">Betreuung: <b>Prof. Dr. Bettina C. K. Binder</b> · Hochschule Pforzheim</div>
+      </div>
+      <div class="qr-box">
+        <img src="../website/assets/qr-live.svg" alt="QR-Code zu kara-cockpit.de" />
+        <div class="url">kara-cockpit.de</div>
+        <div class="hint">Live-Demo &amp; Video</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
