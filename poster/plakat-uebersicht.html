@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Kara·Cockpit – A0 Plakat Übersicht</title>
+<style>
+  @page { size: 841mm 1189mm; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin:0; padding:0; }
+
+  :root{
+    --ink:#1E1E20; --body:#262628; --teal:#1E8E8B; --teal-d:#1B6064;
+    --yellow:#F1D533; --orange:#E0773C; --red:#D63A2C; --emerald:#059669; --line:#D9D9D6;
+    --fs-title:84pt; --fs-h:50pt; --fs-body:29pt; --fs-sub:30pt;
+    --fs-pill:30pt; --fs-name:22pt; --fs-role:17pt;
+  }
+  body{ font-family:Arial,Helvetica,sans-serif; color:var(--body); }
+  .cond{ font-family:'Arial Narrow',Arial,sans-serif; }
+
+  .page{ position:relative; width:841mm; height:1189mm; background:#FFFFFF; overflow:hidden; }
+
+  /* ===== Gelbe Form (nach Vorlage getracet) ===== */
+  .bg{ position:absolute; inset:0; z-index:0; }
+
+  /* ===== Kopf ===== */
+  .brand{ position:absolute; left:34mm; top:30mm; z-index:2; display:flex; align-items:center; gap:7mm; }
+  .brand .bars{ display:flex; align-items:flex-end; gap:2.6mm; height:15mm; }
+  .brand .bars span{ width:5mm; border-radius:1.6mm 1.6mm 0 0; }
+  .brand .bars .b1{ height:7mm;  background:var(--ink); }
+  .brand .bars .b2{ height:11mm; background:var(--ink); }
+  .brand .bars .b3{ height:15mm; background:var(--emerald); }
+  .brand .word{ font-weight:700; font-size:27pt; color:var(--ink); }
+  .brand .word .dot{ color:var(--emerald); }
+
+  .title{ position:absolute; left:34mm; top:55mm; width:585mm; z-index:2;
+    font-weight:700; font-size:var(--fs-title); line-height:1.0; color:var(--ink); letter-spacing:-.4pt; }
+  .title .hl{ color:var(--teal); }
+
+  .badge{ position:absolute; top:38mm; right:24mm; width:112mm; height:112mm; z-index:3; }
+
+  /* ===== Linke Textspalte ===== */
+  .col{ position:absolute; left:34mm; top:190mm; width:374mm; height:818mm; z-index:2;
+        display:flex; flex-direction:column; justify-content:space-between; }
+  .h{ font-weight:700; font-size:var(--fs-h); color:var(--teal); text-transform:uppercase;
+     letter-spacing:.4pt; line-height:1; margin:0 0 7mm; }
+  .sec{ margin-bottom:0; }
+  .sub{ font-weight:700; color:var(--ink); font-size:var(--fs-sub); margin:7mm 0 2mm; }
+  .p{ font-size:var(--fs-body); line-height:1.35; margin:0; }
+  .p + .p{ margin-top:3mm; }
+  .points{ list-style:none; margin:3mm 0 0; padding:0; }
+  .points li{ font-size:var(--fs-body); line-height:1.26; margin:0 0 3mm; padding-left:11mm; position:relative; }
+  .points li::before{ content:""; position:absolute; left:0; top:3.2mm; width:5.6mm; height:5.6mm;
+    background:var(--teal); border-radius:1.3mm; }
+  .points li b{ color:var(--ink); }
+  .kpi b{ color:var(--ink); }
+
+  /* ===== Bilder rechts ===== */
+  .shot{ position:absolute; right:24mm; z-index:2; background:#fff; border:1.6mm solid #fff;
+    border-radius:3mm; box-shadow:0 4mm 13mm rgba(0,0,0,.20); overflow:hidden; }
+  .shot img{ display:block; width:100%; height:100%; object-fit:cover; }
+  .shot .cap{ position:absolute; left:0; right:0; bottom:0; background:rgba(15,23,42,.82); color:#fff;
+    font-family:'Arial Narrow',Arial; font-weight:700; font-size:24pt; letter-spacing:.3pt; padding:5mm 8mm; }
+  #shot1{ top:200mm; width:354mm; height:236mm; }
+  #shot2{ top:462mm; width:354mm; height:312mm; }
+
+  /* ===== Fußzeile ===== */
+  .pills{ position:absolute; left:34mm; bottom:64mm; z-index:2; display:flex; flex-direction:column; gap:7mm; }
+  .pill{ background:var(--yellow); color:#fff; font-family:'Arial Narrow',Arial; font-weight:700;
+    font-size:var(--fs-pill); letter-spacing:.3pt; padding:5mm 13mm; border-radius:8mm; text-align:center;
+    text-shadow:0 1mm 1mm rgba(0,0,0,.12); }
+
+  .team{ position:absolute; left:235mm; bottom:74mm; z-index:2; display:flex; gap:24mm; }
+  .member{ width:108mm; text-align:center; }
+  .ava{ width:50mm; height:50mm; border-radius:50%; margin:0 auto 4mm; background:#EEF0EF;
+    border:1mm solid var(--line); display:flex; align-items:center; justify-content:center;
+    font-family:'Arial Narrow',Arial; font-weight:700; font-size:34pt; color:#8A9A95; }
+  .member .nm{ font-weight:700; font-size:var(--fs-name); color:var(--ink); line-height:1.1; }
+  .member .ro{ font-size:var(--fs-role); color:#6C6C6E; margin-top:1mm; }
+  .sup{ position:absolute; left:235mm; bottom:50mm; z-index:2; font-size:var(--fs-role); color:#6C6C6E; }
+  .sup b{ color:var(--ink); }
+
+  .qr{ position:absolute; right:30mm; bottom:46mm; z-index:3; width:108mm; text-align:center; }
+  .qr .box{ width:108mm; height:108mm; background:#fff; border:1.4mm solid #fff; border-radius:4mm;
+    padding:6mm; box-shadow:0 3mm 9mm rgba(0,0,0,.18); }
+  .qr .box svg{ width:100%; height:100%; display:block; }
+  .qr .cap{ margin-top:3mm; font-family:'Arial Narrow',Arial; font-weight:700; font-size:22pt; color:var(--ink); }
+  .qr .cap small{ display:block; font-family:Arial; font-weight:400; font-size:16pt; color:#444; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Gelbe Form: eine durchgehende Diagonal-Fläche (rechte Hälfte), Bilder als weiße Karten darauf -->
+  <svg class="bg" viewBox="0 0 841 1189" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="418,0 841,0 841,1095 430,648" fill="#F1D533"/>
+  </svg>
+
+  <!-- Kopf -->
+  <div class="brand">
+    <div class="bars"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+    <div class="word">Kara<span class="dot">·</span>Cockpit</div>
+  </div>
+  <h1 class="title cond">Kara·Cockpit: <span class="hl">KI</span> macht die Zahlen kleiner Unternehmen lesbar.</h1>
+
+  <!-- WI-Badge: grün-teal Kreis, rotes INFO MARKT, großes WI, oranger Chevron -->
+  <svg class="badge" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="50" fill="#1E8E8B"/>
+    <rect x="22" y="11" width="56" height="23" rx="3" fill="#D63A2C"/>
+    <text x="50" y="20.5" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Arial"
+          font-weight="700" font-size="8.4" letter-spacing="0.4">INFO</text>
+    <text x="50" y="31" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Arial"
+          font-weight="700" font-size="9.6" letter-spacing="0.6">MARKT</text>
+    <text x="50" y="67" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Arial"
+          font-weight="700" font-size="33" letter-spacing="1">WI</text>
+    <polygon points="50,71 73,94 27,94" fill="#E0773C"/>
+  </svg>
+
+  <!-- Linke Textspalte -->
+  <div class="col">
+    <section class="sec">
+      <h2 class="h cond">Aufgabe</h2>
+      <div class="sub">Ausgangslage</div>
+      <p class="p">Kleine Unternehmen sammeln täglich Daten in vielen getrennten Systemen – Finanzbuchhaltung,
+        ERP, CRM, Personal und Projektmanagement. Einen schnellen, verlässlichen Überblick gewinnen sie
+        daraus aber selten: Auswertungen sind aufwendig, Kennzahlen liegen verstreut, und für eigene
+        KI-Projekte fehlen Zeit, Personal und Budget.</p>
+      <div class="sub">Forschungsfrage</div>
+      <p class="p">Wie kann ein kleines Unternehmen Künstliche Intelligenz kontrolliert einsetzen, um
+        verteilte Unternehmensdaten auszuwerten, Kennzahlen und Trends zu erkennen und begründete
+        Handlungsempfehlungen vorzubereiten – ohne eigene Data-Science-Abteilung?</p>
+    </section>
+
+    <section class="sec">
+      <h2 class="h cond">Umsetzung</h2>
+      <div class="sub">Datenintegration</div>
+      <p class="p">Das Kara·Cockpit verbindet alle Datenquellen über standardisierte MCP-Konnektoren und
+        führt sie in einer gemeinsamen Sicht zusammen – von DATEV und lexoffice über SAP Business One und
+        HubSpot bis zu Bank/FinTS, Personio und Excel/CSV.</p>
+      <div class="sub">Kennzahlen &amp; Trends</div>
+      <p class="p">Zentrale Controlling-Kennzahlen werden automatisch berechnet, Trends und Abweichungen
+        erkannt und jede Auffälligkeit begründet – mit Quelle, Datenqualität und Risikoeinschätzung.</p>
+      <div class="sub">Human-in-the-loop</div>
+      <p class="p">Leitprinzip ist „KI bereitet vor, der Mensch entscheidet". Die KI liefert Vorschläge und
+        Belege, die Entscheidung bleibt beim Menschen.</p>
+      <div class="sub">Technische Realisierung</div>
+      <p class="p">Umgesetzt als statischer Web-Demonstrator (HTML, CSS, JavaScript, ohne Backend) am fiktiven
+        Unternehmen „Kara". Website, Dokumentation und Erklärvideo sind selbst mit KI erstellt.</p>
+    </section>
+
+    <section class="sec">
+      <h2 class="h cond">Ergebnis</h2>
+      <div class="sub">Demo-Cockpit</div>
+      <p class="p kpi">Ein vorführbares Cockpit mit <b>6 Datenquellen, 6 Kennzahlen und 3 Szenarien</b>
+        (stabil, kritisch, Wachstum). Beispiel „stabil": Umsatz 4,82 Mio. € (+8,4 %), Kostenquote 41,8 %,
+        Deckungsbeitrag 1,34 Mio. €, Liquidität 780 Tsd. €, Risikoindex 42.</p>
+      <div class="sub">Drei Fallbeispiele</div>
+      <ul class="points">
+        <li><b>Controlling-Cockpit</b> – alle Kennzahlen auf einer Oberfläche.</li>
+        <li><b>Budget- &amp; Kostenabweichungsanalyse</b> – Plan-Ist-Vergleich, Kostenstellen-Ranking.</li>
+        <li><b>Forecasting &amp; Frühwarnsystem</b> – frühe Liquiditäts- und Risikosignale.</li>
+      </ul>
+      <div class="sub">Live erlebbar</div>
+      <p class="p">Das komplette Cockpit ist online unter <b>kara-cockpit.de</b>.</p>
+    </section>
+  </div>
+
+  <!-- Bilder -->
+  <div class="shot" id="shot1">
+    <img src="../website/screenshots/cockpit-1440-dark.png" alt="Controlling-Cockpit">
+    <div class="cap">Controlling-Cockpit · alle Kennzahlen auf einen Blick</div>
+  </div>
+  <div class="shot" id="shot2">
+    <img src="../website/screenshots/home-1440-kpi-dark.png" alt="Kennzahlen-Übersicht">
+    <div class="cap">Kennzahlen, Trends &amp; begründete Empfehlungen</div>
+  </div>
+
+  <!-- Fußzeile -->
+  <div class="pills">
+    <div class="pill">Das Projektteam</div>
+    <div class="pill">SS2026</div>
+  </div>
+  <div class="team">
+    <div class="member"><div class="ava">AK</div><div class="nm">Abdulhamid Karatas</div><div class="ro">Wirtschaftsinformatik</div></div>
+    <div class="member"><div class="ava">KA</div><div class="nm">Kadir Atar</div><div class="ro">Wirtschaftsinformatik</div></div>
+  </div>
+  <div class="sup">Betreuung: <b>Prof. Dr. Bettina C. K. Binder</b> · Hochschule Pforzheim</div>
+
+  <div class="qr">
+    <div class="box">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h33v33H0z"/><path stroke="#000000" d="M4 4.5h7m1 0h2m2 0h2m4 0h7M4 5.5h1m5 0h1m1 0h1m3 0h3m1 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h3m2 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h2m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m2 0h1m1 0h2m5 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M15 11.5h3m1 0h1M4 12.5h1m2 0h6m1 0h3m1 0h4m2 0h1m1 0h3M4 13.5h2m1 0h3m1 0h2m3 0h1m2 0h1m3 0h5M4 14.5h8m1 0h1m1 0h1m3 0h5m1 0h1m2 0h1M4 15.5h1m2 0h1m1 0h1m1 0h1m2 0h3m2 0h1m2 0h1m1 0h5M7 16.5h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h1m1 0h2m4 0h1M4 17.5h2m1 0h2m2 0h1m6 0h4m2 0h1m2 0h1M4 18.5h3m1 0h1m1 0h3m2 0h2m1 0h2m2 0h1m1 0h5M4 19.5h1m1 0h1m1 0h1m2 0h2m1 0h2m2 0h3m2 0h1m1 0h2m1 0h1M4 20.5h1m1 0h2m2 0h1m1 0h3m2 0h1m1 0h6m1 0h2M12 21.5h5m3 0h1m3 0h1m1 0h2M4 22.5h7m1 0h1m1 0h2m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1M4 23.5h1m5 0h1m1 0h1m1 0h1m1 0h5m3 0h1m2 0h1M4 24.5h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h7m2 0h2M4 25.5h1m1 0h3m1 0h1m1 0h3m3 0h5m4 0h2M4 26.5h1m1 0h3m1 0h1m3 0h1m1 0h1m3 0h2m2 0h5M4 27.5h1m5 0h1m2 0h2m3 0h1m2 0h4m1 0h3M4 28.5h7m1 0h1m3 0h5m1 0h1m2 0h1m2 0h1"/></svg>
+    </div>
+    <div class="cap">Projekt live ansehen<small>kara-cockpit.de</small></div>
+  </div>
+
+</div>
+</body>
+</html>

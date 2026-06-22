@@ -6,7 +6,8 @@
       "Skill(anthropic-skills:pdf:*)",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git -C \"A:\\\\Codex\\\\IDP\" remote -v)"
     ]
   }
 }

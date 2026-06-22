@@ -7,9 +7,10 @@ Dieses Repository enthält die technische Grundlage für den IDP-Demonstrator
 
 - `website/` - statischer Präsentations- und Dashboard-Prototyp
 - `docs/` - fachliche Beschreibung von Use Case, Architektur und Demo-Aufbau
-- `supabase/` - ältere SQL-Dateien für spätere Backend-Experimente
-- `make/` - ältere Beispielpayloads für Automatisierungsideen
 - `tools/` - Hilfsskripte für Projektartefakte
+- `outputs/` - fertige Abgabeartefakte (Word-Dokumentation, Präsentation)
+- `.claude/skills/` - projektlokale Agent-Skills (find-skills, frontend-design,
+  web-design-guidelines, ui-ux-pro-max, copywriting, agent-browser, ai-video-generation)
 
 ## Aktueller Fokus
 

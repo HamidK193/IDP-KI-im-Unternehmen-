@@ -45,7 +45,7 @@ Datenqualität, Risiko und Human-in-the-loop-Prüfung dargestellt.
 
 Die veröffentlichte GitHub-Pages-Version ist hier erreichbar:
 
-https://hamidk193.github.io/IDP-KI-im-Unternehmen-/
+https://kara-cockpit.de/
 
 Nach einem neuen Commit kann es kurz dauern, bis GitHub Pages die aktuelle
 Version bereitstellt.

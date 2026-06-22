@@ -2,48 +2,51 @@
 
 ## Projekttitel
 
-**Kara AI Operations: KI für kleine Unternehmen verständlich machen**
+**KI-Controlling-Cockpit: KI für kleine Unternehmen verständlich machen**
 
 ## Kurzbeschreibung
 
-Das Projekt zeigt, wie ein kleines Unternehmen KI kontrolliert und praxisnah in
-den Arbeitsalltag integrieren kann. Am Beispiel des fiktiven E-Commerce-KMU
-Kara unterstützt ein KI-Cockpit Mitarbeitende bei Support, Rechnungen,
-Bestellungen, Analysen und internen Wissensfragen.
+Das Projekt zeigt, wie ein kleines Unternehmen KI kontrolliert und praxisnah zur
+datenbasierten Steuerung einsetzen kann. Am Beispiel des fiktiven
+Kleinunternehmens Kara wertet ein KI-Controlling-Cockpit alle relevanten
+Unternehmensdatenbanken aus, berechnet Kennzahlen, erkennt Trends und
+Abweichungen und schlägt begründete Maßnahmen vor.
 
 ## Problem
 
 Kleine Unternehmen haben oft wenig Zeit, wenig IT-Personal und begrenztes
-Budget. Trotzdem müssen sie Kundenanfragen, Rechnungen, Bestellungen und
-Auswertungen zuverlässig bearbeiten.
+Budget. Ihre Daten liegen verteilt in mehreren Systemen (Finance, ERP, CRM, HR,
+Projekte). Ein schneller, verlässlicher Überblick über Kennzahlen, Trends und
+Abweichungen fehlt im Alltag.
 
 ## Lösung
 
-Ein interner KI-Assistent erstellt Vorschläge, fasst Informationen zusammen und
-weist auf Risiken hin. Der Mensch prüft jedes Ergebnis und entscheidet über
-Freigabe oder Ablehnung.
+Ein KI-Controlling-Cockpit führt die relevanten Datenquellen zusammen, berechnet
+zentrale Kennzahlen, erklärt Auffälligkeiten und schlägt nächste Schritte vor.
+Jede Empfehlung zeigt Quelle, Datenqualität und Risiko. Der Mensch prüft und
+entscheidet.
 
 ## Live-Demo
 
-1. KI-Cockpit öffnen.
-2. Tagesbriefing und offene Aufgaben zeigen.
-3. Rechnungsprüfung oder Supportfall auswählen.
-4. KI-Vorschlag erzeugen.
-5. Quelle und Risiko erklären.
-6. Vorschlag freigeben oder ablehnen.
+1. Controlling-Cockpit öffnen.
+2. Szenario wählen (stabil, kritisch, Wachstum).
+3. KPI-Übersicht und Trenddiagramm zeigen.
+4. KI-Analyse erzeugen: Kennzahlen, Trends, Abweichungen.
+5. Begründung, Datenqualität und Risiko erklären.
+6. Handlungsempfehlung prüfen und freigeben oder ablehnen.
 
 ## Nutzen für kleine Unternehmen
 
-- schnellere Bearbeitung wiederkehrender Aufgaben
-- bessere Übersicht über offene Fälle
-- weniger Fehler durch strukturierte Prüfhinweise
+- schneller Überblick über verteilte Unternehmensdaten
+- frühe Erkennung von Trends, Abweichungen und Risiken
+- nachvollziehbare Begründungen statt Blackbox
 - verständlicher Einstieg ohne großes IT-Projekt
 
 ## Risiken und Gegenmaßnahmen
 
 - Datenschutz: keine sensiblen Daten ohne Rechtsgrundlage verarbeiten.
-- Fehlerhafte KI-Ausgaben: menschliche Freigabe fest einbauen.
-- Akzeptanzprobleme: Mitarbeitende früh einbinden und KI als Assistenz erklären.
+- Fehlerhafte KI-Ausgaben: menschliche Freigabe und Datenqualitätsanzeige fest einbauen.
+- Akzeptanzprobleme: Fachbereiche früh einbinden und KI als Assistenz erklären.
 
 ## QR-Hinweis
 

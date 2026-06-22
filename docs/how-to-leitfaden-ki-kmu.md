@@ -41,13 +41,14 @@ Empfehlung:
 
 ## Schritt 4: Einen Pilotfall umsetzen
 
-Der Pilot sollte klein bleiben. Ein Beispiel ist ein Support-Assistent:
+Der Pilot sollte klein bleiben. Ein Beispiel ist ein Kennzahlen-Assistent für
+das Controlling:
 
-1. Kundenanfrage auswählen.
-2. relevante Bestell- oder Prozessdaten bereitstellen.
-3. KI erzeugt einen Antwortentwurf.
-4. Mitarbeitende prüfen Ton, Inhalt und Datenschutz.
-5. Antwort wird freigegeben oder verworfen.
+1. einen Kennzahlenbereich auswählen (z. B. Umsatz, Kosten, Liquidität).
+2. relevante Daten aus den vorhandenen Systemen bereitstellen.
+3. KI erzeugt eine Kurzanalyse mit Trend, Auffälligkeit und Empfehlung.
+4. Fachbereich prüft Plausibilität, Datenqualität und Risiko.
+5. Empfehlung wird freigegeben oder verworfen.
 
 ## Schritt 5: Erfolg messen
 

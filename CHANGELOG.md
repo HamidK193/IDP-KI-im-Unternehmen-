@@ -2,6 +2,33 @@
 
 Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
 
+## 2026-06-12
+
+- `website/`: komplett neue Techday-Website „Kara·Cockpit“ (Single-Page,
+  responsive, Light/Dark-Theme, interaktives Controlling-Cockpit mit drei
+  Szenarien, Prozessfluss, „Mit KI gebaut“-Abschnitt, QR-Code, Screenshots
+  unter `website/screenshots/`). Ersetzt die bisherige „KI-Control“-Seite
+  inklusive der zuvor gemergten Stände aus PR #1 und #2. Details in
+  `website/BUILD-NOTES.md`.
+- Repository aufgeräumt: tote Shop-/E-Commerce-Implementierung entfernt, die von
+  der aktuellen Controlling-Website nicht mehr referenziert wird. Gelöscht:
+  `supabase/` (Auth, Produkte, Checkout, Make-Integration), `make/`,
+  `docs/make-scenario.md`, `docs/checkout-account-flow.md`,
+  `docs/invoice-template-fields.md`, `tools/create_kara_invoice_template.py`,
+  `docs/templates/` (Rechnungsvorlagen) und das stale `docs/handover_next_chat.md`.
+- `docs/repository-overview.md`: Struktur an den neuen Stand angepasst.
+- Projektlokale Agent-Skills unter `.claude/skills/` ergänzt (bezogen über
+  skills.sh): `find-skills` (vercel-labs/skills), `frontend-design`
+  (anthropics/skills), `web-design-guidelines` (vercel-labs/agent-skills),
+  `ui-ux-pro-max` (nextlevelbuilder), `copywriting` (coreyhaines31/marketingskills),
+  `agent-browser` (vercel-labs/agent-browser) und `ai-video-generation`
+  (agentspace-so/runcomfy-agent-skills).
+- Offen / zu entscheiden: Die Abgabeartefakte in `outputs/` sowie
+  `docs/abgabeplan-*`, `docs/präsentation_demo_20min.md`,
+  `docs/techday-one-pager.md` und `docs/linkedin-post.md` erzählen weiterhin die
+  ältere „Kara AI Operations"-Geschichte (Shop, Support, Rechnungen), während die
+  Website ein Controlling-Cockpit zeigt. Narrativ noch nicht angeglichen.
+
 ## 2026-06-06
 
 - `website/styles.css`: kompaktere Mobile-Ansicht. Karten-Raster (Problem,
@@ -39,7 +66,6 @@ Alle wichtigen Änderungen am Projekt werden hier kurz protokolliert.
   es, Wie man es macht, Was man braucht, Probleme, Risiken, Aufwand, Fazit) und
   enthält alle verbindlichen Demo-Inhalte (Datenquellen, Szenario-Daten,
   Datenfluss, Governance, Aufwandsübersicht).
-
 ## 2026-06-04
 
 - `website/index.html` und `website/script.js`: sichtbare Copy professioneller

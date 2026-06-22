@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "nano-banana-edit": {
+      "source": "runcomfy-com/skills",
+      "sourceType": "github",
+      "skillPath": "nano-banana-edit/SKILL.md",
+      "computedHash": "afa784079e20973f131ccc306e33b1e443c9e32ccdc8ce77b7429285b964f48b"
+    }
+  }
+}

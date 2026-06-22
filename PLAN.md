@@ -35,14 +35,14 @@ Dokumentation, Präsentation, LinkedIn-Beitrag und Techday-/WI-Tag-Material.
 
 1. Aufgabenstellung in eigene Projektlogik übersetzen.
 2. Zielgruppe definieren: kleine Unternehmen mit begrenzten Ressourcen.
-3. Kara als fiktives kleines E-Commerce-Unternehmen begründen.
+3. Kara als fiktives kleines Unternehmen begründen.
 4. KI-Anwendungsfälle aus der Aufgabenstellung ableiten.
 5. Rechtliche und ethische Aspekte aufnehmen.
 
 ### Phase 2: Praktischer Demonstrator
 
-1. Kara KI-Cockpit als Hauptdemo nutzen.
-2. Shop als Datenquelle erklären.
+1. KI-Controlling-Cockpit als Hauptdemo nutzen.
+2. Relevante Unternehmensdatenbanken als Datenquellen erklären.
 3. Human-in-the-loop als zentrales Kontrollprinzip zeigen.
 4. Lokale Speicherung und simulierte KI transparent machen.
 5. Demo-Ablauf für Präsentation und Techday festlegen.
@@ -52,7 +52,7 @@ Dokumentation, Präsentation, LinkedIn-Beitrag und Techday-/WI-Tag-Material.
 1. Dokumentstruktur für ca. 20 Seiten umsetzen.
 2. Einleitung, Grundlagen, Praxisbeispiele und Herausforderungen schreiben.
 3. Rechtliche/ethische Analyse ergänzen.
-4. Kara-Anwendungsfall mit Prozess und technischer Umsetzung beschreiben.
+4. Controlling-Cockpit-Anwendungsfall mit Prozess und technischer Umsetzung beschreiben.
 5. How-To-Leitfaden integrieren.
 6. Fazit und Ausblick formulieren.
 7. Word-Datei erzeugen und prüfen.

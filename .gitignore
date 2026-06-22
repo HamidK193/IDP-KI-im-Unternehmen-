@@ -1,0 +1,22 @@
+.env
+.env.*
+*.key
+secrets/
+*.secret
+
+# Python venv (versehentlich im Repo-Root angelegt)
+Lib/
+Scripts/
+pyvenv.cfg
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Scratch / Vorschau
+outputs/_pv/
+
+# Agent-Tooling (lokal, gehoert nicht ins Repo)
+.claude/skills/
+.agents/
